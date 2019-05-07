@@ -1,0 +1,182 @@
+---
+fr:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Autres actions
+    button_add_child: Ajouter enfant
+    button_add_parent: Ajouter parent
+    button_add_sibling: Ajouter frère/soeur
+    button_all_icons: Icônes
+    button_collapse: Réduire
+    button_collapse_all: Réduire tout
+    button_cut: Couper
+    button_display: Paramètres d'affichage
+    button_edit_data: Éditer données
+    button_expand: Développer
+    button_expand_all: Développer tout
+    button_expand_collapse: Développer/réduire
+    button_legend: Légende
+    button_one_side: Un côté
+    button_paste: Coller
+    button_project_menu: Easy WBS
+    button_redo: Refaire
+    button_remove_node: Retirer noeud
+    button_show_links: Afficher les liens
+    button_undo: Défaire
+    edit_issue: Éditer tâche
+    error_create: n'a pas pu être créé
+    error_delete: n'a pas pu être supprimé
+    error_update: n'a pas pu être  mis à jour
+    errors:
+      not_subtaskable: La tâche "%{task_name}" ne peut pas être une sous-tâche en
+        raison du réglage de son tracker
+    free:
+      button_upgrade: Obtenir la Version complète
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: Nœuds colorants par propriété
+      feature_context_menu: Modification des propriétés du noeud
+      feature_filtering: Nœuds filtrants par propriété
+      header_not_available: Uniquement disponible en Version complète
+      text_not_available: est disponible en version complète d'Easy WBS.
+    hotkeys:
+      info_mac_metakey: Sur Mac OSX , les touches Ctrl et Cmd peuvent être utilisées
+        pour les raccourcis Ctrl marqués ci-dessous - certains navigateurs empêchent
+        certains raccourcis clavier . Ainsi, par exemple, si Cmd + Espace ne fonctionne
+        pas dans votre navigateur , essayez Ctrl + Espace .
+      keyboard:
+      - title: Manipulation du nœud
+        hotkeys:
+        - hotkey: Entrer
+          info: Ajouter frère
+        - hotkey: Shift+Entrée
+          info: Ajouter parent au-dessus ou saut de ligne (lors du renommage du nœud)
+        - hotkey: Tab ou Insérer
+          info: Ajouter enfant
+        - hotkey: Shift+Tab
+          info: Insérer parent
+        - hotkey: Espace
+          info: Renommage du nœud
+        - hotkey: Shift+Espace
+          info: Editer les données nœud
+        - hotkey: Retour arrière or Effacer
+          info: Enlever nœud
+        - hotkey: Ctrl+Haut/Bas
+          info: Déplacer nœud vers le haut/bas
+      - title: 'Édition '
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Sauvegarder
+        - hotkey: Ctrl+X or C
+          info: Couper
+        - hotkey: Ctrl+C or Y
+          info: Copier
+        - hotkey: Ctrl+V or P
+          info: Coller
+        - hotkey: U ou Ctrl+Z
+          info: Défaire
+        - hotkey: R ou Ctrl+Y ou Ctrl+Shift+Z
+          info: Refaire
+      - title: Sélection
+        hotkeys:
+        - hotkey: touche fléchée
+          info: Sélectionnez le noeud haut/bas/gauche/droite de celui sélectionné
+            actuellement
+        - hotkey: Shift + touche fléchée
+          info: Ajouter le nœud haut/bas/gauche/droite à la sélection (utile pour
+            les frères de multi-sélection )
+        - hotkey: "{"
+          info: Multi-sélectionner le nœud actuel et l'arbre entier
+        - hotkey: "["
+          info: Multi-sélectionner uniquement le sous-arbre sous le nœud actuel (pas
+            le nœud lui-même)
+        - hotkey: "="
+          info: Multi-sélectionnez tous les frères du nœud actuel (qui ont le même
+            parent)
+        - hotkey: "."
+          info: Annuler la multi-sélection et sélectionnez uniquement le nœud actuel
+            à nouveau
+        - hotkey: 1 - 9
+          info: Sélectionnez tous les nœuds d'un niveau particulier (par ex. 1 sélectionne
+            tous les nœuds de premier niveau )
+      - title: Navigation et écran
+        hotkeys:
+        - hotkey: "/ ou F"
+          info: Développer ou réduire le nœud (plier ou déplier enfants)
+        - hotkey: Ctrl + ou Z
+          info: Zoom avant
+        - hotkey: Ctrl - ou  Shift Z
+          info: Zoom arrière
+        - hotkey: Esc, 0, Ctrl+0
+          info: Réinitialiser vue de la carte- sélectionnez le nœud racine et l'amener
+            au centre de l'écran
+      mouse:
+      - action: Déplacer la carte
+        gesture: cliquez et faites glisser le nœud central, cliquez et faites glisser
+          l'arrière-plan ou faites défiler avec le trackpad / touchpad .
+      - action: Sélectionnez un nœud
+        gesture: tapez ou cliquez dessus
+      - action: Sélectionnez des nœuds multiples
+        gesture: Shift+clic
+      - action: Réorganiser les nœuds
+        gesture: faire glisser un nœud entre ses frères et sœurs , à l'horizontale
+          près de la position de réordonnancement . Un point de flèche noire montrera
+          quand à lieu le réordonnancement.
+      - action: positionner manuellement un nœud
+        gesture: il suffit de glisser un nœud jusqu'à ce que le point flèche de réordonnancement
+          ne s'affiche plus . Pour forcer la position manuelle, même lorsque le point
+          flèche de réapprovisionnement est affiché, maintenez la touche Maj tout
+          en faisant glisser. S'il vous plaît noter que les enfants du nœud racine
+          peuvent être tirés dans une direction quelconque, mais des nœuds de niveau
+          inférieur ne peuvent pas être placés dans la direction de leur parent par
+          rapport à la racine.
+      - action: Renommer un nœud
+        gesture: Double-cliquez ou double-taper dessus
+      - action: Afficher le menu contextuel avec des opérations
+        gesture: 'Faites un clic droit sur ​​un nœud ( par la souris ) ou double -taper
+          l''arrière-plan , ou appuyez longuement sur un nœud: afficher (sur les appareils
+          tactiles)'
+      - action: Modifier le parent nœud
+        gesture: glisser-déposer un nœud sur un autre nœud ( les gouttes circulaires
+          ne sont pas autorisés , de sorte que vous ne pouvez pas supprimer un nœud
+          sur l'un de ses enfants ou descendants)
+      - action: question ouverte ou projet dans une fenêtre séparée
+        gesture: Alt+clic
+      title_key_shortcuts: Opérations de clavier
+      title_mouse_shortcuts: Souris et opérations tactiles
+      title_shortcuts: Raccourcis
+    info_all_saved: Tout a été sauvegardé avec succès
+    info_any_failed: 'Certaines des demandes  ont échoué:'
+    info_no_permission: Vous ne disposez pas des permissions nécessaires pour agir
+      ainsi
+    label_color_by: Couleur par
+    label_go_to: Aller à
+    label_or: ou
+    last_state_modal:
+      label_differencies: Différences sur le serveur
+      message_changed: dispose de différentes caractéristiques (navigateur =>serveur)
+        ({{changements}})
+      message_missing: est manquant du parent "{{de}}"
+      message_moved: est enfant de "{{à}}", pas"{{de}}"
+      message_present: est présent en tant qu'enfant de "{{à}}"
+      text_reload_appeal: Souhaitez-vous  recharger l'état à partir du serveur?
+      title: Le dernier état du client de WBS est différent  de l'état du serveur
+    reload_modal:
+      label_errors: Erreurs
+      text_reload_appeal: Souhaitez-vous ignorer les éléments non enregistrés et recharger
+        les données à partir du serveur?
+      title: WBS n'a pas pu être sauvegardé correctement
+    stored_modal:
+      text_load_appeal: Voulez-vous le charger? Au lieu du nouvel état à partir du
+        serveur?
+      title: un état non sauvegardé a été trouvé
+    warning_delete_node: Voulez-vous vraiment supprimer le nœud {{nom}} et tous ses
+      descendants?
+    warning_not_saved: n'est pas sauvegardé correctement
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Tâches
+  label_filter_group_easy_wbs:
+    easy_issue_query: Tâches
+  project_default_page:
+    easy_wbs: Easy WBS

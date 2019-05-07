@@ -1,0 +1,9 @@
+ru:
+  share_button: "Поделиться"
+  share_title: "Общий доступ по ссылке"
+  share_label_with: "Share with"
+  share_label_page: "Страница"
+  share_label_subject: "%{sender} предоставил(а) Вам доступ к %{record}"
+  share_text_message: "%{sender} предоставил(а) Вам доступ к %{record}."
+  share_notice_email_sent: "Отправлено письмо"
+  share_notice_email_error: "Во время отправки письма произошла ошибка"

@@ -1,0 +1,175 @@
+/*
+* = require mindmup
+* = require_self
+* = require easy_mindmup_sass.scss
+*/
+
+.mindmup_context_menu_item {
+  cursor: pointer;
+}
+
+.mindmup-reload-modal-errors li {
+  color: #cd0a0a;
+}
+
+.mindmup-last-modal-diffs li {
+  color: #bf993f;
+}
+
+.mindmup-node-icons {
+  position: absolute;
+  left: 0;
+  top: -10px;
+  white-space: nowrap;
+}
+
+.mindmup-node-icons--with_icons .mindmup-node-icons {
+  top: -18px;
+}
+
+.mindmup-node-icon {
+  height: 20px;
+  display: inline-block;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+.mindmup-node-icon-avatar, .mindmup-legend-item-cont .gravatar {
+  height: 24px;
+  width: 24px;
+}
+
+.mindmup-node-icon-avatar .gravatar {
+  vertical-align: sub;
+}
+
+.mindmup-node-icon-avatar .gravatar,
+.mindmup-legend-item-cont .gravatar {
+  padding: 1px;
+  border: 1px solid #777;
+}
+
+.mindmup-legend-item-cont .gravatar {
+  margin-top: -7px;
+}
+
+.mindmup-node-icon-avatar .gravatar:hover,
+.mindmup-legend-item-cont .gravatar:hover {
+  transform: scale(2);
+  position: relative;
+  z-index: 5;
+}
+
+.mindmup-node-icon-milestone-diamond {
+  border-width: 4px;
+  border-style: solid;
+}
+
+#context-menu li:not(.folder) > ul {
+  display: none;
+}
+
+.controller-easy_wbs .easy-content-page {
+  transform: none !important;
+}
+
+.link-edit-widget {
+  display: none;
+  z-index: 999;
+  position: absolute;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #dd3e3a;
+  cursor: default;
+}
+
+.mindmup-legend-used {
+  margin-top: 10px;
+  display: inline-block;
+  color: rgba(66, 50, 26, 0.5);
+}
+
+.mindmup-legend-used-used--all, .mindmup-legend-used-all--used {
+  display: none;
+}
+
+.mindmup-legend-drag-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  cursor: move;
+}
+
+.mindmup-legend-drag-avatar {
+  position: absolute;
+  z-index: 5;
+  height: 20px;
+  width: 20px;
+  margin-left: -12px;
+  margin-top: -12px;
+  border: 1px solid;
+}
+
+/*.mindmup__menu-save--tooltip {*/
+  /*display: inline-block;*/
+  /*color: green;*/
+  /*padding: 0 5px;*/
+/*}*/
+
+.mindmup__legend-container {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14), 0 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.mindmup__menu {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14), 0 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.mindmup-node-icon-is_edited {
+  margin-right: 1px;
+  margin-left: -10px;
+  vertical-align: middle;
+  border-radius: 5000px;
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  background-color: #e50026;
+  line-height: 1.2;
+  font-size: 18px;
+  text-align: center;
+  display: inline-block;
+}
+
+.mindmup-node-icon-is_edited::before {
+  content: "!";
+  font-family: inherit;
+}
+
+.mindmup-node-icons-all {
+  display: inline-block;
+}
+
+.mindmup__node--filtered_out {
+  opacity: 0.2;
+}
+
+mindmup-sidebar {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+}
+
+.date-picker__date-wrap .input-append {
+  width: auto;
+  float: right;
+}
+
+.date-picker__date-wrap {
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+easy-lookup .easy-lookup-values-wrapper {
+  height: auto;
+}

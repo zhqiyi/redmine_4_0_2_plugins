@@ -1,0 +1,77 @@
+<% include_calendar_headers_tags %>
+<% heads_for_wiki_formatter %>
+<% if defined?(EasyExtensions) %>
+  <%= stylesheet_link_tag('easy_mindmup', :media => 'all') %>
+<% else %>
+  <%= stylesheet_link_tag('generated/easy_mindmup', :plugin => 'easy_mindmup', :media => 'all') %>
+  <%#= stylesheet_link_tag('easy_mindmup', :plugin => 'easy_mindmup', :media => 'all') %>
+  <%= stylesheet_link_tag('context_menu', :media => 'all') %>
+<% end %>
+<%= javascript_include_tag('external', :plugin => 'easy_mindmup') %>
+<% if false && defined?(EasyExtensions) %>
+  <%= javascript_include_tag('easy_wbs', :plugin => 'easy_mindmup') %>
+<% else %>
+    <script type="application/javascript">
+        window.easyDartLoaders = window.easyDartLoaders || [];
+    </script>
+  <%= begin javascript_include_tag(
+        'mindmup/mapjs',
+        'mindmup/clipboard',
+        'mindmup/content',
+        'mindmup/dom-map-view',
+        'mindmup/dom-map-widget',
+        'mindmup/hammer-draggable',
+        'mindmup/image-drop-widget',
+        'mindmup/layout',
+        #'mindmup/link-edit-widget',
+        'mindmup/map-model',
+        'mindmup/map-toolbar-widget',
+        'mindmup/observable',
+        'mindmup/url-helper', :plugin => 'easy_mindmup')
+      end %>
+  <%= begin javascript_include_tag(
+        :libs,
+        :polyfill,
+        :utils,
+        :main,
+        :mapjs_init,
+        :event_bus,
+        :redrawer,
+        :toolbar,
+        :history,
+        :data,
+        :links,
+        :loader,
+        # :last_state,
+        :saver,
+        :autosave,
+        :save_progress,
+        :save_info,
+        :filter,
+        :node_patch,
+        :dom_patch,
+        :map_model_patch,
+        :model_classes,
+        :after_change,
+        :styles,
+        :logger,
+        # :gateway,
+        # :modals,
+        :validator,
+        :storage,
+        :legend,
+        :legend_events,
+        :expand_all,
+        :print,
+        :mm_context_menu,
+        :layout_patch,
+        :content_patch,
+        :links,
+        :link_edit_widget, :plugin => 'easy_mindmup')
+      end %>
+<% end %>
+
+
+<% if defined?(EasyExtensions)
+     include_front_end_commons if respond_to? :include_front_end_commons
+   end %>

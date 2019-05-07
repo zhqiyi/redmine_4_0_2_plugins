@@ -1,0 +1,33 @@
+<%=
+  easy_gantt_include_js(
+      # test framework
+      'jasmine/helpers/test',
+      'jasmine/jasmine_lib/jasmine',
+      'jasmine/jasmine_lib/jasmine-html',
+      'jasmine/jasmine_lib/boot',
+
+      # common tests
+      'jasmine/main',
+      'jasmine/loader',
+      'jasmine/working_helper',
+      'jasmine/working_helper_add',
+      'jasmine/pos_date',
+      'jasmine/history',
+      'jasmine/model_relations',
+      'jasmine/load_reorder'
+  )
+%>
+<% extra_test_names = params[:run_jasmine_tests]
+   if extra_test_names != 'true'
+     if extra_test_names.is_a?(String)
+       extra_tests = prepare_test_includes([extra_test_names])
+     elsif extra_test_names.is_a?(Array)
+       extra_tests = prepare_test_includes(extra_test_names)
+     else
+       extra_tests = []
+     end
+     extra_tests.each do |test, plugin| %>
+    <%= easy_gantt_include_js("jasmine/#{test}", from_plugin: plugin) %>
+  <% end %>
+<% end %>
+<%= easy_gantt_include_css('jasmine', media: 'all') %>

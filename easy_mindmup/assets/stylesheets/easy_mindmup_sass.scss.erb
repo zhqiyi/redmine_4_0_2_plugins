@@ -1,0 +1,37 @@
+<% redmine_sass = false
+   ep_com = Redmine::Plugin.installed?(:easy_project_com)
+ %>
+<% if ep_com %>
+@import "../../../easyproject/easy_plugins/easy_project_com/assets/stylesheets/scss/common_assets";
+<% else %>
+@import "../../../easyproject/easy_plugins/easy_extensions/assets/stylesheets/scss/common_assets";
+<% end %>
+@import "sass/mindmup_default_variables";
+@import "sass/mindmup_variables";
+@import "sass/mindmup_mixins";
+@import "sass/mindmup_frame";
+@import "sass/mindmup_icons";
+<% if redmine_sass %>
+@import "sass/mindmup_redmine";
+<% end %>
+@import "sass/mindmup_progress";
+@import "sass/mindmup_legend";
+@import "sass/mindmup_mapjs";
+@import "sass/mindmup_nodes";
+@import "sass/mindmup_schemes";
+@import "sass/mindmup_print";
+@import "sass/mindmup";
+
+.mindmup {
+  @import "sass/mindmup_sidebar";
+}
+
+<%if redmine_sass %>
+@include loadFontFace--non-rails('Material Icons', '../../fonts/EasyMaterialIcons-Regular', 'Material Icons', 'MaterialIcons-Regular', normal, normal);
+<% else %>
+<% if ep_com %>
+@include loadFontFace('Material Icons', '../plugin_assets/easy_mindmup/fonts/EasyMaterialIcons-Regular', 'Material Icons', 'MaterialIcons-Regular', normal, normal);
+<% else %>
+@include loadFontFace--non-rails('Material Icons', '../plugin_assets/easy_mindmup/fonts/EasyMaterialIcons-Regular', 'Material Icons', 'MaterialIcons-Regular', normal, normal);
+<% end %>
+<% end %>

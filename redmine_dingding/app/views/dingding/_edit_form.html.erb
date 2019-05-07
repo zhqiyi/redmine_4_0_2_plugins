@@ -1,0 +1,12 @@
+<div class="box tabular">
+
+  <%= form_for @project,
+            :url => { :action => 'dingding', :id => @project },
+            :html => {:id => 'dingding-form',
+                      :method => :post} do |f| %>
+    <p><%= label_tag "钉钉机器人", nil %><%= text_field_tag :url, @dingding.try(:url) || '',:required => true, size: 60, placeholder:"请输入钉钉机器人URL"  %></p>
+    <p> <%= submit_tag l(:button_save) %> </p>
+  <%end%>
+
+ 
+</div>

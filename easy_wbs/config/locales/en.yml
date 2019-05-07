@@ -1,0 +1,169 @@
+---
+en:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Other actions
+    button_add_comment: Add comment
+    button_add_child: Add child
+    button_add_parent: Add parent
+    button_add_sibling: Add sibling
+    button_all_icons: Icons
+    button_collapse: Collapse
+    button_collapse_all: Collapse all
+    button_cut: Cut
+    button_display: Display settings
+    button_edit_data: Edit data
+    button_expand: Expand
+    button_expand_all: Expand all
+    button_expand_collapse: Expand/Collapse
+    button_legend: Legend
+    button_one_side: One side
+    button_paste: Paste
+    button_project_menu: Easy WBS
+    button_redo: Redo
+    button_remove_comment: Remove comment
+    button_remove_node: Remove node
+    button_show_links: Show links
+    button_undo: Undo
+    edit_issue: Edit task
+    name_an_entity_first: Name an entity first
+    error_create: could not be created
+    error_delete: could not be deleted
+    error_update: could not be updated
+    errors:
+      not_subtaskable: Task "%{task_name}" cannot be subtask because of the setting
+        of its tracker
+    free:
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      text_not_available: is available only in Full version of Easy WBS.
+    hotkeys:
+      info_mac_metakey: On Mac OSX, Ctrl and Cmd keys can be used for shortcuts marked
+        Ctrl below - some browsers prevent certain key bindings. So, for example,
+        if Cmd+Space does not work in your browser, try Ctrl+Space.
+      keyboard:
+      - title: Node manipulation
+        hotkeys:
+        - hotkey: Enter
+          info: Add Sibling
+        - hotkey: Shift+Enter
+          info: Add Sibling above or line break (when renaming node)
+        - hotkey: Tab or Insert
+          info: Add child
+        - hotkey: Shift+Tab
+          info: Insert parent
+        - hotkey: Space
+          info: Rename node
+        - hotkey: Shift+Space
+          info: Edit node data
+        - hotkey: Backspace or Delete
+          info: Remove node
+        - hotkey: Ctrl+Up/Down
+          info: Move node up/down
+      - title: Editing
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Save
+        - hotkey: Ctrl+X or C
+          info: Cut
+        - hotkey: Ctrl+C or Y
+          info: Copy
+        - hotkey: Ctrl+V or P
+          info: Paste
+        - hotkey: U or Ctrl+Z
+          info: Undo
+        - hotkey: R or Ctrl+Y or Ctrl+Shift+Z
+          info: Redo
+      - title: Selection
+        hotkeys:
+        - hotkey: Arrow Keys
+          info: Select the node up/down/left/right of the currently selected one
+        - hotkey: Shift + Arrow keys
+          info: Add node up/down/left/right to selection (useful to multi-select siblings)
+        - hotkey: "{"
+          info: Multi-select the current node and the entire subtree under it
+        - hotkey: "["
+          info: Multi-select only the subtree under the current node (not the node
+            itself)
+        - hotkey: "="
+          info: Multi-select all the siblings of the current node (that have the same
+            parent)
+        - hotkey: "."
+          info: Cancel multi-selection and select only the current node again
+        - hotkey: 1 - 9
+          info: Select all nodes of a particular level (eg 1 selects all first level
+            nodes)
+      - title: Navigation and screen
+        hotkeys:
+        - hotkey: "/ or F"
+          info: Expand or collapse node (fold or unfold children)
+        - hotkey: Ctrl + or Z
+          info: Zoom in
+        - hotkey: Ctrl - or Shift Z
+          info: Zoom out
+        - hotkey: Esc, 0, Ctrl+0
+          info: Reset map view - select root node and bring it to the center of the
+            screen
+      mouse:
+      - action: Move the map
+        gesture: Click and drag the center node, click and drag the background or
+          scroll with trackpad/touchpad.
+      - action: Select a node
+        gesture: Tap or click on it
+      - action: Select multiple nodes
+        gesture: Shift+click
+      - action: Reorder nodes
+        gesture: Drag a node between its siblings, horizontally close to the position
+          of reordering. A black arrow point will show when reordering.
+      - action: Manually position a node
+        gesture: Just drag a node until the arrow point for reordering isn't showing.
+          To force manual position even when the reorder arrow point is showing, hold
+          Shift while dragging. Please note that children of the root node can be
+          pulled in any direction, but lower level nodes can only be positioned in
+          the direction of its parent relative to the root.
+      - action: Rename a node
+        gesture: Double-click or double-tap it
+      - action: Show context menu with operations
+        gesture: 'Right click on a node (by mouse) or double-tap the background, or
+          long press a node: show (on touch devices)'
+      - action: Change node parent
+        gesture: Drag and drop a node on another node (circular drops are not allowed,
+          so you can't drop a node on one of it's children or descendants)
+      - action: Open task or project in separate window
+        gesture: Alt+click
+      title_key_shortcuts: Keyboard operations
+      title_mouse_shortcuts: Mouse and touch operations
+      title_shortcuts: Shortcuts
+    label_additional_data: Additional data
+    label_all: All
+    label_basic_data: Basic data
+    label_color_by: Color by
+    label_go_to: Go to
+    label_or: or
+    last_state_modal:
+      label_differencies: Differencies on server
+      message_changed: have different attributes (browser => server) ({{changes}})
+      message_missing: is missing from parent "{{from}}"
+      message_moved: is child of "{{to}}", not "{{from}}"
+      message_present: is present as child of "{{to}}"
+      text_reload_appeal: Do you want reload state from server?
+      title: Last client state of WBS is different from server state
+    name_an_entity_first: Name an entity first
+    reload_modal:
+      label_errors: Errors
+      text_reload_appeal: Do you want to ignore unsaved items and reload data from
+        server?
+      title: WBS failed to save properly
+    stored_modal:
+      text_load_appeal: Do you want to loaded it? Instead of the fresh state from
+        the server?
+      title: Unsaved state have been found
+    text_issue_not_saved: Issue is not saved. Save it first.
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Tasks
+  label_filter_group_easy_wbs:
+    easy_issue_query: Tasks
+  project_default_page:
+    easy_wbs: Easy WBS
+  project_module_easy_wbs: Easy WBS

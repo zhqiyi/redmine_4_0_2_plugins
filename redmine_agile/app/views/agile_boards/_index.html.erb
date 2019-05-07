@@ -1,0 +1,99 @@
+<div class="contextual">
+  <%= link_to l(:label_agile_charts), @project ? project_agile_charts_path(project_id: @project) : agile_charts_path, class: 'icon icon-stats' %>
+  <% if !@query.new_record? && @query.editable_by?(User.current) %>
+    <%= link_to l(:button_edit), edit_agile_query_path(@query), class: 'icon icon-edit' %>
+    <%= delete_link agile_query_path(@query) %>
+  <% end %>
+</div>
+
+<% html_title(@query.new_record? ? l(:label_agile_board) : @query.name) %>
+<h2>
+  <%= @query.new_record? ? l(:label_agile_board) : h(@query.name) %>
+  <span class="live_search">
+    <%= text_field_tag(:search, '', :id => 'agile_live_search', :class => 'live_search_field', :placeholder => l(:label_cards_search)) %>
+  </span>
+</h2>
+
+<%= form_tag({ :controller => 'agile_boards', :action => 'index', :project_id => @project },
+            :method => :get, :id => 'query_form', :onsubmit => 'DisableNullFields()') do %>
+  <div id="query_form_with_buttons" class="hide-when-print">
+    <%= hidden_field_tag 'set_filter', '1' %>
+    <div id="query_form_content">
+      <fieldset id="filters" class="collapsible <%= @query.new_record? ? "" : "collapsed" %>">
+        <legend onclick="toggleFieldset(this);"><%= l(:label_filter_plural) %></legend>
+        <div style="<%= @query.new_record? ? "" : "display: none;" %>">
+          <%= render :partial => 'queries/filters', :locals => {:query => @query} %>
+        </div>
+      </fieldset>
+      <fieldset id="options" class="collapsible collapsed">
+        <legend onclick="toggleFieldset(this);"><%= l(:label_options) %></legend>
+        <div style="display: none;">
+          <table class="options">
+            <% if Redmine::VERSION.to_s > '2.4' %>
+              <tr>
+                <td>
+                  <%= l(:label_agile_board_columns) %>
+                </td>
+                <td class="card-fields">
+                  <%= render_board_fields_status(@query) %>
+                </td>
+              </tr>
+            <% end %>
+            <tr>
+              <td><%= l(:label_agile_fields) %></td>
+              <td class="card-fields">
+                <%= render_board_fields_selection(@query) %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </fieldset>
+    </div>
+    <p class="buttons">
+    <%= link_to_function l(:button_apply), '$("#query_form").submit()', :class => 'icon icon-checked' %>
+    <%= link_to l(:button_clear), { :set_filter => 1, :project_id => @project }, :class => 'icon icon-reload'  %>
+    </p>
+
+  </div>
+<% end %>
+
+<%= error_messages_for 'query' %>
+<% if @query.valid? %>
+  <% if @issues.empty? || @board_columns.empty? %>
+    <p class="nodata"><%= l(:label_no_data) %></p>
+  <% else %>
+    <% if @query.truncated %>
+      <p class="warning"><%= l(:label_agile_board_truncated, :max => RedmineAgile.board_items_limit) %></p>
+    <% end %>
+    <%= render :partial => 'board' %>
+  <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+ 
+  <%= render :partial => 'upgrade_to_pro' %>
+ 
+  <%= render :partial => 'issues_links' %>
+  <% if @project && @project.assignable_users.any? %>
+    <%= render :partial => 'members' %>
+  <% end %>
+  <%= render :partial => 'agile_charts/agile_charts' %>
+<% end %>
+
+<% html_title l(:label_agile_board) %>
+<% content_for :header_tags do %>
+  <%= javascript_include_tag "redmine_agile", :plugin => 'redmine_agile' %>
+  <%= javascript_include_tag "jquery.ui.touch-punch.js", :plugin => 'redmine_agile' %>
+  <%= stylesheet_link_tag 'context_menu' %>
+  <%= stylesheet_link_tag "redmine_agile.css", :plugin => "redmine_agile", :media => "print" %>
+<% end %>
+<% if User.current.allowed_to?(:edit_issues, @project, :global => true) %>
+  <script type="text/javascript">
+    var agileBoard = new AgileBoard({
+      project_id: '<%= @project && @project.id %>',
+      update_agile_board_path: '<%= escape_javascript update_agile_board_path %>',
+      issues_path: '<%= escape_javascript issues_path %>',
+      create_issue_path: '<%= escape_javascript(agile_create_issue_path(:project_id => @project)) if @project %>'
+    });
+  </script>
+<% end %>

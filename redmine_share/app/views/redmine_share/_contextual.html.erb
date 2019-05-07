@@ -1,0 +1,8 @@
+<%= link_to l(:share_button),
+      link_dialog_path(
+        project_id: project,
+        object_type: object ? object.class.name.underscore : nil,
+        object_id: object),
+      remote: true,
+      method: 'get',
+      class: 'icon icon-share' %>

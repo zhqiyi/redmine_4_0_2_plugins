@@ -1,0 +1,67 @@
+# English strings go here for Rails i18n
+en:
+  issue_templates: Issue templates
+  issue_template: Issue template
+  issue_template_note: Note
+  label_enabled: Enable
+  label_disabled: Disable
+  label_help_message: About templates
+  label_show_help_message: Show help message when creating/updating issues.
+  about_help_message: Each project can have custom help messages for templates.
+  close_help: Close help message.
+  about_template_help_message: You can see the instruction of issue templates on this project.
+  label_enabled_help_message: Checkbox to activate this template. If you would like to save this template as a draft, un-check this box.
+  label_list_templates: "Template list"
+  label_new_templates: "Add template"
+  issue_template_name: "Template name"
+  issue_description: "Issue body"
+  issue_title: "Issue title"
+  label_applied_for_issue: "Fields applied for issue: "
+  help_for_issue_title: "If the Issue title is defined, it will be applied to the Subject of an issue when selecting this template."
+  help_for_this_field: "Help for this field."
+  permission_manage_issue_templates: "Manage Templates"
+  permission_edit_issue_templates: "Edit Templates"
+  permission_show_issue_templates: "Show Templates"
+  project_module_issue_templates: "Issue Templates"
+  label_isdefault_help_message: "Check and you can use this as a default template for the target tracker."
+  defaulf_template_loaded: "Loaded default template into description textarea. (Tracker: %{tracker})"
+  text_no_tracker_enabled: "Any trackers for this project have not been configured yet.\nPlease set them first because templates are assigned to project trackers. "
+  label_enabled_sharing: "Enabled sharing with project tree."
+  label_inherit_templates: "Inherit templates"
+  label_inherit_templates_help_message: "Inherit templates from parent project. (Only parent's templates are listed which marked as enabled sharing with project tree.)"
+  label_inherited_templates: "Inherited templates"
+  no_issue_templates_for_this_project: "No issue templates are defined for this project."
+  link_to_index_edit_template: "Issue templates list / edit templates"
+  erase_issue_subject_and_description: "Clear subject and description text."
+  unused_tracker_at_this_project: "NOTE: This tracker is not defined to use for this project. Please re-define template setting if necessary."
+  label_enabledshaing_help_message: "If true, this template can be shared with descendant projects. (You also have to activate Inherited template option at child project.)"
+  label_should_replaced: "Replace subject and description"
+  label_should_replaced_help_message: "If true, existing subject and description are cleared and replaced with template text.（Default is false, and appended text.)"
+  global_issue_templates: "Global Issue Templates"
+  no_issue_templates_for_this_redmine: "No global issue templates are defined for this Redmine site."
+  only_admin_can_associate_global_template: "Only Redmine administrator can associate global templates with this project."
+  text_no_tracker_enabled_for_global: "Trackers are not defined yet.\nPlease set them first because templates are assigned to trackers."
+  display_and_filter_issue_templates_in_dialog: "Preview Template Contents"
+  label_filter_template: "Filter templates"
+  label_msg_confirm_to_replace: "Do you replace subject and description?"
+  label_apply_global_template_to_all_projects: "Apply Global issue templates to all the projects."
+  note_apply_global_template_to_all_projects_setting_enabled: "This global issue template is applied to all the project by plugin setting."
+  project_list_associated_this_template: "Project List:  (applied: %{applied} of %{all})"
+  note_project_local_template_override_global_template: "If project local template exists, override global templates and any global templates are not shown on create issue screen."
+  help_project_local_template_override_global_template: "If this option is activated, every global ticket templates will be applied to all projects. If a project-specific template per tracker is set, it takes override and the global template is hidden on the new ticket creation screen."
+  warning_project_local_template_override_global_template: "Please be careful when registering global issue template, that contain confidential content you want to pay attention to. In case this option is activated, all the global templates will be applied to all projects."
+  revert_before_applying_template: "Revert"
+  template_remove_confirm: "Are you sure to remove this template？ %{count} subprojects use this template."
+  label_number_of_subprojects_use_this_template: "%{count} subprojects use this template."
+  enabled_template_cannot_destroy: "Only disabled template can be destroyed. Check if other subprojects use this template or not, and disable this before deleting."
+  orphaned_templates: "Orphaned templates from tracker"
+  orphaned_template: "Orphaned template from tracker"
+  label_template_applied: "Issue template is applied. You can revert with click 'Revert' link."
+  label_hide_confirm_dialog_in_the_future: "Hide this confirmation in the future, just overwrite."
+  label_template_for_note: "Template for note"
+  label_use_template_when_edit: "Use templates when edit issue"
+  note_template: "Template for note"
+  no_note_templates_for_this_project: "No comment templates are defined for this project."
+  label_memo_help_message: "Please set up a note explaining when applying this template."
+  note_template_name: "Template name for note"
+  note_description: "Comment body"

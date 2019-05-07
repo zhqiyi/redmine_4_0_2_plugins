@@ -1,0 +1,84 @@
+<% if issues_scope.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% elsif %w(work_burndown cumulative_flow hours_velocity).include?(chart) && issues_scope.count > RedmineAgile.time_reports_items_limit %>
+  <p class="nodata"><%= l(:label_agile_too_many_items, :max => RedmineAgile.time_reports_items_limit) %></p>
+<% else %>
+  <div class="agile-chart-container">
+    <canvas id="agile-chart"></canvas>
+    <div style="clear: both;"></div>
+  <div>
+<% end %>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    Chart.plugins.register({
+      beforeDraw: function(chartInstance, easing) {
+        if (chartInstance.config.options.tooltips.onlyShowForDatasetIndex) {
+          var tooltipsToDisplay = chartInstance.config.options.tooltips.onlyShowForDatasetIndex;
+          var active = chartInstance.tooltip._active || [];
+          if (active.length > 0) {
+            if (tooltipsToDisplay.indexOf(active[0]._datasetIndex) === -1) {
+              chartInstance.tooltip._model.opacity = 0;
+            }
+          }
+        }
+      }
+    });
+
+    if (document.getElementById("agile-chart")) {
+      $.getJSON(<%= raw url_for(controller: 'agile_charts', action: 'render_chart', project_id: @project,
+                                chart: chart, version_id: @version, query_id: @query.try(:id)).to_json %>, function(data){
+
+        Chart.defaults.global.defaultFontColor = 'black';
+        Chart.defaults.global.defaultFontFamily = '"Arial", sans-serif';
+        Chart.defaults.global.defaultFontStyle = 'normal';
+
+        var chartData = {
+          labels: data['labels'],
+          datasets: data['datasets'],
+          stacked: data['stacked']
+        };
+
+      new Chart(document.getElementById("agile-chart").getContext("2d"), {
+        type: 'bar',
+        data: chartData,
+        options: {
+          tooltips: {
+            onlyShowForDatasetIndex: data['show_tooltips']
+          },
+          maintainAspectRatio: false,
+          legend: { position: 'right' },
+          title: {
+            display: true,
+            fontSize: 16,
+            fontStyle: 'normal',
+            text: data['title']
+          },
+          elements: {
+            line: {
+                tension: 0, // disables bezier curves
+            }
+          },
+          scales: {
+            yAxes: [{
+              stacked: data['stacked'],
+              scaleLabel: {
+                display: true,
+                fontColor: 'rgba(255, 0, 0 ,1)',
+                fontSize: 14,
+                labelString: data['y_title']
+              }
+            }],
+            xAxes: [{
+              ticks: {
+                  autoSkip: true,
+                  maxRotation: 0
+              }
+            }]
+            },
+          }
+        });
+      });
+    }
+  });
+<% end %>

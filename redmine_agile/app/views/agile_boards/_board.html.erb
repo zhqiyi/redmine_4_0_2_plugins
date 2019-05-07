@@ -1,0 +1,28 @@
+<%= form_tag({}) do -%>
+  <%= hidden_field_tag 'back_url', url_for(params.respond_to?(:to_unsafe_hash) ? params.to_unsafe_hash : params) %>
+  <%= hidden_field_tag 'project_id', @project.id if @project %>
+  <% board_statuses = IssueStatus.sorted %>
+  <div class="agile-board autoscroll">
+    <div class="flash error" style="display: none;" id="agile-board-errors">
+    </div>
+    <table class="list issues-board <%= 'status-colors' if RedmineAgile.status_colors? %> <%= 'minimize-closed' if RedmineAgile.minimize_closed? %>">
+    <div class='lock'> </div>
+      <thead>
+      <%= render_board_headers(@board_columns) %>
+      </thead>
+          <tr style="text-align: center;white-space: nowrap;" class="issue <%= cycle('odd', 'even') %>">
+          <% @board_columns.each do |column| %>
+            <td class="issue-status-col <%= 'closed' if column.is_closed? %> <%= 'collapse' if RedmineAgile.hide_closed_issues_data? %> <%= column.wp_class if column.respond_to?(:wp_class) %>" data-id="<%= column.id %>">
+              <% @issue_board[[column.id]].each do |issue| %>
+                <%= render :partial => 'issue_card', :locals => {:issue => issue} %>
+              <% end if @issue_board[[column.id]] %>
+              <%= render(:partial => 'add_issue_card') unless column.is_closed? %>
+            </td>
+
+            <% end %>
+          </tr>
+
+    </table>
+</div>
+
+<% end %>

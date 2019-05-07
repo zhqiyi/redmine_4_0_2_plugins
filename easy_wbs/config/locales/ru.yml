@@ -1,0 +1,172 @@
+---
+ru:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Другие действия
+    button_add_child: Добавить дочерний элемент
+    button_add_parent: добавить родительский элемент
+    button_add_sibling: Добавить одноуровневый элемент
+    button_all_icons: Icons
+    button_collapse: Свернуть
+    button_collapse_all: Свернуть все
+    button_cut: Вырезать
+    button_display: Настройки
+    button_edit_data: Редактировать данные
+    button_expand: Развернуть
+    button_expand_all: Развернуть все
+    button_expand_collapse: Развернуть/Свернуть
+    button_legend: Легенда
+    button_one_side: одна сторона
+    button_paste: Вставить
+    button_project_menu: Easy WBS
+    button_redo: Переделать
+    button_remove_node: Удалить узел
+    button_show_links: Показать ссылки
+    button_undo: Отмена
+    edit_issue: Редактировать задачу
+    error_create: не может быть создан
+    error_delete: не может быть удален
+    error_update: не может быть обновлен
+    errors:
+      not_subtaskable: Задача "%{task_name}" не может быть подзадачей из-за настройки
+        трекера
+    free:
+      button_upgrade: Получить Полную версию
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: Цвет узла
+      feature_context_menu: Изменение свойств узла
+      feature_filtering: Фильтрация узлов
+      header_not_available: Доступно только в Полной версии
+      text_not_available: доступна в полной версии Easy WBS
+    hotkeys:
+      info_mac_metakey: На Mac OSX, Ctrl и клавиши Cmd могут быть использованы для
+        ярлыков отмеченные Ctrl - иногда браузеры блокируют некоторые комбинации клавиш.
+        Так, например, если Cmd + Space не работает в вашем браузере, попробуйте Ctrl
+        + Space.
+      keyboard:
+      - title: Манипуляция c узлом
+        hotkeys:
+        - hotkey: Enter
+          info: Добавить одноуровневый элемент
+        - hotkey: Shift+Enter
+          info: Добавить одноуровневый элемент выше или разрыв (при переименовании
+            узла)
+        - hotkey: Tab or Insert
+          info: Добавить дочерний элемент
+        - hotkey: Shift+Tab
+          info: Вставить родителя
+        - hotkey: Space
+          info: Переименовать узел
+        - hotkey: Shift+Space
+          info: Редактирование данных узла
+        - hotkey: Backspace or Delete
+          info: Удалить узел
+        - hotkey: Ctrl+Up/Down
+          info: Переместить узел вверх/вниз
+      - title: Редактирование
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Сохранить
+        - hotkey: Ctrl+X or C
+          info: Вырезать
+        - hotkey: Ctrl+C or Y
+          info: Копировать
+        - hotkey: Ctrl+V or P
+          info: Вставить
+        - hotkey: U or Ctrl+Z
+          info: Отменить
+        - hotkey: R or Ctrl+Y or Ctrl+Shift+Z
+          info: Восстановить
+      - title: Выбор
+        hotkeys:
+        - hotkey: Arrow Keys
+          info: 'Выберете узел вверх/вниз/влево/вправо для выбора нужного '
+        - hotkey: Shift + Arrow keys
+          info: 'Добавление узла выше/ниже/слева/справа от выбранного (удобно при
+            выборе нескольких одноуровневых элементов) '
+        - hotkey: "{"
+          info: Выбор текущего узла и всего его поддерева
+        - hotkey: "["
+          info: Мульти-выбор только поддерева текущего узла (не самого узла)
+        - hotkey: "="
+          info: Выбор нескольких или всех одноуровневых элементов текущего узла (у
+            которых один и тот же родитель)
+        - hotkey: "."
+          info: Отмена мульти-выбора и выбор снова текущего узла
+        - hotkey: 1 - 9
+          info: Выбрать все узлы определенного уровня (например, 1, выбор всех узлов
+            первого уровня)
+      - title: 'Навигация и масштабирование '
+        hotkeys:
+        - hotkey: "/ or F"
+          info: Развернуть или свернуть узел (свернуть или развернуть дочерние элементы)
+        - hotkey: Ctrl + or Z
+          info: 'Увеличить масштаб '
+        - hotkey: Ctrl - or Shift Z
+          info: Уменьшить масштаб
+        - hotkey: Esc, 0, Ctrl+0
+          info: 'Сброс настроек карты – выбор корневого узла и перемещение его в центр
+            экрана '
+      mouse:
+      - action: Переместить карту
+        gesture: 'кликните на центральный узел и перетащите его, кликните на фон и
+          переместите его при помощи мышки или на тачпаде. '
+      - action: Выберете узел
+        gesture: коснитесь или кликните по нему
+      - action: 'Выбор нескольких узлов '
+        gesture: Shift+click
+      - action: Перемещение узлов
+        gesture: выберете узел и перемещайте его между одноуровневыми элементами,
+          переместите его ближе к нужной позиции. Черная стрелка поможет вам при смене
+          положения узла.
+      - action: Перемещение узла в ручную
+        gesture: Просто перетаскиваете узел пока не появиться черная стрелка. Для
+          принудительной смены позиции, даже когда появляется черная стрелка нажмите
+          Shift. Обратите внимание, что дочерние элементы основного узла можно перемещать
+          в любом направлении, а более низкого узлы располагаются только в одном направлении
+          относительно своего родителя.
+      - action: 'Переименование узла '
+        gesture: дважды кликните на узел
+      - action: Показать контекстное меню с операциями
+        gesture: Кликните Правой кнопкой мыши по узлу или двойное кликание по фону
+          узла, или долгое нажатие (на сенсорных устройствах)
+      - action: Изменение родителя у узла
+        gesture: притащите узел на другой узел (circular drops are not allowed, so
+          you can't drop a node on one of it's children or descendants)
+      - action: 'Открытие задачи в отдельном окне '
+        gesture: Alt+click
+      title_key_shortcuts: Работа с  клавиатурой
+      title_mouse_shortcuts: Мышь и операции с тачскрином
+      title_shortcuts: Клавиши быстрого доступа
+    info_all_saved: Все успешно сохранено
+    info_any_failed: Некоторые запросы отменены
+    info_no_permission: У вас нет необходимых прав делать это
+    label_color_by: 'Цвет по:'
+    label_go_to: Переход к
+    label_or: или
+    last_state_modal:
+      label_differencies: Различия на сервере
+      message_changed: имеют разные атрибуты (браузер => сервер) ({{changes}}
+      message_missing: отсутствует от родительского "{{from}}"
+      message_moved: является дочерним к "{{to}}", а не "{{from}}"
+      message_present: присутствует как дочерний к "{{to}}"
+      text_reload_appeal: Вы хотите перезагрузить состояние с сервера?
+      title: Последнее состояние клиента  WBS отличается от состояния сервера
+    reload_modal:
+      label_errors: Ошибки
+      text_reload_appeal: Вы хотите игнорировать несохраненные элементы и загрузить
+        данные с сервера?
+      title: WBS не удалось сохранить должным образом
+    stored_modal:
+      text_load_appeal: Хотите загрузить это? Вместо новой версии с сервера?
+      title: Было найдено несохраненное состояние
+    warning_delete_node: Вы действительно хотите удалить узел {{name}} и все его связи?
+    warning_not_saved: не сохранен должным образом
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Задачи
+  label_filter_group_easy_wbs:
+    easy_issue_query: Задачи
+  project_default_page:
+    easy_wbs: Easy WBS

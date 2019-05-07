@@ -1,0 +1,7 @@
+<p><%= h(l(:share_text_message, sender: @author.name, record: @record)) %></p>
+<% if @comment %>
+<blockquote>
+<%= simple_format(h(@comment)) %>
+</blockquote>
+<% end %>
+<p><%= link_to @url, @url %></p>

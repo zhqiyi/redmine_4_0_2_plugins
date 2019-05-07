@@ -1,0 +1,62 @@
+<%= render_agile_charts_breadcrumb %>
+
+<h2><%= @query.new_record? ? l(:label_agile_chart_plural) : h(@query.name) %></h2>
+<% html_title(@query.new_record? ? l(:label_agile_chart_plural) : @query.name) %>
+
+
+<%= form_tag({ :controller => 'agile_charts', :action => 'show', :project_id => @project },
+            :method => :get, :id => 'query_form') do %>
+  <div id="query_form_with_buttons" class="hide-when-print">
+    <%= hidden_field_tag 'set_filter', '1' %>
+    <div id="query_form_content">
+      <fieldset id="filters" class="collapsible">
+        <legend onclick="toggleFieldset(this);"><%= l(:label_filter_plural) %></legend>
+        <div>
+          <%= render :partial => 'queries/filters', :locals => {:query => @query} %>
+        </div>
+      </fieldset>
+      <fieldset class="collapsible">
+        <legend onclick="toggleFieldset(this);"><%= l(:label_options) %></legend>
+        <div>
+          <table>
+            <tr>
+              <td><label for='chart'><%= l(:label_agile_chart) %></label></td>
+              <td><%= select_tag('chart', options_charts_for_select(@chart)) %></td>
+            </tr>
+            <tr id="interval-size">
+              <td><%= l(:label_agile_interval_size) %></td>
+              <td>
+                <%= select_tag 'interval_size', options_for_select(RedmineAgile::AgileChart::TIME_INTERVALS.map { |i| [l(:"label_agile_#{i}"), i] }, @query.interval_size) %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </fieldset>
+    </div>
+    <p class="buttons">
+      <%= link_to_function l(:button_apply), '$("#query_form").submit()', :class => 'icon icon-checked' %>
+      <%= link_to l(:button_clear), { :set_filter => 1, :project_id => @project }, :class => 'icon icon-reload'  %>
+    </p>
+  </div>
+<% end %>
+
+<%= error_messages_for 'query' %>
+
+<%= render_agile_chart(@chart, @issues) if @query.valid? %>
+
+<% content_for :header_tags do %>
+  <%= chartjs_assets %>
+  <%= javascript_include_tag 'redmine_agile', plugin: 'redmine_agile' %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= render :partial => 'agile_boards/issues_links' %>
+  <%= render :partial => 'agile_charts/agile_charts' %>
+<% end %>
+
+<%= javascript_tag do %>
+  $(document).ready(function() {
+    /* Hide chart_period checkbox so that it couldn't be unchecked */
+    hideChartPeriodCheckbox();
+  });
+<% end %>

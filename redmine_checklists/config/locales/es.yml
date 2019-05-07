@@ -1,0 +1,28 @@
+# Spanish strings go here for Rails i18n
+es:
+  label_checklist_plural: Checklist
+  field_checklist: Checklist
+  label_checklist_save_log: Salvar cambios al log de la petición
+  label_checklist_done_ratio: Setear porcentaje de estado de petición
+  permission_view_checklists: Ver checklist
+  permission_done_checklists: Cerrar items de checklist
+  permission_edit_checklists: Editar iterms de checklist
+  label_checklist_template_category_plural: Categorías de plantillas
+  label_checklist_template_category_new: Nueva categoría
+  field_checklist_template_category: Categoría
+  label_checklist_templates: Plantillas de checklists
+  label_checklist_new_checklist_template: Nueva plantilla de checklist
+  field_template_items: Items de la plantilla
+  label_checklist_template: Plantilla de checklist
+  label_add_checklists_from_template: Añadir desde plantilla
+  label_select_template: "-- Seleccionar plantilla --"
+  label_checklist_category_not_specified: "-- No especificada --"
+  label_checklists_description: 'Se permiten múltiples valores (un valor por línea)'
+  label_checklist_item: Item de checklist
+  label_checklist_deleted: borrado
+  label_checklist_changed_from: cambiado de
+  label_checklist_changed_to: a
+  label_checklist_added: añadido
+  label_checklist_done: marcado como Hecho
+  label_checklist_undone: marcado como No hecho
+  label_checklist_updated: Item de checklist modificado

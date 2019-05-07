@@ -1,0 +1,3 @@
+<%= text_area_tag "issue[notes]", "", :cols => 60, :rows => 5, :class => 'wiki-edit', :no_label => true %>
+<button type="button" onclick="saveInlineComment(this, '<%= update_agile_board_path(:id => @issue) %>'); return false;">  <%= l(:button_submit) %> </button>
+<%= link_to l(:button_cancel), "#", :onclick => "cancelInlineComment(this);return false;" %>

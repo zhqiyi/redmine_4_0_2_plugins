@@ -1,0 +1,9 @@
+mk:
+  share_button: Share
+  share_title: "Share link"
+  share_label_with: "Share with"
+  share_label_page: "страница"
+  share_label_subject: "%{sender} споделено %{record} со вас"
+  share_text_message: "%{sender} споделено %{record} со вас."
+  share_notice_email_sent: "Е-порака е пратена на"
+  share_notice_email_error: "Се случи грешка при праќање на е-пораката"

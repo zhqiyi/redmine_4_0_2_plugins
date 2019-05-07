@@ -1,0 +1,42 @@
+<div class="contextual">
+  <%= link_to(l(:label_alias_new), { :action => 'new' }, :class => 'icon icon-add') if @projects.any? %>
+</div>
+
+<h2><%= l(:label_alias_plural) %></h2>
+
+<% if @aliases.any? %>
+<div class="autoscroll">
+
+<table class="list">
+  <thead>
+    <tr>
+      <%= sort_header_tag('alias', :caption => l(:field_alias)) %>
+      <%= sort_header_tag('identifier', :caption => l(:field_identifier)) %>
+      <%= sort_header_tag('project', :caption => l(:field_project)) %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @aliases.each do |project_alias| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= link_to(project_alias.alias, { :controller => 'projects', :action => 'show', :id => project_alias.alias }) %></td>
+      <td><%= link_to(project_alias.project.identifier, { :controller => 'projects', :action => 'show', :id => project_alias.project.identifier }) %></td>
+      <td><%= link_to_project(project_alias.project) %></td>
+      <td class="buttons">
+		  <%= link_to(project_alias.undeletable? ? l(:button_restore_identifier) : l(:button_use_as_identifier), { :action => 'rename', :id => project_alias }, :class => 'icon icon-rename' ) %>
+        <%= link_to(l(:button_delete), { :action => 'destroy', :id => project_alias },
+                                         :confirm => l(:text_are_you_sure),
+                                         :method => :delete,
+                                         :class => 'icon icon-del') unless project_alias.undeletable? %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+</div>
+<% else %>
+<p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>
+
+<% html_title(l(:label_alias_plural)) %>

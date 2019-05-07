@@ -1,0 +1,16 @@
+<%  if !@issue.blank? &&  @issue.checklists.any? && User.current.allowed_to?(:view_checklists, @project) %>
+<hr />
+<div id="checklist">
+
+  <p><strong><%=l(:label_checklist_plural)%></strong></p>
+
+  <ul id="checklist_items">
+  <% @issue.checklists.each do |checklist_item| %>
+    <%= render :partial => 'checklists/checklist_item', :object => checklist_item %>
+
+  <% end %>
+  </ul>
+</div>
+
+
+<% end %>

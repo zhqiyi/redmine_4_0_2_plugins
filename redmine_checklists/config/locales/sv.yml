@@ -1,0 +1,11 @@
+# Swedish strings go here for Rails i18n
+# Translation by Khedron Wilk (khedron.wilk@gmail.com)
+# Created 2014 Dec 14 Based on RedmineUP Checklist plugin (Light) ver 3.0.2
+sv:
+  label_checklist_plural: Checklista
+  field_checklist: Checklista
+  label_checklist_save_log: Spara ändringar i ärendeloggen
+  label_checklist_done_ratio: Använd checklista för att beräkna % klart
+  permission_view_checklists: Visa checklistor
+  permission_done_checklists: Klara checklistepunkter
+  permission_edit_checklists: Redigera checklistepunkter

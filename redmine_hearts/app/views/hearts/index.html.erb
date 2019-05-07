@@ -1,0 +1,23 @@
+<%# frozen_string_literal: true %>
+
+<div class="contextual">
+  <%= form_tag({}, :method => :get) do %>
+    <label for="including_myself">
+      <%= check_box_tag 'including_myself', 1, params[:including_myself], :onchange => "this.form.submit();" %>
+      <%=l :including_hearted_myself %>
+    </label>
+  <% end %>
+</div>
+
+<h2><%= l(:recently_hearted_objects) %></h2>
+
+<%= render :partial => "hearts/recent_heart_list" %>
+
+<%= content_for :sidebar do %>
+  <%= render :partial => "hearts/sidebar" %>
+<% end %>
+
+<% html_title(l(:recently_hearted_objects)) %>
+<% content_for :header_tags do %>
+  <%= render :partial => "hearts/heart_link_with_counter" %>
+<% end %>

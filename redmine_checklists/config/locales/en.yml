@@ -1,0 +1,36 @@
+# English strings go here for Rails i18n
+en:
+  label_checklist_plural: Checklist
+  field_checklist: Checklist
+  label_checklist_save_log: Save changes to issue log
+  label_checklist_done_ratio: Set issue done ratio
+  permission_view_checklists: View checklist
+  permission_done_checklists: Done checklist items
+  permission_edit_checklists: Edit checklist items
+  label_checklist_template_category_plural: Template categories
+  label_checklist_template_category_new: New category
+  field_checklist_template_category: Category
+  label_checklist_templates: Checklist templates
+  label_checklist_new_checklist_template: New checklist template
+  field_template_items: Template items
+  label_checklist_template: Checklist template
+  label_add_checklists_from_template: Add from template
+  label_select_template: "-- Select template --"
+  label_checklist_category_not_specified: "-- Not specified --"
+  label_checklists_description: 'Multiple values allowed (one line for each value)'
+  label_checklist_item: Checklist item
+  label_checklist_deleted: deleted
+  label_checklist_changed_from: changed from
+  label_checklist_changed_to: to
+  label_checklist_added: added
+  label_checklist_done: set to Done
+  label_checklist_undone: set to Not done
+  label_checklist_updated: Checklist item edited
+  label_checklist_status: Checklist status
+  label_checklist_status_done: Done
+  label_checklist_status_undone: Undone
+  label_checklist_status: Checklist status
+  label_checklist_is_default: Default
+  field_is_for_tracker: Tracker
+  label_checklists_must_be_completed: All checklists of an issue must be done before closing
+  label_checklist_block_issue_closing: Block issue closing

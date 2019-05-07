@@ -1,0 +1,181 @@
+---
+de:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Andere Aktionen
+    button_add_child: Untergeordneter Aufgabe hinzufügen
+    button_add_parent: Übergeordnete Aufgabe hinzufügen
+    button_add_sibling: Geschwister Aufgabe hinzufügen
+    button_all_icons: Icons
+    button_collapse: Zusammenklappen
+    button_collapse_all: Alle zusammenklappen
+    button_cut: Ausschneiden
+    button_display: Einstellung anzeigen
+    button_edit_data: Daten bearbeiten
+    button_expand: Aufklappen
+    button_expand_all: Alle aufklappen
+    button_expand_collapse: Aufklappen/Zusammenklappen
+    button_legend: Legende
+    button_one_side: Eine Seite
+    button_paste: Einfügen
+    button_project_menu: Easy WBS
+    button_redo: Wiederherstellen
+    button_remove_node: Knotenpunkt entfernen
+    button_show_links: Links anzeigen
+    button_undo: Rückgängig
+    edit_issue: Die Aufgabe bearbeiten
+    error_create: Konnte nicht erstellt werden
+    error_delete: Konnte nicht gelöscht werden
+    error_update: Konnte nicht aktualisiert werden
+    errors:
+      not_subtaskable: Die Aufgabe "%{task_name}" kann wegen der Einstellungen des
+        Trackers nicht die Teilaufgabe sein
+    free:
+      button_upgrade: Die Vollversion erwerben
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: Die Knotenpunkte nach Merkmal färben
+      feature_context_menu: Die Eigenschaften der Knotenpunkte verändern
+      feature_filtering: Knotenpunkte nach Merkmal sortieren
+      header_not_available: Verfügbar nur in der Vollversion
+      text_not_available: verfügbar in der Vollversion der Easy WBS.
+    hotkeys:
+      info_mac_metakey: Auf dem Mac OSX, Ctrl and Cmd tasten können für die unten
+        markierten Abkürzungen statt Ctrl benutzt werden- einige Browser verhindern
+        spezifische Tastenkombinationen. Zum beispiel, falls Cmd+Space funktionier
+        nicht in Ihrem Browser, versuchen Sie Ctrl+Space.
+      keyboard:
+      - title: Knotenpunkt manipulation
+        hotkeys:
+        - hotkey: Enter
+          info: Geschwister Aufgabe einfügen
+        - hotkey: Shift+Enter
+          info: Geschwister Aufgabe einfügen über oder Zeilenumbruch (wenn Knotenpunkt
+            umbenennen)
+        - hotkey: Tab oder Einfg
+          info: Untergeordnete Aufgabe einfügen
+        - hotkey: Shift+Tab
+          info: Übergeordnete Aufgabe einfügen
+        - hotkey: Space
+          info: Knotenpunkt umbenennen
+        - hotkey: Shift+Space
+          info: Daten des Knotenpunkts bearbeiten
+        - hotkey: Backspace oder Entfernen
+          info: Knotenpunkt löschen
+        - hotkey: Ctrl+Up/Down
+          info: Den Knotenpunkt nach oben oder unten verschieben
+      - title: Bearbeitung
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Speichern
+        - hotkey: Ctrl+X oder C
+          info: Ausschneiden
+        - hotkey: Ctrl+C oder Y
+          info: Kopieren
+        - hotkey: Ctrl+V or P
+          info: Einfügen
+        - hotkey: U oder Ctrl+Z
+          info: Rückgängig
+        - hotkey: R oder Ctrl+Y oder Ctrl+Shift+Z
+          info: Wiederholen
+      - title: Auswahl
+        hotkeys:
+        - hotkey: Richtungspfeile
+          info: Knotenpunkt auswählen hoch/runter/rechts/links ausgehend vom aktuell
+            aktiven Knotenpunkt
+        - hotkey: Shift + Richtungspfeile
+          info: Knotenpunkt zur Auswahl hinzufügen hoch/runter/rechts/links (hilfreich
+            für die Mehrfachauswahl der Geschwistern Aufgaben)
+        - hotkey: "{"
+          info: Mehrfachauswahl für den aktuellen Knotenpunkt und kompletten untergeordneten
+            Strukturbaum darunter
+        - hotkey: "["
+          info: Mehrfachauswahl nur für den Strukturbaum unter aktuellem Knotenpunkt
+            (nicht für Knotenpunkt selbst)
+        - hotkey: "="
+          info: Mehrfachauswahl für alle Geschwister Aufgaben vom aktuellen Knotenpunkt
+            (Geschwister mit einer gemeinsamen übergeordneten Aufgabe)
+        - hotkey: "."
+          info: Mehrfachauswahl abbrechen und nur wieder aktuellen Knotenpunkt auswählen
+        - hotkey: 1 - 9
+          info: Alle Knotenpunkte eines bestimmten Levels auswählen (z.B. 1 wählt
+            alle Knotenpunkte auf dem ersten Level aus )
+      - title: Navigation and Bildschirm
+        hotkeys:
+        - hotkey: "/ oder F"
+          info: Knotenpunkt aufklappen oder zusammenklappen (falten oder entfalten
+            untergeordneter Aufgaben)
+        - hotkey: Ctrl + oder Z
+          info: Einzoomen
+        - hotkey: Ctrl - oder Shift Z
+          info: Auszoomen
+        - hotkey: Esc, 0, Ctrl+0
+          info: Die Ansicht der Karte zurücksetzen- Hauptknotenpunkt auswählen und
+            diesen zur Mitte des Bildschirms bringen
+      mouse:
+      - action: Karte verschieben
+        gesture: den Hauptknotenpunkt anklicken und ziehen , Hintergrund anklicken
+          und ziehen oder scrollen mit dem Trackpad/Touchpad.
+      - action: Knotenpunkt auswählen
+        gesture: tippen oder darauf klicken
+      - action: Mehrer Knotenpunkte auswählen
+        gesture: Shift+klick
+      - action: Knotenpunkte neu sortieren
+        gesture: Knotenpunkt zwischen deren Geschwistern ziehen, horizontal nah zu
+          der gewünschten Position. Beim Neusortierung wird der Zeigepunkt zu dem
+          Schwarzen Pfeil.
+      - action: Manuell Knotenpunkt positionieren
+        gesture: Knotenpunkt so lange ziehen bis der Pfeilpunkt für die Neusortierung
+          erscheint. Um manuelle Positionierung zu erzwingen auch mit dem Pfeilpunkt
+          angezeigt wir, Shift halten während ziehen . Bitte bemerken,dass die untergeordnete
+          Aufgaben des Hauptknotenpunkts können in jeder Richtung gezogen werden,
+          aber Knotenpunkte mit niedrigerem Level können nur in die Richtung der Übergeordnete
+          Aufgabe relativ zum Hauptknotenpunkt positioniert werden.
+      - action: Knotenpunkt umbenennen
+        gesture: Doppel-klick oder 2 mal darauf tippen
+      - action: Das Kontextmenü mit den Operationen anzeigen
+        gesture: 'Rechts-klick auf einen Knotenpunkt mit der Maus oder 2 mal auf das
+          Hintergrund tippen, oder lange auf den Knotenpunkt drücken: Anzeigen (Auf
+          Touch-Geräten)'
+      - action: Übergeordnete Aufgabe des Knotenpunkts ändern
+        gesture: Den Knotenpunkt ziehen und auf den anderen Knotenpunkt loslassen
+          (Zyklische Drops (einfügen) sind nicht erlaubt, sprich Sie können nicht
+          einen Knotenpunkt auf die untergeordnete Aufgabe oder auf die Nachfahren
+          ziehen)
+      - action: Aufgabe oder Projekt in separatem Fenster öffnen
+        gesture: Alt+klick
+      title_key_shortcuts: Tastatur-Befehle
+      title_mouse_shortcuts: Maus- und Berührungs- aufgaben
+      title_shortcuts: Abkürzungen
+    info_all_saved: Alles wurde erfolgreich gespeichert
+    info_any_failed: Einige der Anfragen sind fehlgeschlagen
+    info_no_permission: Sie haben nicht die benötigten Berechtigungen um dies durchzuführen
+    label_color_by: Färben nach
+    label_go_to: Springen zu
+    label_or: oder
+    last_state_modal:
+      label_differencies: Unterschiede auf dem Server
+      message_changed: haben unterschiedliche Attribute (Browser => Server) ({{changes}})
+      message_missing: fehlt von der übergeordnete Aufgabe "{{von}}"
+      message_moved: ist untergeordneter von "{{zu}}", nicht"{{von}}"
+      message_present: enthält als untergeordnete Aufgabe von "{{zu}}"
+      text_reload_appeal: Möchten Sie den Status erneut vom Server laden?
+      title: Letzter Client Status von WBS ist unterschiedlich zum Server Status
+    reload_modal:
+      label_errors: Die Fehler
+      text_reload_appeal: Möchten Sie die nicht gespeicherte Elemente ignorieren und
+        die Daten erneut vom Server laden?
+      title: WBS ordnungsgemäßer Speichervorgang ist fehlgeschlagen
+    stored_modal:
+      text_load_appeal: Möchten Sie Laden? Statt des neustens Status vom Server?
+      title: Nicht abgespeicherte Status wurde gefunden
+    warning_delete_node: Möchten Sie wirklich die Node {{name}} und all ihre Nachfahren
+      löschen?
+    warning_not_saved: Es ist nicht ordnungsgemäß abgespeichert
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Die Aufgaben
+  label_filter_group_easy_wbs:
+    easy_issue_query: Die Aufgaben
+  project_default_page:
+    easy_wbs: Easy WBS

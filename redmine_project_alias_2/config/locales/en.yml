@@ -1,0 +1,17 @@
+# English text strings for buttons and labels
+en:
+  label_alias_plural: Project aliases
+  label_alias_new: New project alias
+
+  field_alias: Alias
+
+  button_use_as_identifier: Use alias as identifier
+  button_restore_identifier: Switch back to original identifier
+
+  text_allowed_characters: Only lower case letters (a-z), numbers and dashes are allowed.
+
+  activerecord:
+    errors:
+      messages:
+        same_as_identifier: can't be the same as identifier
+        identifier_exists: is the same as identifier of another project

@@ -1,0 +1,155 @@
+---
+zh:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: 其它操作
+    button_add_child: 新增子项
+    button_add_parent: 新增父项
+    button_add_sibling: 新建同级项(同一父项)
+    button_all_icons: 图标
+    button_collapse: 折叠
+    button_collapse_all: 全部折叠
+    button_cut: 剪切
+    button_display: 显示设置
+    button_edit_data: 修改资料
+    button_expand: 展开
+    button_expand_all: 全部展开
+    button_expand_collapse: 展开/ 折叠
+    button_legend: 图例
+    button_one_side: 一侧
+    button_paste: 粘贴
+    button_project_menu: Easy WBS
+    button_redo: 重做
+    button_remove_node: 删除节点
+    button_show_links: 显示连接关系
+    button_undo: 撤消
+    edit_issue: 编辑任务
+    error_create: 无法创建
+    error_delete: 无法删除
+    error_update: 无法更新
+    errors:
+      not_subtaskable: 由于跟踪器的设置, 任务"%{task_name}" 无法为其创建子任务.
+    free:
+      button_upgrade: 获取完全版
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: 按性质着色节点
+      feature_context_menu: 变更节点性质
+      feature_filtering: 按性质分类的过滤器节点
+      header_not_available: 仅在完全版中可用
+      text_not_available: 在Easy WBS完全版中可用
+    hotkeys:
+      info_mac_metakey: 在 Mac OSX系统, Ctrl 和 Cmd 键可以用于被浏览器屏蔽的一些CTRL键组合,  如, 在 Cmd+Space
+        被浏览器禁止时, 使用 Ctrl+Space.
+      keyboard:
+      - title: 结点操作
+        hotkeys:
+        - hotkey: Enter
+          info: 添加同级成员
+        - hotkey: Shift+Enter
+          info: 添加成员或换行(当重命名结点时)
+        - hotkey: Tab or Insert
+          info: 添加子项
+        - hotkey: Shift+Tab
+          info: 插入父项
+        - hotkey: Space
+          info: 重命名结点
+        - hotkey: Shift+Space
+          info: 编辑结点资料
+        - hotkey: Backspace or Delete
+          info: 移除结点
+        - hotkey: Ctrl+Up/Down
+          info: 上下移动结点
+      - title: 编辑
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: 保存
+        - hotkey: Ctrl+X or C
+          info: 剪切
+        - hotkey: Ctrl+C or Y
+          info: 复制
+        - hotkey: Ctrl+V or P
+          info: 粘贴
+        - hotkey: U or Ctrl+Z
+          info: 撤消
+        - hotkey: R or Ctrl+Y or Ctrl+Shift+Z
+          info: 恢复
+      - title: 选择
+        hotkeys:
+        - hotkey: Arrow Keys
+          info: 上下左右移动当前选定的结点
+        - hotkey: Shift + Arrow keys
+          info: 在选定结点的上/下/左/右方添加一个新的结点(选定多个兄弟结点时特别有用)
+        - hotkey: "{"
+          info: 多选 -选定当前结点和其下方整个子树形上的成员
+        - hotkey: "["
+          info: 多选 -选定当前结点下方整个子树形上的成员 (不包括自身)
+        - hotkey: "="
+          info: 多选 -选定当前结点同一父项下所有同级成员
+        - hotkey: "."
+          info: 取消多选, 只选择当前结点自身
+        - hotkey: 1 - 9
+          info: 选择一个特别层级的所有结点(如1 表示选定所有1级的结点)
+      - title: 导航与视图
+        hotkeys:
+        - hotkey: "/ or F"
+          info: 展开或折叠结点(收起或打开其子项)
+        - hotkey: Ctrl + or Z
+          info: 放大
+        - hotkey: Ctrl - or Shift Z
+          info: 缩小
+        - hotkey: Esc, 0, Ctrl+0
+          info: 重置节点地图设置- 选定根结点并让其处于屏幕中心
+      mouse:
+      - action: 移动树形图
+        gesture: " 点并拖动中心结点, 点击并拖动背景或滚动方向条/触摸板."
+      - action: 选择结点
+        gesture: 点击此处
+      - action: 选择多个结点
+        gesture: Shift+click
+      - action: 重排结点
+        gesture: 拖动结点, 将其放在水平方向其重排后的大致位置. 重排时将会出现一个黑色的箭头.
+      - action: 手动放置结点
+        gesture: 拖动结点直到重排时的箭头消失. 如要在箭头未消失时强行放置结点, 须在拖动的同时 按住 Shift. 注意根结点下一级子结点可以在拖向任何方向,
+          但低级的子结点只能在其上级所关联的范围内拖动.
+      - action: 重命名结点
+        gesture: 双击结点
+      - action: 显示带操作的菜单环境
+        gesture: '右击结点 (用鼠标) 或双击背景, 或长按结点: 显示 (在触摸设备上)'
+      - action: 变更父结点
+        gesture: 将结点拖放到另一个结点 (不允许出偱环, 所以不允许将其放到其子结点或继承者上)
+      - action: 在另外的窗口打开项目或问题
+        gesture: Alt+左击
+      title_key_shortcuts: 键盘操作
+      title_mouse_shortcuts: 鼠标操作
+      title_shortcuts: 快捷键及操作一览表
+    info_all_saved: 已全部保存成功
+    info_any_failed: '其中一些请求失败:'
+    info_no_permission: 你没有足够的权限进行此操作
+    label_color_by: 按颜色
+    label_go_to: 转到
+    label_or: 或
+    last_state_modal:
+      label_differencies: 服务器上的差异
+      message_changed: 有不同的属性 (browser => server) ({{changes}})
+      message_missing: 从父项 "{{from}}"中丢失
+      message_moved: 是"{{to}}"的子项, 而不是"{{from}}"
+      message_present: 代表 "{{to}}"的子项
+      text_reload_appeal: 重新从服务器下载国别(状态)?
+      title: WBS中最新的客户国别(状态)与服务器中的不同
+    reload_modal:
+      label_errors: 错误
+      text_reload_appeal: 忽略未保存项目并从服务器重新下载数据?
+      title: WBS 没能完全保存
+    stored_modal:
+      text_load_appeal: 重新下载, 而不是从服务器刷新国别(状态)?
+      title: 不能找到未保存国别(状态)
+    warning_delete_node: 你真的想要删除节点 {{name}} 和这个节点下 全部子项？
+    warning_not_saved: 没有完全保存
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: 任务
+  label_filter_group_easy_wbs:
+    easy_issue_query: 任务
+  project_default_page:
+    easy_wbs: Easy WBS

@@ -1,0 +1,9 @@
+# encoding: utf-8
+bg:
+  label_checklist_plural: Чеклист
+  field_checklist: Чеклист
+  label_checklist_save_log: Съхраняване на записи в историята на дейността
+  label_checklist_done_ratio: Преизчисляване на процента готовност
+  permission_view_checklists: Разглеждане на чеклисти
+  permission_done_checklists: Изпълнение на чеклисти
+  permission_edit_checklists: Редактиране на чеклисти

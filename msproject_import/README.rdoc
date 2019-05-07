@@ -1,0 +1,35 @@
+= Redmine-Plugin: XML-Task-Importer MS Project
+== Requirements 
+Redmine 2.x, 3.x
+
+== What you get:
+The plugin creates one root-ticket (task) into te current project, which holds the other (sub)tasks as subtickets.
+
+Right now the plugin only imports tasks from the XML-file. If the resources are persons it tries to match them with registered redmine users. If no matching user is found, a warning is produced, but the import is still possible – in this case the resulting ticket will not have an owner.
+
+== What is imported: 
+Task.Name, start_date, finish_date, create_date, duration, done_ratio, priority, predecessor, notes
+
+
+== Installation
+1) go to `{REDMINE_ROOT}/plugin` directory.
+
+2) Intall:
+  git clone https://github.com/braini75/msproject_import.git
+3) Restart the redmine service. E.g. 
+  service apache2 restart
+4) enjoy!
+
+
+== Usage
+To use this Plugin you have to enable the module (Project -> Settings -> Modules) in your project.
+
+1. Export your MS Project data to XML
+2. access a redmine project, then click "MS Project Import" tab (Make sure you gave permission to the current user).
+3. select xml file, and click "Analyze" button
+4. If there is any warning, make sure you create and assign missing users to you project and start over
+5. Finally run the import by pressing the "Import"-Button.
+
+== Configuration:
+You can setup permission for "Msproject import"  with the Administration->"Roles and permissions" page. 
+You can change the default tracker at the plugin configuration page.

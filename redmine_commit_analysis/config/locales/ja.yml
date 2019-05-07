@@ -1,0 +1,20 @@
+# Japanese strings go here for Rails i18n
+ja:
+  commit_analysis:
+    view:               表示
+    file_path:          ファイルパス
+    total_count:        合計
+    search_option:      検索オプション
+    display_limit:      表示件数
+    display_option:     表示オプション
+    display_order:      表示順序
+    display_order_asc:  昇順
+    display_order_desc: 降順
+    display_list_title: チケット数一覧
+    display_graph_title: チケット数グラフ
+    display_only_file:  ファイル名のみ表示
+  
+  field_repository:   リポジトリ
+  field_commit_date:  コミット日付
+  field_revision:     リビジョン（SVNのみ）
+  field_ignore_file:  除外ファイル

@@ -1,0 +1,9 @@
+ja:
+  share_button: "共有"
+  share_title: "リンクをシェア"
+  share_label_with: "共有先"
+  share_label_page: "ページ"
+  share_label_subject: "%{sender} があなたと%{record}を共有しました"
+  share_text_message: "%{sender} があなたと%{record}を共有しました。"
+  share_notice_email_sent: "メールを送信しました。"
+  share_notice_email_error: "メール送信中にエラーが発生しました"

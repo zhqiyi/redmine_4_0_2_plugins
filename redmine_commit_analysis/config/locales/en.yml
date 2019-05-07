@@ -1,0 +1,20 @@
+# English strings go here for Rails i18n
+en:
+  commit_analysis:
+    view:               Display
+    file_path:          File Path
+    total_count:        Total
+    search_option:      Search Option
+    display_limit:      Number of display
+    display_option:     Display Option
+    display_order:      Display Order
+    display_order_asc:  Ascending
+    display_order_desc: Descending
+    display_list_title: Ticket count list
+    display_graph_title: Ticket count graph
+    display_only_file:  Display only file name
+  
+  field_repository:   Repository
+  field_commit_date:  Commit Date
+  field_revision:     Revision(only SVN)
+  field_ignore_file:  Ignore File

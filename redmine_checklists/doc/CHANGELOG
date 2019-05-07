@@ -1,0 +1,117 @@
+== Redmine Checklists plugin changelog
+
+Redmine Checklists plugin - managing issue checklists plugin for Redmine
+Copyright (C) 2011-2018 RedmineUP
+http://www.redmineup.com/
+
+== 2018-12-20 v3.1.14
+
+* Hotfix for Redmine 4
+
+== 2018-12-18 v3.1.13
+
+* Redmine 4 saving issue fixes
+
+== 2018-11-26 v3.1.12
+
+* German translation update from Tobias Fischer
+* Fixed diferent authors changes bug
+* Fixed sortable animation bug
+
+== 2018-03-23 v3.1.11
+
+* Redmine 4 support
+* Setting for block issues with undone checklists
+* Fixed bug with default template
+* Fixed email notification bug
+
+== 2017-10-12 v3.1.10
+
+* Fixed email notification bug
+* Fixed empty project issues bug
+
+== 2017-09-23 v3.1.9
+
+* Fixed bug with creating issues without checklist
+
+== 2017-09-21 v3.1.8
+
+* Default templates bug fixed
+
+== 2017-08-30 v3.1.7
+
+* Assigned tracker for checklist template
+* Fixed bug with coping project and issue with subissues
+* Fixed settings saving bug
+* 512 characters in checklist subjects (Ondřej Kudlík)
+* Fixed bug for markdown
+
+== 2017-07-07 v3.1.6
+
+* Redmine 3.4 support
+* New checklists filters for issues table
+* Save log by default
+* Chinese translation update
+* Polish translation update
+* Fixed bug with template editing
+
+== 2016-08-15 v3.1.5
+
+* Fixed bug with project tabs
+
+== 2016-08-10 v3.1.4
+
+* Fixed empty history items for issues with checklists
+* Fixed XSS in journal rendering
+* Fixed error with template search in MSSQL
+* Banner plugin compatibility
+* Fixed for-all-project template option
+* Validation for subject length
+* Hungarian translation by Peter Tabajdi
+* Spanish translation update by Luis Blasco
+* Merge checklists history if less than minute interval changes
+
+== 2015-09-25 v3.1.3
+
+* Bug with attach files history fixed
+* Bug with old checkboxes fixed
+
+== 2015-09-25 v3.1.2
+
+* Issue history details
+* Templates permissions fixes
+
+== 2015-04-08 v3.1.0
+
+* Checklist templates
+
+== 2015-03-06 v3.0.4
+
+* Redmine 3.0 compatibility fixes
+* Fixed checklist styles on read only issue mode
+
+== 2015-02-23 v3.0.3
+
+* Swedish translation update (Khedron Wilk)
+* Portuguese Brazilian translation (Leandro Gehlen)
+* Redmine 3.0 (Rails4) support
+* Copying checklists with project copying (Andrew Reshetov)
+* Fixed bug with unable editing checklist after tracker or status changed
+
+== 2014-12-09 v3.0.2
+
+* Fixed bug wuth empty subject with CKEditor plugin
+
+== 2014-09-15 v3.0.1
+
+* Bulgarian translation (Иван Ценов)
+* Fixed bug with IE browser
+
+== 2014-09-10 v3.0.0
+
+* Editing checklist items
+* REST API for index, create, destroy, update, show
+* Change issues progress in real time
+* Sync checked items with show and edit forms
+* Fixed bug with rejecting new checklist items on update issue status
+* Japan translation (Yukio KANEDA)

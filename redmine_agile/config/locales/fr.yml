@@ -1,0 +1,106 @@
+# French strings go here for Rails i18n
+fr:
+  label_agile: Agile
+  label_agile_board: Tableau Agile
+  label_agile_board_plural: Tableaux Agile
+  label_agile_board_thumbnails: Miniatures
+  label_agile_board_more_issues: Plus de demandes
+  error_agile_status_transition: Impossible de modifier les statuts des demandes
+  label_agile_board_new: Nouveau tableau Agile
+  label_agile_board_edit: Modifier le tableau Agile
+  label_agile_my_boards: Mes tableaux Agiles
+  label_agile_issue_id: ID de demande
+
+  permission_manage_public_agile_queries: Gérer les tableaux Agile publics
+  permission_add_agile_queries: Ajouter des tableaux Agile
+  permission_view_agile_queries: Afficher des tableaux Agile
+
+  #1.1.0
+  label_agile_board_default_fields: Champs par défaut des cartes
+  label_agile_charts_issues_burndown: Burndown des demandes
+  label_agile_charts_work_burndown: Burndown du temps de travail
+  label_agile_charts_number_of_hours: Nombre d'heures
+  label_agile_charts_number_of_issues: Nombre de demandes
+  label_agile_charts_cumulative_flow: Flux cumulé
+  label_agile_charts_trackers_cumulative_flow: Flux cumulé des trackers
+  label_agile_charts_issues_velocity: Vélocité
+  label_agile_charts_lead_time: Délais
+  label_agile_charts_average_lead_time: Délai moyen de livraison
+  label_agile_chart_plural: Graphiques Agiles
+  permission_view_agile_charts: Afficher les graphique Agiles
+  label_agile_ideal_work_remaining: Idéal
+  label_agile_actual_work_remaining: Réel
+  label_agile_chart: Graphique
+  label_agile_date_from: De
+  label_agile_date_to: À
+  label_agile_chart_dates: Intervalles du graphique
+  label_agile_weighed_ideal_work_remaining: Idéal pondéré
+  label_agile_status_colors: Couleurs des statuts
+  label_agile_charts_burnup: Burnup des demandes
+  label_agile_charts_number_of_days: Nombre de jours
+  label_agile_too_many_items: "Le graphique ne peut pas être créé car il dépasse le nombre maximal d'éléments pouvant être affichés (%{max})"
+  label_agile_time_reports_items_limit: Limite du nombre de demandes pour les graphiques temporels
+  label_agile_total_work_remaining: Total
+  label_agile_default_chart: Graphique de versions
+
+  #1.1.1
+  label_agile_charts_average_velocity: Vélocité moyenne
+  label_agile_charts_avarate_number_of_issues: Nombre moyen de demandes
+  label_agile_charts_avarate_number_of_hours: nombre moyen d'heures
+
+  #1.2.0
+  label_agile_color: Couleur
+  permission_manage_agile_verions: Gérer la planification de versions
+  label_agile_version_planning: Planification de versions
+  error_agile_version_transition: Impossible de modifier la version de la demande
+  label_agile_tracker_colors: Couleurs des trackers
+  label_agile_issue_priority_colors: Couleurs des priorités de demandes
+  label_agile_color_based_on: Coloré par
+  label_agile_color_no_colors: Pas de couleurs
+  label_agile_manage_colors: Gérer les couleurs
+  label_agile_fullscreen: Plein écran
+  label_agile_no_version_issues: Demandes sans version
+  label_agile_charts_work_burnup: Burnup du temps de travail
+  label_agile_completed: Terminé
+  label_agile_exclude_weekends: Exclure les week-ends de l'effort idéal
+  label_agile_board_truncated: "Le tableau ne peut pas être créé car il dépasse le nombre maximal d'éléments pouvant être affichés (%{max})"
+  label_agile_board_items_limit: Limite du nombre d'élément du tableau Agile
+  label_agile_swimlanes: Lignes
+  label_agile_minimize_closed: Réduire les demandes fermées
+  label_agile_fields: Champs des cartes
+  label_agile_default_board: Tableau par défaut
+
+  #1.3.6
+  text_agile_move_not_possible: Ce déplacement n'est pas possible
+
+  #1.3.8
+  label_agile_parent_issue_tracker_id: Tracker parent
+  label_agile_sub_issues: Sous-demandes
+  label_agile_color_green: Vert
+  label_agile_color_blue: Bleu
+  label_agile_color_turquoise: Turquoise
+  label_agile_color_lightgreen: Vert clair
+  label_agile_color_yellow: Jaune
+  label_agile_color_orange: Orange
+  label_agile_color_red: Rouge
+  label_agile_color_purple: Violet
+  label_agile_color_gray: Gris
+  label_agile_has_sub_issues: A des sous-demandes
+  label_agile_light_free_version: Agile Version gratuite
+  label_agile_link_to_pro: Mettre à jour en version PRO
+  label_agile_link_to_pro_demo: Démo live de la version PRO
+  label_agile_link_to_more_plugins: Voir plus de plugins RedmineUP
+  label_agile_button_agree: D'accord
+  label_agile_license: Licence RedmineUP
+  label_agile_saving_boards: Enregistrement des tableaux
+  label_agile_horizontal_swim_lines: Lignes en horizontal
+  label_agile_board_sub_columns: Sous-colonnes du tableau
+  label_agile_additional_agile_charts: Graphiques Agiles supplémentaires
+  label_agile_coloured_issue_cards: Cartes colorées
+  label_agile_4_more_features: 4 nouveautés supplémentaires...
+  label_agile_upgrade_to_pro: Passez en version PRO pour bénéficier de ces nouveautés
+
+  label_agile_day_in_state:  Dans le statut
+
+  #1.3.10
+  project_module_agile: Agile

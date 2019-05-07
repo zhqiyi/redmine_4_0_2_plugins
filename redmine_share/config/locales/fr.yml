@@ -1,0 +1,9 @@
+fr:
+  share_button: "Partager"
+  share_title: "Partager lien"
+  share_label_with: "Partager avec"
+  share_label_page: "Page"
+  share_label_subject: "%{sender} a partagé %{record} avec vous"
+  share_text_message: "%{sender} a partagé %{record} avec vous."
+  share_notice_email_sent: "Un email a été envoyé à"
+  share_notice_email_error: "Erreur lors de l'envoi de l'email"

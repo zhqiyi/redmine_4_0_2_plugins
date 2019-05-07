@@ -1,0 +1,21 @@
+<span class="checklist-item <%= new_or_show(f) %>" id = "<%=f.object.id%>">
+  <span class = "checklist-show-only checklist-checkbox"><%= f.check_box :is_done %></span>
+  <span class = "checklist-show checklist-subject <%= done_css(f) %>">
+    <%= f.object.subject %>
+  </span>
+  <span class = "checklist-edit checklist-new checklist-edit-box">
+    <%= text_field_tag nil, f.object.subject, :class => 'edit-box'%>
+    <%= f.hidden_field :subject, :class => 'checklist-subject-hidden' %>
+  </span>
+  <span class= "checklist-edit-only checklist-edit-save-button"><%= submit_tag l(:button_save), :type => "button", :class => "item item-save small"%> </span>
+  <span class= "checklist-edit-only checklist-edit-reset-button"><% concat l(:button_cancel)
+  %> </span>
+  <span class = "checklist-show-only checklist-remove"><%= link_to_remove_checklist_fields "", f,
+                                                                            :class => "icon icon-del"  %></span>
+  <%= f.hidden_field :position, :class => 'checklist-item-position' %>
+  <%= f.hidden_field :id, :class => 'checklist-item-id' %>
+  <span class = "icon icon-add checklist-new-only save-new-by-button"></span>
+
+ <br>
+</span>
+

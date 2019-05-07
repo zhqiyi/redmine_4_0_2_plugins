@@ -1,0 +1,17 @@
+<h3><%= l(:label_issue_plural) %></h3>
+
+<ul>
+  <li><%= link_to l(:label_issue_view_all), _project_issues_path(@project, :set_filter => 1) %></li>
+  <% if @project %>
+    <li><%= link_to l(:field_summary), project_issues_report_path(@project) %></li>
+  <% end %>
+  <% if User.current.allowed_to?(:view_calendar, @project, :global => true) %>
+    <li><%= link_to l(:label_calendar), _project_calendar_path(@project) %></li>
+  <% end %>
+  <% if User.current.allowed_to?(:view_gantt, @project, :global => true) %>
+    <li><%= link_to l(:label_gantt), _project_gantt_path(@project) %></li>
+  <% end %>
+  <% if User.current.allowed_to?(:view_agile_queries, @project) %>
+    <li><%= link_to l(:label_agile_board), {:controller => "agile_boards", :action => "index", :project_id => @project} %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,37 @@
+en:
+  label_charts: Charts
+  field_chart_type: Chart type
+  label_month_plural: months
+  label_year_plural: years
+  label_n_days:
+    one: "last 1 day"
+    other: "last %{count} days"
+  label_n_months:
+    one: "last 1 month"
+    other: "last %{count} months"
+  label_n_years:
+    one: "last 1 year"
+    other: "last %{count} years"
+  label_tracker_all: All trackers
+  label_new_chart: New chart
+  label_my_charts: My charts
+  label_public_charts: Public charts
+  label_line_chart: Line chart
+  label_pie_chart: Pie chart
+  label_column_chart: Column chart
+  label_bar_chart: Bar chart
+  label_area_chart: Area chart
+  label_created_vs_closed_issues: Created vs closed issues
+
+  permission_view_charts: View charts
+  permission_create_charts: Create charts
+  permission_create_public_charts: Create public charts
+  permission_edit_charts: Edit charts
+  permission_edit_public_charts: Edit public charts
+  
+  #references
+  field_range_integer: :label_in_the_past_days
+  field_issue_status: :label_issue_status
+  field_time: :label_time_tracking
+  field_group_by_field: :field_group_by
+  

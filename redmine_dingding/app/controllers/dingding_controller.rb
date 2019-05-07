@@ -1,0 +1,4 @@
+class DingdingController < ApplicationController
+
+  
+end

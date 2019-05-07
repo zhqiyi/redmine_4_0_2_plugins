@@ -1,0 +1,42 @@
+<%
+  default_zoom_options = [
+    [l('easy_gantt.button.day_zoom'), 'day'],
+    [l('easy_gantt.button.week_zoom'), 'week'],
+    [l('easy_gantt.button.month_zoom'), 'month']
+  ]
+%>
+
+<%= title l(:title_easy_gantt_settings) %>
+
+<div class="box tabular">
+  <p>
+    <%= form.label :show_holidays, l(:field_easy_gantt_show_holidays) %>
+    <%= form.check_box :show_holidays %>
+    <em class="small"><%= l(:text_easy_gantt_show_holidays) %></em>
+  </p>
+
+  <p>
+    <%= form.label :relation_delay_in_workdays, l(:field_easy_gantt_relation_delay_in_workdays) %>
+    <%= form.check_box :relation_delay_in_workdays %>
+    <em class="small"><%= l(:text_easy_gantt_relation_delay_in_workdays) %></em>
+  </p>
+
+  <p>
+    <%= form.label :show_project_progress, l(:field_easy_gantt_show_project_progress) %>
+    <%= form.check_box :show_project_progress %>
+    <em class="small"><%= l(:text_easy_gantt_show_project_progress) %></em>
+  </p>
+
+  <p>
+    <%= form.label :show_task_soonest_start, l(:field_easy_gantt_show_task_soonest_start) %>
+    <%= form.check_box :show_task_soonest_start %>
+    <em class="small"><%= l(:text_easy_gantt_show_task_soonest_start) %></em>
+  </p>
+
+  <p>
+    <%= form.label :default_zoom, l(:field_easy_gantt_default_zoom) %>
+    <%= form.select :default_zoom, options_for_select(default_zoom_options, form.object.default_zoom) %>
+  </p>
+
+  <%= call_hook :view_easy_gantt_settings, form: form %>
+</div>

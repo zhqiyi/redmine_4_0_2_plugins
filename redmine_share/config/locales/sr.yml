@@ -1,0 +1,9 @@
+sr:
+  share_button: "Дели"
+  share_title: "Веза дељења"
+  share_label_with: "Share with"
+  share_label_page: "страница"
+  share_label_subject: "%{sender} подели %{record} са вама"
+  share_text_message: "%{sender} подели %{record} са вама."
+  share_notice_email_sent: "E-порука је послата на"
+  share_notice_email_error: "Догодила се грешка приликом слања е-поруке"

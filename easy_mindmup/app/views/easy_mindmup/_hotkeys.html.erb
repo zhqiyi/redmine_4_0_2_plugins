@@ -1,0 +1,31 @@
+  <div class="mindmup-hotkeys-source" style="display:none">
+    <h3 class="title"><%= l(:title_shortcuts, :scope => [:easy_mindmup, :hotkeys]) %></h3>
+    <h1><%= l(:title_key_shortcuts, :scope => [:easy_mindmup, :hotkeys]) %></h1>
+    <p><%= l(:info_mac_metakey, :scope => [:easy_mindmup, :hotkeys]) %></p>
+    <table class="table table-striped">
+    <colgroup><col width="30%"></col><col width="70%"></col></colgroup>
+    <tbody>
+      <% l(:keyboard, :scope => [:easy_mindmup, :hotkeys]).each do |group| %>
+        <tr>
+          <td colspan="2"><h2><%= group[:title] %></h2></td>
+        </tr>
+        <% group[:hotkeys].each do |item| %>
+          <tr>
+            <td><%= item[:hotkey] %></td>
+            <td><%= item[:info] %></td>
+          </tr>
+        <% end
+      end %>
+    </tbody>
+    </table>
+    <h1><%= l(:title_mouse_shortcuts, :scope => [:easy_mindmup, :hotkeys]) %></h1>
+    <table class="table table-striped">
+    <colgroup><col width="20%"></col><col width="80%"></col></colgroup>
+      <% l(:mouse, :scope => [:easy_mindmup, :hotkeys]).each do |item| %>
+        <tr>
+          <td><%= item[:action] %></td>
+          <td><%= item[:gesture] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>

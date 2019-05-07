@@ -1,0 +1,17 @@
+# German translation by Tobias Fischer (https://github.com/tofi86)
+de:
+  label_alias_plural: Projekt-Alias
+  label_alias_new: Neuer Alias
+
+  field_alias: Alias
+
+  button_use_as_identifier: Alias als offizielle ID benutzen
+  button_restore_identifier: Original-ID reaktivieren
+
+  text_allowed_characters: Kleinbuchstaben (a-z), Ziffern und Bindestriche erlaubt.
+
+  activerecord:
+    errors:
+      messages:
+        same_as_identifier: darf nicht die ID sein
+        identifier_exists: ist bereits die ID eines anderen Projekts

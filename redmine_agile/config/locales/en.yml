@@ -1,0 +1,154 @@
+# English strings go here for Rails i18n
+en:
+  label_agile: Agile
+  label_agile_board: Agile board
+  label_agile_board_plural: Agile boards
+  label_agile_board_thumbnails: Thumbnails
+  label_agile_board_more_issues: More issues
+  error_agile_status_transition: Can’t change issue status
+  label_agile_board_new: New agile board
+  label_agile_board_edit: Edit agile board
+  label_agile_my_boards: My agile boards
+  label_agile_issue_id: Issue ID
+
+  permission_manage_public_agile_queries: Manage public agile boards
+  permission_add_agile_queries: Add agile boards
+  permission_view_agile_queries: View agile boards
+
+  #1.1.0
+  label_agile_board_default_fields: Default card fields
+  label_agile_charts_issues_burndown: Issues burndown
+  label_agile_charts_work_burndown_hours: Hours burndown
+  label_agile_charts_work_burndown_sp: Story points burndown
+  label_agile_charts_number_of_hours: Number of hours
+  label_agile_charts_number_of_issues: Number of issues
+  label_agile_charts_cumulative_flow: Cumulative flow
+  label_agile_charts_trackers_cumulative_flow: Trackers cumulative flow
+  label_agile_charts_issues_velocity: Velocity
+  label_agile_charts_lead_time: Lead time
+  label_agile_charts_average_lead_time: Average lead time
+  label_agile_chart_plural: Agile charts
+  label_agile_chart_new: New agile chart
+  label_agile_chart_edit: Edit agile chart
+  permission_view_agile_charts: View agile charts
+  label_agile_ideal_work_remaining: Ideal
+  label_agile_actual_work_remaining: Actual
+  label_agile_chart: Chart
+  label_agile_date_from: From
+  label_agile_date_to: To
+  label_agile_chart_dates: Chart intervals
+  label_agile_weighed_ideal_work_remaining: Weighted ideal
+  label_agile_status_colors: Status colors
+  label_agile_charts_burnup: Issues burnup
+  label_agile_charts_number_of_days: Number of days
+  label_agile_too_many_items: "The chart can't be created because it exceeds the maximum number of items that can be displayed (%{max})"
+  label_agile_time_reports_items_limit: Time entries based charts issues limit
+  label_agile_total_work_remaining: Total
+  label_agile_default_chart: Default chart
+
+  #1.1.1
+  label_agile_charts_average_velocity: Average velocity
+  label_agile_charts_avarate_number_of_issues: Average number of issues
+  label_agile_charts_avarate_number_of_hours: Average number of hours
+
+  #1.2.0
+  label_agile_color: Color
+  permission_manage_agile_verions: Manage version planning
+  label_agile_version_planning: Version planning
+  error_agile_version_transition: Can’t change issue version
+  label_agile_tracker_colors: Tracker colors
+  label_agile_issue_priority_colors: Issue priority colors
+  label_agile_color_based_on: Colored by
+  label_agile_color_no_colors: No colors
+  label_agile_manage_colors: Manage colors
+  label_agile_fullscreen: Full screen
+  label_agile_no_version_issues: Issues without version
+  label_agile_charts_work_burnup_hours: Hours burnup
+  label_agile_charts_work_burnup_sp: Story points burnup
+  label_agile_completed: Completed
+  label_agile_exclude_weekends: Exclude weekends from ideal effort
+  label_agile_board_truncated: "The board was truncated because it exceeds the maximum number of items that can be displayed (%{max})"
+  label_agile_board_items_limit: Agile board items limit
+  label_agile_swimlanes: Swim lanes
+  label_agile_minimize_closed: Minimize closed issues
+  label_agile_fields: Card fields
+  label_agile_default_board: Default board
+
+  #1.3.6
+  text_agile_move_not_possible: That move is not possible
+
+  #1.3.8
+  label_agile_parent_issue_tracker_id: Parent tracker
+  label_agile_sub_issues: Sub issues
+  label_agile_color_green: Green
+  label_agile_color_blue: Blue
+  label_agile_color_turquoise: Turquoise
+  label_agile_color_lightgreen: Light green
+  label_agile_color_yellow: Yellow
+  label_agile_color_orange: Orange
+  label_agile_color_red: Red
+  label_agile_color_purple: Purple
+  label_agile_color_gray: Gray
+  label_agile_has_sub_issues: Has sub issues
+  label_agile_light_free_version: Agile Light free version
+  label_agile_link_to_pro: Upgrade to PRO
+  label_agile_link_to_pro_demo: PRO version live demo
+  label_agile_link_to_more_plugins: Find more RedmineUP plugins
+  label_agile_button_agree: Agree
+  label_agile_license: RedmineUP License
+  label_agile_saving_boards: Saving board
+  label_agile_horizontal_swim_lines: Horizontal swim lines
+  label_agile_board_sub_columns: Board sub-columns
+  label_agile_additional_agile_charts: Additional agile charts
+  label_agile_coloured_issue_cards: Coloured issue cards
+  label_agile_4_more_features: 4 more features...
+  label_agile_upgrade_to_pro: Upgrade to PRO version to use this features
+
+  label_agile_day_in_state:  In status
+
+  #1.3.10
+  label_agile_hide_closed_issues_data: Hide closed issues data
+  project_module_agile: Agile
+
+  #1.3.13
+  label_agile_last_comment: Last comment
+
+  #1.4.0
+  label_agile_esitmate_units: Estimate units
+  label_agile_trackers_for_sp: Trackers for story points
+  label_agile_story_points: Story points
+  field_story_points: Story points
+  label_agile_charts_number_of_story_points: Number of story points
+  label_agile_board_columns: Board columns
+  lable_agile_wip_limit_exceeded: Work-in-progress limit exceeded
+  label_agile_wip_limit: Work-in-progress limit
+  label_agile_add_new_issue: '+ ADD NEW ISSUE'
+  label_agile_allow_create_cards: Card creation
+  label_agile_auto_assign_on_move: Auto assign on move
+  text_agile_create_issue_error: An error occurred while creating the task
+  label_agile_inline_comment: Inline comment
+  label_agile_hours: Hours
+  field_color: Color
+
+  field_duration: Duration
+
+  field_closed_on_trendline: Closed trendline
+  field_created_on_trendline: Created trendline
+
+  label_agile_sp_values: Story points values
+
+  label_agile_interval_size: Interval size
+  label_agile_day: Day
+  label_agile_week: Week
+  label_agile_month: Month
+  label_agile_quarter: Quarter
+  label_agile_year: Year
+  label_cards_search: Search by subject
+
+  label_agile_charts: Charts
+
+  label_agile_planning_board_more: Load more...
+  label_agile_version_query_new: New Agile versions query
+  label_agile_version_my_boards: My agile version boards
+  label_agile_version_board_plural: Agile version boards
+  label_agile_version_board_edit: Edit agile version board

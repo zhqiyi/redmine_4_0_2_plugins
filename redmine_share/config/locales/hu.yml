@@ -1,0 +1,9 @@
+hu:
+  share_button: "Megosztás"
+  share_title: "Megosztás hivatkozással"
+  share_label_with: "Share with"
+  share_label_page: "Oldal"
+  share_label_subject: "%{sender} megosztotta veled ezt: %{record}"
+  share_text_message: "%{sender} megosztotta veled ezt: %{record}."
+  share_notice_email_sent: "Egy e-mail üzenetet küldtünk a következő címre"
+  share_notice_email_error: "Hiba történt a levél küldése közben"

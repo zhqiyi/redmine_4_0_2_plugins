@@ -1,0 +1,9 @@
+<%= l(:share_text_message, sender: @author.name, record: @record) %>
+
+<% if @comment %>
+<% @comment.each_line {|line| %>
+> <%= line.chomp %>
+<% } %>
+
+<% end %>
+<%= @url %>

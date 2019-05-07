@@ -1,0 +1,35 @@
+es:
+  label_charts: Gráﬁcos
+  field_chart_type: Tipo de gráﬁco
+  label_month_plural: meses
+  label_year_plural: años
+  label_n_days:
+    one: "1 día"
+    other: "%{count} días"
+  label_n_months:
+    one: "1 mes"
+    other: "%{count} meses"
+  label_n_years:
+    one: "1 año"
+    other: "%{count} años"
+  label_tracker_all: Todos los tipos de peticiones
+  label_new_chart: Nuevo gráfico
+  label_my_charts: Mis gráficos
+  label_public_charts: Gráficos públicos
+  label_line_chart: Línea
+  label_pie_chart: Circular
+  label_column_chart: Columnas
+  label_bar_chart: Barras
+  label_area_chart: Área
+  label_created_vs_closed_issues: Todas las peticiones y peticiones cerrados
+
+  permission_view_charts: Ver gráficos
+  permission_create_charts: Crear gráficos
+  permission_create_public_charts: Crear gráficos públicos
+  permission_edit_charts: Editar gráficos
+  permission_edit_public_charts: Editar gráficos públicos
+  field_range_integer: :label_in_the_past_days
+  field_issue_status: :label_issue_status
+  field_time: :label_time_tracking
+  field_group_by_field: :field_group_by
+  

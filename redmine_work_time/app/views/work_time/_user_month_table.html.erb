@@ -1,0 +1,264 @@
+<%
+win_w = 35    # 小窓の幅
+win_h = 31    # 小窓の高さ
+win_hs = 20   # 小さい小窓の高さ
+
+box_w = 300
+box_h = win_hs*3+win_h*@month_pack[:count_issues]+win_hs*@month_pack[:count_prjs]+20
+if @month_pack[:other]!=0 then
+  box_h += win_hs
+end
+%>
+
+<h2><%=l(:wt_monthly_report)%> (<%=@this_user%>)</h2>
+<table width="100%" style="border:0;border-collapse:collapse;">
+<tr>
+  <!-- ************************************************ 左側を表示 -->
+  <td style="width:<%=box_w%>px;padding:0px;">
+    <div style="background: #ccc;">
+    <div style="position:relative;height:<%=box_h%>px;overflow:auto;">
+
+      <div style="position:absolute;top:1px;left:1px;">
+      <div style="background: #fff;font-size:1.5em;">
+      <div style="text-align:center;position:relative;top:1px;left:1px;width:<%=box_w-2%>px;height:<%=win_hs*2-1%>px;">
+        <%= @first_date.strftime("%Y/%m/%d") %> - <%= @last_date.strftime("%Y/%m/%d") %>
+      </div>
+      </div>
+      <div style="text-align:right;position:absolute;top:1px;left:1px;width:<%=box_w-2%>px;height:<%=win_hs*2-1%>px;">
+        <%= link_to(">>", @link_params.merge(:day=>@next_month.day, :month=>@next_month.month, :year=>@next_month.year))%>
+      </div>
+      <div style="text-align:left;position:absolute;top:1px;left:1px;">
+        <%= link_to("<<", @link_params.merge(:day=>@last_month.day, :month=>@last_month.month, :year=>@last_month.year))%>
+      </div>
+      </div>
+<%
+ofst_t = win_hs*3-5
+
+@month_pack[:odr_prjs].each do |prj_pack|
+  next if prj_pack[:count_issues] == 0
+  prj = prj_pack[:prj]
+  dsp_pos = prj_pack[:odr]
+  prj_ofst_t = ofst_t
+
+  ofst_t += win_hs
+  prj_pack[:odr_issues].each do |issue_pack|
+    next if issue_pack[:count_hours] == 0
+    issue = issue_pack[:issue]
+    issue_id = issue.nil? ? -1 : issue.id
+    issue_odr = issue_pack[:odr]
+
+%>
+    <div style="position:absolute;top:<%=ofst_t%>px;left:1px;">
+      <div style="background: #fff;font-size:0.8em;">
+        <div style="position:relative;top:1px;left:1px;width:<%=box_w-2%>px;height:<%=win_h-1%>px;">
+          <%if !issue.nil? then%>
+            <%if @this_uid==@crnt_uid then%>
+              <a href="#"
+                onclick="JavaScript:
+                  ticket_pos(
+                    '<%=url_for(@link_params) %>',
+                    <%=issue_id%>,
+                    <%=issue_odr%>,
+                    <%=@issue_odr_max+((issue_odr.to_i<0)?1:0)%>);
+                  return false;">
+                <%= (issue_odr.to_i<0) ? "*" : issue_odr %>
+              </a>
+            <%end%>
+            <%= link_to(wk_pretty_issue_name(issue, issue_id), {:controller=>"issues", :action=>"show", :id=>issue_id}, :popup=>true, :class=>'wt_iss_link', :'data-issue'=>issue_id) %>
+            <%= print_issue_cost(issue) %>
+          <%end%>
+          <div style="position:absolute;top:15px;right:15px;">
+            <%=sprintf("%1.2f", issue_pack[:total])%>
+          </div>
+        </div>
+      </div>
+    </div>
+<%
+  ofst_t += win_h
+ end
+%>
+  <div style="position:absolute;top:<%=prj_ofst_t%>px;left:2px;">
+    <div style="background:#000;color:#fff;font-size:1.0em;">
+      <div style="position:relative;top:1px;left:1px;width:<%=box_w-3%>px;height:<%=win_hs-1%>px;">
+<%if @this_uid==@crnt_uid then%>
+        <a href="#"
+          style="color:#8ff;"
+          onclick="JavaScript:
+            prj_pos(
+              '<%=url_for(@link_params) %>',
+              <%=prj.id%>,
+              <%=dsp_pos%>,
+              <%=@prj_odr_max+((dsp_pos.to_i<0)?1:0)%>);
+            return false;">
+          <%= (dsp_pos.to_i<0) ? "*" : dsp_pos %>:
+        </a>
+<%end%>
+        <%= prj.name%>
+          <div style="position:absolute;top:1px;right:10px;">
+            <%=sprintf("%1.2f",prj_pack[:total])%>
+          </div>
+      </div>
+    </div>
+  </div>
+<%
+end
+%>
+    <%if @month_pack[:other]!=0 then%>
+      <div style="position:absolute;top:<%=ofst_t%>px;left:2px;">
+        <div style="background:#000;color:#fff;font-size:1.0em;">
+          <div style="position:relative;top:1px;left:1px;width:<%=box_w-4%>px;height:<%=win_hs-2%>px;">
+            private
+              <div style="position:absolute;top:1px;right:10px;">
+                <%=sprintf("%1.2f", @month_pack[:other])%>
+              </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+      <div style="position:absolute;bottom:10px;right:10px;">
+        <%=sprintf("%1.2f", @month_pack[:total])%>
+      </div>
+      <div style="position:absolute;top:<%=win_hs*2%>px;right:10px;">
+        <%=sprintf("%1.2f", @month_pack[:total])%>
+      </div>
+    </div>
+
+    </div>
+  </td>
+
+  <!-- ************************************************ 右側を表示 -->
+  <td>
+    <div style="background: #ccc;">
+    <div style="position:relative;height:<%=box_h%>px;overflow:auto;" id="day_scroll">
+
+<% # チケット毎の合計時間を計算＆表示
+day_pos = 0
+(@first_date..@last_date).each do |date|
+  day_pos += 1
+  month = date.month
+  day = date.day
+  wday = date.wday
+  ofst_l = win_w*(day_pos-1)
+  holidayEntry = WtHolidays.
+          where(["holiday=:h and deleted_on is null",{:h=>date}]).
+          all
+  if holidayEntry.size == 0 then
+    bcolor = @wday_color[wday]
+  else
+    bcolor = "#fbc"
+  end
+  if day==@this_date.day then
+    bcolor_day = "#cfc"
+    today_id = 'id=day_scroll_today'
+  else
+    bcolor_day = bcolor
+    today_id = ''
+  end
+%>
+    <div style="position:absolute;top:1px;left:<%=ofst_l%>px;" <%=today_id%> >
+      <div style="background:<%=bcolor_day%>;">
+        <div style="text-align:center;position:relative;top:1px;left:1px;width:<%=win_w-1%>px;height:<%=win_hs-1%>px;">
+          <%= link_to(day, @link_params.merge(:day=>day, :month=>month)) %>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;top:<%=win_hs+1%>px;left:<%=ofst_l%>px;">
+      <div style="background:<%=bcolor%>;">
+        <div style="text-align:center;position:relative;top:1px;left:1px;width:<%=win_w-1%>px;height:<%=win_hs-1%>px;">
+          <%= @wday_name[wday]%>
+        </div>
+      </div>
+    </div>
+<%
+ofst_t = win_hs*3-5
+day_cost = 0
+
+@month_pack[:odr_prjs].each do |prj_pack|
+  next if prj_pack[:count_issues] == 0
+  dsp_prj = prj_pack[:prj].id
+  dsp_pos = prj_pack[:odr]
+  prj_ofst_t = ofst_t
+
+  ofst_t += win_hs
+  prj_pack[:odr_issues].each do |issue_pack|
+    next if issue_pack[:count_hours] == 0
+    issue = issue_pack[:issue]
+    issue_id = issue.nil? ? -1 : issue.id
+    issue_odr = issue_pack[:odr]
+%>
+    <div style="position:absolute;top:<%=ofst_t%>px;left:<%=ofst_l%>px;">
+      <div style="background:<%=bcolor%>;font-size:0.8em;">
+        <div style="text-align:center;position:relative;top:5px;left:1px;width:<%=win_w-1%>px;height:<%=win_h-1%>px;">
+<%
+  if issue_pack[:total_by_day].has_key?(date) then
+%>
+          <%=sprintf("%1.2f", issue_pack[:total_by_day][date])%>
+<%
+   end
+%>
+        </div>
+      </div>
+    </div>
+<%
+  ofst_t += win_h
+ end
+%>
+  <div style="position:absolute;top:<%=prj_ofst_t%>px;left:<%=ofst_l%>px;">
+    <div style="background:#000;color:#fff;font-size:0.8em;">
+      <div style="text-align:center;position:relative;top:5px;left:1px;width:<%=win_w-1%>px;height:<%=win_hs-1%>px;">
+<%if prj_pack[:total_by_day].has_key?(date) then%>
+        <%=sprintf("%1.2f", prj_pack[:total_by_day][date])%>
+<%end%>
+      </div>
+    </div>
+  </div>
+
+<%
+end
+%>
+<!--日毎の合計時間表示-->
+    <div style="position:absolute;top:<%=win_hs*2%>px;left:<%=ofst_l%>px;">
+      <div style="font-size:0.8em;">
+        <div style="text-align:center;position:relative;top:1px;left:1px;width:<%=win_w-2%>px;height:<%=win_hs-2%>px;">
+<%if @month_pack[:total_by_day].has_key?(date) then%>
+          <%= sprintf("%1.2f", @month_pack[:total_by_day][date])%>
+<%end%>
+        </div>
+      </div>
+    </div>
+<!--otherの時間表示-->
+<%if @month_pack[:other]!=0 then%>
+  <div style="position:absolute;top:<%=ofst_t%>px;left:<%=ofst_l%>px;">
+    <div style="background:#000;color:#fff;font-size:0.8em;">
+      <div style="text-align:center;position:relative;top:5px;left:1px;width:<%=win_w-2%>px;height:<%=win_hs-2%>px;">
+<%if @month_pack[:other_by_day].has_key?(date) then%>
+          <%= sprintf("%1.2f", @month_pack[:other_by_day][date])%>
+<%end%>
+      </div>
+    </div>
+  </div>
+<%end%>
+
+<%end%>
+    </div>
+    </div>
+  </td>
+</tr>
+</table>
+<input type="button"
+       onclick="location.href='<%=url_for(@link_params.merge(:action=>"member_monthly_data"))%>'"
+       value="<%=l(:wt_data_download)%>"
+/>
+<input type="button"
+       onclick="location.href='<%=url_for(@link_params.merge(:action=>"member_monthly_data_table"))%>'"
+       value="<%=l(:wt_data_download_table)%>"
+/>
+<br/>
+
+<script type="text/javascript">
+<!--
+  var scr = document.getElementById("day_scroll");
+  var tgt = document.getElementById("day_scroll_today");
+  scr.scrollLeft = tgt.offsetLeft - scr.offsetLeft;
+-->
+</script>

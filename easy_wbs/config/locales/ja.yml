@@ -1,0 +1,151 @@
+---
+ja:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_add_child: 子を追加
+    button_add_parent: 親を追加
+    button_add_sibling: 兄弟を追加
+    button_all_icons: アイコン
+    button_collapse: 折りたたみ
+    button_collapse_all: すべて展開
+    button_cut: 切り取り
+    button_edit_data: ノードの詳細を編集
+    button_expand: 展開
+    button_expand_all: すべて展開
+    button_expand_collapse: 展開／折りたたみ
+    button_legend: 判例
+    button_one_side: 片側
+    button_paste: 貼り付け
+    button_project_menu: WBS
+    button_redo: やり直し
+    button_remove_node: ノードを削除
+    button_show_links: リンクを表示
+    button_undo: 元に戻す
+    edit_issue: チケットを編集
+    error_create: 作成できませんでした
+    error_delete: 削除できませんでした
+    error_update: 更新できませんでした
+    errors:
+      not_subtaskable: "%{task_name} は子チケットにできません"
+    free:
+      button_upgrade: フルバージョンを入手
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: プロパティ毎にノードを塗り分け
+      feature_context_menu: ノードのプロパティを変更
+      feature_filtering: プロパティ毎にノードをフィルタ
+      header_not_available: フルバージョンでのみ入手可能
+      text_not_available: 'WBSプラグインのフルバージョンで入手可能:'
+    hotkeys:
+      info_mac_metakey: Mac OS Xの場合、ControlキーとCommandキーは、以下でCtrlと表示しているショートカットで使用可能です。しかしブラウザによっては、無効なキーの組み合わせがあります。そのため、例えばCommand+Spaceが効かない場合は、Control+Spaceを試してください。
+      keyboard:
+      - title: ノード操作
+        hotkeys:
+        - hotkey: Enter
+          info: 兄弟を追加
+        - hotkey: Shift+Enter
+          info: １つ上に兄弟を追加、または改行（ノード名を変更中の場合）
+        - hotkey: Tab or Insert
+          info: 子を追加
+        - hotkey: Shift+Tab
+          info: 親を追加
+        - hotkey: Space
+          info: ノード名の変更
+        - hotkey: Shift+Space
+          info: ノードの詳細を編集
+        - hotkey: Backspace または Delete
+          info: ノードの削除
+        - hotkey: Ctrl+Up/Down
+          info: ノードを上／下へ移動
+      - title: 編集
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: 保存
+        - hotkey: Ctrl+X または C
+          info: 切り取り
+        - hotkey: Ctrl+C または Y
+          info: コピー
+        - hotkey: Ctrl+V または P
+          info: 貼り付け
+        - hotkey: U または Ctrl+Z
+          info: 元に戻す
+        - hotkey: R または Ctrl+Y または Ctrl+Shift+Z
+          info: やり直し
+      - title: ノード選択
+        hotkeys:
+        - hotkey: 矢印キー
+          info: ノードの選択を、上下左右に移動
+        - hotkey: Shift+矢印キー
+          info: ノードの選択範囲を、上下左右に拡大（兄弟を複数選択するときに便利です）
+        - hotkey: "{"
+          info: 選択中ノードと、その子すべてを選択
+        - hotkey: "["
+          info: 選択中ノードの、子だけを選択（選択中のノードを含みません）
+        - hotkey: "="
+          info: 選択中ノードの兄弟を、すべて選択（同じ親の下にある兄弟が対象です）
+        - hotkey: "."
+          info: 複数選択を解除し、現在のノードだけを選択
+        - hotkey: 1 - 9
+          info: 指定された階層のノードをすべて選択（1の場合、第一階層のノードがすべて選択されます）
+      - title: 表示
+        hotkeys:
+        - hotkey: "/ または F"
+          info: ノードの展開／折りたたみ
+        - hotkey: Ctrl+(+) または Z
+          info: 拡大
+        - hotkey: Ctrl+(-) または Shift+Z
+          info: 縮小
+        - hotkey: Esc または 0 または Ctrl+0
+          info: マップ表示を元に戻す - ルートノードを画面中央に異動します
+      mouse:
+      - action: マップを移動
+        gesture: ルートノードを選択してドラッグ
+      - action: ノード選択
+        gesture: ノードをクリック
+      - action: ノードの複数選択
+        gesture: Shift+クリック
+      - action: ノードの並べ替え
+        gesture: ノードをもっていきたいところまでドラッグして、黒い矢印が表示されたら離す
+      - action: ノードの位置を手動で調整
+        gesture: ノードをもっていきたいところまでドラッグして離す（黒い矢印が表示されていないことを確認してください）。黒い矢印が表示される場所に移動したい場合は、Shiftを押しながらドラッグしてください。注意：第一階層のノードはどの方向にも自由に配置できますが、それより下位階層のノードは、ルート⇒親の向きにしか配置できません。
+      - action: ノード名の変更
+        gesture: ダブルクリック
+      - action: コンテキストメニューを表示
+        gesture: ノードを右クリック
+      - action: ノードの親を変更
+        gesture: ドラッグ＆ドロップ（循環リンクとなる関係にはできません）
+      - action: チケット／プロジェクトを別ウィンドウで表示
+        gesture: Alt+クリック
+      title_key_shortcuts: キーボード操作
+      title_mouse_shortcuts: マウスとタッチ操作
+      title_shortcuts: ショートカット
+    info_all_saved: すべて正しく保存されました
+    info_any_failed: いくつかの要求に失敗しました：
+    info_no_permission: その操作をする権限がありません
+    label_color_by: 色の塗り分け
+    label_go_to: '次へ:'
+    label_or: または
+    last_state_modal:
+      label_differencies: サーバとの差異
+      message_changed: はブラウザ上とサーバ上で属性が異なります ({changes})
+      message_missing: は親ノード {from} に存在しません
+      message_moved: は {from} ではなく {to} の子ノードです
+      message_present: は {to} の子ノードです
+      text_reload_appeal: サーバからステータスを再読込みしますか？
+      title: WBSのクライアントのステータスがサーバのデータと異なります
+    reload_modal:
+      label_errors: エラー
+      text_reload_appeal: 保存されていない変更を破棄して、サーバのデータを再読み込みしますか？
+      title: WBSを正しく保存できませんでした
+    stored_modal:
+      text_load_appeal: サーバから最新のデータを読み込みますか？
+      title: 保存されていないステータスが見つかりました
+    warning_delete_node: 本当に {{name}} とその子孫チケットを削除してもよろしいですか？
+    warning_not_saved: は正しく保存されません
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: タスク
+  label_filter_group_easy_wbs:
+    easy_issue_query: チケット
+  project_default_page:
+    easy_wbs: Easy WBS

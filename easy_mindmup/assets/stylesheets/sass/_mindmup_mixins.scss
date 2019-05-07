@@ -1,0 +1,6 @@
+@mixin mindmup-scheme($color){
+  background-color: $color;
+  &.activated {
+    background-color: darken($color, 10%);
+  }
+}

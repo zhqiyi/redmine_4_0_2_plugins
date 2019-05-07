@@ -1,0 +1,424 @@
+# encoding: utf-8
+#
+# Redmine plugin for Document Management System "Features"
+#
+# Copyright © 2011    Vít Jonáš <vit.jonas@gmail.com>
+# Copyright © 2011-19 Karel Pičman <karel.picman@kontron.com>
+#
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+cs:
+  dmsf: DMS  # Custom fields tab title
+  label_dmsf_file_plural: DMS Dokumenty  # Email subject & Search options
+  label_dmsf_file_revision_plural: Revize dokumentů
+  label_dmsf_file_revision_access_plural: Přístupy k dokumentům
+  warning_no_entries_selected: Není nic vybráno
+  error_email_to_must_be_entered: Musí být zadán příjemce
+  warning_file_already_locked: Soubor je již zamčen
+  notice_file_locked: Soubor byl zamčen
+  warning_file_not_locked: Soubor není zamčen
+  notice_file_unlocked: Soubor byl odemčen
+  error_only_user_that_locked_file_can_unlock_it: Soubor může být odemčen pouze uživatelem, který ho zamkl
+
+  error_max_files_exceeded: "Limit pro %{number} najednou stažených souborů je překročen"
+  error_entry_project_does_not_match_current_project: Zadaný projekt neodpovídá aktuálnímu projektu
+
+  notice_folder_created: Složka byla vytvořena
+  error_folder_creation_failed: Vytváření složky selhalo
+  error_folder_title_must_be_entered: Musí být zadán název
+  notice_folder_deleted: Složka byla smazána
+  error_folder_is_not_empty: Složka není prázdná
+  error_folder_title_is_already_used: Název již existuje
+  notice_folder_details_were_saved: Detaily složky byly uloženy
+  error_folder_is_locked: Složka je zamčena
+  error_file_is_locked: Soubor je zamčen
+  notice_file_deleted: Soubor byl smazán
+  error_at_least_one_revision_must_be_present: Musí existovat alespoň jedna revize
+  notice_revision_deleted: Revize byla smazána
+  notice_revision_obsoleted: Revize je zastaralá
+  warning_one_of_files_locked: Jeden ze souborů je zamčen
+  notice_file_revision_created: vytvořena nová revize
+  notice_your_preferences_were_saved: Vaše nastavení bylo uloženo
+  notice_your_preferences_were_not_saved: Your preferences were not saved
+  warning_folder_notifications_already_activated: Notifikace složky již byly aktivovány
+
+  notice_folder_notifications_activated: Notifikace složky byly aktivovány
+  warning_folder_notifications_already_deactivated: Notifikace složky již byly deaktivovány
+
+  notice_folder_notifications_deactivated: Notifikace složky byly deaktivovány
+  warning_file_notifications_already_activated: Notifikace souboru již byly aktivovány
+
+  notice_file_notifications_activated: Notifikace souboru byly aktivovány
+  warning_file_notifications_already_deactivated: Notifikace souboru již byly deaktivovány
+
+  notice_file_notifications_deactivated: Notifikace souboru byly deaktivovány
+  link_details: "%{title} detaily"
+  link_edit: "Upravit %{title}"
+  submit_create: Vytvořit
+  link_create_folder: Vytvořit složku
+  link_title: Název
+  link_size: Velikost
+  link_modified: Změněno
+  link_ver: Ver.
+  link_author: Autor
+  title_check_for_zip_download_or_email: Vybrat pro stažení jako zip nebo emailem
+  title_check_for_restore_or_delete: Vybrat pro obnovení nebo smazání
+
+  title_delete: Smazat
+  title_notifications_active_deactivate: "Notifikace aktivní: Deaktivovat"
+  title_notifications_not_active_activate: "Notifikace nejsou aktivní: Aktivovat"
+  title_title_version_version_download: "%{title} verze %{version} stáhnout"
+  title_locked_by_user: "Zamčeno uživatelem %{user}"
+  title_locked_by_you: Zamčeno Vámi
+  title_waiting_for_approval: Čeká na schválení
+  title_approved: Schváleno
+  title_unlock_file: Odemknout a umožnit změny ostatním uživatelům
+  title_lock_file: Zamknout a zabránit změnám ostatních uživatelů
+  title_download_checked: Stáhnout vybrané jako Zip
+  title_send_checked_by_email: Zaslat vybrané emailem
+  link_user_preferences: Vaše nastavení
+  heading_send_documents_by_email: Odeslat dokumenty emailem
+  label_email_from: Od
+  label_email_to: Komu
+  label_email_cc: Kopie
+  label_email_subject: Předmět
+  label_email_documents: Documenty
+  label_email_body: Obsah
+  label_email_send: Odesláno
+  title_notifications_active: Notifikace jsou aktivní
+  label_upload_upload: Nahrát
+  heading_new_folder: Nová složka
+  label_title: Název
+  label_description: Popis
+  submit_save: Uložit
+  info_file_locked: Soubor je zamčen!
+  label_notifications: Notifikace
+  select_option_default: Výchozí
+  select_option_deactivated: Deaktivováno
+  select_option_activated: Aktivováno
+  label_title_format: Formát názvu
+  text_title_format: "Formát názvu souboru pro stažení (%t - název, %f - soubor, %d - datum, %v - verze, %i - ID, %r -
+    revize). Např.: %t_%v"
+  title_save_preferences: Uložit nastavení
+  heading_revisions: Revize
+  title_download: Stáhnout
+  title_delete_revision: Smazat revizi
+  title_obsolete_revision: Označit revizi jako zastaralou
+  label_created: Vytvořeno
+  label_changed: Změněno
+  info_changed_by_user: "%{changed} uživatelem"
+  label_filename: Jméno souboru
+  label_mime: Typ
+  label_size: Velikost
+  heading_new_revision: Nová revize
+  option_version_same: Stejná
+  option_version_minor: Podružná
+  option_version_major: Hlavní
+  option_version_custom: Vlastní
+  label_new_content: Nový obsah
+  label_maximum_files_upload: Maximální počet najednou nahraných souborů
+  note_maximum_number_of_files_uploaded: Maximální počet najednou nahraných souborů. 0 znamená bez omezení.
+
+  label_maximum_files_download: Maximální počet najednou stažených souborů
+  note_maximum_number_of_files_downloaded: Maximální počet najednou stažených souborů jako Zip nebo odeslaných emailem.
+    0 znamená bez omezení.
+  label_file_storage_directory: Složka pro uložení souborů
+  label_index_database: Index databáze
+  label_stemming_language: "Jazyk pro 'Stemming'"
+  note_possible_values: Povolené hodnoty
+  note_pass_none_to_disable_stemming: "zadej 'nic' pro vypnutí 'Stemming'"
+  label_stem_strategy: "'Stem' strategie"
+  option_stem_none: Stem nic (výchozí)
+  option_stem_some: Stem něco
+  option_stem_all: Stem vše
+  text_stemming_info: "Tímto se řídí, jak parser dotazů použije stemovací algoritmus. Výchozí hodnota je STEM_NONE.
+    Možné hodnoty jsou: STEM_NONE - Neaplikuj žádný steming, STEM_SOME - Použij stemování pro výrazy kromě těch, které
+    začínají velkým písmenem nebo jsou následovány určitýmy znaky('/@<>=*[{\"') nebo jsou použité s operátory, které
+    vyžadují informaci o pozici. Stemované výrazy začínají písmenem 'Z', STEM_ALL - Hledej stemové výrazy ve všech
+    slovech (prefix 'Z' není přidán)"
+  label_default_notifications: Výchozí notifikace pro soubory
+  heading_uploaded_files: Nahrané soubory
+  submit_commit: Potvrdit
+  link_documents: Dokumenty
+  permission_view_dmsf_file_revision_accesses: View downloads in Activity stream
+  permission_view_dmsf_file_revisions: View revisions in Activity stream
+  permission_view_dmsf_folders: Procházet dokumenty
+  permission_user_preferences: Nastavení uživatele
+  permission_view_dmsf_files: Zobrazit dokumenty
+  permission_folder_manipulation: Manipulace se složkami
+  permission_file_manipulation: Manipulace se soubory
+  permission_force_file_unlock: Vynucené odemknutí souboru
+  permission_manage_workflows: Spravovat schvalovací procesy
+  permission_file_delete: Mazat dokumenty
+  permission_display_system_folders: Zobrazit systémové adresáře
+  permission_file_approval: File approval
+  permission_email_documents: Email documents
+  label_file: Soubor
+  field_folder: Složka
+  error_file_commit_require_uploaded_file: Potvrzení vyžaduje nahraný soubor
+
+  warning_some_files_were_not_commited: "Některé soubory nebyly potvrzené z důvodu chyb při validaci: %{files}"
+
+  error_user_has_not_right_delete_folder: Uživatel nemá právo mazat složky
+
+  error_user_has_not_right_delete_file: Uživatel nemá právo mazat soubor
+
+  notice_entries_deleted: Položky smazány
+  warning_some_entries_were_not_deleted: "Některé položky nebyly smazány: %{entries}"
+  title_delete_checked: Smaž vybrané
+  title_items: položek
+  title_filename_for_download: Název Zip archivu ke stažení
+  label_number_of_folders: Složky
+  label_number_of_documents: Dokumenty
+  error_file_storage_directory_does_not_exist: Cílová složka neexistuje a nemůže být vytvořena
+
+  error_file_can_not_be_created: Nelze vytvořit soubor v cílové složce
+  error_wrong_zip_encoding: Chybné kódování Zipu
+  warning_xapian_not_available: Xapian není k dostupný
+  menu_dmsf: DMS  # Project tab title
+  label_physical_file_delete: Fyzické smazání souboru
+  user_is_not_project_member: Nejste členem projektu
+  heading_access_downloads_emails: Stažené/Emaily
+  heading_access_first: První
+  heading_access_last: Poslední
+  label_dmsf_updated: Změněno
+  label_dmsf_downloaded: Staženo
+  title_total_size_of_all_files: Celková velikost všech souborů ve složce
+  project_module_dmsf: DMS  # Project module name
+  warning_no_project_to_copy_file_to: Neexistuje projekt, do kterého můžete kopírovat
+  comment_copied_from: "Zkopírováno z %{source}"
+  field_target_project: Cílový projekt
+  field_target_folder: Cílová složka
+  title_copy_or_move: Kopírovat/Přesunout
+  label_dmsf_folder_plural: DMS Složky   # Search options
+  comment_moved_from: "Přesunuto z %{source}"
+  error_target_folder_same: Cílový složka a projekt jsou stejné jako aktuální
+  title_copy: Kopírovat
+
+  error_max_email_filesize_exceeded: "Přesáhli jste maximální velikost souboru, který lze poslat emailem.
+    (%{number} MB)"
+  note_maximum_email_filesize: Omezí se maximální velikost souboru, který může být poslán emailem. 0 znamená neomezený.
+    Číslo je v MB.
+  label_maximum_email_filesize: Maximální velikost souboru emailu
+  header_minimum_filesize: Chyba souboru.
+  error_minimum_filesize: "Soubor %{file} má nulovou velikost a nebude přiložen."
+  parent_directory: Nadřazená složka
+  note_webdav: "Webdav je po aktivaci k dispozici na %{protocol}://%{domain}/dmsf/webdav/[identifikátor projektu]"
+
+  label_dmsf_plural: "Kopíruj dokumenty a složky (%{files} souborů v %{folders} složkách)"
+
+  warning_folder_already_locked: Tato složka je již zamčená
+  notice_folder_locked: Složka byla úspěšně zamčena
+  warning_folder_not_locked: Složku nelze zamknout
+  notice_folder_unlocked: Složka byla odemčena
+  error_only_user_that_locked_folder_can_unlock_it: Nemáte oprávnění k odemknutí této složky
+
+  title_unlock_folder: Odemknout
+  title_lock_folder: Zamknout
+
+  select_option_webdav_readonly: Pouze pro čtení
+  select_option_webdav_readwrite: Čtení/Zápis
+  label_webdav_strategy: Webdav strategie
+
+  note_webdav_strategy: Umožní administrátorovi rozhodnout, zdali je webdav pouze pro čtení nebo i pro zápis.
+
+
+  error_unable_delete_dmsf_workflow: Nelze smazat schvalovací proces
+  error_empty_note: Musí být vyplněn komentář
+  error_workflow_assign: Chyba při přiřazování
+  error_cannot_start_workflow: Schvalovací proces nemůže být zahájen
+  error_cannot_renumber_steps: Schvalovací kroky nelze přečíslovat
+  label_dmsf_workflow_new: Nový schvalovací proces
+  field_label_dmsf_workflow: Schvalovací proces
+  field_label_dmsf_workflow_name: Approval workflow name
+  label_dmsf_workflow_plural: Schvalovací procesy
+  label_dmsf_workflow_plural_num: Schvalovací procesy (%{count})
+  label_dmsf_workflow_step: Krok
+  label_dmsf_workflow_step_plural: Kroky
+  label_dmsf_workflow_approval: Schválení
+  label_dmsf_workflow_approval_plural: Schválení
+  label_dmsf_wokflow_action_approve: Schválit
+  label_dmsf_wokflow_action_reject: Odmítnout
+  label_dmsf_wokflow_action_delegate: Delegovat na
+  label_dmsf_wokflow_action_assign: Přiřadit schvalovací proces
+  label_dmsf_wokflow_action_start: Zahájit schvalovací proces
+  label_dmsf_workflow_add_approver: "Přidat schvalovatele s logickou funkcí:"
+  label_or: nebo
+  label_action: Akce
+  label_note: Komentář
+  title_none: Žádný
+  title_rejection: Zamítnutí
+  title_delegation: Delegace
+  title_assignment: Přiřazení
+  title_start: Zahájení
+  title_dmsf_workflow_log: Historie schvalovacího procesu
+  title_assigned: Přiřazený
+  title_approval: Schválený
+  title_rejected: Zamítnutý
+  title_obsolete: Zastaralá
+  dmsf_and: A
+  dmsf_or: NEBO
+  dmsf_new_step: Nový krok
+  dmsf_new_step_or_approver: Nový krok nebo Nový schvalovatel
+  message_dmsf_wokflow_note: Váš komentář...
+  info_revision: "r%{rev}"
+  link_workflow: Schvalovací proces
+  notice_workflow_started: Schvalovací proces byl úspěšně zahájen
+  text_email_subject_approved: schválen
+  text_email_subject_rejected: zamítnut
+  text_email_subject_delegated: delegován
+  text_email_subject_requires_approval: očekává Vaše schválení
+  text_email_subject_updated: aktualizován
+  text_email_subject_started: spuštěn
+  text_email_finished_approved: "Schvalovací proces '%{name}' přiřazený k dokumentu '%{filename}' byl právě ukončen a
+    dokument je schválen."
+  text_email_finished_rejected: "Schvalovací proces '%{name}' přiřazený k dokumentu '%{filename}' byl dokončen a
+    dokument byl zamítnut, protože '%{notice}'."
+  text_email_finished_delegated: "Schvalovací proces '%{name}' přiřazený k dokumentu '%{filename}' byl delegován,
+    protože '%{notice}' a od Vás se očekává schválení v aktuálním schvalovacím kroku."
+  text_email_finished_step: "Schvalovací proces '%{name}' přiřazený k dokumentu '%{filename}' právě ukončil jeden ze
+    schvalovacích kroků a od Vás se očekává schválení v dalším schvalovacím kroku."
+  text_email_finished_step_short: "Schvalovací proces '%{name}' přiřazený k dokumentu '%{filename}' právě ukončil jeden
+    ze schvalovacích kroků."
+  text_email_started: "Schvalovací proces '%{name}' přiřazený k dokumentu '%{filename}' byl zahájen a od Vás se očekává
+    schválení v aktuálním schvalovacím kroku."
+  text_email_to_proceed: Pro schválení klikněte na zaškrtávací ikonku vedle dokumentu v
+  text_email_to_see_history: Pro zobrazení historie schvalovacího procesu klikněte na status dokumentu v
+
+  text_email_to_see_status: Pro zobrazení aktuálního stavu schvalovacího procesu klikněte na status dokumentu v
+
+
+  title_create_link: Vytvořit symbolický odkaz
+  label_link_from: Odkaz z
+  label_link_to: Odkaz do
+  label_notifications_on: Zapnout notifikace
+  label_notifications_off: Vypnout notifikace
+  field_target_file: Zdrojový soubor
+  title_download_entries: Historie stahování
+  label_external: Externí
+  label_internal: Interní
+
+  label_link_name: Název odkazu
+  field_external_url: URL
+  label_target_folder: Cílová složka
+  label_source_folder: Zdrojová složka
+  label_target_project: Cílový projekt
+  label_source_project: Zdrojový projekt
+
+  text_email_doc_updated_subject: Dokumenty aktualizovány
+  text_email_doc_updated: právě aktualizoval dokumenty projektu
+  text_email_doc_follows: takto
+  text_email_doc_deleted_subject: Dokumenty smazány
+  text_email_doc_deleted: právě smazal dokumety projektu
+  label_links_only: pouze odkazy
+
+  label_display_notified_recipients: Zobrazit příjemce notifikací
+  note_display_notified_recipients: Uživatel bude informován o příjemcích právě odeslané emailové notifikace.
+
+  warning_email_notifications: "Notifikační email poslán na uživatele %{to}"
+
+  link_trash_bin: Koš
+  title_restore: Obnovit
+  notice_dmsf_file_restored: Document byl úspěšně obnoven
+  notice_dmsf_folder_restored: Složka byla úspěšně obnovena
+  notice_dmsf_link_restored: Odkaz byl úspěšně obnoven
+  title_restore_checked: Obnov vybrané
+  error_parent_folder: Nadřazená složka neexistuje
+
+  error_resource_or_parent_locked: Nelze zamknout - zdrojový nebo nadřazený objekt je zamčený
+  error_parent_locked: Nelze zamknout - nadřazený objekt je zamčený
+  error_resource_locked: Nelze zamknout - zdrojový objekt je zamčený
+  error_lock_exclusively: Nelze zamknout již zamčený objekt
+  error_unlock_parent_locked: Nelze odemknout - nadřazený objekt je zamčený
+
+  field_dmsf_tree_view: Zobrazit složky jako stromovou strukturu
+  label_dmsf_version: Verze
+
+  locked_documents: Zamčené dokumenty
+  open_approvals: Procesy ke schválení
+
+  label_maximum_ajax_upload_filesize: Maximální velikost souboru nahratelná přes AJAX
+  note_maximum_ajax_upload_filesize: Omezuje velikost souboru, který může být nahrán přes standardní rozhraní AJAX,
+    jinak se použije standardní rozhraní Redminu. Číslo je v MB.
+
+  label_classic: Klasický
+  label_drag_drop: Moderní
+
+  error_maximum_upload_filecount: "Nelze nahrát více než %{filecount} soubor(ů)."
+
+  label_public_urls: Veřejné URL platné do
+
+  label_webdav: WebDAV
+  label_full_text: Full-textové vyhledávání
+  link_extension: Příp.
+
+  label_webdav_ignore: Vzory názvů ignorovaných souborů
+  note_webdav_ignore: Regulární výraz pro názvy souborů, které budou ignorovány při volání PUT.
+
+  label_document_url: Url
+  label_last_revision_id: Revize
+  
+  label_webdav_disable_versioning: No versioning files patterns
+  note_webdav_disable_versioning: A regular expression that disables versioning for matching files. The default pattern
+    matches temporary files created by MsOffice.
+
+  label_dmsf_keep_documents_locked: Ponechat dokumenty zamčené
+  note_dmsf_keep_documents_locked: Dokumenty zůstanou i po schválení zamčené.
+  note_global: (globální)
+  field_dmsf_not_inheritable: Není dědičné
+  
+  label_webdav_use_project_names: Použít názvy projektů
+  note_webdav_use_project_names: Použít názvy projektů místo identifikátorů pro názvy adresářů.
+
+  label_last_approver: Poslední schvalovatel
+
+  label_act_as_attachable: Jako příloha
+  note_dmsf_act_as_attachable: Umožní přikládat dokumenty k objektům např. k úkolům.
+
+  label_user_search_add: Vyhledej uživatele pro přidání
+
+  label_dmsf_attachments: DMS přílohy
+  label_basic_attachments: Souborové přílohy
+
+  label_tmpdir: Adresář pro dočasné soubory
+  error_file_tmpdir_does_not_exist: Adresář pro dočasné soubory neexistuje a nemůže být vytvořen
+  error_tmpfile_can_not_be_created: Nelze vytvořit soubor v adresáři pro dočasné soubory
+
+  label_email_from_override: Od
+  text_email_from_override: aktuálně přihlášený uživatel
+  label_email_reply_to: Odpovědět komu
+
+  label_enable_cjk_ngrams: Povolit generování n-gramů pro CJK texty
+  text_enable_cjk_ngrams: "Pokud je povoleno, sekvence čínských nebo japonských znaků jsou rozděleny  do jednotlivých
+    znaků nebo skupin znaků. Znaky si nesou informaci o své pozici. Znaky psané latinkou jsou rozděleny normálně do
+    slov. Odpovídající proměná prostředí musí být použita při indexaci.
+    např.: XAPIAN_CJK_NGRAM=true ruby plugins/redmine_dmsf/extra/xapian_indexer.rb -fv"
+
+  label_dmsf_fast_links: Rychlé odkazy
+  text_dmsf_fast_links_info: Při vytváření odkazů budete moci zadat přímo ID cílového adresáře za účelem zrychlení
+    procesu vytváření odkazů.
+
+  easy_pages:
+    modules:
+      dmsf_locked_documents: My locked documents
+      dmsf_open_approvals: My open approvals
+    module_category:
+      easy_dms: Easy DMS
+
+  activerecord:
+    errors:
+      messages:
+        error_contains_invalid_character: obsahuje neplatné znaky

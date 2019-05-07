@@ -1,0 +1,8 @@
+<div class="attributes">
+	<div class="splitcontent">
+		<%= render :partial => 'issue_story_points_form', :locals => { :form => form } %>
+	</div>
+</div>
+<% content_for :header_tags do %>
+	<%= javascript_include_tag "redmine_agile", :plugin => 'redmine_agile' %>
+<% end %>

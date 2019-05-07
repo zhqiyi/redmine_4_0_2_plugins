@@ -1,0 +1,9 @@
+tr:
+  share_button: "Paylaş"
+  share_title: "Paylaşma bağlantısı"
+  share_label_with: "Share with"
+  share_label_page: "Sayfası"
+  share_label_subject: "%{sender} sizinle %{record} ögesini paylaştı"
+  share_text_message: "%{sender} sizinle %{record} ögesini paylaştı."
+  share_notice_email_sent: "E-posta gönderildi"
+  share_notice_email_error: "E-posta gönderilirken bir hata oluştu"

@@ -1,0 +1,10 @@
+<table>
+  <%@usermapping.each_index do |map_id| %>  
+  <tr>
+	<td><%= @usermapping[map_id][0]%> Original Name: <%= @usermapping[map_id][1]%></td> 
+	<td>Map to: </td>
+	<% select_id = 'map_user_to_' + @usermapping[map_id][0].to_s %>
+	<td><%= select_tag select_id, options_from_collection_for_select(@project.members.sort_by{ |u| [u.name]}, "user_id", "name", (@usermapping[map_id][2] == "not found" ? "not found" : @usermapping[map_id][2].id)), include_blank: true, disabled: (@usermapping[map_id][2] == "not found" ? false : true) %></tp>
+  </tr>
+  <%end%>
+</table>

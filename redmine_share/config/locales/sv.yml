@@ -1,0 +1,9 @@
+sv:
+  share_button: "Dela"
+  share_title: "Dela länk"
+  share_label_with: "Share with"
+  share_label_page: "Sida"
+  share_label_subject: "%{sender} delade %{record} med dig"
+  share_text_message: "%{sender} delade %{record} med dig."
+  share_notice_email_sent: "Ett mail skickades till"
+  share_notice_email_error: "Ett fel inträffade när mail skickades"

@@ -1,0 +1,104 @@
+= Redmine CKEditor plugin
+
+This plugin adds the text formatting for using CKEditor to Redmine.
+
+Since version 1.0.0, it includes {Rich}[https://github.com/bastiaanterhorst/rich] and supports image uploads.
+
+== What is CKEditor?
+
+CKEditor is a WYSIWYG text editor.
+See {the official site}[http://ckeditor.com/] for more details.
+
+== Requirements
+
+{ImageMagick}[http://www.imagemagick.org/] (Since version 1.0.0)
+   # Ubuntu
+   apt-get install imagemagick
+   # Mac OS X
+   brew install imagemagick
+
+* Redmine 4.x (version {1.2.1}[https://github.com/a-ono/redmine_ckeditor/releases/tag/1.2.1])
+
+* Redmine 3.x, (version {1.1.7}[https://github.com/a-ono/redmine_ckeditor/releases/tag/1.1.7])
+
+* Redmine 2.3.x, Ruby 1.9.2 or higher (version {1.0.20}[https://github.com/a-ono/redmine_ckeditor/releases/tag/1.0.20])
+
+* Redmine 2.3.x (version {0.4.0}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.4.0])
+
+* Redmine 2.2.x (version {0.3.0}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.3.0])
+
+* Redmine 2.1.x (version {0.2.1}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.2.1])
+
+* Redmine 2.0.x (version {0.1.1}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.1.1])
+
+* Redmine 1.1.0 - 1.4.2 (version {0.0.6}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.0.6])
+
+== Plugin installation and setup
+
+1. Download the {zip package}[https://github.com/a-ono/redmine_ckeditor/archive/master.zip] and extract the directory that it contains into the plugins directory (make sure the name is redmine_ckeditor)
+2. Install the required gems (in the Redmine root directory)
+    bundle install --without development test
+3. Execute migration
+    rake redmine:plugins:migrate RAILS_ENV=production
+4. Start Redmine
+5. Change the text formatting (Administration > Settings > General > Text formatting) to CKEditor
+6. Configure the plugin (Administration > Plugins > Configure)
+
+=== Upgrade
+
+1. Replace the plugin directory (plugins/redmine_ckeditor)
+2. Install the required gems
+    bundle install --without development test
+3. Execute migration
+    rake redmine:plugins:migrate RAILS_ENV=production
+4. Delete old assets
+    rm -r public/plugin_assets/redmine_ckeditor
+5. Restart Redmine
+
+=== Uninstall
+
+1. Change the text formatting (Administration > Settings > General > Text formatting) to textile
+2. Rollback the migration
+
+        rake redmine:plugins:migrate  NAME=redmine_ckeditor VERSION=0 RAILS_ENV=production
+
+3. Delete the plugin directory (plugins/redmine_ckeditor)
+
+== CKEditor customization
+
+=== Plugins
+
+You can download plugins from {Add-ons Repository}[http://ckeditor.com/addons/plugins/all].
+To activate the plugin you have to copy the plugin directory into assets/ckeditor-contrib/plugins and restart Redmine, then configure toolbar settings.
+
+=== Skins
+
+You can select third-party skins placed in assets/ckeditor-contrib/skins directory.
+
+=== Configuration
+
+You can configure {CKEditor settings}[http://docs.ckeditor.com/#!/api/CKEDITOR.config] and HTML sanitizer by using the REDMINE_ROOT/config/ckeditor.yml file.
+    cp plugins/redmine_ckeditor/config/ckeditor.yml.example config/ckeditor.yml
+
+== Migration notes
+
+This plugin stores contents in HTML format and renders as is.
+If you have old contents, these look weird.
+
+You can use {redmine_per_project_formatting}[https://github.com/a-ono/redmine_per_project_formatting] plugin for backward compatibility or execute redmine_ckeditor:migrate task for migrating old text to HTML.
+    rake redmine_ckeditor:migrate RAILS_ENV=production FROM=textile TO=html
+You can also use PROJECT parameter to migrate only specific projets
+    rake redmine_ckeditor:migrate RAILS_ENV=production PROJECT=project_identifier1,project_identifier2 FROM=textile TO=html 
+This task requires to {install Pandoc}[http://johnmacfarlane.net/pandoc/installing.html].
+
+== Upgrading CKEditor (for development)
+
+1. Checkout the new version of CKEditor(full package) in the submodule directory
+
+    git submodule update --init
+    cd app/assets/javascripts/ckeditor-releases
+    git checkout FULL_VERSION (e.g. full/4.4.6)
+
+2. Execute generator
+
+    rails generate redmine_ckeditor:rich_assets

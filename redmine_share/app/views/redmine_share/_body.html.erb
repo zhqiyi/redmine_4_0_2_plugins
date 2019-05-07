@@ -1,0 +1,13 @@
+<% if @project && User.current.login?
+     obj = @issue || @wiki || @page || @news || @document || @topic ||
+       @board || @repository || @version || nil %>
+<div id="redmine-share-dialog" style="display: none"></div>
+<script>
+$(function() {
+  $('#content > .contextual').append(
+    '<%= escape_javascript render(
+      partial: 'redmine_share/contextual',
+      locals: {project: @project, object: obj}) %>');
+});
+</script>
+<% end %>

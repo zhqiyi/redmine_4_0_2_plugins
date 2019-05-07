@@ -1,0 +1,17 @@
+<% if @issues.any? && User.current.allowed_to?(:view_agile_charts, @project) %>
+  <fieldset>
+    <legend>
+    <%= l(:label_agile_chart) %>
+    <%= select_tag('chart', options_charts_for_select(params[:chart] || RedmineAgile.default_chart),
+                       :id => 'chart_by_select',
+                       :data => {:remote => true, :method => 'get', :url => agile_charts_select_version_chart_path(:version_id => @version)}) %>
+    </legend>
+    <div id='agile_chart'>
+      <%= render_agile_chart(params[:chart] || RedmineAgile.default_chart, @version.fixed_issues) %>
+    </div>
+  </fieldset>
+<% end %>
+
+<% content_for :header_tags do %>
+  <%= chartjs_assets %>
+<% end %>

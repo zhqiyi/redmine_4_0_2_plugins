@@ -1,0 +1,8 @@
+<!-- </PRO> -->
+<h2><%= l(:label_agile_chart_new) %></h2>
+
+<%= form_tag(@project ? project_agile_charts_queries_path(@project) : agile_charts_queries_path) do %>
+  <%= render partial: 'form', locals: { query: @query } %>
+  <%= submit_tag l(:button_create) %>
+<% end %>
+<!-- </PRO> -->

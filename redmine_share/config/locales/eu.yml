@@ -1,0 +1,9 @@
+eu:
+  share_button: "Partekatu"
+  share_title: "Partekatu esteka"
+  share_label_with: "Share with"
+  share_label_page: "Orria"
+  share_label_subject: "%{sender}-ek %{record} zurekin partekatu du"
+  share_text_message: "%{sender}-ek %{record} zurekin partekatu du."
+  share_notice_email_sent: "helbidera eposta bat bidali da"
+  share_notice_email_error: "Errorea eposta bidaltzean"

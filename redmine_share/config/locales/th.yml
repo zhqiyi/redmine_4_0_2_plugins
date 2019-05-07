@@ -1,0 +1,9 @@
+th:
+  share_button: Share
+  share_title: "Share link"
+  share_label_with: "Share with"
+  share_label_page: "หน้า"
+  share_label_subject: "%{sender} ถูกแชร์ %{record} กับคุณ"
+  share_text_message: "%{sender} ถูกแชร์ %{record} กับคุณ."
+  share_notice_email_sent: "อีเมล์ได้ถูกส่งถึง"
+  share_notice_email_error: "เกิดความผิดพลาดขณะกำส่งอีเมล์"

@@ -1,0 +1,9 @@
+it:
+  share_button: "Condividi"
+  share_title: "Condividi collegamento"
+  share_label_with: "Condividi con"
+  share_label_page: "Pagina"
+  share_label_subject: "%{sender} ha condiviso %{record} con te"
+  share_text_message: "%{sender} ha condiviso %{record} con te."
+  share_notice_email_sent: "Una email è stata spedita a"
+  share_notice_email_error: "Si è verificato un errore durante l'invio di una email"

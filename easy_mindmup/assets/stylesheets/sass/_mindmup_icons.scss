@@ -1,0 +1,50 @@
+$mindmup-icons: (
+        add: \e3ba,
+        add_sibling: \e3ba,
+        insert_between: \e3bb,
+        remove: \e92b,
+        rename: \e22b,
+        edit_data: \e880,
+        follow_url: \e0e2,
+        zoom_in: \e8ff,
+        zoom_out:\e900,
+        refresh_view: \e881,
+        filter: \e152,
+        cancel: \e5c9,
+        cancel_filter: \e5c9,
+        close: \e5cd,
+        display: \e417,
+        links: \e157,
+        icons: \e24e,
+        collapse: \e909,
+        expand: \e146,
+        one_side: \e86d,
+        settings: \e8b8,
+        undo: \e166,
+        redo: \e15a,
+        print: \e16b,
+        cut: \e14e,
+        copy: \e14d,
+        paste: \e14f,
+        save: \e161,
+        legend: \e5d2,
+        legend_hide: \e06d,
+);
+
+.easy-mindmup {
+  &__icon {
+    @include icon-parent;
+    &:before {
+      font-family: "Material Icons", sans-serif;
+    }
+    @each $icon, $sign in $mindmup-icons {
+      &--#{$icon}:before {
+        content: unicode($sign);
+      }
+    }
+    &.button {
+      @extend %button-with-icon;
+      padding-left: 3*$gap;
+    }
+  }
+}

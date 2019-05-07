@@ -1,0 +1,19 @@
+<div class="content-title"><%= title(easy_query_name) %></div>
+
+<%= form_tag(project_easy_wbs_index_path(@project), method: :get, id: 'query_form') do %>
+  <div id="query_form_with_buttons" class="hide-when-print">
+    <%= hidden_field_tag 'set_filter', '1' %>
+    <div id="query_form_content">
+      <fieldset id="filters" class="collapsible collapsed">
+        <legend onclick="toggleFieldset(this);"><%= l(:label_filter_plural) %></legend>
+        <div style="display: none;">
+          <%= render 'queries/filters', query: @query %>
+        </div>
+      </fieldset>
+    </div>
+    <p class="buttons">
+      <%= link_to_function l(:button_apply), '$("#query_form").submit()', class: 'icon icon-checked' %>
+      <%= link_to l(:button_clear), { set_filter: 1, project_id: @project }, class: 'icon icon-reload' %>
+    </p>
+  </div>
+<% end %>

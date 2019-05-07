@@ -1,0 +1,16 @@
+= Issue Charts plug-in
+
+This plugin provides the capability to create beautiful charts and graphs for your issues using Chartkick (http://chartkick.com). Create issue visualizations based on standard fields as well as custom fields!
+
+== Installation
+
+* Clone into your plugins folder: <code>git clone https://github.com/masweetman/issue_charts.git</code>
+* Run <code>bundle install</code>
+* Run <code>rake redmine:plugins:migrate RAILS_ENV=production</code>
+* Restart Redmine
+* Set Chart permissions in Redmine Administration
+
+== To use groupdate
+
+* In config/application.rb, set the time zone to utc: <code>config.active_record.default_timezone = :utc</code>
+* Install time zone support: <code>https://github.com/ankane/groupdate#for-mysql</code>

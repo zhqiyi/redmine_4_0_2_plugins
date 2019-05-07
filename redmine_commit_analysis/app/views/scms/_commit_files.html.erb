@@ -1,0 +1,16 @@
+<fieldset id="filters" class="collapsible <%= @query.new_record? ? "" : "collapsed" %>">
+  <legend onclick="toggleFieldset(this);"><%= t("commit_analysis.display_list_title") %></legend>
+  <div id="gridtop" style="height:270px; margin: 5px 0px 20px 0px">
+  </div>
+</fieldset>
+
+<fieldset id="filters" class="collapsible <%= @query.new_record? ? "" : "collapsed" %>">
+  <legend onclick="toggleFieldset(this);"><%= t("commit_analysis.display_graph_title") %></legend>
+  <div id="charttop" data-tracker-id="<%= @trackers.to_json %>" data-changelist-id="<%= @changelist.to_json %>">
+    <canvas id="commitchart"></canvas>
+  </div>
+</fieldset>
+<div  style="display: none;">
+  <span id="label_path"><%= t("commit_analysis.file_path") %></span>
+  <span id="label_total"><%= t("commit_analysis.total_count") %></span>
+</div>

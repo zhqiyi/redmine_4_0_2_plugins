@@ -1,0 +1,10 @@
+# English strings go here for Rails i18n
+en:
+  share_button: Share
+  share_title: "Share link"
+  share_label_with: "Share with"
+  share_label_page: "Page"
+  share_label_subject: "%{sender} shared %{record} with you"
+  share_text_message: "%{sender} shared %{record} with you."
+  share_notice_email_sent: "An email was sent"
+  share_notice_email_error: "An error occurred while sending mail"

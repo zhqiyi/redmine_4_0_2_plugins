@@ -1,0 +1,62 @@
+<h1><%= l(:menu_issues_summary_graph) %></h1>
+<table>
+<tr>
+<td class="issues-summary status-selection">
+<%= form_tag :action => 'show' do |f| %>
+  <div><%= l(:message_is_closed_select_status) %></div>
+  <div>
+    <%= select_tag :closed_status_ids,
+      options_for_select(IssueStatus.all.collect {|status| [status.name, status.id]}, @closed_status_ids),
+      :multiple => true, :name => 'closed_status_ids[]' %>
+  </div>
+  <div>
+    <%= l(:field_start_date) %>:
+    <%= text_field_tag :from, @from, :size => 10 %><%= calendar_for('from') %>
+  </div>
+  <div>
+      <% if Redmine::VERSION::MAJOR < 3 or (Redmine::VERSION::MAJOR == 3 and Redmine::VERSION::MINOR < 4) then %>
+      <%= l(:description_date_to) %>:
+    <% else %>
+      <%= l(:field_closed_on) %>:
+    <% end %>
+    <%= text_field_tag :to, @to, :size => 10 %><%= calendar_for('to') %>
+  </div>
+  <div>
+    <%= l(:include_subproject) %>:
+    <%= check_box_tag :include_subproject, true, @include_subproject %>
+  </div>
+  <% unless @versions.empty? %>
+  <div>
+    <%= l(:label_version) %>:
+    <%= select_tag :version_ids,
+      options_for_select([["", "0"]] + @versions.collect {|version| [version.name, version.id]}, @version_ids),
+      :multiple => true, :name => 'version_ids[]' %>
+  </div>
+  <% end %>
+  <div>
+    <%= submit_tag l(:reload) %>
+  </div>
+<% end %>
+</td>
+<td id='graph_image'>
+<p class="spinner">
+<%= image_tag("spinner.gif", :plugin => "redmine_issues_summary_graph", :style => 'width:40px;height:40px') %>
+</p>
+
+<p class="summary-graph">
+<%= image_tag(url_for(:controller => 'issues_summary_graph', :action => 'summary_graph', :project_id => @project.identifier, :closed_issue_statuses => @closed_status_ids, :versions => @version_ids, :from => @from, :to => @to, :include_subproject => @include_subproject, :format => 'png')) %>
+</p>
+</td>
+</tr>
+</table>
+
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "application.css", :plugin => "redmine_issues_summary_graph", :media => "screen" %>
+  <script type="text/javascript">
+    $(function() {
+      $('.summary-graph img').on('load', function() {
+        $('.spinner img').hide();
+      });
+    });
+  </script>
+<% end %>

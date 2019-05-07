@@ -1,0 +1,17 @@
+add_filters:
+  repository.commit_date:
+    option:
+      :type:      :date
+      :name:
+    name_key:  :field_commit_date
+  repository.revision:
+    option:
+      :type:      :integer
+      :name:
+    name_key:  :field_revision
+  repository.ignorefile:
+    option:
+      :type:      :string
+      :name:
+    name_key:  :field_ignore_file
+

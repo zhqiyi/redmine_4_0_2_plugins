@@ -1,0 +1,9 @@
+vi:
+  share_button: "Chia sẻ"
+  share_title: "Chia sẻ liên kết"
+  share_label_with: "Share with"
+  share_label_page: "Trang"
+  share_label_subject: "%{sender} đã chia sẻ %{record} với bạn"
+  share_text_message: "%{sender} đã chia sẻ %{record} với bạn."
+  share_notice_email_sent: "Email đã được gửi tới"
+  share_notice_email_error: "Lỗi xảy ra khi gửi email"

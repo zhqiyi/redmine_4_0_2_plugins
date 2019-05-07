@@ -1,0 +1,9 @@
+es-PA:
+  share_button: "Compartir"
+  share_title: "Compartir enlace"
+  share_label_with: "Compartir a"
+  share_label_page: "Página"
+  share_label_subject: "%{sender} ha compartido %{record} contigo"
+  share_text_message: "%{sender} ha compartido %{record} contigo."
+  share_notice_email_sent: "Se ha enviado un correo a"
+  share_notice_email_error: "Ha ocurrido un error mientras enviando el correo"

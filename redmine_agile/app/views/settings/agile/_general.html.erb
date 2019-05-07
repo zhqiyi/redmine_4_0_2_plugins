@@ -1,0 +1,60 @@
+
+<p>
+  <label><%= l(:label_agile_board_items_limit) %></label>
+  <%= text_field_tag 'settings[board_items_limit]', RedmineAgile.board_items_limit, :size => 3 %>
+</p>
+
+<p>
+  <label><%= l(:label_agile_board_default_fields) %></label>
+  <%= select_tag 'settings[default_columns]', options_for_select(AgileQuery.new(:column_names => RedmineAgile.default_columns).available_columns.collect{|column| [column.caption, column.name]}, RedmineAgile.default_columns), :multiple => true, :include_blank => true, :size => 10, :style => "width:150px" %>
+</p>
+
+<p>
+  <label><%= l(:label_agile_esitmate_units) %></label>
+  <%= select_tag 'settings[estimate_units]', options_for_select(RedmineAgile::ESTIMATE_UNITS.map{ |eu| [l("label_agile_#{eu}"), eu] }, 
+    RedmineAgile.estimate_units), :onchange => "toggleTrackerForSP(this); return false" %>
+  <script type="text/javascript">
+    function toggleTrackerForSP (node) {
+      if ($(node).val() == 'story_points')
+        $('#trackers_for_sp').show();
+      else
+        $('#trackers_for_sp').hide();
+    }
+  </script>
+</p>
+<div id="trackers_for_sp" style="display:<%= RedmineAgile.use_story_points? ? 'block' : 'none' %>">
+  <p>
+    <label><%= l(:label_agile_trackers_for_sp) %></label>
+    <%= select_tag 'settings[trackers_for_sp]', options_for_select(Tracker.all.map{|tr| [tr.name, tr.id]}, RedmineAgile.trackers_for_sp), :prompt => "All", :style => "width:150px" %>
+  </p>
+</div>
+<p>
+  <label><%= l(:label_agile_default_chart) %></label>
+  <%= select_tag 'settings[default_chart]', options_charts_for_select(RedmineAgile.default_chart) %>
+</p>
+
+<p>
+  <label for="settings_exclude_weekends"><%= l(:label_agile_exclude_weekends) %></label>
+  <%= hidden_field_tag 'settings[exclude_weekends]', 0, :id => nil %>
+  <%= check_box_tag 'settings[exclude_weekends]', 1, RedmineAgile.exclude_weekends? %>
+</p>
+
+<p>
+  <label><%= l(:label_agile_time_reports_items_limit) %></label>
+  <%= text_field_tag 'settings[time_reports_items_limit]', RedmineAgile.time_reports_items_limit, :size => 3 %>
+</p>
+<p>
+  <label for="settings_hide_closed_issues_data"><%= l(:label_agile_hide_closed_issues_data) %></label>
+  <%= check_box_tag 'settings[hide_closed_issues_data]', 1, RedmineAgile.hide_closed_issues_data? %>
+</p>
+<p>
+  <label for="settings_auto_assign_on_move"><%= l(:label_agile_auto_assign_on_move) %></label>
+  <%= hidden_field_tag 'settings[auto_assign_on_move]', 0, :id => nil %>
+  <%= check_box_tag 'settings[auto_assign_on_move]', 1, RedmineAgile.auto_assign_on_move? %>
+</p>
+
+<p>
+  <label for="settings_allow_inline_comments"><%= l(:label_agile_inline_comment) %></label>
+  <%= hidden_field_tag 'settings[allow_inline_comments]', 0, :id => nil %>
+  <%= check_box_tag 'settings[allow_inline_comments]', 1, RedmineAgile.allow_inline_comments? %>
+</p>

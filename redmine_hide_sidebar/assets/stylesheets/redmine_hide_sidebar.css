@@ -1,0 +1,67 @@
+#main-menu .menu-children, .ui-widget-content {
+  z-index: 15;
+}
+
+#hideSidebarButton {
+  position: fixed;
+  width: 7px;
+  height: 23px;
+  background-image: url("../images/buttons.png");
+  background-position: 0 0;
+}
+
+#hideSidebarButton:hover {
+  cursor: pointer;
+}
+
+#hideSidebarButton.sidebar_hidden {
+  background-position: -7px 0;
+}
+
+#sidebarHandler {
+  position: absolute;
+  float: right;
+  top: 50px;
+  right: 0px;
+  margin-top: 50px;
+  margin-right: 7px;
+  z-index: 11;
+}
+
+#content {
+  position: relative;
+  z-index:0;
+}
+
+#context-menu{
+  position: fixed !important;
+}
+
+#sidebar {
+  z-index:0;
+}
+
+#sidebar.sidebar_hidden {
+  display: none;
+}
+
+body #content.sidebar_hidden {
+  width: auto;
+  margin-right: 0;
+}
+
+/***** Media print specific styles *****/
+@media print {
+  #sidebarHandler {
+    display: none;
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  body #content {
+    width: auto;
+    margin-right: 0;
+  }
+}

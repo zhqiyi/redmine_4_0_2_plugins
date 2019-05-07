@@ -1,0 +1,30 @@
+.mindmup-progress {
+  &-modal {
+    position: fixed;
+    z-index: 10000;
+    width: 40%;
+    height: 150px;
+    top: 150px;
+    left: 30%;
+    right: 30%;
+    padding-top: 30px;
+    background-color: $color-foreground;
+    border: 1px solid $color-border;
+    box-shadow: 6px 6px 42px 7px transparentize($color-border, 0.35);
+    h3 {
+      text-align: center;
+    }
+  }
+  &-cont {
+    height: 8px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 1px solid $color-border;
+  }
+  &-bar {
+    width: 50%;
+    height: 100%;
+    background-color: green;
+  }
+}

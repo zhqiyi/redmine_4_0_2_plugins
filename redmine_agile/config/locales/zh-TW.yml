@@ -1,0 +1,92 @@
+# encoding: utf-8
+# Simplified Chinese strings go here for Rails i18n
+# Author: zhoutt
+# Based on file: en.yml
+
+'zh-TW':
+  label_agile: 敏捷
+  label_agile_board: 敏捷看板
+  label_agile_board_plural: 敏捷看板
+  label_agile_board_thumbnails: 縮略圖
+  label_agile_board_more_issues: 更多問題
+  error_agile_status_transition: 不能更改問題狀態
+  label_agile_board_new: 新敏捷看板
+  label_agile_board_edit: 編輯敏捷看板
+  label_agile_my_boards: 我的敏捷看板
+  label_agile_issue_id: 問題ID
+
+  permission_manage_public_agile_queries: 管理公共敏捷看板
+  permission_add_agile_queries: 新建敏捷看板
+  permission_view_agile_queries: 瀏覽敏捷看板
+
+  #1.1.0
+  label_agile_board_default_fields: 默認卡片區域
+  label_agile_charts_issues_burndown: 問題燃燒圖
+  label_agile_charts_work_burndown: 工作燃燒圖
+  label_agile_charts_number_of_hours: 時長數
+  label_agile_charts_number_of_issues: 問題數
+  label_agile_charts_cumulative_flow: 累積流量
+  label_agile_charts_trackers_cumulative_flow: 追蹤累流量
+  label_agile_charts_issues_velocity: 速度
+  label_agile_charts_lead_time: 交付周期
+  label_agile_charts_average_lead_time: 平均交付周期
+  label_agile_chart_plural: 敏捷圖標
+  permission_view_agile_charts: 瀏覽敏捷圖標
+  label_agile_ideal_work_remaining: 理想
+  label_agile_actual_work_remaining: 實際
+  label_agile_chart: 圖表
+  label_agile_date_from: 自
+  label_agile_date_to: 至
+  label_agile_chart_dates: 圖標間隔
+  label_agile_weighed_ideal_work_remaining: 理想權衡
+  label_agile_status_colors: 狀態顏色
+  label_agile_charts_burnup: 問題燃燒圖
+  label_agile_charts_number_of_days: 天數
+  label_agile_too_many_items: "該圖表因超出可顯示的最大項目數而不能被創建(%{max})"
+  label_agile_time_reports_items_limit: 時間條目基于圖表的問題限制
+  label_agile_total_work_remaining: 總計
+  label_agile_default_chart: 版本默認圖表
+
+  #1.1.1
+  label_agile_charts_average_velocity: 平均速率
+  label_agile_charts_avarate_number_of_issues: 平均問題數
+  label_agile_charts_avarate_number_of_hours: 平均時長
+
+  #1.2.0
+  label_agile_color: 顏色
+  permission_manage_agile_verions: 管理版本規劃
+  label_agile_version_planning: 版本規劃
+  error_agile_version_transition: 不能更改問題版本
+  label_agile_tracker_colors: 跟蹤器顏色
+  label_agile_issue_priority_colors: 問題優先級顏色
+  label_agile_color_based_on: 顏色
+  label_agile_color_no_colors: 無顏色
+  label_agile_manage_colors: 管理顏色
+  label_agile_fullscreen: 全屏
+  label_agile_no_version_issues: 無版本項目
+  label_agile_charts_work_burnup: 工作燃燒
+  label_agile_completed: 完成
+  label_agile_exclude_weekends: 從理想工作中排除周末時間
+  label_agile_board_truncated: "看板被縮短是由于超出最大顯示項目數 (%{max})"
+  label_agile_board_items_limit: 敏捷看板項目限制
+  label_agile_swimlanes: 泳道
+  label_agile_minimize_closed: 最小化關閉的問題
+  label_agile_fields: 卡片區域
+  label_agile_default_board: 默認看板
+
+  #1.3.6
+  text_agile_move_not_possible: 該步驟不可行
+
+  #1.3.8
+  label_agile_parent_issue_tracker_id: 本追蹤
+  label_agile_sub_issues: 子問題
+  label_agile_color_green: 綠色
+  label_agile_color_blue: 藍色
+  label_agile_color_turquoise: 藍綠色
+  label_agile_color_lightgreen: 淺綠色
+  label_agile_color_yellow: 黃色
+  label_agile_color_orange: 橙色
+  label_agile_color_red: 紅色
+  label_agile_color_purple: 紫色
+  label_agile_color_gray: 灰色
+  label_agile_has_sub_issues: 子問題

@@ -1,0 +1,14 @@
+<%= stylesheet_link_tag('easy_wbs', plugin: 'easy_wbs', media: 'all') %>
+<%= javascript_include_tag(
+      :wbs_main,
+      :wbs_context_menu,
+      :wbs_loader,
+      :wbs_node_patch,
+      :wbs_saver,
+      :wbs_modals,
+      :wbs_styles,
+      :wbs_validator,
+      plugin: 'easy_wbs'
+
+) %>
+<% include_galereya_headers_tags if defined?(include_galereya_headers_tags) %>

@@ -1,0 +1,70 @@
+# English strings go here for Rails i18n
+pt-BR:
+  label_agile: Agile
+  label_agile_board: Agile board
+  label_agile_board_plural: Agile boards
+  label_agile_board_thumbnails: Thumbnails
+  label_agile_board_more_issues: Mais Tarefas
+  error_agile_status_transition: Não é possível alterar o status da tarefa
+  label_agile_board_new: Novo agile board
+  label_agile_board_edit: Edit agile board
+  label_agile_my_boards: My agile boards
+  label_agile_issue_id: Número da Tarefa
+
+  permission_manage_public_agile_queries: Manage public agile boards
+  permission_add_agile_queries: Add agile boards
+  permission_view_agile_queries: View agile boards
+
+  #1.1.0
+  label_agile_board_default_fields: Default card fields
+  label_agile_charts_issues_burndown: Tarefas burndown
+  label_agile_charts_work_burndown: Trabalho burndown
+  label_agile_charts_number_of_hours: Número de horas
+  label_agile_charts_number_of_issues: Número de tarefas
+  label_agile_charts_cumulative_flow: Afluência 
+  label_agile_charts_trackers_cumulative_flow: Afluência de tarefas
+  label_agile_charts_issues_velocity: Velocidade
+  label_agile_charts_lead_time: Tempo de espera
+  label_agile_charts_average_lead_time: Tempo de espera médio
+  label_agile_chart_plural: Agile charts
+  permission_view_agile_charts: View agile charts
+  label_agile_ideal_work_remaining: Ideal
+  label_agile_actual_work_remaining: Real
+  label_agile_chart: Gráfico
+  label_agile_date_from: De
+  label_agile_date_to: Para
+  label_agile_chart_dates: Chart intervals
+  label_agile_weighed_ideal_work_remaining: Média ideal
+  label_agile_status_colors: Status colors
+  label_agile_charts_burnup: Tarefas burnup
+  label_agile_charts_number_of_days: Número de dias
+  label_agile_too_many_items: "O gráfico não pode ser criado porque excede o número máximo de itens que podem ser exibidos (%{max})"
+  label_agile_time_reports_items_limit: Time entries based charts issues limit
+  label_agile_total_work_remaining: Total
+  label_agile_default_chart: Version default chart
+
+  #1.1.1
+  label_agile_charts_average_velocity: Velocidade média
+  label_agile_charts_avarate_number_of_issues: Número médio de tarefas
+  label_agile_charts_avarate_number_of_hours: Número médio de horas
+
+  #1.2.0
+  label_agile_color: Color
+  permission_manage_agile_verions: Manage version planning
+  label_agile_version_planning: Planejamento da versão
+  error_agile_version_transition: Can’t change issue version
+  label_agile_tracker_colors: Tracker colors
+  label_agile_issue_priority_colors: Issue priority colors
+  label_agile_color_based_on: Colored by
+  label_agile_color_no_colors: No colors
+  label_agile_manage_colors: Manage colors
+  label_agile_fullscreen: Fullscreen
+  label_agile_no_version_issues: Issues without version
+  label_agile_charts_work_burnup: Work burnup
+  label_agile_completed: Concluído
+  label_agile_exclude_weekends: Exclude weekends from ideal effort
+  label_agile_board_truncated: "The board was truncated because it exceeds the maximum number of items that can be displayed (%{max})"
+  label_agile_board_items_limit: Agile board items limit
+  label_agile_swimlanes: Swim lanes
+  label_agile_minimize_closed: Minimize closed issues
+  label_agile_fields: Card fields

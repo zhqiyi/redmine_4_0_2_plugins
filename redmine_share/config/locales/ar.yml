@@ -1,0 +1,9 @@
+ar:
+  share_button: "شارك"
+  share_title: "شارك الرابط"
+  share_label_with: "Share with"
+  share_label_page: "صفحة"
+  share_label_subject: "%{sender} شارك %{record} معك"
+  share_text_message: "%{sender} شارك %{record} معك."
+  share_notice_email_sent: "تم ارسال رسالة الى "
+  share_notice_email_error: "لقد حدث خطأ ما اثناء ارسال الرسالة الى "

@@ -1,0 +1,9 @@
+id:
+  share_button: "Bagikan"
+  share_title: "Bagikan tautan"
+  share_label_with: "Share with"
+  share_label_page: "Halaman"
+  share_label_subject: "%{sender} membagikan %{record} dengan anda"
+  share_text_message: "%{sender} membagikan %{record} dengan anda."
+  share_notice_email_sent: "Email sudah dikirim ke"
+  share_notice_email_error: "Terjadi kesalahan pada saat pengiriman email"

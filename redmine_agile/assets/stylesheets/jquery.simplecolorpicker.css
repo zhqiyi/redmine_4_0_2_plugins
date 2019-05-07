@@ -1,0 +1,88 @@
+/*
+ * Very simple jQuery Color Picker
+ * https://github.com/tkrotoff/jquery-simplecolorpicker
+ *
+ * Copyright (C) 2012-2013 Tanguy Krotoff <tkrotoff@gmail.com>
+ *
+ * Licensed under the MIT license
+ */
+
+/**
+ * Inspired by Bootstrap Twitter.
+ * See https://github.com/twbs/bootstrap/blob/master/less/navbar.less
+ * See https://github.com/twbs/bootstrap/blob/master/less/dropdowns.less
+ */
+
+.simplecolorpicker.picker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1051; /* Above Bootstrap modal (@zindex-modal = 1050) */
+  display: none;
+  float: left;
+
+  min-width: 160px;
+  max-width: 283px; /* @popover-max-width = 276px + 7 */
+
+  padding: 5px 0 0 5px;
+  margin: 2px 0 0;
+  list-style: none;
+  background-color: #fff; /* @dropdown-bg */
+
+  border: 1px solid #ccc;
+}
+
+.simplecolorpicker.inline {
+  display: inline-block;
+}
+
+.simplecolorpicker span {
+  margin: 0 5px 5px 0;
+}
+
+.simplecolorpicker.button,
+.simplecolorpicker span.color {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.simplecolorpicker.button {
+  border: 1px solid #DDD;
+}
+
+.simplecolorpicker.button:after,
+.simplecolorpicker span.color:after {
+  content: '\00a0\00a0\00a0\00a0'; /* Spaces */
+}
+
+.simplecolorpicker span.color[data-disabled]:hover {
+  cursor: not-allowed;
+  border: 1px solid transparent;
+}
+
+.simplecolorpicker span.color:hover,
+.simplecolorpicker span.color[data-selected],
+.simplecolorpicker span.color[data-selected]:hover {
+  border: 1px solid #222; /* @gray-dark */
+}
+.simplecolorpicker span.color[data-selected]:after {
+  color: #fff;
+}
+
+/* Vertical separator, replaces optgroup. */
+.simplecolorpicker span.vr {
+  border-left: 1px solid #222; /* @gray-dark */
+}
+
+.simplecolorpicker span.color[data-selected]:after {
+  /*font-family: 'FontAwesome';*/
+  -webkit-font-smoothing: antialiased;
+
+  content: '\2714'; /* Ok/check mark */
+
+  margin-right: 2px;
+  margin-left: 2px;
+}
+

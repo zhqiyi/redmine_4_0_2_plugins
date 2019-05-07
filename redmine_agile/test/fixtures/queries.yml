@@ -1,0 +1,32 @@
+agile_query_101:
+  id: 101
+  type: AgileQuery
+  project_id: 1
+  <% if Redmine::VERSION.to_s < '2.4' %>
+  is_public: false
+  <% else %>
+  visibility: 2
+  <% end %>
+  name: Board for specific project
+  filters: |
+    ---
+    tracker_id:
+      :values:
+      - "3"
+      :operator: "="
+  user_id: 1
+  column_names: []
+
+agile_query_102:
+  id: 102
+  type: AgileQuery
+  project_id: nil
+  <% if Redmine::VERSION.to_s < '2.4' %>
+  is_public: true
+  <% else %>
+  visibility: 2
+  <% end %>
+  name: Board for all projects
+  filters: {}
+  user_id: 1
+  column_names: []

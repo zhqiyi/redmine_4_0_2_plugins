@@ -1,0 +1,9 @@
+fi:
+  share_button: "Jaa"
+  share_title: "Jaa linkki"
+  share_label_with: "Share with"
+  share_label_page: "Sivu"
+  share_label_subject: "%{sender} jakoi kohteen %{record} kanssasi"
+  share_text_message: "%{sender} jakoi kohteen %{record} kanssasi."
+  share_notice_email_sent: "Sähköposti on lähetty osoitteeseen"
+  share_notice_email_error: "Sähköpostilähetyksessä tapahtui virhe"

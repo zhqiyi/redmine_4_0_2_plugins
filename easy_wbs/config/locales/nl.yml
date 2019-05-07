@@ -1,0 +1,173 @@
+---
+nl:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Andere acties
+    button_add_child: Voeg kind toe
+    button_add_parent: Voeg ouder toe
+    button_add_sibling: Voeg broer/zus toe
+    button_all_icons: Iconen
+    button_collapse: Inklappen
+    button_collapse_all: Alle inklappen
+    button_cut: Knippen
+    button_display: Weergave instellingen
+    button_edit_data: Bewerk gegevens
+    button_expand: Uitvouwen
+    button_expand_all: Allen uitklappen
+    button_expand_collapse: Uitklappen/Inklappen
+    button_legend: Legenda
+    button_one_side: Een zijde
+    button_paste: Plakken
+    button_project_menu: Easy WBS
+    button_redo: Opnieuw
+    button_remove_node: Verwijder knooppunt
+    button_show_links: Toon links
+    button_undo: Ongedaan maken
+    edit_issue: Bewerk taak
+    error_create: kon niet aangemaakt worden
+    error_delete: kon niet verwijderd worden
+    error_update: kon niet bijgewerkt worden
+    errors:
+      not_subtaskable: Taak "%{task_name}" kan geen subtaak zijn door de instelling
+        van zijn tracker
+    free:
+      button_upgrade: Koop Volledige versie
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: Kleur knooppunten op eigenschap
+      feature_context_menu: Wijzig eigenschappen knooppunt
+      feature_filtering: Filter knooppunten op eigenschap
+      header_not_available: Alleen beschikbaar in Volledige versie
+      text_not_available: is beschikbaar in de Volledige versie van Easy WBS.
+    hotkeys:
+      info_mac_metakey: Op Mac OSX kunnen Ctrl en Cmd gebruikt worden voor snelkoppelingen
+        met Ctrl hieronder - sommige browsers blokkeren bepaalde toetscombinaties.
+        Dus, bijvoorbeeld, als Cmd+Spatie niet werkt in uw browser, probeer dan Ctrl+Spatie.
+      keyboard:
+      - title: Knooppunt manipulatie
+        hotkeys:
+        - hotkey: Enter
+          info: Kind Toevoegen
+        - hotkey: Shift+Enter
+          info: Kind Toevoegen boven of breuklijn (bij hernoemen knooppunt)
+        - hotkey: Tab of Insert
+          info: Add child
+        - hotkey: Shift+Tab
+          info: Ouder Invoegen
+        - hotkey: Spatie
+          info: Kind Toevoegen
+        - hotkey: Shift+Spatie
+          info: Knooppunt data bewerken
+        - hotkey: Backspace of Delete
+          info: Verwijder Knooppunt
+        - hotkey: Ctrl+Up/Down
+          info: Verplaats knooppunt omhoog/omlaag
+      - title: Bewerken
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Opslaan
+        - hotkey: Ctrl+X of C
+          info: Knippen
+        - hotkey: Ctrl+C of Y
+          info: Kopieren
+        - hotkey: Ctrl+V of P
+          info: PLakken
+        - hotkey: U of Ctrl+Z
+          info: Ongedaan maken
+        - hotkey: R of Ctrl+Y of Ctrl+Shift+Z
+          info: Redo
+      - title: Selectie
+        hotkeys:
+        - hotkey: Pijltjestoetsen
+          info: Selecteer het knooppunt omhoog/omlaag/links/rechts van de huidige
+            geselecteerde
+        - hotkey: Shift + Pijltjestoetsen
+          info: Voeg knooppunt toe omhoog/omlaag/links/rechts van de selectie (handing
+            voor het selecteren van meerdere siblings)
+        - hotkey: "{"
+          info: Multi-select het huidige knooppunt en de volledige sub-boom eronder
+        - hotkey: "["
+          info: Multi-select alleen de sub-boom onder het huidige knooppunt (niet
+            het knooppunt zelf)
+        - hotkey: "="
+          info: Multi-select alle siblings van het huidige knooppunt (met dezelfde
+            ouder)
+        - hotkey: "."
+          info: Cancel multi-selection and select only the current node again
+        - hotkey: 1 - 9
+          info: Selecteer alle knooppunten op een bepaald niveau (dwz 1 selecteert
+            alle knooppunten van het eerste niveau)
+      - title: Navigatie en scherm
+        hotkeys:
+        - hotkey: "/ of F"
+          info: Knooppunt inklappen of uitklappen (vouw kinderen in of uit)
+        - hotkey: Ctrl + of Z
+          info: Zoom in
+        - hotkey: Ctrl - of Shift Z
+          info: Zoom uit
+        - hotkey: Esc, 0, Ctrl+0
+          info: Reset map weergave - selecteer basis knooppunt en breng het naar het
+            centrum van het scherm
+      mouse:
+      - action: Verplaats de kaart
+        gesture: klik en versleep het centrale knooppunt, klik en versleep de achtergrond
+          of scroll met trackpad/touchpad.
+      - action: Selecteer een knooppunt
+        gesture: tap of click erop
+      - action: Selecteer meerdere knooppunten
+        gesture: Shift+click
+      - action: Herschik knooppunten
+        gesture: versleep een knooppunt tussen zijn siblings, horizontaal dichtbij
+          de positie om te herschikken. Een zwarte pijl is zichtbaar bij het herschikken.
+      - action: Handmatig een knooppunt plaatsen
+        gesture: sleep een knooppunt tot de pijl voor het herschikken niet meer zichtbaar
+          is. Om handmatig te plaatsen  als de pijl zichtbaar is hou Shift ingedrukt
+          bij het slepen. Let op, kinderen van het basisknooppunt kunnen in elke richting
+          getrokken worden, maar knooppunten van een lagen niveau kunnen alleen geplaatst
+          worden in de richting van de ouders relatief aan de basis.
+      - action: Hernoem een knooppunt
+        gesture: Dubbelklik of dubbeltap erop
+      - action: Toon context menu met handelingen
+        gesture: 'Rechtsklikken op knooppunt (met muis) of dubbel-tap de achtergrand,
+          of hou het knooppunt lang ingedrukt: toon (op touch apparaten)'
+      - action: Wijzig knooppunt ouder
+        gesture: sleep en drop een knooppunt op een ander knooppunt (circelvormige
+          drops zijn niet toegestaan, dus een knooppunt kan niet op zijn kinderen
+          of afstammelingen geplaatst worden)
+      - action: Open kwestie of project in apart venster
+        gesture: Alt+click
+      title_key_shortcuts: Toetsenbord bediening
+      title_mouse_shortcuts: Muis en touch bedieningen
+      title_shortcuts: Snelkoppelingen
+    info_all_saved: Alles succesvol opgeslagen
+    info_any_failed: 'Sommige aanvragen zijn mislukt:'
+    info_no_permission: U heeft niet de benodigde toestemming om dit te doen
+    label_color_by: Kleur op
+    label_go_to: Ga naar
+    label_or: of
+    last_state_modal:
+      label_differencies: Verschillen op server
+      message_changed: heeft verschillende attributen (browser => server) ({{changes}})
+      message_missing: mist van ouder "{{from}}"
+      message_moved: is kind van "{{to}}", niet "{{from}}"
+      message_present: is present als kind van "{{to}}"
+      text_reload_appeal: Wilt u de staat opnieuw laden van de server
+      title: Laatste client status van WBS is anders dan de server status
+    reload_modal:
+      label_errors: Fouten
+      text_reload_appeal: Wilt u de niet opgeslagen items negeren en de data van de
+        server opnieuw laden?
+      title: WBS niet correct opgeslagen
+    stored_modal:
+      text_load_appeal: Wilt u het opnieuw laden? In plaats van de verse status van
+        de server?
+      title: Niet opgeslagen staat gevonden
+    warning_delete_node: Wilt u echt{{name}} en al zijn afhankelijkheden verwijderen?
+    warning_not_saved: is niet correct opgeslagen
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Taken
+  label_filter_group_easy_wbs:
+    easy_issue_query: Taken
+  project_default_page:
+    easy_wbs: Easy WBS

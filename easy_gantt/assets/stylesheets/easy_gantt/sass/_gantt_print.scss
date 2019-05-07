@@ -1,0 +1,81 @@
+@mixin print-strip{
+  border: 1px solid #cecece;
+  overflow: hidden;
+  white-space: nowrap;
+  /*page-break-before:always;*/
+  /*page-break-inside: avoid;*/
+  break-inside: avoid;
+  margin: 10px 0;
+  margin-left: -1px;
+  display: inline-block;
+  background-color: #ffffff;
+}
+
+.gantt-print{
+  &__header{
+    &-logo{
+      vertical-align: middle;
+      display: inline-block;
+    }
+    &-header{
+      display: inline-block;
+      margin: 0;
+    }
+    &-text{
+      display: inline-block;
+      vertical-align: bottom;
+      margin-left: 20px;
+    }
+  }
+
+  &__area{
+    background-color: white;
+  }
+
+  &__strip{
+    @include print-strip;
+    border-left: 0;
+  }
+
+  &__bg-canvas{
+    display: block;
+    /*page-break-before:avoid;*/
+  }
+
+  &__bg{
+    position: absolute;
+    /*page-break-before:avoid;*/
+  }
+
+  &__data-area{
+    /*page-break-before:avoid;*/
+  }
+
+  &__bars-area{
+    position: relative;
+    top: 0;
+  }
+
+  &__scale{
+    transform: none;
+    border-top: 0;
+  }
+
+  &__grid{
+    @include print-strip;
+    border-right: 2px solid #cecece;
+    margin-right: 1px;
+    .gantt_grid_scale{
+      margin-top: -2px;
+    }
+    .gantt-grid-header-collapse-buttons,
+    .gantt_sort{
+      display: none;
+    }
+  }
+
+  &__template--nowrap{
+    white-space: nowrap;
+  }
+
+}

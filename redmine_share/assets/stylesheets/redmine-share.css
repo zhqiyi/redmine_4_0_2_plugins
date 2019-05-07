@@ -1,0 +1,25 @@
+.icon-share { background-image: url(../images/share.png); }
+
+#redmine-share-form ul {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+#redmine-share-form ul li {
+  list-style-type: none;
+  padding: 3px 0;
+}
+
+#redmine-share-form textarea {
+  width: 100%;
+}
+
+#redmine-share-with img.gravatar {
+  margin-right: 5px;
+}
+
+#redmine-share-with li a.delete {
+  float: right;
+  opacity: .7;
+  vertical-align: middle;
+}

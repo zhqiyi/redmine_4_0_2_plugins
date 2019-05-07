@@ -1,0 +1,9 @@
+da:
+  share_button: "Del"
+  share_title: "Del link"
+  share_label_with: "Del med"
+  share_label_page: "Side"
+  share_label_subject: "%{sender} delte %{record} med dig"
+  share_text_message: "%{sender} delte %{record} med dig."
+  share_notice_email_sent: "En email er sendt til"
+  share_notice_email_error: "En fejl opstod under afsendelse af email"

@@ -1,0 +1,4 @@
+$("#checklist_item_<%= @checklist_item.id %>").toggleClass('is-done-checklist-item');
+$('#checklist_form .checklist-item#<%= @checklist_item.id %> input[type=checkbox]').trigger('click');
+$('.issue .attributes table.progress').parent().html('<%= j(progress_bar(@checklist_item.issue.done_ratio, :width => '80px', :legend => "#{@checklist_item.issue.done_ratio}%")) %>');
+$('#issue_done_ratio').val('<%= @checklist_item.issue.done_ratio %>');

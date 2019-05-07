@@ -1,0 +1,44 @@
+$mindmup-default-node-color: #e5e5e5;
+$mindmup-default-schemes: (
+        #f9f6a8,
+        #fbe3bd,
+        #f3cccf,
+        #eabdec,
+        #d0b8ec,
+        #c9c9f9,
+        #c9dcff,
+        #d2f4f0,
+        #d2ecc9,
+        #e1ee9e,
+        #dadace,
+        #dbd1c7
+);
+$progress-0: white;
+$progress-1: $color-positive;
+$mindmup-schemes: (
+        priority: (
+                hsl(hue($color-negative), 80%, 90%),
+                hsl(hue($color-negative), 80%, 80%),
+                hsl(hue($color-positive), 80%, 90%),
+                hsl(hue($color-positive), 80%, 80%),
+                hsl(hue($color-main), 80%, 90%),
+                hsl(hue($color-main), 80%, 80%),
+                hsl(hue($color-important), 80%, 90%),
+                hsl(hue($color-important), 80%, 80%),
+                #add7f3, // redmine low
+                #e5e5e5, // redmine normal
+                #fcc,    // redmine high
+                #ffb4b4  // redmine urgent
+        ),
+        status: join((), $mindmup-default-schemes),
+        tracker: join((), $mindmup-default-schemes),
+        assignee: join((), $mindmup-default-schemes),
+        milestone: join((), $mindmup-default-schemes),
+        progress: (
+                $mindmup-default-node-color,
+                mix($progress-1, $progress-0, 10%),
+                mix($progress-1, $progress-0, 25%),
+                mix($progress-1, $progress-0, 45%),
+                mix($progress-1, $progress-0, 70%),
+                $progress-1)
+) !default;

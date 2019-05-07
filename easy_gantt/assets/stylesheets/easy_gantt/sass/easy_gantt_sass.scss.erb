@@ -1,0 +1,17 @@
+<% if Redmine::Plugin.installed?(:easy_project_com) %>
+@import "../../../../easyproject/easy_plugins/easy_project_com/assets/stylesheets/scss/common_assets";
+<% else %>
+@import "../../../../easyproject/easy_plugins/easy_extensions/assets/stylesheets/scss/common_assets";
+<% end %>
+
+@import "gantt_variables";
+@import "gantt_icons";
+@import "gantt_redmine";
+@import "gantt_print";
+@import "gantt_main";
+
+<% if Redmine::Plugin.installed?(:easy_project_com) %>
+@include loadFontFace('Material Icons', '../../plugin_assets/easy_gantt/fonts/EasyMaterialIcons-Regular', 'Material Icons', 'MaterialIcons-Regular', normal, normal);
+<% else %>
+@include loadFontFace--non-rails('Material Icons', '../../plugin_assets/easy_gantt/fonts/EasyMaterialIcons-Regular', 'Material Icons', 'MaterialIcons-Regular', normal, normal);
+<% end %>

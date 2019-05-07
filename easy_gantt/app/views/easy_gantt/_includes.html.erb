@@ -1,0 +1,56 @@
+<%
+  heads_for_wiki_formatter
+
+  if EasyGantt.easy_extensions?
+    main_css = 'easy_gantt'
+  else
+    main_css = 'generated/easy_gantt'
+  end
+%>
+
+<%= content_for :header_tags do %>
+  <%= easy_gantt_include_css(main_css, media: 'all') %>
+  <% if EasyGantt.combine_by_pipeline?(params) %>
+    <%= javascript_include_tag('easy_gantt/easy_gantt') %>
+  <% else %>
+    <%= easy_gantt_include_js(
+            'utils',
+            'dhtmlxgantt',
+            'dhtmlxgantt_marker',
+            'main',
+            'data',
+            'loader',
+            'saver',
+            'logger',
+            'widget',
+            'panel_widget',
+            'gantt_widget',
+            'view',
+            'history',
+            'dhtml_modif',
+            'dhtml_addons',
+            'dhtml_rewrite',
+            ('dhtml_relations' if Setting.parent_issue_dates === "derived"),
+            'background',
+            'pro_manager',
+            'storage',
+            'tooltip',
+            'toolpanel',
+            'print',
+            'left_grid',
+            'sumrow',
+            'bars',
+            'problem_finder',
+            'collapsor',
+            'libs/libs',
+            'libs/svg.min',
+        ) %>
+  <% end %>
+  <%= easy_gantt_include_js(
+          ('sample' unless EasyGantt.easy_gantt_pro?),
+          ('libs/moment' unless EasyGantt.easy_extensions?)
+      ) %>
+  <script type="application/javascript">
+    $(ysy.initGantt);
+  </script>
+<% end %>

@@ -1,0 +1,50 @@
+# Spanish strings go here for Rails i18n
+es:
+  label_agile: Ágil
+  label_agile_board: Tablero ágil
+  label_agile_board_plural: Tableros ágiles
+  label_agile_board_thumbnails: Thumbnails
+  label_agile_board_issues_per_column: Peticiones por columna
+  label_agile_board_more_issues: Más peticiones
+  error_agile_status_transition: No se puede cambiar el estado de la petición
+  label_agile_board_new: Nuevo tablero ágil
+  label_agile_board_edit: Editar tablero ágil
+  label_agile_my_boards: Mis tableros ágiles
+  label_agile_issue_id: ID de Petición
+
+  permission_manage_public_agile_queries: Administrar tableros ágiles públicos
+  permission_add_agile_queries: Agregar tableros ágiles
+  permission_view_agile_queries: Ver tableros ágiles
+
+  #1.1.0
+  label_agile_board_default_fields: Columnas por defecto
+  label_agile_charts_issues_burndown: Peticiones burndown
+  label_agile_charts_work_burndown: Trabajo burndown
+  label_agile_charts_number_of_hours: Número de horas
+  label_agile_charts_number_of_issues: Número de peticiones
+  label_agile_charts_cumulative_flow: Flujo acumulado
+  label_agile_charts_trackers_cumulative_flow: Seguimiento de flujo acumulado
+  label_agile_charts_issues_velocity: Velocidad
+  label_agile_charts_lead_time: Tiempo de ejecución
+  label_agile_charts_average_lead_time: Tiempo de ejecución promedio
+  label_agile_chart_plural: Gráficos ágiles
+  permission_view_agile_charts: Ver gráficos ágiles
+  label_agile_ideal_work_remaining: Ideal
+  label_agile_actual_work_remaining: Actual
+  label_agile_chart: Gráfico
+  label_agile_date_from: Desde
+  label_agile_date_to: Hasta
+  label_agile_chart_dates: Intervalos gráficos
+  label_agile_weighed_ideal_work_remaining: Weighed ideal
+  label_agile_status_colors: Color de estados
+  label_agile_charts_burnup: "Peticiones burnup"
+  label_agile_charts_number_of_days: Número de días
+  label_agile_too_many_items: "El gráfico no puede ser creado por exceder el número máximo de items que pueden ser mostrados (%{max})"
+  label_agile_time_reports_items_limit: Tiempo de entradas basado en gráfico de peticiones límite
+  label_agile_total_work_remaining: Total
+  label_agile_default_chart: Versión gráfica por defecto
+
+  #1.1.1
+  label_agile_charts_average_velocity: Velocidad promedio
+  label_agile_charts_avarate_number_of_issues: Número de peticiones promedio
+  label_agile_charts_avarate_number_of_hours: Número de horas promedio

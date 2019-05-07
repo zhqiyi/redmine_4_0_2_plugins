@@ -1,0 +1,9 @@
+lt:
+  share_button: "Dalintis"
+  share_title: "Dalintis nuoroda"
+  share_label_with: "Share with"
+  share_label_page: "Puslapis"
+  share_label_subject: "%{sender} shared %{record} with you"
+  share_text_message: "%{sender} shared %{record} with you."
+  share_notice_email_sent: "Laiškas išsiųstas į"
+  share_notice_email_error: "Laiško siuntimo metu įvyko klaida"

@@ -1,0 +1,9 @@
+bg:
+  share_button: "Споделяне"
+  share_title: "Връзка за споделяне"
+  share_label_with: "Share with"
+  share_label_page: "Страница"
+  share_label_subject: "%{sender} сподели %{record} с вас"
+  share_text_message: "%{sender} сподели %{record} с вас."
+  share_notice_email_sent: "Изпратен e-mail на"
+  share_notice_email_error: "Грешка при изпращане на e-mail"

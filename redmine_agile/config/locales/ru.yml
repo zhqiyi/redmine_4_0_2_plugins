@@ -1,0 +1,149 @@
+# Russian strings go here for Rails i18n
+ru:
+  label_agile: Agile
+  label_agile_board: Доска задач
+  label_agile_board_plural: Доски задач
+  label_agile_board_thumbnails: Превью
+  label_agile_board_issues_per_column: Кол-во задач в колонке
+  label_agile_board_more_issues: Еще задачи
+  error_agile_status_transition: Невозможно изменить статус
+  label_agile_board_new: Новая доска
+  label_agile_board_edit: Редактировать доску
+  label_agile_my_boards: Мои доски
+  label_agile_issue_id: Номер задачи
+
+  permission_manage_public_agile_queries: Управление публичными досками задач
+  permission_add_agile_queries: Добавление досок задач
+  permission_view_agile_queries: Просмотр досок задач
+
+  #1.1.0
+  label_agile_board_default_fields: Поля по умолчанию
+  label_agile_charts_issues_burndown: Сгорание задач
+  label_agile_charts_work_burndown_hours: Сгорание времени задач (burndown)
+  label_agile_charts_work_burndown_sp: Сгорание story points (burndown)
+  label_agile_charts_number_of_hours: Кол-во часов
+  label_agile_charts_number_of_issues: Кол-во задач
+  label_agile_charts_cumulative_flow: Накопительный поток
+  label_agile_charts_trackers_cumulative_flow: Накопительный поток треккеров
+  label_agile_charts_issues_velocity: Скорость закрытия задач
+  label_agile_charts_lead_time: Цикл задачи
+  label_agile_charts_average_lead_time: Средний цикл задачи
+  label_agile_chart_plural: Диаграммы
+  label_agile_chart_new: Новая диаграмма
+  label_agile_chart_edit: Редактировать диаграмму
+  permission_view_agile_charts: Просмотр диаграмм
+  label_agile_ideal_work_remaining: Идеально
+  label_agile_actual_work_remaining: Действительно
+  label_agile_chart: Диаграмма
+  label_agile_date_from: С
+  label_agile_date_to: По
+  label_agile_chart_dates: Интервалы диаграммы
+  label_agile_weighed_ideal_work_remaining: Взвещенно
+  label_agile_status_colors: Цвета статусов
+  label_agile_charts_burnup: Выполнение задач
+  label_agile_charts_number_of_days: Кол-во дней
+  label_agile_too_many_items: "Диаграмма не может быть создана потому что превышено максимальное кол-во задач (%{max})"
+  label_agile_time_reports_items_limit: Максимальное кол-во задач отображаемых на диаграммах
+  label_agile_total_work_remaining: Всего
+  label_agile_default_chart: Диаграмма по умолчанию
+
+  #1.1.1
+  label_agile_charts_average_velocity: Средняя скорость закрытия задач
+  label_agile_charts_avarate_number_of_issues: Среднее кол-во задач
+  label_agile_charts_avarate_number_of_hours: Среднее кол-во часов
+
+  #1.2.0
+  label_agile_color: Цвет
+  permission_manage_agile_verions: Планирование версий
+  label_agile_version_planning: Планирование версий
+  error_agile_version_transition: Невозможно изменить версию задачи
+  label_agile_tracker_colors: Цвета треккеров
+  label_agile_issue_priority_colors: Цвета приоритетов задачи
+  label_agile_color_based_on: Цвета на основании
+  label_agile_color_no_colors: Без цвета
+  label_agile_manage_colors: Настроить цвета
+  label_agile_fullscreen: Во весь экран
+  label_agile_no_version_issues: Задачи без версии
+  label_agile_charts_work_burnup_hours: Выполнение времени задач (burnup)
+  label_agile_charts_work_burnup_sp: Выполнение story points (burnup)
+  label_agile_completed: Выполнено
+  label_agile_exclude_weekends: Исключать выходные для диаграммы сгорания
+  label_agile_board_truncated: "Доска была усечена, поскольку превышено максимальное кол-во элементов, которые могут отображаться (%{max})"
+  label_agile_board_items_limit: Максимальное кол-во задач отображаемых на Доске
+  label_agile_swimlanes: Группировать по
+  label_agile_minimize_closed: Минимизировать закрытые задачи
+  label_agile_fields: Поля
+  label_agile_default_board: По умолчанию
+
+  #1.3.6
+  text_agile_move_not_possible: Данное передвижение невозможно
+
+  #1.3.8
+  label_agile_parent_issue_tracker_id: Треккер родителя
+  label_agile_sub_issues: Подзадачи
+  label_agile_color_green: Зеленый
+  label_agile_color_blue: Синий
+  label_agile_color_turquoise: Бирюзовый
+  label_agile_color_lightgreen: Светло зеленый
+  label_agile_color_yellow: Желтый
+  label_agile_color_orange: Оранжевый
+  label_agile_color_red: Красный
+  label_agile_color_purple: Фиолетовый
+  label_agile_color_gray: Серый
+  label_agile_has_sub_issues: Подзадачи
+  label_agile_light_free_version: Agile бесплатная версия
+  label_agile_link_to_pro: Обновление до PRO
+  label_agile_link_to_pro_demo: Онлайн демо PRO
+  label_agile_link_to_more_plugins: Другие плагины RedmineUP
+  label_agile_button_agree: Согласен
+  label_agile_license: Лицензионное соглашение RedmineUP
+  label_agile_saving_boards: Сохранить настройку доски
+  label_agile_horizontal_swim_lines: Группировки карточек
+  label_agile_board_sub_columns: Доп. колонки
+  label_agile_additional_agile_charts: Доп. диаграммы
+  label_agile_coloured_issue_cards: Цветовая индикация карточек
+  label_agile_4_more_features: И еще другие 4 функции...
+  label_agile_upgrade_to_pro: 'Обновитесь до PRO версии чтобы:'
+
+  #1.3.10
+  label_agile_hide_closed_issues_data: Скрывать данные закрытых задач
+  label_agile_day_in_state: В статусе
+  project_module_agile: Agile
+
+  #1.3.13
+  label_agile_last_comment: Последний комментарий
+
+  #1.4.0
+  label_agile_esitmate_units: Использовать для оценки
+  label_agile_trackers_for_sp: Трекеры для Story points
+  label_agile_story_points: Story points
+  field_story_points: Story points
+  label_agile_charts_number_of_story_points: Кол-во story points
+  label_agile_board_columns: Столбцы доски
+  lable_agile_wip_limit_exceeded: Превышен лимит по задачам в данном столбце
+  label_agile_wip_limit: Ограничение по кол-ву задач в столбце
+  label_agile_add_new_issue: '+ НОВАЯ ЗАДАЧА'
+  label_agile_allow_create_cards: Создавать новые задачи на доске
+  label_agile_auto_assign_on_move: Автоназначение при перетаскивании
+  text_agile_create_issue_error: Произошла ошибка при создании задачи
+  label_agile_inline_comment: Комментирование с доски
+  label_agile_hours: Часы
+  field_color: Цвет
+
+  field_duration: Продолжительность
+  label_cards_search: Поиск по теме
+
+  label_agile_interval_size: Размер интервала
+  label_agile_day: День
+  label_agile_week: Неделя
+  label_agile_month: Месяц
+  label_agile_quarter: Квартал
+  label_agile_year: Год
+
+  label_agile_charts: Диаграммы
+
+  label_agile_planning_board_more: Загрузить еще...
+  label_agile_version_query_new: Новый запрос версий
+  label_agile_version_my_boards: Мои доски версий
+  label_agile_version_board_plural: Доски версий
+  label_agile_version_board_edit: Редактировать доску версий

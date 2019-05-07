@@ -1,0 +1,27 @@
+<%= title [issue_heading(@issue) , issue_path(@issue)],  l(:field_assigned_to) %>
+
+<% html_title(l(:field_assigned_to)) %>
+
+<% if @assignees.any? %>
+  <table class="list"><thead>
+  <tr>
+      <th>#</th>
+      <th><%= l(:field_created_on) %></th>
+      <th><%= l(:field_assigned_to) %></th>
+      <th><%= l(:field_duration) %></th>
+      <th><%= l(:field_author) %></th>
+  </tr></thead>
+  <% @assignees.each_with_index do |status, index| %>
+  <% assignee = User.where(:id => status.value).first %>
+  <tr class="<%= cycle('odd', 'even') %>">
+      <td class="index"><%= index + 1 %></td>
+      <td class="name"><%= format_time(status.journal.created_on) %></td>
+      <td class="name"><%= avatar(assignee, :size => "14").to_s.html_safe + " " + link_to_user(assignee) %></td>
+      <td><%= event_duration(status, @assignees[index + 1]) %></td>
+      <td><%= link_to_user status.journal.user %></td>
+  </tr>
+  <% end %>
+  </table>
+<% else %>
+<p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>

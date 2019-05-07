@@ -1,0 +1,98 @@
+$('#redmine-share-dialog').html(
+  '<%= escape_javascript render(partial: 'link/dialog', locals: {
+                                  project_id: @project_id,
+                                  object_type: @object_type,
+                                  object_id: @object_id}) %>'
+);
+
+$('#redmine-share-submit').prop('disabled', true);
+
+observeAutocompleteField(
+  'principal_search',
+  function(request, response) {
+    var recipients = $('#redmine-share-with li').map(function() {
+      return $(this).data('uid');
+    }).get();
+
+    $.ajax({
+      url: '<%= escape_javascript link_autocomplete_path %>',
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      data: {
+        term: request.term,
+        project_id: '<%= @project_id %>',
+        exclude: recipients
+      },
+      success: function(data) {
+        response(data);
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        response(['']);
+      }
+    });
+  }, {
+    appendTo: '#redmine-share-dialog',
+    autoFocus: true,
+    minLength: 0,
+    select: function(event, ui) {
+      $('#redmine-share-with').append(
+        '<li data-uid="' + ui.item.id + '">' + ui.item.avatar + ' ' +
+          ui.item.label + '<a class="delete icon-only icon-del" href="#">' +
+          '<%= l(:button_delete) %></a></li>');
+      $('#redmine-share-submit').prop('disabled', false);
+      $('#principal_search').addClass('redmine-share-selected');
+    },
+    close: function(event, ui) {
+      if ($('#principal_search').hasClass('redmine-share-selected')) {
+        // Clear search form
+        $('#principal_search').val('');
+        $('#principal_search').removeClass('redmine-share-selected');
+      }
+    }
+  }
+);
+
+$('#redmine-share-form input:hidden[name="url"]').val(location.href);
+
+$('#redmine-share-with').on('click', 'a.delete', function(e) {
+  e.preventDefault();
+  $(e.currentTarget).parent().remove();
+
+  if ($('#redmine-share-with li').length == 0) {
+    $('#redmine-share-submit').prop('disabled', true);
+  }
+});
+
+$('#redmine-share-submit').on('click', function(e) {
+  var recipients = $('#redmine-share-with li').map(function() {
+    return $(this).data('uid');
+  }).get().join(',');
+
+  $('#redmine-share-form input:hidden[name="recipients"]').val(recipients);
+
+  $('#redmine-share-dialog').dialog('close');
+});
+
+$('#redmine-share-cancel').on('click', function(e) {
+  e.preventDefault();
+  $('#redmine-share-dialog').dialog('close');
+});
+
+$('#redmine-share-dialog').dialog({
+  modal: true,
+  draggable: true,
+  dialogClass: 'modal',
+  title: '<%= l(:share_title) %>',
+  width: 'auto'
+});
+
+$('#principal_search').on('keydown', function(e) {
+  // Disable submit by enter key
+  return (e.which !== 13) && (e.keyCode !== 13);
+}).on('click', function(e) {
+  // Shows selection
+  var event = $.Event('keydown');
+  event.keyCode = 40;
+  $('#principal_search').trigger(event);
+});

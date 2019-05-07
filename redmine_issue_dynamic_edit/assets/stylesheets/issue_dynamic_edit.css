@@ -1,0 +1,112 @@
+/* prefix selector with body.controller-issues.action-show  to avoid unwanted style on other page ? */
+
+body.controller-issues.action-show div.issue.details .value, body.controller-issues.action-show div.issue.details .splitcontent {
+	overflow: visible;
+	position: relative;
+}
+
+body.controller-issues.action-show div.issue .attribute .value .percent {
+	display: inline-block;
+}
+
+/* Progress bar fix */
+body.controller-issues.action-show table.progress {
+	margin-right: 10px;
+}
+
+body.controller-issues.action-show .attribute .error {
+	color: #e74c3c;
+	margin-left: 3px;
+}
+
+body.controller-issues.action-show .fa-pencil {
+	opacity: 0;
+}
+
+body.controller-issues.action-show .issue.details .showValue {
+	cursor: pointer;
+}
+
+body.controller-issues.action-show .issue.details:hover .fa-pencil {
+	opacity: 1;
+}
+
+body.controller-issues.action-show .dynamicEdit {
+	display: inline-block;
+	position:absolute;
+	opacity: 0;
+	left:0;
+	bottom: 100%;
+	margin-bottom: 5px;
+	box-sizing: border-box;
+	padding: 10px;
+	border-radius: 3px;
+	background: white;
+	pointer-events: none;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	width: max-content;
+}
+
+body.controller-issues.action-show .dynamicEdit.version {
+	max-width: 100%;
+}
+
+body.controller-issues.action-show .edited .dynamicEdit {
+	pointer-events: auto;
+}
+
+body.controller-issues.action-show div.issue.details .value.edited .dynamicEdit {
+	opacity: 1;
+	z-index: 999;
+}
+
+body.controller-issues.action-show div.issue.details  .btn-primary {
+	padding: 4px;
+	color: white !important;
+	border-radius: 3px;
+	padding: 3px;
+}
+
+body.controller-issues.action-show div.issue.details .btn-primary.close {
+	background: #c0392b;
+}
+
+body.controller-issues.action-show div.issue.details .btn-primary.validate {
+	background: #27ae60;
+}
+
+body.controller-issues.action-show .dynamicEdit select {
+	border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-size: inherit;
+    font-family: inherit;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+body.controller-issues.action-show .dynamicEdit select option[disabled="disabled"]
+{ 
+    display:none;
+}
+
+body.controller-issues.action-show div.issue.details .attributes {
+  display: table;
+  width: 100%;
+}
+
+body.controller-issues.action-show div.issue.details .splitcontent {
+  display: table-row;
+}
+
+div.issue div.subject h3 {
+	position:relative;
+	display: inline-block;
+}
+
+body.controller-issues.action-show .dynamicEdit input[type="text"] {
+	width: auto !important;
+}

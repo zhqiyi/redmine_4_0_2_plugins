@@ -1,0 +1,9 @@
+he:
+  share_button: "שתף"
+  share_title: "קישור לשיתוף"
+  share_label_with: "Share with"
+  share_label_page: "דף"
+  share_label_subject: "%{sender} שיתף/שיתפה איתך את %{record}"
+  share_text_message: "%{sender} שיתף/שיתפה איתך את %{record}."
+  share_notice_email_sent: "דואל נשלח לכתובת"
+  share_notice_email_error: "ארעה שגיאה בעת שליחת הדואל"

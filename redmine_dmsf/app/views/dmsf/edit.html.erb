@@ -1,0 +1,110 @@
+<%
+# encoding: utf-8
+#
+# Redmine plugin for Document Management System "Features"
+#
+# Copyright © 2011    Vít Jonáš <vit.jonas@gmail.com>
+# Copyright © 2012    Daniel Munn <dan.munn@munnster.co.uk>
+# Copyright © 2011-19 Karel Pičman <karel.picman@kontron.com>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+%>
+
+<% html_title(l(:dmsf)) %>
+
+<div class="contextual">
+  <% if !@folder.new_record? && User.current.allowed_to?(:folder_manipulation, @project) && !@folder.system %>
+    <% if @folder.locked? %>
+      <%= link_to_if(@folder.unlockable? && (!@folder.locked_for_user? || @force_file_unlock_allowed), l(:button_unlock),
+        unlock_dmsf_path(:id => @project, :folder_id => @folder),
+      :title => l(:title_unlock_file), :class => 'icon icon-unlock') %>
+    <% else %>
+      <%= link_to(l(:button_lock), lock_dmsf_path(:id => @project, :folder_id => @folder),
+      :title => l(:title_lock_file), :class => 'icon icon-lock') %>
+    <% end %>
+    <% unless @folder.locked? %>
+      <% if @folder.notification %>
+        <%= link_to(l(:label_notifications_off),
+         notify_deactivate_dmsf_path(:id => @project, :folder_id => @folder),
+          :title => l(:title_notifications_active_deactivate),
+          :class => 'icon icon-email') %>
+      <% else %>
+        <%= link_to(l(:label_notifications_on),
+          notify_activate_dmsf_path(:id => @project, :folder_id => @folder),
+          :title => l(:title_notifications_not_active_activate),
+          :class => 'icon icon-email-add') %>
+      <% end %>
+    <% end %>
+    <%= link_to(l(:label_link_to),
+      new_dmsf_link_path(:project_id => @project.id, :dmsf_folder_id => @folder.id, :type => 'link_to'),
+      :title => l(:title_create_link), :class => 'icon icon-link') %>
+    <%= link_to("#{l(:button_copy)}/#{l(:button_move)}", copy_folder_path(:id => @folder),
+      :title => l(:title_copy), :class => 'icon icon-copy') %>
+    <% unless @folder.locked? %>
+      <%= link_to(l(:button_delete), delete_dmsf_path(:id => @project, :folder_id => @folder),
+        :data => {:confirm => l(:text_are_you_sure)},
+        :title => l(:title_delete), :class => 'icon icon-del', :method => :delete) %>
+    <% end %>
+  <% end %>
+</div>
+
+<% create = @pathfolder == @parent %>
+<%= render(:partial => 'path', 
+  :locals => {:folder => @pathfolder, :filename => create ? l(:heading_new_folder) : nil, :title => nil}) %>  
+
+<%= labelled_form_for(@folder, :url => {:action => create ? 'create' : 'save', :id => @project, :folder_id => @folder, :parent_id => @parent},
+  :html => {:method=>:post}) do |f| %>
+  <%= error_messages_for(@folder) %>
+  <div class="box tabular">    
+    <p>                
+      <%= f.text_field(:title, :required => true) %>
+    </p>
+    <p>      
+      <%= f.text_area :description, :rows => 8, :class => 'wiki-edit' %>
+    </p>
+    <p>
+      <%= label_tag '', l(:label_permissions) %>
+      <% User.current.managed_roles(@project).each do |role| %>
+        <% checked, disabled = @folder.permission_for_role(role) %>
+        <label class="inline">
+          <%= check_box_tag 'permissions[role_ids][]', role.id, checked, disabled: disabled, id: nil %>
+          <%= role %>
+        </label>
+      <% end %>
+      <span id="user_permissions">
+        <br/>
+        <% users = @folder.permissions_users %>
+        <% checkboxes = users_checkboxes(users) %>
+        <%= checkboxes %>
+      </span>
+        <% if checkboxes.present? %>
+        <br/>
+      <% end %>
+      <span class="search_for_watchers">
+        <%= link_to l(:label_user_search_add),
+          new_dmsf_folder_permissions_path(:project_id => @project, :dmsf_folder_id => @folder),
+          :remote => true,
+          :method => 'get' %>
+      </span>
+    </p>
+    <% values = @folder ? @folder.custom_field_values : (@parent ? @parent.custom_field_values : DmsfFolder.new.custom_field_values) %>
+    <% values.each do |value| %>
+      <p><%= custom_field_tag_with_label(:dmsf_folder, value) %></p>
+    <% end %>    
+  </div>  
+  <p><%= submit_tag(create ? l(:submit_create) : l(:submit_save)) %></p>
+<% end %>
+
+<%= wikitoolbar_for 'dmsf_folder_description' %>

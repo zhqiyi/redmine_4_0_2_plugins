@@ -1,0 +1,9 @@
+az:
+  share_button: Share
+  share_title: "Share link"
+  share_label_with: "Share with"
+  share_label_page: "Səhifəsi"
+  share_label_subject: "%{sender} yayımlandı %{record} sizinlə"
+  share_text_message: "%{sender} yayımlandı %{record} sizinlə."
+  share_notice_email_sent: "Məktub göndərilib"
+  share_notice_email_error: "Məktubun göndərilməsi zamanı səhv baş vermişdi"

@@ -1,0 +1,36 @@
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'switch.css', :plugin => 'redmine_issues_sidebar' %>
+<% end %>
+<% if User.current.allowed_to?(:view_calendar, @project, :global => true) or
+	User.current.allowed_to?(:view_gantt, @project, :global => true )%>
+  <h3><%= l(:label_view_plural) %></h3>
+  <ul>
+	<% if User.current.allowed_to?(:view_issues, @project, :global => true) %>
+	  <li><%= link_to l(:label_issue_plural), _project_issues_path(@project) %></li>
+	<% end %>
+	<% if User.current.allowed_to?(:view_calendar, @project, :global => true) %>
+	  <li><%= link_to l(:label_calendar), _project_calendar_path(@project) %></li>
+	<% end %>
+	<% if User.current.allowed_to?(:view_gantt, @project, :global => true) %>
+	  <li><%= link_to l(:label_gantt), _project_gantt_path(@project) %></li>
+	<% end %>
+  </ul>
+<% end %>
+<h3><%= l(:label_issue_plural) %></h3>
+
+<ul>
+<li><%= link_to l(:label_issue_view_all), _project_issues_path(@project, :set_filter => 1) %></li>
+<% if @project %>
+<li><%= link_to l(:field_summary), project_issues_report_path(@project) %></li>
+<% end %>
+
+<% if User.current.allowed_to?(:import_issues, @project, :global => true) %>
+<li><%= link_to l(:button_import), new_issues_import_path %></li>
+<% end %>
+</ul>
+
+<%= call_hook(:view_issues_sidebar_issues_bottom) %>
+<%= call_hook(:view_issues_sidebar_planning_bottom) %>
+
+<%= render_sidebar_queries(IssueQuery, @project) %>
+<%= call_hook(:view_issues_sidebar_queries_bottom) %>

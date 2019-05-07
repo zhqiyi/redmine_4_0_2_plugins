@@ -1,0 +1,46 @@
+= Redmine detailed issues and detailed timelog
+
+-Add detailed tabs in show issue
+
+ ( All , Comments , Private , Activity , Time Log , )
+
+-adds detailed timelog to show issue
+
+-tabs only show up if anything to put in them
+
+-added question tab ( general for now)
+
+http://www.redmine.org/attachments/download/9248/mini_spoiler.PNG
+
+
+** beta 0.0.7
+
+-changing name of plugin inside code for my sanity. fixs js not loading
+
+** beta 0.0.6
+
+-forked off https://github.com/tastapod/redmine_issue_history_tabs 
+
+-added a new type of note for detailed time reports and comment
+
+-altered and added tabs ( All , Comments , Private , Activity , Time Log , )
+
+-revamped js system and changed post behaviour to js
+
+-removed some legacy files and code
+
+project home page
+
+http://www.redmine.org/plugins/redmine_issue_detailed_tabs_time
+
+
+project discussion
+
+http://www.redmine.org/boards/3/topics/36787
+
+
+project inspired by a none maintained repo from @tastapod that added a tab system that reloaded page
+
+project was forked to keep legacy from: https://github.com/tastapod/redmine_issue_history_tabs 
+
+and That Author had converted plugin from http://kosz-redmine-tools.googlecode.com/

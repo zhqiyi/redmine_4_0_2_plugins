@@ -1,0 +1,9 @@
+ro:
+  share_button: "Partajează"
+  share_title: "Partajează link-ul"
+  share_label_with: "Share with"
+  share_label_page: "Pagină"
+  share_label_subject: "%{sender} Partajat %{record} cu tine de"
+  share_text_message: "%{sender} Partajat %{record} cu tine de."
+  share_notice_email_sent: "S-a trimis un email către"
+  share_notice_email_error: "A intervenit o eroare la trimiterea de email"

@@ -1,0 +1,174 @@
+---
+pt-BR:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: WBS Easy
+  easy_wbs:
+    button_actions: Outras ações
+    button_add_child: Adicionar criança
+    button_add_parent: Adicionar pai
+    button_add_sibling: Adicionar irmão
+    button_all_icons: Ícones
+    button_collapse: Colapsar
+    button_collapse_all: Colapsar tudo
+    button_cut: Cortar
+    button_display: Configurações de visualização
+    button_edit_data: Editar dados
+    button_expand: Expandir
+    button_expand_all: Expandir tudo
+    button_expand_collapse: Expandir/Colapso
+    button_legend: Legenda
+    button_one_side: Um lado
+    button_paste: Colar
+    button_project_menu: Easy WBS
+    button_redo: Refazer
+    button_remove_node: Remover nódulo
+    button_show_links: Mostrar links
+    button_undo: Desfazer
+    edit_issue: Editar tarefa
+    error_create: não pode ser criado
+    error_delete: não pode ser apagado
+    error_update: não pode ser atualizado
+    errors:
+      not_subtaskable: Tarefa "%{task_name}" não pode ser sub tarefa, devido à configuração
+        do seu rastreador
+    free:
+      button_upgrade: Obter versão completa
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: Colorir nódulos por propriedade
+      feature_context_menu: Mudar propriedades de nódulo
+      feature_filtering: Filtrar nódulos por propriedades
+      header_not_available: Disponível apenas na versão completa
+      text_not_available: está disponível na versão completa de Easy WBS.
+    hotkeys:
+      info_mac_metakey: Em Mac OSX, teclas Ctrl e Cmd pode ser usado para atalhos
+        marcados Ctrl em baixo - alguns browsers evitar certas combinações de teclas.
+        Então, por exemplo, se Cmd+Space não funcionar no browser, tente Ctrl+Space.
+      keyboard:
+      - title: Manipulação de nódulos
+        hotkeys:
+        - hotkey: Enter
+          info: Adicionar irmão
+        - hotkey: Shift+Enter
+          info: Adicionar irmão ou mudança de linha (quando renomear nódulo)
+        - hotkey: Guia ou Inserir
+          info: Adicionar criança
+        - hotkey: Shift+Guia
+          info: Inserir pai
+        - hotkey: Espaço
+          info: Renomear nódulo
+        - hotkey: Shift+Espaço
+          info: Editar informação de nódulos
+        - hotkey: Espaço ou Apagar
+          info: Retirar nódulo
+        - hotkey: Ctrl+Seta para Cima/Baixo
+          info: Deslocar nódulo para Cima/Baixo
+      - title: Editando
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Salvar
+        - hotkey: Ctrl+X ou C
+          info: Cortar
+        - hotkey: Ctrl+C ou Y
+          info: Copiar
+        - hotkey: Ctrl+V ou P
+          info: Colar
+        - hotkey: U ou Ctrl+Z
+          info: Desfazer
+        - hotkey: R ou Ctrl+Y ou Ctrl+Shift+Z
+          info: Refazer
+      - title: Seleção
+        hotkeys:
+        - hotkey: Teclas Seta
+          info: Selecionar o nódulo cima/baixo/esquerda/direita do que está atualmente
+            selecionado
+        - hotkey: Shift + Teclas Seta
+          info: Adicionar nódulo cima/baixo/esquerda/direita para seleção (útil para
+            irmãos multi-selecionados)
+        - hotkey: "{"
+          info: 'Multi-selecione o nódulo atual e toda subárvore sob ele '
+        - hotkey: "["
+          info: Multi-selecione somente a  subárvore sob o nódulo atual (e não o próprio
+            nódulo)
+        - hotkey: "="
+          info: Multi-selecione todos os irmãos do nódulo atual (que tem o mesmo pai)
+        - hotkey: "."
+          info: Cancelar multi-seleção e selecionar somente o nódulo atual novamente
+        - hotkey: 1 - 9
+          info: 'Selecionar todos os nódulos de um nível específico (por exemplo:
+            1 seleciona todos os nódulos do primeiro nível)'
+      - title: Navegação e tela
+        hotkeys:
+        - hotkey: "/ ou F"
+          info: Expandir ou contrair nódulo (dobrar ou desdobrar crianças)
+        - hotkey: Ctrl + ou Z
+          info: Fazer zoom
+        - hotkey: Ctrl - ou Shift Z
+          info: Diminuir
+        - hotkey: Esc, 0, Ctrl+0
+          info: Redefinir vista de mapa - selecionar nódulo raíz e trazê-lo para o
+            centro da tela
+      mouse:
+      - action: Deslocar o mapa
+        gesture: clique e arraste o nódulo central, clique e arraste o fundo ou desloque
+          com touchpad/teclado tátil.
+      - action: Selecionar um nódulo
+        gesture: toque ou clique sobre ele
+      - action: Selecionar nódulos múltiplos
+        gesture: Shift+clique
+      - action: Reordenar nódulos
+        gesture: arraste um nódulo entre os da mesma família, na horizontal perto
+          da posição da reordenação. Uma seta preta vai mostrar quando reordenar.
+      - action: Posicione manualmente um nódulo
+        gesture: apenas arraste o nódulo até a ponta da flecha para a reordenação
+          não estiver a mostra. Para forçar manualmente a posição, mesmo quando a
+          ponta da flecha de reordenação esteja a mostra, segure a tecla Shift ao
+          arrastar. Por favor note que filhos do nódulo raiz podem ser arrastados
+          em qualquer direção, mas nódulos de nível inferior só podem ser posicionados
+          na direção do seu pai em relação à raiz.
+      - action: Renomear um nódulo
+        gesture: Clique ou toque duas vezes
+      - action: Mostrar menu de contexto com operações
+        gesture: 'Clique com o botão direito em um nódulo (com o mouse) ou toque duas
+          vezes no fundo, ou pressione por muito tempo um nódulo: mostra (em dispositivos
+          sensíveis ao toque)'
+      - action: Mudar nódulo pai
+        gesture: arraste e solte um nodulo em outro nódulo (movimentos circulares
+          não são permitidos, para que você não possa deixar cair um nódulo em um
+          de seus filhos ou descendentes)
+      - action: Questão em aberto ou projeto em janela separada
+        gesture: Alt+clique
+      title_key_shortcuts: Operações de teclado
+      title_mouse_shortcuts: Operações de mouse e toque
+      title_shortcuts: Atalhos
+    info_all_saved: Tudo foi salvo com êxito
+    info_any_failed: 'Algumas das solicitações falharam:'
+    info_no_permission: Você não tem as permissões necessárias para fazer isso
+    label_color_by: Colorir por
+    label_go_to: Ir a
+    label_or: ou
+    last_state_modal:
+      label_differencies: Diferenças no servidor
+      message_changed: têm diferentes atributos (browser => servidor) ({{changes}})
+      message_missing: está ausente do pai "{{from}}"
+      message_moved: é criança de "{{to}}", não "{{from}}"
+      message_present: no momento é criança de "{{to}}"
+      text_reload_appeal: Você quer recarregar estado desdo servidor?
+      title: Último cliente de WBS é diferente do estado do servidor
+    reload_modal:
+      label_errors: Erros
+      text_reload_appeal: Você quer ignorar itens que não foram salvos e recarregar
+        os dados do servidor?
+      title: WBS não foi salvo corretamente
+    stored_modal:
+      text_load_appeal: Você quer carregá-lo? Em vez do estado recente a partir do
+        servidor?
+      title: Estado  não salvos foram encontrados
+    warning_delete_node: Deseja mesmo apagar o nó {{name}} e todos os seus descendentes?
+    warning_not_saved: não foi salvado corretamente
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Tarefas
+  label_filter_group_easy_wbs:
+    easy_issue_query: Tarefas
+  project_default_page:
+    easy_wbs: Easy WBS

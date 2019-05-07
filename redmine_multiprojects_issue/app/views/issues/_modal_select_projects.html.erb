@@ -1,0 +1,147 @@
+<% if params[:project_ids]
+     project_ids = params[:project_ids].split(',')
+     issue_projects = ( project_ids.present? ? Project.find(project_ids) : [] )
+   else
+     issue_projects = @issue.projects
+   end
+   issue_projects = issue_projects | [@issue.project]
+   allowed_projects =  @issue.allowed_target_projects - [@issue.project]
+   custom_fields = CustomField.select("id, name").where(:type => "ProjectCustomField").where("name IN (?)", Setting["plugin_redmine_multiprojects_issue"]['custom_fields'])
+   custom_values = custom_values_by_projects(allowed_projects, custom_fields)
+   options_for_selects = {}
+   custom_fields.each do |field|
+     options_for_selects.merge!(field.id => [])
+   end
+
+   nested_projects_list = render_project_nested_lists(allowed_projects|issue_projects) do |project|
+     custom_fields_data = {}
+     if allowed_projects.include?(project)
+       custom_fields.each do |f|
+         value = custom_values[project.id][f.id]
+         value = value.join(",") if value.is_a?(Array)
+         custom_fields_data.merge!(f.id => value)
+         value.split(",").each do |val|
+           options_for_selects[f.id] << val unless options_for_selects[f.id].include?(val) || val.blank?
+         end if value.present?
+       end
+     end
+     custom_fields_data.merge!('name' => project.name)
+     content_tag('label',
+       check_box_tag(
+           'project_ids[]',
+           project.id,
+           @issue != nil && issue_projects.include?(project),
+           disabled: allowed_projects.include?(project) ? false : true,
+           :class => "nested_project_#{project.id} #{"inactive" unless allowed_projects.include?(project)}",
+           data: custom_fields_data
+       ) + ' ' + h(project.name), :class => ("inactive" unless allowed_projects.include?(project))
+     )
+   end
+%>
+
+<h3 class="title"><%=l(:field_project).pluralize%></h3>
+
+<div data-controller="projects-selection">
+
+  <div class="actions_links">
+    <%= l("button_filter") %> :
+    <input data-action="input->projects-selection#hide_by_name" />
+  </div>
+
+  <div class="actions_links">
+    <%= l("Selection") %> :
+    <%= link_to l("select_all"), '#', id: "link_select_all", :data => { :action => 'click->projects-selection#select_all' } %>
+    |
+    <%= link_to l("select_none"), '#', id: "link_select_all", :data => { :action => 'click->projects-selection#select_none' } %>
+    |
+    <%= link_to l("advanced_selection"), '#', id: "link_advanced_selection", :data => { :action => 'click->projects-selection#toggle_advanced_selection' } %>
+
+    <div class="advanced_selection hidden" data-target="projects-selection.filters">
+      <div data-target="projects-selection.filter" class="first">
+        <%= select_tag 'filter_name',
+                       options_for_select(custom_fields.map{|cf| [cf.name, cf.id] }),
+                       :prompt=>l("select_filter"),
+                       :id => "select_filter",
+                       :class => "select_box_custom_field_value",
+                       :data => {
+                         action: 'change->projects-selection#select_filter'
+                       } %>
+        <%= select_tag 'filter_value',
+                       '',
+                       :id => "select_values",
+                       :multiple => true,
+                       :data => {
+                         action: 'change->projects-selection#select_filter_values'
+                       } %>
+        <%= link_to "(#{l('button_delete')})", '#', class: 'hidden-if-first', data: {action: 'click->projects-selection#remove_filter'} %>
+      </div>
+      <%= link_to "+ #{l('add_a_filter')}", '#', data: {action: 'click->projects-selection#add_filter'} %>
+    </div>
+    <div style="display: none;">
+      <% custom_fields.each do |field| %>
+        <%= select_tag field.id,
+                       options_for_select(options_for_selects[field.id]),
+                       :id => "select_#{field.id}",
+                       :data => {
+                         target: "projects-selection.select_for_#{field.id}"
+                       }
+          %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="projects_container">
+    <div class="columns" id="project_nested_list">
+      <%= nested_projects_list %>
+    </div>
+  </div>
+
+  <p>
+    <%= l("selected_projects") %>:
+    <span id="selection_counter" data-target="projects-selection.counter"></span>
+    <span style="margin-left: 5px;">
+      (<%= link_to l("hide_non_selected_projects"),
+                  '#',
+                  data: {action: 'click->projects-selection#hide_non_selected_projects',
+                         target: 'projects-selection.hide_projects_button'},
+                  style: 'display: inline-block'
+      %><%= link_to l("show_all_projects"),
+                  '#',
+                  data: {action: 'click->projects-selection#show_all_projects',
+                         target: 'projects-selection.show_projects_button'},
+                  style: 'display: none'
+      %>)
+    </span>
+  </p>
+
+  <p class="buttons">
+    <%= submit_tag l(:button_apply), :name => nil, :onclick => "updateSelectedProjects();hideModal(this);", :type => 'button', :id=> 'button_apply_projects' %>
+  </p>
+
+</div>
+
+<script type="text/javascript">
+
+  function updateSelectedProjects() {
+    $("select#issue_project_ids option").each(function() { this.selected = ""; });
+    $("input:checkbox[name='project_ids[]']:checked").each(function()
+    {
+      $("#issue_project_ids option[value=" + $(this).val() +"]").prop("selected",true);
+    });
+    var htmlContent = "";
+    $("input:checkbox[name='project_ids[]']:checked").each(function() {
+      if($(this).val() != <%= @issue.project.id %>){
+        htmlContent += " <span class=\"list_projects_names\">"+ $(this).closest('label').text() + "</span>";
+      }
+    });
+    $("#projects_form #list_of_projects_per_issue").html(htmlContent);
+    if (htmlContent == ""){
+      $(".and_x_other_projects").css("display", "none");
+      $("#answers-on-secondary-projects").hide()
+    } else{
+      $(".and_x_other_projects").css("display","inline");
+      $("#answers-on-secondary-projects").show()
+    }
+  }
+
+</script>

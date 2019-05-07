@@ -1,0 +1,9 @@
+pl:
+  share_button: "Udostępnij"
+  share_title: "Udostępnij link"
+  share_label_with: "Share with"
+  share_label_page: "Strona"
+  share_label_subject: "%{sender} współdzieli %{record} z tobą"
+  share_text_message: "%{sender} współdzieli %{record} z tobą."
+  share_notice_email_sent: "E-mail został wysłany do"
+  share_notice_email_error: "Wystąpił błąd w trakcie wysyłania e-maila"

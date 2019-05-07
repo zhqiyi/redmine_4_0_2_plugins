@@ -1,0 +1,9 @@
+# encoding: utf-8
+ja:
+  label_checklist_plural: "チェックリスト" # Checklist
+  field_checklist: "チェックリスト" # Checklist
+  label_checklist_save_log: "変更をチケットに記録する" # Save changes to issue log
+  label_checklist_done_ratio: "チェック完了率" # Set issue done ratio
+  permission_view_checklists: "チェックリストの参照" # View checklist
+  permission_done_checklists: "チェックリストへ済印" # Done checklist items
+  permission_edit_checklists: "チェックリストの編集" # Edit checklist items

@@ -1,0 +1,162 @@
+---
+ko:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: 쉬운 WBS
+  easy_wbs:
+    button_actions: 다른 실행
+    button_add_child: 자녀 추가
+    button_add_parent: 부모 추가
+    button_add_sibling: 형제/자매 추가
+    button_all_icons: 아이콘
+    button_collapse: 줄이기
+    button_collapse_all: 모두 줄이기
+    button_cut: 잘라내기
+    button_display: 설정 확인
+    button_edit_data: 데이터 수정
+    button_expand: 넓히기
+    button_expand_all: 모두 늘이기
+    button_expand_collapse: 더보기/줄이기
+    button_legend: 전설
+    button_one_side: 한 쪽
+    button_paste: 붙여넣기
+    button_project_menu: Easy WBS
+    button_redo: 다시하기
+    button_remove_node: 연결고리 제거
+    button_show_links: 링크 보여주기
+    button_undo: 실행취소
+    edit_issue: 작업 수정
+    error_create: 생성될 수 없습니다
+    error_delete: 삭제될 수 없습니다
+    error_update: 업데이트 될 수 없습니다
+    errors:
+      not_subtaskable: 추적기 설정으로 인해 작업 "%{task_name}"은  하위 작업이 될 수 없습니다
+    free:
+      button_upgrade: 전체 버전 받기
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: 속성별로 연결 색 칠하기
+      feature_context_menu: 연결값 변경
+      feature_filtering: 속성별로 연결 필터링
+      header_not_available: 전체 버전에서만 사용할 수 있음
+      text_not_available: Easy WBS의 전체 버전에서만 사용할 수 있음
+    hotkeys:
+      info_mac_metakey: Mac OSX에서는 Ctrl 키와 Cmd 키를 Ctrl 아래에 표시된 단축키에 사용할 수 있습니다. 일부
+        브라우저는 특정 키 조합을 사용하지 못하게 합니다. 예를 들어 Cmd + Space가 브라우저에서 작동하지 않는 경우, Ctrl +
+        Space를 사용하여주세요.
+      keyboard:
+      - title: Node manipulation
+        hotkeys:
+        - hotkey: Enter
+          info: Add Sibling
+        - hotkey: Shift+Enter
+          info: Add Sibling above or line break (when renaming node)
+        - hotkey: Tab or Insert
+          info: Add child
+        - hotkey: Shift+Tab
+          info: Insert parent
+        - hotkey: Space
+          info: Rename node
+        - hotkey: Shift+Space
+          info: Edit node data
+        - hotkey: Backspace or Delete
+          info: Remove node
+        - hotkey: Ctrl+Up/Down
+          info: Move node up/down
+      - title: Editing
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Save
+        - hotkey: Ctrl+X or C
+          info: Cut
+        - hotkey: Ctrl+C or Y
+          info: Copy
+        - hotkey: Ctrl+V or P
+          info: Paste
+        - hotkey: U or Ctrl+Z
+          info: Undo
+        - hotkey: R or Ctrl+Y or Ctrl+Shift+Z
+          info: Redo
+      - title: Selection
+        hotkeys:
+        - hotkey: Arrow Keys
+          info: Select the node up/down/left/right of the currently selected one
+        - hotkey: Shift + Arrow keys
+          info: Add node up/down/left/right to selection (useful to multi-select siblings)
+        - hotkey: "{"
+          info: Multi-select the current node and the entire subtree under it
+        - hotkey: "["
+          info: Multi-select only the subtree under the current node (not the node
+            itself)
+        - hotkey: "="
+          info: Multi-select all the siblings of the current node (that have the same
+            parent)
+        - hotkey: "."
+          info: Cancel multi-selection and select only the current node again
+        - hotkey: 1 - 9
+          info: Select all nodes of a particular level (eg 1 selects all first level
+            nodes)
+      - title: Navigation and screen
+        hotkeys:
+        - hotkey: "/ or F"
+          info: Expand or collapse node (fold or unfold children)
+        - hotkey: Ctrl + or Z
+          info: Zoom in
+        - hotkey: Ctrl - or Shift Z
+          info: Zoom out
+        - hotkey: Esc, 0, Ctrl+0
+          info: Reset map view - select root node and bring it to the center of the
+            screen
+      mouse:
+      - action: Move the map
+        gesture: 가운데 노드를 클릭하고 드래그하고 배경을 클릭하여 드래그하거나 트랙 패드 / 터치 패드로 스크롤합니다.
+      - action: 노드 선택
+        gesture: 선택 혹은 클릭하기
+      - action: 다양한 노드 선택
+        gesture: Shift+클릭
+      - action: 노드 재정렬
+        gesture: 형제 파일 간 노드를 드래그하고 재정렬 위치에 가깝게 놓습니다. 재정렬 할 때는 검은 색 화살표 점이 표시됩니다..
+      - action: 직접 노트 위치 수정
+        gesture: 재정렬을 위한 화살표 점이 표시되지 않을 때까지 노드를 드래그하세요. 재정렬 화살표가 표시되어 있지만, 수동으로 위치를
+          지정하려면 Shift 키를 누른 상태에서 드래그하십시오. 루트 노드의 하위 자료는 모든 방향에서 끌어 올 수 있지만, 하위 노드는
+          루트와 관련된 상위 폴더 방향으로 만 이동 할 수 있습니다..
+      - action: 노드 이름 재설정
+        gesture: 더블 클릭 혹은 두번 선택하기
+      - action: 작업이 포함된 메뉴 표시
+        gesture: 노드를 마우스 오른쪽 버튼으로 클릭하거나 배경을 두 번 탭하거나 노드를 길게 누르기 (터치 장치)
+      - action: 노드 상위파일 변경
+        gesture: 다른 노드에 노드를 드래그 앤 드롭하기 (순환 삭제는 허용되지 않으므로 하위 노드 또는 하위 노드 중 한개의 노드를
+          삭제할 수 없습니다.)
+      - action: 작업 실행 혹은 다른 창에서 프로젝트 열기
+        gesture: Alt+클릭
+      title_key_shortcuts: 키보드 활용
+      title_mouse_shortcuts: 마우스 및 터치 활용
+      title_shortcuts: 단축키
+    info_all_saved: 모든 것이 성공적으로 저장되었습니다
+    info_any_failed: '몇몇 요청이 이행되지 않았습니다:'
+    info_no_permission: 이를 실행할 수 있는 허가가 없습니다
+    label_color_by: 으로 칠해진
+    label_go_to: 이동하기
+    label_or: 혹은
+    last_state_modal:
+      label_differencies: 서버의 차이점
+      message_changed: 다른 속성을 가지고 있습니다 (브라우저 => 서버) ({{changes}})
+      message_missing: '"{{from}}" 상위자료로 부터 없어짐'
+      message_moved: '"{{from}}" 가 아닌 "{{to}}" 의 하부내역입니다'
+      message_present: '"{{to}}" 의 하위자료로 있습니다'
+      text_reload_appeal: 서버에서 재로딩을 하시겠습니까?
+      title: WBS의 마지막 고객의 위치는 서버 위치와 다릅니다
+    reload_modal:
+      label_errors: 오류
+      text_reload_appeal: 저장되지 않은 항목들을 무시하고 서버로부터 데이터를 재로딩할까요?
+      title: WBS가 올바르게 저장되지 못했습니다
+    stored_modal:
+      text_load_appeal: 로딩하시겠습니까? 대신에 서버에서 새로운 상태를 로딩하시겠습니까?
+      title: 저장되지 않은 상태를 찾았습니다
+    warning_delete_node: 연결 {{name}}과 모든 하위 자료를 삭제하시겠습니까?
+    warning_not_saved: 올바르게 저장되지 않았습니다
+  heading_easy_wbs_issues: 쉬운 WBS
+  label_filter_group_easy_wbs_easy_issue_query: 작업
+  label_filter_group_easy_wbs:
+    easy_issue_query: 작업
+  project_default_page:
+    easy_wbs: 쉬운 WBS

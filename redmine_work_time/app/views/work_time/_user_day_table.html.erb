@@ -1,0 +1,282 @@
+<table border="0" id="time_input_table">
+  <tr style="background:#fff;font-size:14px">
+    <td>&nbsp;</td>
+    <td><%=l(:work_time)%></td>
+    <% if @is_registerd_backlog then %>
+    <td><%=l(:field_remaining_hours)%></td>
+    <% end %>
+    <td><%=l(:field_activity)%></td>
+    <td><%=l(:field_status)%></td>
+    <td><%=l(:field_comments)%></td>
+    <% @custom_fields.each do |cf| %>
+       <td><%= cf.name %></td>
+    <% end %>
+  </tr>
+<%
+@day_pack[:odr_prjs].each do |prj_pack|
+  next if prj_pack[:ref_issues].length==0
+  prj = prj_pack[:prj]
+  next if !prj.visible?
+  dsp_prj = prj.id
+  dsp_pos = prj_pack[:odr]
+
+  activities = []
+  activity_default = nil
+  prj.activities.each do |act|
+    activities.push([act.name, act.id])
+    activity_default = act.id if act.is_default
+  end
+%>
+<tr style="background:#000;color:#fff;">
+  <td>
+      <%if @this_uid==@crnt_uid then%>
+
+        <a href="#"
+          style="color:#8ff;"
+          onclick="prj_pos('<%=url_for(@link_params) %>',
+                           <%=dsp_prj%>,
+                           <%=dsp_pos%>,
+                           <%=@prj_odr_max+((dsp_pos.to_i<0)?1:0)%>);
+                   return false;">
+          <%= (dsp_pos.to_i<0) ? "*" : dsp_pos %>:
+        </a>
+     <%end%>
+        <%=prj.name%>
+  </td>
+  <td><%=sprintf("%1.2f", prj_pack[:total])%></td>
+  <% if @is_registerd_backlog then %>
+  <td>&nbsp;</td>
+  <% end %>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <% @custom_fields.each do |cf| %>
+     <td>&nbsp;</td>
+  <% end %>
+</tr>
+<%
+prj_pack[:odr_issues].each do |issue_pack|
+  issue = issue_pack[:issue]
+  issue_id = issue.nil? ? -1 : issue.id
+  issue_odr = issue_pack[:odr].to_i
+#  issue_class = issue_pack[:worked] ? "#cfc" : "#fff"
+  issue_css_classes = issue_pack[:css_classes]
+  issue = Issue.find_by_id(issue_id)
+  issue_html = wk_pretty_issue_name issue, issue_id
+
+  if issue_pack[:each_entries].length==0 then
+%>
+<!-- 工数エントリなし -->
+<tr id="time_entry_pos<%=issue_id%>_0">
+  <td class="<%=issue_css_classes%>">
+  <div style="position:relative;width:300px;">
+    <%if @this_uid==@crnt_uid then%>
+    <a href="#"
+      onclick="ticket_pos('<%=url_for(@link_params) %>',
+                          <%=issue_id%>,
+                          <%=issue_odr%>,
+                          <%=@issue_odr_max+((issue_odr.to_i<0)?1:0)%>);
+               return false;">
+      <%= (issue_odr.to_i<0) ? "*" : issue_odr %>
+    </a>
+    <%end%>
+
+    <%= link_to(issue_html,
+                {:controller=>"issues", :action=>"show", :id=>issue_id},
+                :popup=>true, :class=>'wt_iss_link', :'data-issue'=>issue_id) %>
+    <%= print_issue_cost(issue) %>
+    <%if User.current.allowed_to?(:edit_issues, issue.project)%>
+        <a name="<%='done_ratio'+issue.id.to_s%>"
+           class="wt_done_ratio"
+           data-issue="<%= issue_id %>"
+           href="#"
+           onclick="input_done_ratio(
+                   '<%=url_for(@link_params.merge(:action=>"ajax_done_ratio_input"))%>',
+                   <%=issue_id%>);
+                   return false;">
+          [<%=issue.done_ratio%>&#37;]
+        </a>
+    <%else%>
+        [<%=issue.done_ratio%>&#37;]
+    <%end%>
+    <%if @this_uid==@crnt_uid then%>
+    &nbsp;&nbsp;&nbsp;
+    <a style="position:absolute;bottom:1px;right:10px;"
+       href="#"
+       onclick="dup_ticket(
+                    '<%=url_for(@link_params.merge(:action=>"ajax_add_tickets_insert"))%>',
+                    'time_entry_pos<%=issue_id%>_0',
+                    <%=issue_id%>);
+                return false;">
+      +
+    </a>
+      <%if issue_odr>0 then%>
+      <a style="position:absolute;bottom:1px;right:3px;" href="<%=url_for(@link_params.merge(:ticket_del=>issue_id))%>">x</a>
+      <%end%>
+    <%end%>
+  </div>
+  </td>
+  <td>
+    <%= text_field_tag("new_time_entry["+issue_id.to_s+"][0][hours]", "", :size=>5, :oninput => "sumDayTimes()") %>
+  </td>
+  <% if @is_registerd_backlog then %>
+  <td>
+    <% if issue_pack[:cnt_childrens] != 0 || issue.closed? then %>
+      <%= issue[:remaining_hours] %>
+    <% else %>
+      <%= text_field_tag("new_time_entry["+issue_id.to_s+"][0][remaining_hours]", issue[:remaining_hours], :size=>5, :oninput => "sumDayTimes()") %>
+    <% end %>
+  </td>
+  <% end %>
+  <td>
+    <%= select_tag "new_time_entry["+issue_id.to_s+"][0][activity_id]", options_for_select(activities,activity_default) %>
+  </td>
+  <td>
+    <% if issue.new_statuses_allowed_to(User.current).length == 0 then %>
+      <%= issue.status %>
+    <% else %>
+      <% select_name="new_time_entry["+issue_id.to_s+"][0][status_id]" %>
+      <%= select_tag select_name,
+                     options_for_select(issue.new_statuses_allowed_to(User.current).collect {|p| [p.name, p.id]},
+                                        issue.status_id),
+                     :onchange => "statusUpdateOnDailyTable('#{select_name}')",
+                     :required => true %>
+    <% end %>
+  </td>
+  <td>
+    <%= text_field_tag("new_time_entry["+issue_id.to_s+"][0][comments]", "", :size=>80)%>
+  </td>
+  <%if @custom_fields.length != 0
+      dummy_hour = TimeEntry.new(:project => issue.project, :issue => issue, :user => @this_user, :spent_on => @this_date)
+      dummy_hour.custom_field_values.each do |cfv|
+  %>
+     <td><%= custom_field_tag "new_time_entry_"+issue_id.to_s+"_0", cfv %></td>
+      <%end
+     end%>
+</tr>
+<%
+  else
+    issue_pack[:each_entries].each do |hour_id, hour|
+%>
+<!-- 工数エントリあり -->
+<tr id="time_entry_pos<%=hour_id%>">
+  <td class="<%=issue_css_classes%>">
+  <div style="position:relative;width:300px;">
+  <%if !issue.nil? then%>
+    <%if @this_uid==@crnt_uid then%>
+    <a href="#"
+      onclick="ticket_pos('<%=url_for(@link_params) %>',
+                          <%=issue_id%>,
+                          <%=issue_odr%>,
+                          <%=@issue_odr_max+((issue_odr.to_i<0)?1:0)%>);
+               return false;">
+      <%= (issue_odr.to_i<0) ? "*" : issue_odr %>
+    </a>
+    <%end%>
+    <%= link_to(issue_html,
+                {:controller=>"issues", :action=>"show", :id=>issue_id},
+                :popup=>true, :class=>'wt_iss_link', :'data-issue'=>issue_id) %>
+
+    <%= print_issue_cost(issue) %>
+    <%if User.current.allowed_to?(:edit_issues, issue.project)%>
+            <a name="<%='done_ratio'+issue_id.to_s%>"
+               class="wt_done_ratio"
+               data-issue="<%= issue_id %>"
+               href="#"
+               onclick="input_done_ratio(
+                       '<%=url_for(@link_params.merge(:action=>"ajax_done_ratio_input"))%>',
+                       <%=issue_id%>);
+                       return false;">
+              [<%=issue.done_ratio%>&#37;]
+            </a>
+    <%else%>
+            [<%=issue.done_ratio%>&#37;]
+    <%end%>
+    <%if @this_uid==@crnt_uid then%>
+    &nbsp;&nbsp;&nbsp;
+
+    <a style="position:absolute;bottom:1px;right:10px;"
+       href="#"
+       onclick="dup_ticket(
+                    '<%=url_for(@link_params.merge(:action=>"ajax_add_tickets_insert"))%>',
+                    'time_entry_pos<%=hour_id%>',
+                    <%=issue_id%>);
+                return false;">
+      +
+    </a>
+      <%if issue_odr>0 then%>
+        <a style="position:absolute;bottom:1px;right:3px;" href="<%=url_for(@link_params.merge(:ticket_del=>issue_id))%>">x</a>
+      <%end%>
+    <%end%>
+  <%end%>
+  </div>
+  </td>
+  <td>
+    <%= text_field_tag("time_entry["+hour_id.to_s+"][hours]", sprintf("%1.2f", hour.hours), :size=>5, :oninput => "sumDayTimes()") %>
+  </td>
+  <% if @is_registerd_backlog then %>
+  <td>
+    <% if issue_pack[:cnt_childrens] != 0 || hour.issue.closed? then %>
+      <%= hour.issue[:remaining_hours] %>
+    <% else %>
+      <%= text_field_tag("time_entry["+hour_id.to_s+"][remaining_hours]", hour.issue[:remaining_hours], :size=>5, :oninput => "sumDayTimes()") %>
+    <% end %>
+  </td>
+  <% end %>
+  <td>
+    <%= select_tag "time_entry["+hour_id.to_s+"][activity_id]", options_for_select(activities, hour.activity_id), :required => true %>
+  </td>
+  <td>
+    <% if issue.new_statuses_allowed_to(User.current).length == 0 then %>
+      <%= issue.status %>
+    <% else %>
+      <% select_name="time_entry["+hour_id.to_s+"][status_id]" %>
+      <%= select_tag select_name,
+                     options_for_select(issue.new_statuses_allowed_to(User.current).collect {|p| [p.name, p.id]},
+                                        issue.status_id),
+                     :onchange => "statusUpdateOnDailyTable('#{select_name}')",
+                     :required => true %>
+    <% end %>
+  </td>
+  <td>
+    <%= text_field_tag("time_entry["+hour_id.to_s+"][comments]", hour.comments, :size=>80)%>
+  </td>
+  <% hour.custom_field_values.each do |cfv| %>
+     <td><%= custom_field_tag "time_entry_"+hour_id.to_s, cfv %></td>
+  <% end %>
+</tr>
+<%
+   end
+  end
+ end
+end
+%>
+<% if @day_pack[:other]!=0 then %>
+<tr style="background:#000;color:#fff;">
+  <td>private</td>
+  <td><%=sprintf("%1.2f", @day_pack[:other])%></td>
+  <% if @is_registerd_backlog then %>
+      <td><%=sprintf("%1.2f", @day_pack[:other_remain]) if @day_pack[:other_remain]%></td>
+  <% end %>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <% @custom_fields.each do |cf| %>
+     <td>&nbsp;</td>
+  <% end %>
+</tr>
+<% end %>
+<tr align="center" id="time_input_table_bottom" style="background:#ddd;">
+  <td>&nbsp;</td>
+  <td><span id='currentTotal' title='<%=l(:wt_saved_value)%> <%=sprintf("%1.2f", @day_pack[:total])%>'><%=sprintf("%1.2f", @day_pack[:total])%></span></td>
+  <% if @is_registerd_backlog then %>
+  <td>&nbsp;</td>
+  <% end %>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <% @custom_fields.each do |cf| %>
+     <td>&nbsp;</td>
+  <% end %>
+</tr>
+</table>

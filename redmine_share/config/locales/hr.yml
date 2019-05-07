@@ -1,0 +1,9 @@
+hr:
+  share_button: "Podijelite"
+  share_title: "Podijelite vezu"
+  share_label_with: "Share with"
+  share_label_page: "Stranica"
+  share_label_subject: "%{sender} je s vama podijelio %{record}"
+  share_text_message: "%{sender} je s vama podijelio %{record}."
+  share_notice_email_sent: E-mail je poslan"
+  share_notice_email_error: Dogodila se pogreška tijekom slanja E-maila"

@@ -1,0 +1,8 @@
+<% checklist_tabs = [
+  {:name => 'general', :partial => 'settings/checklists/general', :label => :label_general}]
+
+ %>
+
+<%= render_tabs checklist_tabs %>
+
+<% html_title(l(:label_settings), l(:label_checklists)) -%>

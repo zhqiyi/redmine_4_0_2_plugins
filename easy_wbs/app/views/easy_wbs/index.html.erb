@@ -1,0 +1,157 @@
+<%
+  data_path_params = @query.to_params.merge(key: User.current.api_key, format: 'json')
+  data_path = project_easy_wbs_index_path(@project, data_path_params)
+%>
+
+<div id="easy_wbs" class="<%= defined?(EasyExtensions) ? 'easy' : 'redmine' %>
+    wbs clear">
+
+  <%= render @query, easy_query_name: l(:heading_easy_wbs_issues),
+       wrapper_class: '',
+       options: { show_custom_formatting: false, show_free_search: false } %>
+
+  <div id="wbs_cont" class="clear mindmup-cont">
+    <div id="wbs_menu" class="mindmup__menu">
+      <div class="push-left">
+        <div class="mindmup__legend-container">
+          <div class="mindmup__legend-header">
+            <label class=mindmup__legend-label"><%= l(:button_legend, :scope => [:easy_wbs]) %>:
+              <select class="mindmup-color-select" style="width:150px">
+                <option value="tracker" selected><%= l(:field_tracker) %></option>
+                <option value="progress"><%= l(:field_done_ratio) %></option>
+                <option value="priority"><%= l(:field_priority) %></option>
+                <option value="status"><%= l(:field_status) %></option>
+                <option value="assignee"><%= l(:field_assigned_to) %></option>
+                <option value="milestone"><%= l(:field_version) %></option>
+              </select>
+            </label>
+            <div class="mindmup__legend-toggler legend-toggler push-right">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--legend mindmup__legend-trigger"><span class="tip"><%= l(:button_legend, :scope => [:easy_wbs]) %></span></a>
+            </div>
+          </div>
+          <div class="mindmup-legend"></div>
+        </div>
+        <div class="mindmup__menu-group mindmup__menu-group--tooltiped mindmup__menu-item mindmup__menu-group-display">
+          <a href="javascript:void(0)" class="button button-2 easy-mindmup__icon easy-mindmup__icon--display"><span><%= l(:button_display, :scope => [:easy_wbs]) %></span></a>
+          <ul>
+            <li class="show-links-toggler">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--links"><%= l(:button_show_links, :scope => [:easy_wbs]) %></a>
+            </li>
+            <li class="all-icon-toggler">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--icons"><%= l(:button_all_icons, :scope => [:easy_wbs]) %></a>
+            </li>
+            <li class="toggleOneSide">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--one_side"><%= l(:button_one_side, :scope => [:easy_wbs]) %></a>
+            </li>
+            <li class="mindmup-expand-all">
+              <a href="javascript:void(0)" class="mindmup-button-expand-all easy-mindmup__icon easy-mindmup__icon--expand"><%= l(:button_expand_all, :scope => [:easy_wbs]) %></a>
+              <a href="javascript:void(0)" class="mindmup-button-collapse-all easy-mindmup__icon easy-mindmup__icon--collapse"><%= l(:button_collapse_all, :scope => [:easy_wbs]) %></a>
+            </li>
+            <li class="mindmup__legend-cont-toggler">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--legend_hide"><%= l(:button_legend, :scope => [:easy_mindmup]) %></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <% if defined?(EasyExtensions) && !EasySetting.value(:easy_wbs_no_sidebar)%>
+        <script type="application/javascript">
+          window.easyDartLoaders = window.easyDartLoaders || [];
+          document.write('<ng-root-' + window.easyDartLoaders.length + ' class="mindmup-sidebar__root"></ng-root-' + window.easyDartLoaders.length + '>');
+          window.easyDartLoaders.push(<%= {
+            subtype: :wbs,
+            id:'WBS classic',
+            plugin: 'mindmupSidebar',
+            data: {
+              lang: wbs_translations,
+              paths: {
+                # home_path: (home_path=='/')?home_path:(home_path+'/'),
+                home_path: home_path,
+                issue_path: issue_path('__issueId',key: User.current.api_key,format: :json),
+                project_path: project_path('__projectId',key: User.current.api_key,format: :json),
+                easy_issue_form_fields: url_for(controller: :easy_issues, action: :form_fields,id: '__issueId',format: :json,project_id: nil,key: User.current.api_key),
+                easy_issue_project_form_fields: url_for(controller: :easy_issues, action: :form_fields,format: :json,project_id: '__projectId',key: User.current.api_key),
+                user_json: user_path('__userId',key: User.current.api_key,format: :json),
+                user_html: user_path('__userId'),
+                user_profile_html:profile_user_path('__userId')
+              }
+            }.to_json.to_s
+            # there should be String value in key data - it is faster to iterop with dart part
+          }.to_json.html_safe %>);
+        </script>
+      <% end %>
+      <div class="mindmup__menu-group mindmup__menu-group--sizing mindmup__menu-item">
+        <ul>
+          <li class="scaleUp">
+            <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--zoom_in"></a>
+          </li>
+          <li class="resetView">
+            <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--refresh_view"></a>
+          </li>
+          <li class="scaleDown">
+            <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--zoom_out"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="push-right">
+        <div class="mindmup__menu-group mindmup__menu-group--tooltiped mindmup__menu-item">
+          <a href="javascript:void(0)" class="button button-2 easy-mindmup__icon easy-mindmup__icon--settings"><span><%= l(:button_actions, :scope => [:easy_wbs]) %></span></a>
+          <ul>
+            <li class="undo mindmup-button-undo">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--undo"><%= l(:button_undo, :scope => [:easy_wbs]) %></a>
+            </li>
+            <li class="redo mindmup-button-redo">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--redo"><%= l(:button_redo, :scope => [:easy_wbs]) %></a>
+            </li>
+            <li class="mindmup-button-print">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--print"><%= l(:button_export) %></a>
+            </li>
+            <li class="cut">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--cut"><%= l(:button_cut, :scope => [:easy_wbs]) %></a>
+            </li>
+            <li class="copy">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--copy"><%= l(:button_copy) %></a>
+            </li>
+            <li class="paste">
+              <a href="javascript:void(0)" class="easy-mindmup__icon easy-mindmup__icon--paste"><%= l(:button_paste, :scope => [:easy_wbs]) %></a>
+            </li>
+          </ul>
+        </div>
+        <div class="mindmup__menu-item save mindmup__menu-save">
+          <a href="javascript:void(0)" class="button button-positive easy-mindmup__icon easy-mindmup__icon--save"><span><%= l(:button_save) %></span></a>
+          <div class="mindmup__menu-save--tooltip"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="container" class="mindmup-container" style="min-height: 600px;width: 100%;">
+      <div class="link-edit-widget">
+        <div class="link-edit-type-actual"></div>
+      </div>
+      <%= render 'easy_mindmup/hotkeys' %>
+    </div>
+  </div>
+</div>
+
+<% heads_for_wiki_formatter %>
+<%= content_for :header_tags do %>
+  <%= render 'easy_mindmup/includes' %>
+  <%= render 'easy_mindmup/js_prepare' %>
+  <%= render 'easy_wbs/js_prepare' %>
+  <%= render 'easy_wbs/includes' %>
+  <%= render 'easy_wbs/test_includes' %>
+
+  <script type="application/javascript">
+    window.easyMindMupSetting.paths.data = "<%= data_path.html_safe %>";
+  </script>
+
+  <script type="text/javascript">
+    (function () {
+      var settings = window.easyMindMupSetting;
+      delete window.easyMindMupSetting;
+      $(document).ready(function () {
+        new window.easyMindMupClasses.WbsMain(settings);
+      })
+    })();
+  </script>
+<% end %>
+

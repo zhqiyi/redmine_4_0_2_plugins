@@ -1,0 +1,171 @@
+---
+hu:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Más tevékenységek
+    button_add_child: Alfeladat hozzáadása
+    button_add_parent: Szülő feladat hozzáadása
+    button_add_sibling: Testvérfeladat hozzáadása
+    button_all_icons: Ikonok
+    button_collapse: Összezár
+    button_collapse_all: Összes összezárása
+    button_cut: Kivágás
+    button_display: Beállítások megjelenítése
+    button_edit_data: Adat szerkesztése
+    button_expand: Kinyit
+    button_expand_all: Összes kinyitása
+    button_expand_collapse: Kinyit / Összezár
+    button_legend: Magyarázat
+    button_one_side: Egy oldal
+    button_paste: Beillesztés
+    button_project_menu: Easy WBS
+    button_redo: Visszaállít
+    button_remove_node: Ág eltávolítása
+    button_show_links: Linkek megjelenítése
+    button_undo: Visszavonás
+    edit_issue: Feladat szerkesztése
+    error_create: nem lehet létrehozni
+    error_delete: nem lehet törölni
+    error_update: Frissítés nem sikerült
+    errors:
+      not_subtaskable: Feladat "%{task_name}" nem lehet alfeladat a beállítás típusa
+        miatt
+    free:
+      button_upgrade: Szerezze be a teljes verziót
+      button_upgrade_href: https://www.easyproject.hu/szoftver
+      feature_coloring: Ágak színezése tulajdonság alapján
+      feature_context_menu: Ág tulajdonságának megváltoztatása
+      feature_filtering: Ágak szűrése tulajdonság alapján
+      header_not_available: Csak teljes verzióban érhető el
+      text_not_available: az Easy WBS teljes verziója elérhető
+    hotkeys:
+      info_mac_metakey: Mac OSX esetén a Ctrl és Cmd billentyűkombináció használható
+        olyan rövidítésekre melyeket Ctrl-er jelölünk- néhány böngésző nem engedélyezi
+        ezeket a kombinációkat. Ezért például, ha a Cmd + Space nem működik a böngészőjében,
+        akkor próbálja meg a Ctrl+ Space kombinációt
+      keyboard:
+      - title: ág manipulálás
+        hotkeys:
+        - hotkey: Enter
+          info: Testvér hozzáadása
+        - hotkey: Shift+Enter
+          info: Testvér hozzáadása fölé  vagy sortöréssel (ág átnevezésekor)
+        - hotkey: Tab vagy Beillesztés
+          info: alfeladat hozzáadása
+        - hotkey: Shift+Tab
+          info: Szülő beillesztése
+        - hotkey: Space
+          info: Ág átnevezése
+        - hotkey: Shift+Space
+          info: Ág adat szerkesztése
+        - hotkey: Backspace vagy Törlés
+          info: Ág eltávolítása
+        - hotkey: Ctrl+Fel/Le
+          info: Ág elmozdítása fel/le
+      - title: Szerkesztés
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Mentés
+        - hotkey: Ctrl+X vagy C
+          info: Kivágás
+        - hotkey: Ctrl+C vagy Y
+          info: Másolás
+        - hotkey: Ctrl+V vagy P
+          info: Beillesztés
+        - hotkey: U vagy Ctrl+Z
+          info: Visszaállít
+        - hotkey: R vagy Ctrl+Y vagy Ctrl+Shift+Z
+          info: Redo
+      - title: Kiválasztás
+        hotkeys:
+        - hotkey: Nyilak
+          info: A jelenleg kiválaszott ágból válassza ki a fel/le/bal/jobb
+        - hotkey: Shift + Nyilak
+          info: Ág hozzáadása fel/le/bel/jobb ( hasznos a testvér többszörös kiválasztása)
+        - hotkey: "{"
+          info: Többszörös kiválasztása a jelenlegi ágnak és a maradé alfának alatta
+        - hotkey: "["
+          info: Többszörös kiválasztása az alfának amelyik a jelenlegi ág alatt van
+            (nem az ágat magát)
+        - hotkey: "="
+          info: A jelenlegi ág testvéreinek többszörös kiválasztása ( amelyek ugyanazza
+            a szülővel rendelkeznek)
+        - hotkey: "."
+          info: Többszörös kiválasztás törélese és válassza ki a jelenlegi ágat ismét
+        - hotkey: 1 - 9
+          info: Egy kiválaszott szinten az összes ág kiválasztása (pl. 1 az összes
+            eslő szintes ágak kiválasztása)
+      - title: Navigáció és  képernyő
+        hotkeys:
+        - hotkey: "/ vagy F"
+          info: Ág kinyitása vagy összezárása (kinyitja vagy bezárja az alfeladatot
+            )
+        - hotkey: Ctrl + vagy Z
+          info: Nagyítás
+        - hotkey: Ctrl - vagy Shift Z
+          info: Kizoomolás
+        - hotkey: Esc, 0, Ctrl+0
+          info: Térkép nézet újraindítása - Gyökérág kiválasztása és a képernyő közepére
+            hozása
+      mouse:
+      - action: Térkép áthelyezése
+        gesture: kattintás és  behúzás a központi ágba, kattintás és behúzás a háttér
+          vagy görgetés a touchpaddel.
+      - action: Ág kiválasztása
+        gesture: érintse meg vagy kattintson rá
+      - action: több ág kiválasztása
+        gesture: Shift+kattintás
+      - action: ágak újrhívása
+        gesture: behúzniaz ágat a két testvér közé, vízszintesen zárja be a feladatot
+          a pozíció újrahívásához.  Egy fekete nyíl fog megjelenni az újrahívásnál.
+      - action: Manuálisan állítsa be az ágat
+        gesture: 'csak húzza be az ágta, a nyílig. A kézi pozícionáls kényszerítése
+          amikor az újrahívott nyíl megjelenik, tartsa a  Shift-et ameddig húzza.
+          Figyeljen , hogy az alág bármilyen irányban húzható, de az alacsonyabb szintű
+          ágak a szülő irányába pozícionálhatók. '
+      - action: Ág átnevezése
+        gesture: Dupla kattintás vagy dupla koppintás
+      - action: Kapcsolatban álló menü megjelenítése műveletekkel
+        gesture: 'Jobb klikk az ágra (egérrel) vagy duppla koppintás a háttéren,  vagy
+          hosszan nyomva tartás az ágon: mutatás (érintős eszközön)'
+      - action: Szülő ág megváltoztatása
+        gesture: az ág egy másik ágra húzása (körkörös húzás nem megengedett, tehát
+          egy ág nem húzható rá a gyerek ágra, vagy az egyik alágára)
+      - action: Nyitott feladatok vagy projekt különböző ablakban
+        gesture: Alt+click
+      title_key_shortcuts: Billentyű műveletek
+      title_mouse_shortcuts: Egér műveltek
+      title_shortcuts: Lerövidítések
+    info_all_saved: Sikeresen mentve
+    info_any_failed: Kérések egy része sikertelen
+    info_no_permission: Nem rendelkezik a szükséges jogosultsággal a művelet végrehajtásához
+    label_color_by: Színezve
+    label_go_to: Megy!
+    label_or: vagy
+    last_state_modal:
+      label_differencies: Különbségek a szerveren
+      message_changed: különböző attribútumokkal rendelkezik (böngésző => server ({{változások}})
+      message_missing: hiányzik a szülő feladatból "{{from}}"
+      message_moved: alfeladata "{{to}}", nem "{{from}}"
+      message_present: alfeladatként kelenik meg a "{{to}}"-nak
+      text_reload_appeal: Szeretné újratölteni az állapotot a szerverről?
+      title: A WBS utolsó kliens állapota különbözik a szerver állapottól
+    reload_modal:
+      label_errors: Hibák
+      text_reload_appeal: Szeretné figyelmen kívül hagyni a nem mentett elemeket és
+        újratölteni a serverről?
+      title: Nem sikerült megfelelően menteni a WBS-t
+    stored_modal:
+      text_load_appeal: Szeretné betölteni? A friss állapot helyett a szerverről?
+      title: Nem mentett állapotot talált
+    warning_delete_node: Biztosan törölni akarja a {{name}}  csomópontot és minden
+      származékát?
+    warning_not_saved: nem megfelelő mentés
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Feladatok
+  label_filter_group_easy_wbs:
+    easy_issue_query: Feladatok
+  project_default_page:
+    easy_wbs: Easy WBS

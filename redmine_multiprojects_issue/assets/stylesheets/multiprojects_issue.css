@@ -1,0 +1,98 @@
+.list_projects_names{
+    padding: 2px 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #ffffff;
+    border: 1px solid #d3d3d3;
+    line-height: 24px;
+}
+a.list_projects_names.hover{
+    color: #ffffff;
+    background-color: darkgrey;
+    text-decoration: none;
+    border: 1px solid darkgrey;
+}
+a.list_projects_names.current{
+    color: #ffffff;
+    background-color: #707070;
+    border: 1px solid #707070;
+}
+.list_other_projects{
+    margin: 4px 0 0 7px;
+}
+
+#label_related_projects{
+    /* color: #666; */
+    min-width: 175px;
+    font-weight: bold;
+    display: inline-block;
+    /* vertical-align: super; */
+    margin-top: 4px;
+}
+
+.projects_container{
+    max-height: 500px;
+    overflow: auto;
+
+    border-bottom: 1px solid #d3d3d3;
+}
+#project_nested_list.columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    padding-bottom: 10px;
+}
+#project_nested_list label.inactive{
+    color: #d3d3d3;
+}
+
+#my_projects_per_issue{
+    max-height: 150px;
+    overflow: auto;
+    display: flex;
+    width: 77%;
+}
+#projects_form #my_projects_per_issue{
+    width: auto;
+}
+
+td.project .disabled_project{
+    color: #808080;
+    font-style: italic;
+}
+
+tr:hover td.project .disabled_project, tr.context-menu-selection td.project .disabled_project{
+    color: inherit;
+}
+
+td.projects, td.related_projects{
+    width: 150px;
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.hide_journal_details{
+    display: none;
+    margin-right: 5px;
+}
+
+.answers-on-secondary-projects {
+  line-height: 2em;
+  color: #777;
+  padding:0 4px;
+}
+
+.load-modal-projects-selection {
+  line-height:2em;
+}
+
+.actions_links .advanced_selection.hidden {
+    display: none;
+}
+
+.first .hidden-if-first{
+    display: none;
+}

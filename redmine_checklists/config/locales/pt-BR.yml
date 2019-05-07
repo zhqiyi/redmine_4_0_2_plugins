@@ -1,0 +1,9 @@
+#Portuguese Brazilian strings go here for Rails i18n
+pt-BR:
+  label_checklist_plural: Checklist
+  field_checklist: Checklist
+  label_checklist_save_log: Salvar alterações nos logs das tarefas
+  label_checklist_done_ratio: Definir % terminando quando desmarcar o item
+  permission_view_checklists: Ver checklist
+  permission_done_checklists: Remover itens do checklist
+  permission_edit_checklists: Alterar itens do checklist

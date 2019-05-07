@@ -1,0 +1,177 @@
+---
+es:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Otras acciones
+    button_add_child: Añadir hijo
+    button_add_parent: Añadir matriz
+    button_add_sibling: Añadir hermano
+    button_all_icons: Iconos
+    button_collapse: Plegar
+    button_collapse_all: Plegar todo
+    button_cut: Cortar
+    button_display: Ajustes de visualización
+    button_edit_data: Editar datos
+    button_expand: Expandir
+    button_expand_all: Expandir todo
+    button_expand_collapse: Expandir/Plegar
+    button_legend: Leyenda
+    button_one_side: Un lado
+    button_paste: Pegar
+    button_project_menu: Easy WBS
+    button_redo: Volver a hacer
+    button_remove_node: Eliminar nodo
+    button_show_links: Mostrar enlaces
+    button_undo: Deshacer
+    edit_issue: Editar tarea
+    error_create: no se ha podido crear
+    error_delete: no se ha podido borrar
+    error_update: no se ha podido actualizar
+    errors:
+      not_subtaskable: La tarea "%{task_name}" no puede ser una subtarea debido a
+        los ajustes de su rastreador
+    free:
+      button_upgrade: Consigue la versión Completa
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: Colorear nodos por propiedad
+      feature_context_menu: Cambiar propiedades del nodo
+      feature_filtering: Filtrar nodos por propiedad
+      header_not_available: Disponible sólo en la versión Completa
+      text_not_available: está disponible en la versión Completa de Easy WBS.
+    hotkeys:
+      info_mac_metakey: En Mac OSX, las teclas Ctrl y Cmd pueden emplearse para atajos
+        marcados en Ctrl bajo - algunos navegadores no permiten ciertos atajos de
+        teclado. Así, por ejemplo, si Cmd+Espacio no funciona en tu navegador, prueba
+        con Ctrl+Espacio
+      keyboard:
+      - title: Manipulación del nódulo
+        hotkeys:
+        - hotkey: Enter
+          info: Añadir hermano
+        - hotkey: Shift+Enter
+          info: Añadir hermano encima o salto de línea (al cambiar nombre de nódulo)
+        - hotkey: Tabulador o Insertar
+          info: Añadir hijo
+        - hotkey: Shift+Tab
+          info: Insertar matriz
+        - hotkey: Espacio
+          info: Cambiar nombre a nódulo
+        - hotkey: Shift+Espacio
+          info: Editar datos de nódulo
+        - hotkey: Retroceso o Borrar
+          info: Eliminar nódulo
+        - hotkey: Ctrl+Arriba/Abajo
+          info: Mover nódulo arriba/abajo
+      - title: Editar
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Guardar
+        - hotkey: Ctrl+X o C
+          info: Cortar
+        - hotkey: Ctrl+C o Y
+          info: Copiar
+        - hotkey: Ctrl+V o P
+          info: Pegar
+        - hotkey: U o Ctrl+Z
+          info: Deshacer
+        - hotkey: R o Ctrl+Y o Ctrl+Shift+Z
+          info: Rehacer
+      - title: Selección
+        hotkeys:
+        - hotkey: Cursores
+          info: Selecciona el nódulo arriba/abajo/izquierda/derecha del seleccionado
+            actual
+        - hotkey: Shift + Cursores
+          info: Añade nódulo arriba/abajo/izquierda/derecha de selección (útil para
+            seleccionar varios hermanos)
+        - hotkey: "{"
+          info: Selección múltiple del nódulo actual y el subárbol bajo él
+        - hotkey: "["
+          info: Selección múltiple sólo del subárbol bajo el nódulo actual (pero no
+            el nódulo)
+        - hotkey: "="
+          info: Selección múltiple de todos los hermanos del módulo actual (que tienen
+            la misma matriz)
+        - hotkey: "."
+          info: Cancelar selección múltiple y seleccionar sólo el nódulo actual de
+            nuevo
+        - hotkey: 1 - 9
+          info: 'Selecciona todos los nódulos de un nivel particular (ej: 1 selecciona
+            todos los nódulos de primer nivel)'
+      - title: Navegación y pantalla
+        hotkeys:
+        - hotkey: "/ o F"
+          info: Expandir u ocultar nódulo (desplegar o contraer hijos)
+        - hotkey: Ctrl + o Z
+          info: Acercar
+        - hotkey: Ctrl - o Shift Z
+          info: Alejar
+        - hotkey: Esc, 0, Ctrl+0
+          info: Restablecer vista de mapa - seleccionar nódulo raíz y llevarlo al
+            centro de la pantalla
+      mouse:
+      - action: Mover el mapa
+        gesture: pulsar y arrastrar el nódulo central, pulsar y arrastrar el fondo
+          o desplazar con trackpad/touchpad.
+      - action: Seleccionar un nódulo
+        gesture: pulsar o hacer clic
+      - action: Seleccionar múltiples nódulos
+        gesture: Shift+clic
+      - action: Reordenar nódulos
+        gesture: arrastrar un nódulo entre sus hermanos, horizontalmente cerca de
+          la posición de reordenamiento. Se mostrará una flecha negra cuando se esté
+          reordenando.
+      - action: Posicionar un nódulo manualmente
+        gesture: arrastra un nódulo hasta que la flecha para reordenar desaparezca.
+          Para forzar la posición manual incluso cuando la flecha de reordenamiento
+          se muestre, pulsa Shift mientras arrastres. Ten en cuenta que los hijos
+          del nódulo raíz pueden moverse en cualquier dirección, mientras que los
+          nódulos de niveles inferiores sólo se podrán colocar en la dirección del
+          matriz relativo a la raíz.
+      - action: Renombrar un nódulo
+        gesture: Hacer doble clic o pulsar dos veces
+      - action: Mostrar menú de contexto con operaciones
+        gesture: 'Hacer clic sobre el botón derecho en el nódulo (con ratón) o pulsar
+          dos veces sobre el fondo, o pulsar un momento sobre el nódulo: mostrar (en
+          dispositivos táctiles)'
+      - action: Cambiar matriz del nódulo
+        gesture: arrastrar y soltar un nódulo en otro nódulo (soltar no está permitirdo,
+          de modo que no puede soltar un nódulo en uno de sus hijos o descendientes)
+      - action: Abrir asunto o proyecto en una ventana separada
+        gesture: Alt+clic
+      title_key_shortcuts: Operaciones de teclado
+      title_mouse_shortcuts: Operaciones por ratón y táctiles
+      title_shortcuts: Atajos
+    info_all_saved: Todo se ha guardado correctamente
+    info_any_failed: 'Algunas de las solicitudes no se han podido realizar:'
+    info_no_permission: No tienes el permiso necesario para realizar esa acción
+    label_color_by: Color por
+    label_go_to: Ir a
+    label_or: o
+    last_state_modal:
+      label_differencies: Diferencias en el servidor
+      message_changed: tiene diferentes atributos (navegador => servidor) ({{changes}})
+      message_missing: ha desaparecido de su matriz "{{from}}"
+      message_moved: es hijo de "{{to}}", no de "{{from}}"
+      message_present: aparece como hijo de "{{to}}"
+      text_reload_appeal: "¿Quieres recargar el estado desde el servidor?"
+      title: El último estado del cliente de WBS es diferente al estado del servidor
+    reload_modal:
+      label_errors: Errores
+      text_reload_appeal: "¿Quieres ignorar los objetos sin guardar y recargar los
+        datos desde el servidor?"
+      title: No se ha podido guardar el WBS correctamente
+    stored_modal:
+      text_load_appeal: "¿Deseas cargarlo en lugar del último estado desde el servidor?"
+      title: Se ha encontrado el estado no guardado
+    warning_delete_node: "¿Seguro que quieres eliminar el nodo {{name}} y todos sus
+      descendientes?"
+    warning_not_saved: no se ha guardado correctamente
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Tareas
+  label_filter_group_easy_wbs:
+    easy_issue_query: Tareas
+  project_default_page:
+    easy_wbs: Easy WBS

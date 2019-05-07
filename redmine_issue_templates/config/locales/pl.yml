@@ -1,0 +1,43 @@
+# Polish strings go here for Rails i18n
+pl:
+  issue_templates: Szablony zagadnień
+  issue_template: Szablon zagadnienia
+  issue_template_note: info
+  label_enabled: Włącz
+  label_disabled: Wyłącz
+  label_help_message: O szablonach
+  label_show_help_message: Pokazuj pomoc przy tworzeniu / edycji zagadnień. 
+  about_help_message: Każdy projekt może mieć swoje wiadomości pomocy dla szablonów.
+  close_help: Zamknij pomoc.
+  about_template_help_message: Możesz zobaczyć instrukcję dla szablonów zagadnień w tym projekcie.
+  label_enabled_help_message: Powoduje możliwość korzystania z tego szablonu. Jeśli chcesz, aby szablon był zapisany jako szkic, odznacz to pole.
+  label_list_templates: "Lista szablonów"
+  label_new_templates: "Dodaj szablon"
+  issue_template_name: "Nazwa szablonu"
+  issue_description: "Treść zagadnienia"
+  issue_title: "Tytuł zagadnienia"
+  label_applied_for_issue: "Pola wpisywane do zagadnienia: "
+  help_for_issue_title: "Jeśli wpisany jest tytuł zagadnienia, to także będzie wpisywane przy wyborze szablonu."
+  help_for_this_field: "Pomoc dla tego pola."
+  permission_manage_issue_templates: "Zarządzaj Szablonami"
+  permission_edit_issue_templates: "Edycja Szablonów"
+  permission_show_issue_templates: "Pokaż Szablony"  
+  project_module_issue_templates: "Szablony Zagadnień"
+  label_isdefault_help_message: "Zaznacz aby móc używać tego szablonu jako domyślnego dla danego typu zagadnień."
+  defaulf_template_loaded: "Wczytano domyślny szablon do opisu zagadnienia. (Typ: %{tracker})"
+  text_no_tracker_enabled: "Nie skonfigurowano typów zagadnień dla tego projektu.\nProszę je najpierw ustawić, ponieważ szablony są przypisane do typów zagadnień. "
+  label_enabled_sharing: "Włączone współdzielenie z drzewem podprojektów."
+  label_inherit_templates: "Dziedzicz szablony"
+  label_inherit_templates_help_message: "Dziedzicz szablony z projektu nadrzędnego. (Tylko szablony projektu nadrzędnego, które mają włączoną funkcję współdzielenia z drzewem podprojektów są pokazane.)"
+  label_inherited_templates: "Dziedziczone szablony"
+  no_issue_templates_for_this_project: "Brak zdefiniowanych szablonów zagadnień dla tego projektu."
+  link_to_index_edit_template: "Lista szablonów zagadnień / edycja szablonów"
+  erase_issue_subject_and_description: "Czyść tytuł i tekst w opisie zagadnienia."
+  unused_tracker_at_this_project: "INFO: Ten typ zagadnienia nie jest włączony dla tego projektu. Jeśli to konieczne proszę ponownie zdefiniować ustawienia projektu."
+  label_enabledshaing_help_message: "Jeśli włączone, możliwe jest współdzielenie szablonu z podprojektami. (Musisz także włączyć szablony dziedziczone w podprojekcie.)"
+  label_should_replaced: "Nadpisuj tytuł i opis zagadnienia"
+  label_should_replaced_help_message: "Jeśli włączone, wpisany wcześniej tytuł i opis zagadnienia będą czyszczone i zastępowane tekstem z szablonu. (Domyślnie wyłączone, tekst jest dopisywany.)"
+  global_issue_templates: "Globalne Szablony Zagadnień"
+  no_issue_templates_for_this_redmine: "Brak zdefiniowanych globalnych szablonów zagadnień."
+  only_admin_can_associate_global_template: "Tylko administrator może przypisywać globalne szablony do projektów."
+  text_no_tracker_enabled_for_global: "Brak zdefiniowanych typów zagadnień.\nProszę je najpierw ustawić, ponieważ szablony są przypisane do typów zagadnień."

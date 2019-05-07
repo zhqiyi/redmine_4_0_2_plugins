@@ -1,0 +1,164 @@
+$redmine_icons: (
+        calendar-week:magnifier,
+        calendar-day:zoom_in,
+        calendar-month:zoom_out,
+        calendar:calendar,
+        print:document,
+        plugin:plugin,
+        back:cancel,
+        unlink:link-break,
+        link:link,
+        youtube:yt,
+        settings:changeset,
+        filter:task_parent_end
+);
+.redmine{
+  .button-important{
+    color: #fff;
+  }
+
+  .gantt-menu-button{
+    display: inline-block;
+    border-radius: 2px;
+    border: 1px solid #e4e4e4;
+    padding: 8px 16px;
+  }
+
+  .gantt-menu-button.button-positive{
+    background-color: #4ebf67;
+    border-color: rgb(51, 141, 71);
+    color: #ffffff;
+  }
+
+  .gantt-menu-button.active, #easy_gantt.redmine .gantt_button.active{
+    background-color: #628DB6;
+    border-color: #3E5B76;
+  }
+  .problem-finder{
+    border: none;
+    padding-right: 0;
+  }
+
+  .gantt-menu-button.icon, .gantt_button.icon{
+    padding: 8px 10px 8px 25px;
+    background-position-x: 5px;
+  }
+  @each $icon, $image in $redmine_icons{
+    .icon-#{$icon}{
+      background-image: url('../../../../../images/#{$image}.png');
+    }
+  }
+  .icon-youtube{
+    padding-left: 28px;
+  }
+  .icon.icon-filter{
+    background-position-x: 9px;
+    background-position-y: 7px;
+  }
+  .easy-gantt__menu{
+    margin: 0 0 1px;
+    padding: 5px 0 5px 0;
+    background-color: white;
+  }
+  #gantt_cont{
+    /* width: auto !important; */
+    margin: 0;
+  }
+  .gantt_tree_icon{
+    width: 20px;
+    &:before{
+      vertical-align: sub;
+    }
+  }
+
+  a.active{
+    color: #fff;
+  }
+  a.disabled{
+    opacity: 0.25;
+    color: #484848;
+    font-weight: lighter;
+  }
+  #link_delay_input{
+    width: auto;
+  }
+  .push-left{
+    float: left;
+  }
+
+  .push-right{
+    float: right;
+    text-align: right
+  }
+
+  .gantt-footer p{
+    text-align: center;
+  }
+  #button_close_all_projects{
+    width: 18px;
+    height: 25px;
+    padding: 0;
+    vertical-align: bottom;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+  }
+
+  .overdue{
+    color: #e50026;
+  }
+  .contextual{
+    text-align: right;
+  }
+  .easy-gantt__menu-group--tooltiped{
+    position: relative;
+    ul{
+      position: absolute;
+      right: 0;
+      background-color: white;
+      border: 1px solid #cccccc;
+      padding: 5px;
+      padding-left: 0;
+      min-width: 180px;
+      display: none;
+      &:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: auto;
+        left: 25px;
+        border-left: 1px solid #eee3d4;
+      }
+      li{
+        display: block;
+      }
+      .gantt-menu-button{
+        border: none;
+        padding: 5px 5px 5px 30px;
+        background-color: transparent;
+      }
+    }
+    &:hover ul{
+      display: block;
+    }
+  }
+  @media print {
+    .gantt_task_progress{
+      border-right: 1px solid #4ebf67;
+      box-sizing: border-box;
+      margin-top: 1px;
+      margin-bottom: 1px;
+      height: calc(100% - 2px);
+    }
+    .wrong .gantt_task_progress{
+      border-color: #e50026;;
+    }
+    .gantt_project-type .gantt_task_progress{
+      border-color: #009ee0;
+    }
+    .odd{
+      background: none;
+    }
+  }
+
+}

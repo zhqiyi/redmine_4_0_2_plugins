@@ -1,0 +1,9 @@
+sq:
+  share_button: "Ndaje"
+  share_title: "Lidhje ndarjeje"
+  share_label_with: "Share with"
+  share_label_page: "Page"
+  share_label_subject: "%{sender} ndau {skedarë} me ju"
+  share_text_message: "%{sender} ndau {skedarë} me ju."
+  share_notice_email_sent: "Nje email eshte derguar ne"
+  share_notice_email_error: "Pati nje gabim gjate dergimit te email-it"

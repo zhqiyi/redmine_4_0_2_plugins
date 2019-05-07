@@ -1,0 +1,5 @@
+<% if User.current.allowed_to?(:view_agile_charts, @project, :global => true) %>
+
+  <ul>
+  </ul>
+<% end %>

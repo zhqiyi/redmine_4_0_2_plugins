@@ -1,0 +1,9 @@
+ca:
+  share_button: "Comparteix"
+  share_title: "Enllaç de compartició"
+  share_label_with: "Share with"
+  share_label_page: "Pàgina"
+  share_label_subject: "%{sender} ha compartit %{record} amb tu"
+  share_text_message: "%{sender} ha compartit %{record} amb tu."
+  share_notice_email_sent: "S'ha enviat un correu electrònic a"
+  share_notice_email_error: "S'ha produït un error en enviar el correu"

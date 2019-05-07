@@ -1,0 +1,58 @@
+# Simplified Chinese strings go here for Rails i18n, based on file ja.yml
+zh:
+  issue_templates: ISSUE模板管理
+  issue_template: ISSUE模板管理
+  issue_template_note: 批注
+  label_enabled: 启用
+  label_disabled: 禁用
+  label_help_message: 关于ISSUE模板
+  label_show_help_message: 当创建/修改问题时显示对应的帮助信息。
+  about_help_message: 每个项目都可以自定义ISSUE模板帮助信息。
+  close_help: 关闭帮助信息。
+  about_template_help_message: 您可以查看当前项目ISSUE模板的帮助指南。
+  label_enabled_help_message: 该复选框用于激活当前ISSUE模板。若您只想将ISSUE模板保存为草稿，请取消该复选框的勾选。
+  label_list_templates: "ISSUE模板列表"
+  label_new_templates: "新建ISSUE模板"
+  issue_template_name: "ISSUE模板名称"
+  issue_description: "ISSUE模板内容"
+  issue_title: "ISSUE主题"
+  label_applied_for_issue: "应用于该ISSUE的字段："
+  help_for_issue_title: "若在ISSUE模板中已定义了主题，则在使用该ISSUE模板时，将自动替换为对应的主题信息。"
+  help_for_this_field: "当前字段帮助信息"
+  permission_manage_issue_templates: "管理ISSUE模板"
+  permission_edit_issue_templates: "编辑ISSUE模板"
+  permission_show_issue_templates: "显示ISSUE模板"
+  project_module_issue_templates: "ISSUE模板管理"
+  label_isdefault_help_message: "勾选后，设置当前ISSUE模板为指定跟踪类型对应的默认模板。"
+  defaulf_template_loaded: "在描述区域内加载模板默认信息。 (跟踪类型：%{tracker})"
+  text_no_tracker_enabled: "当前项目中尚未配置跟踪类型。\n请在使用ISSUE模板前，先配置项目跟踪类型。"
+  label_enabled_sharing: "启用向下继承（在当前项目的子项目中使用该ISSUE模板）"
+  label_inherit_templates: "继承ISSUE模板"
+  label_inherit_templates_help_message: "从父项目中继承ISSUE模板。(仅限在父项目中使用，且标记为向下继承的ISSUE模板。)"
+  label_inherited_templates: "继承ISSUE模板"
+  no_issue_templates_for_this_project: "当前项目中未定义ISSUE模板信息。"
+  link_to_index_edit_template: "ISSUE模板列表 / 编辑ISSUE模板"
+  erase_issue_subject_and_description: "点击清除主题及描述信息。"
+  unused_tracker_at_this_project: "注意：当前项目中未定义可用的跟踪类型。请根据实际需要，重新配置ISSUE模板。"
+  label_enabledshaing_help_message: "若选中，则当前ISSUE模板可以向下继承，与子项目共享使用。(您需在子项目中激活ISSUE模板继承选项便可使用。)"
+  label_should_replaced: "替换主题及描述信息"
+  label_should_replaced_help_message: "若选中，现有主题及描述信息将被自动清除，并替换为ISSUE模板中定义的内容。（默认不选中，则在现有内容后扩展模板内定义的信息。)"
+  global_issue_templates: "全局ISSUE模板管理"
+  no_issue_templates_for_this_redmine: "当前未定义全局ISSUE模板。请联系Redmine系统管理员。"
+  only_admin_can_associate_global_template: "只有Redmine系统管理员才能在当前项目中关联全局ISSUE模板。"
+  text_no_tracker_enabled_for_global: "未指定跟踪类型。\n在使用ISSUE模板前，请先指定模板适用的跟踪类型。"
+  display_and_filter_issue_templates_in_dialog: "模板过滤器"
+  label_filter_template: "模板过滤器"
+  label_msg_confirm_to_replace: "确认替换主题及描述信息？"
+  label_apply_global_template_to_all_projects: "将全局问题模板应用于全部项目。"
+  note_apply_global_template_to_all_projects_setting_enabled: "该全局问题模板通过插件设置配置后，应用于所有项目。"
+  project_list_associated_this_template: "项目列表： (已应用于全部 %{all} 个项目中的 %{applied} 个)"
+  note_project_local_template_override_global_template: "如果存在项目本地模板，则覆盖全局模板，且在该项目内创建问题时，不显示任何全局模板。"
+  help_project_local_template_override_global_template: "如果启用此选项，则问题的全局模板将应用于所有项目。 如果设置了每个跟踪器的项目特定模板，则会覆盖对应的全局模板，并在创建新问题时，隐藏全局模板。"
+  warning_project_local_template_override_global_template: "注册全局问题模板时，务必注意模板信息中的特定项目的机密信息。 一旦启用此选项，则所有全局模板将应用于所有项目。"
+  revert_before_applying_template: "回退"
+  template_remove_confirm: "您确定要删除此模板吗？ 当前有 %{count} 个项目正在使用此模板。"
+  label_number_of_subprojects_use_this_template: "%{count} 个项目正在使用此模板 "
+  enabled_template_cannot_destroy: "已启用的模板不能删除。检查您正在使用的模板是否在其他项目中存在，并在删除之前将其禁用。"
+  orphaned_templates: "基于跟踪的个性化模板"
+  orphaned_template: "基于跟踪的个性化模板"

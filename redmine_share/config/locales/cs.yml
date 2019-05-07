@@ -1,0 +1,9 @@
+cs:
+  share_button: "Sdílet"
+  share_title: "Odkaz pro sdílení"
+  share_label_with: "Share with"
+  share_label_page: "Stránka"
+  share_label_subject: "%{sender} s vámi sdílí %{record}"
+  share_text_message: "%{sender} s vámi sdílí %{record}."
+  share_notice_email_sent: "Na adresubyl odeslán email"
+  share_notice_email_error: "Při odesílání emailu nastala chyba"

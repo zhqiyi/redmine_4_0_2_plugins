@@ -1,0 +1,96 @@
+<%
+# encoding: utf-8
+# 
+# Redmine plugin for Document Management System "Features"
+#
+# Copyright © 2011    Vít Jonáš <vit.jonas@gmail.com>
+# Copyright © 2012    Daniel Munn <dan.munn@munnster.co.uk>
+# Copyright © 2011-19 Karel Pičman <karel.picman@kontron.com>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+%>
+
+<div class="box tabular">
+  <strong><%= l(:heading_new_revision) %> <a href="#" id="newRevisionFormContentToggle">[-]</a></strong>
+  <div id="newRevisionFormContent">
+    <% if @file.locked_for_user? %>
+      <p class="warning"><%= l(:info_file_locked) %></p>
+    <% else %>
+      <%= labelled_form_for(@revision, :url => { :action => 'create_revision', :id => @file },
+            :html => { :method => :post, :multipart => true, :id => 'new_revision_form' }) do |f| %>
+        <div class="clear">
+          <div class="splitcontentleft">
+            <p>              
+              <%= f.text_field(:title) %>
+            </p>
+          </div>
+          <div class="splitcontentright">
+            <p>              
+              <%= f.text_field(:name, :label => l(:label_file)) %>
+            </p>
+          </div>
+        </div>
+        <p>          
+          <%= f.text_area(:description, :rows => 6, :class => 'wiki-edit') %>        
+        </p>
+        <div class="clear">
+          <div class="splitcontentright">
+            <div class="custom_fields">
+              <% @revision.custom_field_values.each do |value| %>
+                  <% value.value = nil if value.custom_field.dmsf_not_inheritable %>
+                  <p><%= custom_field_tag_with_label(:dmsf_file_revision, value) %></p>
+              <% end %>
+            </div>
+          </div>
+          <div class="splitcontentleft">
+            <p>
+              <%= label_tag('version_0', l(:label_dmsf_version)) %>
+              <%= radio_button_tag('version', 0, @revision.version == @file.last_revision.version) %>
+              <%= @file.last_revision.version %>
+              <%= l(:option_version_same) %><br/>
+              <%= radio_button_tag('version', 1, @revision.major_version == @file.last_revision.major_version && @revision.minor_version != @file.last_revision.minor_version) %> 
+              <%= DmsfUploadHelper::gui_version(@file.last_revision.major_version) %>.<%= DmsfUploadHelper::gui_version(DmsfUploadHelper.increase_version(@file.last_revision.minor_version, 1)) %>
+              <%= l(:option_version_minor) %><br/>
+              <%= radio_button_tag('version', 2, @revision.major_version != @file.last_revision.major_version) %> 
+              <%= DmsfUploadHelper.gui_version(DmsfUploadHelper::increase_version(@file.last_revision.major_version, 1)) %>.0
+              <%= l(:option_version_major) %><br/>
+              <%= radio_button_tag('version', 3) %>        
+              <%= select_tag 'custom_version_major', options_for_select(DmsfUploadHelper::major_version_select_options,
+                    DmsfUploadHelper::gui_version(DmsfUploadHelper::increase_version(@file.last_revision.major_version, 2))),
+                    :onchange => '$("#version_3").prop("checked", true)', :class => 'dmsf_select_version' %>.
+              <%= select_tag 'custom_version_minor', options_for_select(DmsfUploadHelper::minor_version_select_options,
+                    DmsfUploadHelper::gui_version(DmsfUploadHelper.increase_version(@file.last_revision.minor_version, 1))),
+                    :onchange => '$("#version_3").prop("checked", true)', :class => 'dmsf_select_version' %>
+              <%= l(:option_version_custom) %>
+            </p>
+          </div>
+        </div>
+        <div class="box" id="file_upload_box">
+          <p>
+            <%= label_tag('file_upload', l(:label_new_content)) %>
+            <%= render :partial => 'dmsf_upload/form',
+                       :locals => { :multiple => false, :container => nil, :description => false, :awf => false } %>
+          </p>
+        </div>
+        <p>          
+          <%= f.text_area(:comment, :rows => 2, :label => l(:label_comment), :class => 'wiki-edit') %>
+        </p>          
+        <%= f.submit l(:submit_create) %>
+      <% end %>
+    <% end %>   
+  </div>  
+</div>
+
+<%= wikitoolbar_for 'dmsf_file_revision_description' %>

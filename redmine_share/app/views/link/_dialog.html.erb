@@ -1,0 +1,25 @@
+<%= form_tag(link_share_path, method: :post, id: 'redmine-share-form') do %>
+<%= hidden_field_tag 'url', '' %>
+<%= hidden_field_tag 'project_id', project_id %>
+<%= hidden_field_tag 'object_type', object_type %>
+<%= hidden_field_tag 'object_id', object_id %>
+
+<p>
+  <%= label_tag 'principal_search', l(:label_user_search) %>
+  <%= text_field_tag 'principal_search', nil %>
+</p>
+
+<%= label_tag 'recipients', l(:share_label_with) %>
+<%= hidden_field_tag 'recipients', '' %>
+<ul id="redmine-share-with"></ul>
+
+<p>
+  <%= label_tag 'comment', l(:label_comment) %>
+  <%= text_area_tag 'comment', nil %>
+</p>
+
+<p class="buttons">
+  <%= submit_tag l(:share_button), name: nil, id: 'redmine-share-submit' %>
+  <%= link_to l(:button_cancel), '#', id: 'redmine-share-cancel' %>
+</p>
+<% end %>

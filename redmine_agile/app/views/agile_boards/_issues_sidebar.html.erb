@@ -1,0 +1,4 @@
+<% if User.current.allowed_to?(:view_agile_queries, @project, :global => true) %>
+  <%= link_to l(:label_agile_board), {:controller => "agile_boards", :action => "index", :project_id => @project} %>
+  <br>
+<% end %>

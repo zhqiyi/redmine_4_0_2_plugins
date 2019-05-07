@@ -1,0 +1,77 @@
+
+div#checklist ul {
+	list-style: none;
+	padding-left: 0px;
+	margin-bottom: 0px;
+}
+
+div#checklist li {
+  padding-bottom: 10px;
+  margin-left: 10px;
+}
+
+#checklist li:hover a.delete {opacity: 1;}
+
+#checklist a.delete {opacity: 0.4;}
+
+span.checklist-item {
+  display: block;
+  margin-bottom: 5px;
+}
+
+span.checklist-subject.is-done-checklist-item, span.checklist-item.is-done-checklist-item, #checklist_items li.is-done-checklist-item  {
+  text-decoration: line-through;
+  color: #999;
+}
+
+span.checklist-remove { margin-left: 2px; opacity: 0.4;}
+
+span.checklist-remove:hover  {opacity: 1;}
+
+span.checklist-edit-box input {
+    margin-right: 6px;
+    width: 40%;
+    -moz-transition: top 0.2s;
+    -o-transition: top 0.2s;
+    -webkit-transition: top 0.2s;
+    transition: top 0.2s;
+}
+
+.invalid span.checklist-edit-box input {
+  border-color: #b94a48;
+  color: #b94a48;
+}
+
+.invalid span.checklist-edit-box input:focus {
+  border-color: #953b39;
+  color: #b94a48;
+}
+
+.invalid .checklist-edit-save-button {
+  display: none;
+}
+
+span.checklist-edit-reset-button {
+    cursor: pointer;
+    color: #2996CC;
+}
+
+span.checklist-subject {cursor: pointer;}
+
+span.checklist-item.show .checklist-edit,
+span.checklist-item.show .checklist-edit-only,
+span.checklist-item.show .checklist-new,
+span.checklist-item.show .checklist-new-only,
+span.checklist-item.edit .checklist-show,
+span.checklist-item.edit .checklist-new-only,
+span.checklist-item.new .checklist-edit-only,
+span.checklist-item.new .checklist-show-or-edit,
+span.checklist-item.new .checklist-show-only,
+span.checklist-item.edit .checklist-show-only {
+  display: none;
+}
+
+div#checklist ol {
+  display: inline-block;
+  padding-left: 0;
+}

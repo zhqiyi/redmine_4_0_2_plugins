@@ -1,0 +1,163 @@
+---
+cs:
+  easy_mindmup:
+    button_add_child: Přidat dítě
+    button_add_parent: Přidat rodiče
+    button_add_sibling: Přidat sourozence
+    button_all_icons: Ikony
+    button_collapse: Sbalit
+    button_collapse_all: Sbalit vše
+    button_cut: Vyjmout
+    button_edit_data: Upravit údaje
+    button_expand: Rozbalit
+    button_expand_all: Rozbalit vše
+    button_expand_collapse: Rozbalit/sbalit
+    button_legend: Legenda
+    button_one_side: Jedna strana
+    button_paste: Vložit
+    button_project_menu: Easy MindMup
+    button_redo: Vpřed
+    button_remove_node: Odstranit uzel
+    button_show_links: Zobrazit odkazy
+    button_undo: Zpět
+    edit_issue: Upravit úkol
+    error_create: Nelze vytvořit
+    error_delete: Nelze smazat
+    error_update: Nelze aktualizovat
+    errors:
+      not_subtaskable: Úkol "%{task_name}" nemůže být podúkolem kvůli nastavení jeho
+        trackeru
+    button_hotkeys: Klávesové zkratky
+    hotkeys:
+      info_mac_metakey: Na Mac OS X klávesy Ctrl a Cmd mohou být použity pro zkratky
+        níže - některé prohlížeče mohou určitým klávesovým zkratkám bránit. Například
+        pokud Cmd + Space nefunguje v prohlížeči, zkuste Ctrl + Space.
+      keyboard:
+      - název: Manipulace s uzly
+        hotkeys:
+        - hotkey: Enter
+          info: Přidat sourozence
+        - hotkey: Shift+Enter
+          info: Přidat sourozence nad, nebo zalomení řádku (při přejmenování uzlu)
+        - hotkey: Tab nebo Insert
+          info: Přidat dítě
+        - hotkey: Shift+Tab
+          info: Přidat rodiče
+        - hotkey: Mezerník
+          info: Přejmenovat uzel
+        - hotkey: Shift+mezerník
+          info: Upravit údaje uzlu
+        - hotkey: Backspace nebo Delete
+          info: Odstranit uzel
+        - hotkey: Ctrl+nahoru/dolů
+          info: Posunout uzel nahoru/dolů
+      - název: "Úpravy"
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Uložit
+        - hotkey: Ctrl+X nebo C
+          info: Vyjmout
+        - hotkey: Ctrl+C nebo Y
+          info: Kopírovat
+        - hotkey: Ctrl+V nebo P
+          info: Vložit
+        - hotkey: U nebo Ctrl+Z
+          info: Zpět
+        - hotkey: R nebo Ctrl+Y nebo Ctrl+Shift+Z
+          info: Vpřed
+      - název: Vybrat
+        hotkeys:
+        - hotkey: "šipky"
+          info: Vyberte uzel nahoře/dole/vlevo/vpravo nebo aktuálně vybraný
+        - hotkey: Shift+šipky
+          info: Přidat uzel nahoru/dolů/doleva/doprava k výběru (užitečné pro vícenásobné
+            označení sourozenců)
+        - hotkey: "{"
+          info: Vícenásobný výběr aktuálního uzlu a celého podstromu pod ním
+        - hotkey: "["
+          info: Vícenásobný výběr pouze podstromu pod aktuálním uzlem (nikoli uzel
+            sám)
+        - hotkey: "="
+          info: Vícenásobný výběr všech sourozenců aktuálního uzlu (které mají stejného
+            rodiče)
+        - hotkey: "."
+          info: Zrušit vícenásobný výběr a vybrat znovu pouze aktuální uzel
+        - hotkey: 1 - 9
+          info: Vybrat všechny uzly na určité úrovni (např. 1 vybere všechny uzly
+            první úrovně)
+      - název: Navigace a obrazovka
+        hotkeys:
+        - hotkey: "/ nebo F"
+          info: Rozbalit nebo sbalit uzel (složit nebo rozložit děti)
+        - hotkey: Ctrl + nebo Z
+          info: Přiblížit
+        - hotkey: Ctrl - nebo Shift Z
+          info: Oddálit
+        - hotkey: Esc, 0, Ctrl+0
+          info: Resetovat zobrazení mapy - vyberte kořenový uzel a přetáhněte jej
+            do středu obrazovky
+      mouse:
+      - action: Přesunutí mapy
+        gesture: klikněte a přetáhněte středový uzel, klikněte a přetáhněte pozadí nebo
+          skrolujte na trackpadu/touchpadu.
+      - action: Vybrat uzel
+        gesture: klikněte nebo klepněte na něj
+      - action: Vybrat více uzlů
+        gesture: Shift+klik
+      - action: Změna pořadí uzlů
+        gesture: přetáhněte uzel mezi svými sourozenci, horizontálně blízko k místu
+          změny pořadí. Při změně pořadí se zobrazí bod s černou šipkou.
+      - action: Ručně umístit uzel
+        gesture: stačí přetáhnout uzel, dokud šipka pro změnu pořadí nezmizí. Chcete-li
+          vynutit ruční postavení, i když se šipka pro změnu pořadí ukazuje, podržte
+          klávesu Shift při tažení. Upozorňujeme, že děti z kořenového uzlu je možné
+          přetáhnout v libovolném směru, ale uzly nižší úrovně mohou být umístěny
+          pouze ve směru svého rodiče ke kořeni.
+      - action: Přejmenování uzlu
+        gesture: Dvojitý klik nebo dvojité ťuknutí
+      - action: Zobrazit kontextové menu s operacemi
+        gesture: 'Klikněte pravým tlačítkem na uzel (myší) nebo poklepejte na pozadí,
+          nebo dlouze stiskněte uzel: zobrazit (na dotykových zařízeních)'
+      - action: Změna rodičovského uzlu
+        gesture: přetáhněte uzel na jiný uzel (kruhové upuštění není povoleno, takže
+          nelze upustit uzel na jednom ze svých dětí nebo potomků)
+      - action: Otevřít úkol nebo projekt v samostatném okně
+        gesture: Alt+klik
+      title_key_shortcuts: Klávesové operace
+      title_mouse_shortcuts: Operace s myší a dotykem
+      title_shortcuts: Zkratky
+    info_all_saved: Vše úspěšně uloženo
+    info_any_failed: 'Některé z neúspěšných požadavků:'
+    info_no_permission: Nemáte potřebná oprávnění k této akci
+    warning_delete_node: Opravdu chcete smazat uzel {{name}} a všechny jeho poduzly?
+    warning_delete_nodes: Opravdu chcete smazat tyto uzly a všechny jejich poduzly?
+    label_color_by: Barva dle
+    label_go_to: Jít do
+    label_or: nebo
+    last_state_modal:
+      label_differencies: Rozdíly na serveru
+      message_changed: mají rozdílné atributy (browser => server) ({{changes}})
+      message_missing: nemá nadřazený úkol "{{from}}"
+      message_moved: je podúkolem "{{to}}", ne "{{from}}"
+      message_present: je přítomen jako podúkol "{{to}}"
+      text_reload_appeal: Přejete si znovu načíst stav ze serveru?
+      title: Poslední klientský stav Myšlenkové mapy je odlišný od stavu serveru
+    reload_modal:
+      label_errors: Chyby
+      text_reload_appeal: Chcete ignorovat neuložené položky a znovu načíst data ze
+        serveru?
+      title: Myšlenkovou mapu se nepodařilo správně uložit
+    stored_modal:
+      text_load_appeal: Chcete jej načíst místo aktuálního stavu ze serveru?
+      title: Byl nalezen neuložený stav
+      button_local: Neuložená verze
+      button_server: Serverová verze
+    save_info:
+      loaded: Staženo
+      saved: Uloženo
+      autosaved: Automaticky uloženo
+      at: v
+    label_save_progress: Prosím počkejte, probíhá ukládání
+    warning_not_saved: není správně uloženo
+    title_node_changed: Tento uzel byl změněn a bude uložen
+    label_less: Méně

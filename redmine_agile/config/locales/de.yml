@@ -1,0 +1,125 @@
+# German strings go here for Rails i18n
+de:
+  label_agile: Agiles Projektmanagement
+  label_agile_board: Agiles Taskboard
+  label_agile_board_plural: Agile Taskboards
+  label_agile_board_thumbnails: Vorschaubilder
+  label_agile_board_more_issues: Mehr Aufgaben
+  error_agile_status_transition: Aufgabenstatus konnte nicht geändert werden.
+  label_agile_board_new: Neues Taskboard
+  label_agile_board_edit: Taskboard bearbeiten
+  label_agile_my_boards: Meine Taskboards
+  label_agile_issue_id: Aufgaben-Nummer
+
+  permission_manage_public_agile_queries: Taskboards verwalten
+  permission_add_agile_queries: Taskboards hinzufügen
+  permission_view_agile_queries: Taskboards ansehen
+
+  #1.1.0
+  label_agile_board_default_fields: Standardfelder für Taskboard-Karten
+  label_agile_charts_issues_burndown: Burndown nach Aufgaben
+  label_agile_charts_work_burndown:  Burndown nach erfassten Zeiten
+  label_agile_charts_number_of_hours: Stunden
+  label_agile_charts_number_of_issues: Anzahl Aufgaben
+  label_agile_charts_cumulative_flow: Cumulative Flow
+  label_agile_charts_trackers_cumulative_flow: Cumulative Flow nach Tracker
+  label_agile_charts_issues_velocity: Velocity
+  label_agile_charts_lead_time: Lead Time
+  label_agile_charts_average_lead_time: Durchschnittliche Lead Time
+  label_agile_chart_plural: Agile Diagramme
+  permission_view_agile_charts: Agile Diagramme ansehen
+  label_agile_ideal_work_remaining: Soll
+  label_agile_actual_work_remaining: Ist
+  label_agile_chart: Diagramm
+  label_agile_date_from: Von
+  label_agile_date_to: Bis
+  label_agile_chart_dates: Intervall für das Diagramm
+  label_agile_weighed_ideal_work_remaining: Gewichtetes Soll
+  label_agile_status_colors: Status-Farben
+  label_agile_charts_burnup: Burnup nach Aufgaben
+  label_agile_charts_number_of_days: Anzahl Tage
+  label_agile_too_many_items: "Das Diagramm konnte nicht generiert werden, da es die maximale Anzahl an darstellbaren Aufgaben (%{max}) überschreiten würde."
+  label_agile_time_reports_items_limit: Maximale Anzahl an Aufgaben in Diagrammen
+  label_agile_total_work_remaining: Gesamt
+  label_agile_default_chart: Standarddiagramm für Versions
+
+  #1.1.1
+  label_agile_charts_average_velocity: Durchschnittliche Velocity
+  label_agile_charts_avarate_number_of_issues: Durchschnittliche Aufgabenanzahl
+  label_agile_charts_avarate_number_of_hours: Durchschnittliche Stundenanzahl
+
+  #1.2.0
+  label_agile_color: Farben
+  permission_manage_agile_verions: Versionplanung verwalten
+  label_agile_version_planning: Versionplanung
+  error_agile_version_transition: Version der Aufgabe konnte nicht verändert werden.
+  label_agile_tracker_colors: Farben für Tracker
+  label_agile_issue_priority_colors: Farben für Aufgabenprioritäten
+  label_agile_color_based_on: Taskboard-Karten einfärben basierend auf
+  label_agile_color_no_colors: Keine Farben
+  label_agile_manage_colors: Farben verwalten
+  label_agile_fullscreen: Vollbild
+  label_agile_no_version_issues: Aufgaben ohne Version
+  label_agile_charts_work_burnup: Burnup nach erfassten Zeiten
+  label_agile_completed: Abgeschlossen
+  label_agile_exclude_weekends: Wochenenden von Soll-Zeiten ausnehmen
+  label_agile_board_truncated: "Das Taskboard wurde abgeschnitten, da es die maximale Anzahl an darstellbaren Aufgaben (%{max}) überschreitet."
+  label_agile_board_items_limit: Aufgabenlimit für Taskboards
+  label_agile_swimlanes: Swimlanes
+  label_agile_minimize_closed: Geschlossene Aufgaben minimieren
+  label_agile_fields: Felder für Taskboard-Karten
+  label_agile_default_board: Standard-Taskboard
+
+  #1.3.6
+  text_agile_move_not_possible: Diese Änderung ist nicht möglich
+
+  #1.3.8
+  label_agile_parent_issue_tracker_id: Übergeordneter Tracker
+  label_agile_sub_issues: Unteraufgaben
+  label_agile_color_green: Grün
+  label_agile_color_blue: Blau
+  label_agile_color_turquoise: Türkis
+  label_agile_color_lightgreen: Hellgrün
+  label_agile_color_yellow: Gelb
+  label_agile_color_orange: Orange
+  label_agile_color_red: Rot
+  label_agile_color_purple: Lila
+  label_agile_color_gray: Grau
+  label_agile_has_sub_issues: Hat Unteraufgaben
+  label_agile_light_free_version: Agile Light freie Version
+  label_agile_link_to_pro: Upgrade auf PRO
+  label_agile_link_to_pro_demo: PRO version live demo
+  label_agile_link_to_more_plugins: Entdecken Sie mehr RedmineUP plugins
+  label_agile_button_agree: Einverstanden
+  label_agile_license: RedmineUP Lizenz
+  label_agile_saving_boards: Boards speichern
+  label_agile_horizontal_swim_lines: Horizontale Swimlanes
+  label_agile_board_sub_columns: Board-Unterspalten
+  label_agile_additional_agile_charts: Weitere Agile-Charts
+  label_agile_coloured_issue_cards: Farbige Karten
+  label_agile_4_more_features: 4 weitere Funktionen...
+  label_agile_upgrade_to_pro: Upgrade auf die PRO-Version um die Funktionen zu nutzen
+
+  label_agile_day_in_state: Zeit seit letzter Status-Änderung
+
+  #1.3.10
+  label_agile_hide_closed_issues_data: Daten von geschlossenen Aufgaben ausblenden
+  project_module_agile: Agile
+
+  #1.3.13
+  label_agile_last_comment: Letzter Kommentar
+  label_agile_esitmate_units: Einheit für Schätzungen
+  label_agile_trackers_for_sp: Tracker für Story Points
+  label_agile_story_points: Story Points
+  field_story_points: Story Points
+  label_agile_charts_number_of_story_points: Anzahl an Story Points
+  label_agile_board_columns: Taskboard Spalten
+  lable_agile_wip_limit_exceeded: Work-in-progress Grenze überschritten
+  label_agile_wip_limit: Work-in-progress Grenze
+  label_agile_add_new_issue: + NEUE AUFGABE
+  label_agile_allow_create_cards: Karte für neue Aufgabe
+  label_agile_auto_assign_on_move: Selbst zuweisen bei Taskboard-Karten-Bewegung
+  text_agile_create_issue_error: Die Aufgabe konnte nicht erstellt werden
+  label_agile_inline_comment: Inline-Kommentar
+  label_agile_hours: Stunden
+  field_color: Farbe

@@ -1,0 +1,19 @@
+= Agile plugin
+
+== Install
+
+* Copy redmine_agile plugin to {RAILS_APP}/plugins on your redmine path
+* Run bundle install --without development test RAILS_ENV=production
+* Run bundle exec rake redmine:plugins NAME=redmine_agile RAILS_ENV=production
+
+== Uninstall
+
+<pre>
+bundle exec rake redmine:plugins NAME=redmine_agile VERSION=0 RAILS_ENV=production
+rm -r plugins/redmine_agile
+</pre>
+
+== Test
+
+bundle exec rake db:drop db:create db:migrate redmine:plugins RAILS_ENV=test
+bundle exec rake test TEST="plugins/redmine_agile/test/**/*_test.rb" RAILS_ENV=test

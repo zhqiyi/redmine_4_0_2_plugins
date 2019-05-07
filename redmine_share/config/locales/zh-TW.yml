@@ -1,0 +1,9 @@
+zh-TW:
+  share_button: "分享"
+  share_title: "分享連結"
+  share_label_with: "Share with"
+  share_label_page: "網頁"
+  share_label_subject: "%{sender} 與你分享了 %{record}"
+  share_text_message: "%{sender} 與你分享了 %{record}。"
+  share_notice_email_sent: "郵件已經成功寄送至"
+  share_notice_email_error: "寄送郵件的過程中發生錯誤"

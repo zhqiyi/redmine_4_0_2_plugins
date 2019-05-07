@@ -1,0 +1,143 @@
+<%=javascript_include_tag "work_time", :plugin=>'redmine_work_time' %>
+<%=stylesheet_link_tag 'work_time', :plugin => 'redmine_work_time' %>
+
+<%= @message.html_safe %>
+<div class="contextual">
+<%= render :partial=>'select_project' %>
+<%if User.current.allowed_to?(:view_work_time_other_member, @project) then%>
+  <%= render :partial=>'select_user', :locals=>{:link_params=>@link_params} %>
+  <%= link_to(l(:wt_relay_total), @link_params.merge(:action=>"relay_total")) %>
+<%end%>
+  <%if User.current.admin then%>
+      <%if WtHolidays.where(["holiday=:h and deleted_on is null",{:h=>@this_date}]).all.size == 0 then %>
+          <input type="button"
+                 onclick="location.href='<%=url_for(@link_params.merge(:set_holiday=>@this_date))%>'"
+                 value="<%=l(:wt_set_holiday)%>"
+          />
+      <%else%>
+          <input type="button"
+                 onclick="location.href='<%=url_for(@link_params.merge(:del_holiday=>@this_date))%>'"
+                 value="<%=l(:wt_del_holiday)%>"
+          />
+      <%end%>
+  <%end%>
+</div>
+
+<%= render :partial=>'user_month_table' %>
+
+<br/>
+<hr/>
+
+<%= form_tag @link_params do %>
+    <h2>
+      <%=l(:wt_daily_report)%>
+      <%=@this_date.strftime("%Y-%m-%d")%>
+    </h2>
+
+    <%= hidden_field_tag('year', @this_date.year) %>
+    <%= hidden_field_tag('month', @this_date.month) %>
+    <%= hidden_field_tag('day', @this_date.day) %>
+    <%= hidden_field_tag('user', @this_uid) %>
+    <%= hidden_field_tag('prj', @restrict_project) %>
+
+    <table style="background: #eeeeee;"><tr><td>
+      <table style="display:inline-block; border:0;">
+        <tr>
+          <td><%=l(:wt_legend)%>:</td>
+          <td class='wt_iss_default' width='100px' align='center'><%=l(:wt_style_default)%></td>
+          <td class='wt_iss_assigned' width='100px' align='center'><%=l(:wt_style_assigned)%></td>
+          <td class='wt_iss_worked' width='100px' align='center'><%=l(:wt_style_worked)%></td>
+          <td class='wt_iss_assigned_worked' width='100px' align='center'><%=l(:wt_style__assigned_worked)%></td>
+          <td class='wt_iss_overdue' width='100px' align='center'><%=l(:wt_style_overdue)%>
+          <td class='wt_iss_assigned_overdue' width='100px' align='center'><%=l(:wt_style_assigned_overdue)%>
+          </td><td class='wt_iss_overdue_worked' width='100px' align='center'><%=l(:wt_style_overdue_worked)%></td>
+          <td class='wt_iss_assigned_overdue_worked' width='100px' align='center'><%=l(:wt_style_assigned_overdue_worked)%></td>
+        </tr>
+      </table>
+    </td></tr></table>
+    <%= render :partial=>'user_day_table' %>
+
+<%if @this_uid==@crnt_uid || User.current.allowed_to?(:edit_work_time_other_member, @project) %>
+        <%= submit_tag l(:wt_update) %>
+        &#58;
+        <input type="button"
+               onclick="location.href='<%=url_for(@link_params.merge(:ticket_del=>"closed"))%>'"
+               value="<%=l(:wt_delete_closed_tickets)%>"
+        />
+        <div id="add_ticket_area" style="display: inline-block;_display: inline;">
+          <input type="button"
+               onclick="jQuery.ajax({
+                       url: '<%=url_for(:action=>"ajax_add_tickets_input")%>',
+                       data:{asynchronous:true, method:'get'},
+                       success: function(response){
+                               jQuery('#add_ticket_area').replaceWith(response);
+                               }
+                       });
+                       return false;"
+               value="<%=l(:wt_add_ticket)%>"
+          />
+        </div>
+<%end%>
+
+  <%#------------------------- Legend for the daily table%>
+    <br/>
+    <br/>
+    <hr/>
+
+<h2 id="memo">
+  <%=link_to(@this_date.strftime("%Y-%m-%d")+'('+@wday_name[@this_date.wday]+') '+@this_user.to_s,
+    @link_params.merge(:anchor=>"memo"))
+  %>
+</h2>
+
+<%#------------------------------------------- Wiki表示#%>
+<div id="memo-wiki">
+<%
+memo=WtDailyMemo.where(["day=:d and user_id=:u",{:d=>@this_date,:u=>@this_uid}]).first
+if memo then # この日のメモがある場合
+%>
+<div class="wiki wt_memo_wiki_block">
+  <%=textilizable(memo.description) %>
+  <div style="text-align:right;">
+    (update:<%=memo.updated_on.localtime.strftime("%Y-%m-%d %H:%M")%>)
+  </div>
+</div>
+<%end%>
+
+<%
+memo=WtDailyMemo.where(["day<:d and user_id=:u",{:d=>@this_date,:u=>@this_uid}]).order("day DESC").first
+if memo then
+d = memo.day
+%>
+[<%=link_to(l(:wt_pre_memo), @link_params.merge(:anchor=>"memo", :day=>d.day, :month=>d.month, :year=>d.year))%>]
+<%end%>
+
+<%if @this_uid==@crnt_uid then%>
+[<a href="#"
+    onclick="jQuery.ajax({
+            url: '<%=url_for(@link_params.merge(:action=>"ajax_memo_edit"))%>',
+            data:{asynchronous:true, method:'get'},
+            success: function(response){
+                    jQuery('#memo-wiki').html(response);
+                    }
+            });
+            return false;">
+  <%=l(:wt_edit_memo)%>
+</a>]
+<%end%>
+
+<%
+memo=WtDailyMemo.where(["day>:d and user_id=:u",{:d=>@this_date,:u=>@this_uid}]).order("day").first
+if memo then
+d = memo.day
+%>
+[<%= link_to(l(:wt_next_memo), @link_params.merge(:anchor=>"memo", :day=>d.day, :month=>d.month, :year=>d.year))%>]
+<%end%>
+</div>
+<br/>
+
+<%if User.current.allowed_to?(:view_work_time_other_member, @project) then%>
+  <%= render :partial=>'select_user', :locals=>{:link_params=>@link_params.merge(:anchor=>"memo")} %>
+<%end%>
+
+<%end%>

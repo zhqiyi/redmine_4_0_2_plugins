@@ -1,0 +1,32 @@
+@media print {
+  .gravatar {
+    max-width: 100%;
+    height: auto;
+    -webkit-border-radius: 5000px;
+    -moz-border-radius: 5000px;
+    border-radius: 5000px;
+  }
+}
+.mindmup-print{
+  &-area{
+    & .mapjs-collapsor{
+      display: none;
+    }
+    & .mindmup-node-add-button{
+      display: none;
+    }
+  }
+  &-strip{
+    position: relative;
+    /*border: 1px solid red;*/
+    border: 1px solid #cecece;
+    overflow: hidden;
+    white-space: nowrap;
+    break-inside: avoid;
+    margin: 10px 0;
+    margin-left: -1px;
+    display: inline-block;
+    background-color: #ffffff;
+    border-left: 0;
+  }
+}

@@ -1,0 +1,9 @@
+# Translation by Ki Won Kim (http://x10.iptime.org/redmine, http://xyz37.blog.me, xyz37@naver.com)
+ko:
+  label_checklist_plural: "체크리스트"
+  field_checklist: "체크리스트"
+  label_checklist_save_log: "일감 로그에 변경사항을 저장합니다."
+  label_checklist_done_ratio: "완료 비율 일감 설정"
+  permission_view_checklists: "체크리스트 보기"
+  permission_done_checklists: "체크리스트 완료"
+  permission_edit_checklists: "체크리스트 수정"

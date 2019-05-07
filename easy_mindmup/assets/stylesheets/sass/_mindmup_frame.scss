@@ -1,0 +1,211 @@
+$legend-width: 260px;
+.mindmup {
+  &-cont {
+    margin: 0 (-$retrace) $retrace-mod;
+    width: auto;
+    overflow: hidden;
+    @include respond-to(max-small-screen) {
+      margin-top: -$box-padding;
+    }
+  }
+  &-container {
+    @extend %user-select-none !optional;
+    position: relative;
+    cursor: all-scroll;
+    border-top: none;
+    box-sizing: border-box;
+    background-color: mix($color-background, $color-foreground);
+    margin: 0;
+    padding: 0;
+    outline: none;
+    overflow-y: hidden !important;
+    @extend %pattern-grid-background !optional;
+  }
+  &__legend {
+    &-container {
+      @extend %box-shadow !optional;
+      @extend %material__elevation--depth_2 !optional;
+      background-color: $color-foreground;
+      position: absolute;
+      left: $gap;
+      top: $gap;
+      width: $legend-width;
+      @include respond-to(max-small-screen) {
+        top: 110%;
+      }
+      //@include respond-to(max-small-screen) {
+      //  display: none;
+      //}
+      &--hidden {
+        display: none;
+      }
+    }
+    &-header {
+      background: mix($color-foreground, $color-background);
+      padding: $gap;
+      @extend %flex;
+      & > label {
+        @extend %flex-grow-1;
+      }
+    }
+    &-toggler {
+      a {
+        color: rgba($color-text, .5);
+        font-size: 1.5em;
+        line-height: $form-input-height;
+      }
+      .tip {
+        display: none;
+      }
+      &.active {
+        a {
+          @if map-has-key($icons, 'expand-less') {
+            @include icon-parent('expand-less');
+          }
+        }
+      }
+    }
+  }
+  &-noselect {
+    @extend %user-select-none !optional;
+  }
+  &__menu {
+    @extend %box-sizing-border-box !optional;
+    //@extend %material__elevation--inline !optional;
+    @extend %box-shadow-none !optional;
+    @extend %flex !optional;
+    @extend %justify-content-space-between !optional;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+    background-color: $mup-background-menu;
+    //overflow-x: hidden;
+    //border-top: 1px solid $color-border-minor;
+    border-bottom: 1px solid $color-border-minor;
+
+    //margin: 0 (-$retrace-mod);
+    padding: $box-padding;
+    //@include respond-to(min-medium-screen){
+    //  padding-left: $gap + $box-padding + $legend-width;
+    //}
+    &-item {
+      display: inline-block;
+      text-align: left;
+
+      a.active {
+        //* TODO - WILL BE REMOVED after changes in @menu-tooltip
+        // 035b00e84609610ee12cb93294ea823bd2f130ad
+        // 62002a072a0997a8b275a528c8e4aefa41a48412
+        color: #d94838 !important;
+        &:before {
+          color: #d94838 !important;
+        }
+      }
+
+      @include respond-to(max-medium-screen) {
+        & > a {
+          padding-right: 0;
+          & > span {
+            display: none;
+          }
+        }
+      }
+      @include respond-to(max-xlarge-screen) {
+        & > a {
+          &.easy-mindmup__icon--settings, &.easy-mindmup__icon--display {
+            padding-right: 0;
+            & > span {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .right-menu {
+      float: right;
+    }
+    &-group {
+      ul {
+        margin: 0;
+      }
+      &--tooltiped {
+        .easy & {
+          @extend %menu-tooltip !optional;
+        }
+        & > ul {
+          display: none;
+        }
+        &:hover {
+          & > ul {
+            display: block;
+          }
+        }
+      }
+      &--sizing {
+        @extend %flex-grow-1 !optional;
+        text-align: center;
+        font-size: 1.5em;
+        position: absolute;
+        bottom: -2*$box-padding;
+        right: $box-padding;
+        line-height: $box-padding;
+        @include respond-to(max-small-screen) {
+          display: none;
+        }
+        a {
+          color: rgba($color-text, .5);
+          text-decoration: none;
+        }
+        li {
+          list-style: none;
+          display: inline-block;
+        }
+      }
+      &-display {
+        @include respond-to(min-small-screen) {
+          margin-left: $gap + $legend-width
+        }
+
+      }
+      .mindmup__legend-container--hidden + &-display {
+        margin-left: 0
+      }
+    }
+    &-save {
+    }
+  }
+  &_hover_menu {
+    display: block;
+    position: absolute;
+    z-index: 99;
+    background-color: white;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    @extend %border-radius !optional;
+    @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+    @extend %background-clip-padding-box !optional;
+  }
+  &-reload-modal-errors li {
+    color: $color-negative;
+  }
+
+  &-last-modal-diffs li {
+    color: $color-important;
+  }
+  &__button {
+    &--disabled {
+      opacity: 0.4;
+    }
+  }
+  &_modal {
+    &__flash_close {
+      position: absolute;
+      right: $gap;
+      font-size: 2*$gap;
+      line-height: 2*$gap;
+    }
+  }
+}
+

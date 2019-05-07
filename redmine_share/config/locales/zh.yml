@@ -1,0 +1,9 @@
+zh:
+  share_button: "共享"
+  share_title: "共享链接"
+  share_label_with: "Share with"
+  share_label_page: "页面"
+  share_label_subject: "%{sender} 与您共享了 %{record}"
+  share_text_message: "%{sender} 与您共享了 %{record}。"
+  share_notice_email_sent: "邮件已发送至"
+  share_notice_email_error: "发送邮件时发生错误"

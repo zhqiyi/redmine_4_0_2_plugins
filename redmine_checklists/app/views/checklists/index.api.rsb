@@ -1,0 +1,14 @@
+api.array :checklists, api_meta(:total_count => @checklists.size) do
+  @checklists.each do |checklist|
+    api.checklist do
+      api.id         checklist.id
+      api.issue_id   checklist.issue_id
+      api.subject    checklist.subject
+      api.is_done    checklist.is_done
+      api.position   checklist.position
+
+      api.created_at checklist.created_at
+      api.updated_at checklist.updated_at
+    end
+  end
+end

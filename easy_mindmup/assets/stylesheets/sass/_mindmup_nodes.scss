@@ -1,0 +1,130 @@
+.mapjs {
+  &-node {
+    border: 1px solid transparent; // !important;
+    @extend %border-radius-small !optional;
+    //@include mindmup-scheme($color-border-minor);
+    //@include box-shadow(0 0 3px 0px rgba($black, .25));
+    @include box-shadow(none);
+    @include mindmup-scheme($mindmup-default-node-color);
+    color: $color-text;
+    padding: 0.75*$gap 1.5*$gap;
+    margin: 0;
+    &.activated, &.selected, &.droppable {
+      @include box-shadow($mindmup-node-shadow);
+      @extend %material__elevation--depth_4 !optional;
+      margin-left: -2px;
+    }
+    &.activated {
+      border: 1px solid transparent;
+    }
+    &.droppable {
+      border-color: $color-important;
+    }
+    span {
+      word-wrap: break-word;
+    }
+  }
+  &-collapsor {
+    @extend %border-radius-infinite !optional;
+    position: absolute;
+    left: auto;
+    top: 50%;
+    right: -$gap - 2;
+    margin-top: -$gap;
+    background-color: $white;
+    color: $button-negative-background;
+    line-height: 1;
+    font-size: 2*$gap;
+    font-weight: normal;
+
+    font-family: "Material Icons", sans-serif;
+    @extend %material-icon !optional;
+    &:before {
+      content: '\e15c'
+    }
+    .collapsed & {
+      color: $button-positive-background;
+      &:before {
+        content: '\e147'
+      }
+    }
+    .mindmup-node-left & {
+      right: auto;
+      left: -$gap - 2;
+    }
+    .mapjs-node:hover & {
+      font-size: 2.5*$gap;
+      margin-top: -$gap - 2;
+      right: -$gap - 5;
+    }
+    .mindmup-node-left:hover & {
+      left: -$gap - 5;
+      right: auto;
+    }
+  }
+}
+
+.mindmup {
+  &-node {
+    &-filtered {
+      opacity: 0.2;
+    }
+    &-icon {
+      height: 20px;
+      display: inline-block;
+      margin-right: 3px;
+      vertical-align: middle;
+      &-progress {
+        width: 4px;
+        background-color: $color-border;
+        @extend %rotate-90cw;
+        margin: 0 $gap;
+      }
+      &-progress-bar {
+        background-color: $color-positive;
+        position: relative;
+      }
+      &-milestone-shell {
+        border: 1px solid $color-border;
+        @extend %rotate-45cw;
+        vertical-align: middle;
+        display: inline-block;
+        margin: 1px;
+      }
+      &-status {
+        font-weight: normal;
+        opacity: .5;
+        @include small;
+      }
+
+      &s {
+        position: absolute;
+        left: 0;
+        top: -10px;
+        white-space: nowrap;
+        &--with_icons & {
+          top: -18px;
+        }
+      }
+    }
+
+    &-filtered {
+      opacity: 0.2;
+    }
+    &-avatar {
+      position: absolute;
+      top: 50%;
+      margin-top: -11px;
+      .mindmup-node-left & {
+        left: auto;
+        right: -31px;
+      }
+    }
+  }
+}
+
+.mindmup-scheme-project {
+  @include mindmup-scheme($button-main-background);
+  color: $button-main-color;
+}
+

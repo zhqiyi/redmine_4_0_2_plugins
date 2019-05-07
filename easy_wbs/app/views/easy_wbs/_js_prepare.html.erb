@@ -1,0 +1,57 @@
+<script type="text/javascript">
+  window.easyMindMupSetting = $.extend(true, window.easyMindMupSetting, <%= {
+    mindMupId: 'WBS classic',
+    menuDiv: '#wbs_menu',
+    projectID: @project.id,
+    noSave: (params[:nosave] ? true : false),
+    paths: {
+      issuePage: issue_path(':issueID'),
+      projectPage: project_path(':projectID'),
+      issuePOST: issues_path(format: 'json', key: User.current.api_key),
+      issuePUT: issue_path(':issueID', format: 'json', key: User.current.api_key),
+      issueDELETE: issue_path(':issueID', format: 'json', key: User.current.api_key),
+      projectPUT: project_path(':projectID', format: 'json', key: User.current.api_key),
+      newIssuePath: new_issue_path(key: User.current.api_key),
+      editIssuePath: edit_issue_path(':issueID', key: User.current.api_key),
+      updateLayout: project_easy_mindmup_update_layout_path(@project, format: 'json', key: User.current.api_key)
+    },
+    labels: {
+      free: {
+        textNotAvailable: l('easy_wbs.free.text_not_available'),
+        buttonUpgradeHref: l('easy_wbs.free.button_upgrade_href')
+      },
+      errors:{
+        not_subtaskable: l('easy_wbs.errors.not_subtaskable'),
+        cannotBeEmpty: l('activerecord.errors.messages.empty')
+      },
+      types:{
+        project: l(:field_project),
+        issue: l(:field_issue)
+      },
+      modals: {
+        new_issue: l(:label_issue_new),
+        edit_issue: l('easy_wbs.edit_issue')
+      },
+      context: {
+        tracker: l(:field_tracker),
+        priority: l(:field_priority),
+        status: l(:field_status),
+        assignee: l(:field_assigned_to),
+        doneRatio: l(:field_done_ratio)
+      },
+      links: {
+        start_to_start: l(:label_start_to_start),
+        start_to_finish: l(:label_start_to_finish),
+        finish_to_finish: l(:label_finish_to_finish),
+        precedes: l(:label_precedes),
+        relates: l(:label_relates_to),
+        copied_to: l(:label_copied_to),
+        blocks: l(:label_blocks),
+        duplicates: l(:label_duplicates)
+      }
+    },
+    templates: {
+    },
+    translations: wbs_translations
+  }.to_json.html_safe %>);
+</script>

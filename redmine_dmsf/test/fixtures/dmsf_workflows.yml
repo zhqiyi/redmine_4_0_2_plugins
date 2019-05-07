@@ -1,0 +1,14 @@
+---
+wf1:
+  id: 1
+  name: wf1
+  project_id: 1
+
+wf2:
+  id: 2
+  name: wf2
+  
+wf3:
+  id: 3
+  name: wf3
+  status: 0

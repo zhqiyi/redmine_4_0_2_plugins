@@ -1,0 +1,9 @@
+ko:
+  share_button: "공유"
+  share_title: "링크 공유"
+  share_label_with: "Share with"
+  share_label_page: "페이지"
+  share_label_subject: "%{sender} 님이 %{record}을(를) 공유했습니다"
+  share_text_message: "%{sender} 님이 %{record}을(를) 공유했습니다."
+  share_notice_email_sent: "님에게 메일이 발송되었습니다."
+  share_notice_email_error: "메일을 전송하는 과정에 오류가 발생했습니다."

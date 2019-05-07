@@ -1,0 +1,10 @@
+# encoding: utf-8
+# Slovak strings go here for Rails i18n
+sk:
+  label_checklist_plural: Checklist
+  field_checklist: Checklist
+  label_checklist_save_log: Uložiť zmeny do histórie úlohy
+  label_checklist_done_ratio: Nastaviť úlohu ako kompletnú
+  permission_view_checklists: Zobraziť checklist
+  permission_done_checklists: Splnené checklist položky
+  permission_edit_checklists: Upraviť checklist položky

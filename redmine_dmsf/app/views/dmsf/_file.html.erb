@@ -1,0 +1,142 @@
+<%
+# encode: utf-8
+#
+# Redmine plugin for Document Management System "Features"
+#
+# Copyright © 2011-19 Karel Pičman <karel.picman@kontron.com>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+%>
+
+<% wf = DmsfWorkflow.find_by(id: file.last_revision.dmsf_workflow_id) if file.last_revision.dmsf_workflow_id %>
+
+<td class="dmsf_checkbox"><%= check_box_tag('ids[]', "#{name}-#{id}", false, :id => "file_#{id}") %></td>
+<% if DmsfFolder.is_column_on?('id') %>
+    <td class="id"><%= link_to(file.id, dmsf_file_path(:id => file)) %></td>
+<% end %>
+<% if DmsfFolder.is_column_on?('title') %>
+  <td class="dmsf_title">
+    <% if @tree_view %>
+      <span class='dmsf_expander'></span>
+    <% end %>
+    <% file_view_url = url_for({:controller => :dmsf_files, :action => 'view', :id => file}) %>
+    <%= link_to(h(title),
+      file_view_url,
+      :target => '_blank',
+      :class => "icon icon-file #{DmsfHelper.filetype_css(file.name)}",
+      :title => h(file.last_revision.try(:tooltip)),
+      'data-downloadurl' => "#{file.last_revision.detect_content_type}:#{h(file.name)}:#{file_view_url}") %>
+    <div class="dmsf_filename" title="<%= l(:title_filename_for_download)%>"><%= h(link ? link.path : file.display_name) %></div>
+  </td>
+<% end %>
+<% if DmsfFolder.is_column_on?('extension') %>
+    <td class="dmsf_extension">
+      <%= file.extension %>
+    </td>
+<% end %>
+<% if DmsfFolder.is_column_on?('size') %>
+  <td class="dmsf_size"><%= number_to_human_size(file.last_revision.size) %></td>
+<% end %>
+<% if DmsfFolder.is_column_on?('modified') %>
+  <td class="dmsf_modified">
+    <%= format_time(file.last_revision.updated_at) %>
+  </td>
+<% end %>
+<% if DmsfFolder.is_column_on?('version') %>
+  <td class="dmsf_version" title="<%= file.last_revision.comment %>"><%= file.last_revision.version %></td>
+<% end %>
+<% if DmsfFolder.is_column_on?('workflow') %>
+  <td class="dmsf_workflow">
+    <% if wf && @file_approval_allowed %>
+      <%= link_to(
+        file.last_revision.workflow_str(false),
+        log_dmsf_workflow_path(
+          :project_id => project.id,
+          :id => wf.id,
+          :dmsf_file_revision_id => file.last_revision.id),
+        :title => file.last_revision.workflow_tooltip,
+        :remote => true) %>
+    <% else %>
+      <%= file.last_revision.workflow_str(false) %>
+    <% end %>
+  </td>
+<% end %>
+<% if DmsfFolder.is_column_on?('author') %>
+  <td class="dmsf_author"><%= h(file.last_revision.user) %></td>
+<% end %>
+<% CustomField.where(type: 'DmsfFileRevisionCustomField').order(:position).each do |c| %>
+    <% if DmsfFolder.is_column_on?(c.name) %>
+        <td class="dmsf_cf">
+          <%= file.custom_value(c) %>
+        </td>
+    <% end %>
+<% end %>
+<td class="dmsf_buttons">
+  <% if @file_manipulation_allowed %>
+    <%= link_to('', dmsf_file_path(:id => file),
+      :title => l(:link_details, :title => h(file.last_revision.title)),
+      :class => 'icon-only icon-edit') %>
+    <% if !file.locked? %>
+      <%= link_to('', lock_dmsf_files_path(:id => file),
+        :title => l(:title_lock_file),
+        :class => 'icon-only icon-lock') %>
+    <% elsif file.unlockable? && (!file.locked_for_user? || @force_file_unlock_allowed) %>
+      <%= link_to('', unlock_dmsf_files_path(:id => file),
+        :title => file.get_locked_title,
+        :class => 'icon-only icon-unlock') %>
+    <% else %>
+      <span class="icon-only icon-unlock" title="<%= file.get_locked_title %>"></span>
+    <% end %>
+    <% if !file.locked? %>
+      <% if file.notification %>
+        <%= link_to('', notify_deactivate_dmsf_files_path(:id => file),
+          :title => l(:title_notifications_active_deactivate),
+          :class => 'icon-only icon-email') %>
+      <% else %>
+        <%= link_to('', notify_activate_dmsf_files_path(:id => file),
+          :title => l(:title_notifications_not_active_activate),
+          :class => 'icon-only icon-email-add') %>
+      <% end %>
+      <% if link %>
+        <%= link_to('', dmsf_link_path(link),
+          :data => {:confirm => l(:text_are_you_sure)},
+          :title => l(:title_delete),
+          :method => :delete,
+          :class => 'icon-only icon-del') %>
+      <% else %>
+        <% if @file_delete_allowed %>
+          <%= link_to('', dmsf_file_path(:id => file),
+            :data => {:confirm => l(:text_are_you_sure)},
+            :title => l(:title_delete),
+            :method => :delete,
+            :class => 'icon-only icon-del') %>
+        <% else %>
+          <span class="icon-only"></span>
+        <% end %>
+      <% end %>
+    <% else %>
+      <span class="icon-only"></span>
+      <span class="icon-only"></span>
+    <% end %>
+  <% end %>
+  <%= render(:partial => 'dmsf_workflows/approval_workflow_button',
+    :locals => {:file => file, :file_approval_allowed => @file_approval_allowed,
+                :workflows_available => @workflows_available, :project => project, :wf => wf, :dmsf_link_id => nil }) %>
+</td>
+<td class="none"><%= position %></td>
+<td class="none"><%= file.last_revision.size %></td>
+<td class="none"><%= file.last_revision.updated_at.to_i %></td>
+<td class="none"><%= file.last_revision.iversion %></td>
+<td class="none"><%= title %></td>

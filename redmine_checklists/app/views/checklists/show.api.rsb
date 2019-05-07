@@ -1,0 +1,10 @@
+api.checklist do
+  api.id         @checklist_item.id
+  api.issue_id   @checklist_item.issue_id
+  api.subject    @checklist_item.subject
+  api.is_done    @checklist_item.is_done
+  api.position   @checklist_item.position
+
+  api.created_at @checklist_item.created_at
+  api.updated_at @checklist_item.updated_at
+end

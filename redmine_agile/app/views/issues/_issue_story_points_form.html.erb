@@ -1,0 +1,9 @@
+<div class="splitcontentright">
+  <% if @issue.project.module_enabled?('agile') && RedmineAgile.use_story_points? && RedmineAgile.use_story_points_for?(@issue.tracker) %>
+    <%= form.fields_for :agile_data do |f| %>
+      <p>
+        <%= f.text_field :story_points, :size => 3, :required => @issue.required_attribute?('agile_data_attributes') %>
+      </p>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+decHtmlNumber('th[data-column-id="<%= params[:old_status_id] %>"] span.count');
+incHtmlNumber('th[data-column-id="<%= params[:new_status_id] %>"] span.count');
+decHtmlNumber('tr.group.swimlane[data-id="<%= params[:old_swimlane_id] %>"] td span.count');
+incHtmlNumber('tr.group.swimlane[data-id="<%= params[:new_swimlane_id] %>"] td span.count');
+
+//$('.issue-card[data-id="<%= @issue.id %>"]').html("<%= render :partial => 'issue_card', :locals => {:issue => @issue} %>");

@@ -1,0 +1,9 @@
+uk:
+  share_button: "Поділитися"
+  share_title: "Поділитись посиланням"
+  share_label_with: "Share with"
+  share_label_page: "Сторінка"
+  share_label_subject: "%{sender} поділився %{record} з вами"
+  share_text_message: "%{sender} поділився %{record} з вами."
+  share_notice_email_sent: "Відправлено листа"
+  share_notice_email_error: "Під час відправки листа відбулася помилка"

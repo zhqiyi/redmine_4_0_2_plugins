@@ -1,0 +1,9 @@
+el:
+  share_button: "Διαμοιρασμός"
+  share_title: "Διαμοιρασμός συνδέσμου"
+  share_label_with: "Share with"
+  share_label_page: "Σελίδα"
+  share_label_subject: "Ο %{sender} διαμοιράστηκε μαζί σας το %{record}"
+  share_text_message: "Ο %{sender} διαμοιράστηκε μαζί σας το %{record}."
+  share_notice_email_sent: "Ένα μήνυμα ηλεκτρονικού ταχυδρομείου εστάλη στο"
+  share_notice_email_error: "Σφάλμα κατά την αποστολή του μηνύματος στο"

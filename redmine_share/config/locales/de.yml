@@ -1,0 +1,9 @@
+de:
+  share_button: "Teilen"
+  share_title: "Link teilen"
+  share_label_with: "Teile mit"
+  share_label_page: "Seite"
+  share_label_subject: "%{sender} hat %{record} mit dir geteilt"
+  share_text_message: "%{sender} hat %{record} mit dir geteilt."
+  share_notice_email_sent: "Eine E-Mail wurde angesendet."
+  share_notice_email_error: "Beim Senden einer E-Mail ist ein Fehler aufgetreten."

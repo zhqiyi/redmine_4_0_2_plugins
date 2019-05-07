@@ -1,0 +1,9 @@
+et:
+  share_button: "Jaga"
+  share_title: "Jaga viit"
+  share_label_with: "Share with"
+  share_label_page: "Vikileht"
+  share_label_subject: "%{sender} shared %{record} with you"
+  share_text_message: "%{sender} shared %{record} with you."
+  share_notice_email_sent: "-le saadeti kiri"
+  share_notice_email_error: "Kirja saatmisel tekkis viga"

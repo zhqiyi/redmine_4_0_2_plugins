@@ -1,0 +1,9 @@
+lv:
+  share_button: "Koplietot"
+  share_title: "Koplietot saiti"
+  share_label_with: "Share with"
+  share_label_page: "Lapa"
+  share_label_subject: "%{sender} kopīgots %{record} ar jums"
+  share_text_message: "%{sender} kopīgots %{record} ar jums."
+  share_notice_email_sent: "E-pasts tika nosūtīts uz"
+  share_notice_email_error: "Kļūda sūtot e-pastu"

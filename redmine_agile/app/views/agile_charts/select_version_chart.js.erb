@@ -1,0 +1,5 @@
+$('#agile_chart').html('<%= escape_javascript(render_agile_chart(params[:chart], @version.fixed_issues)) %>');
+
+if ("replaceState" in window.history) {
+  window.history.replaceState(null, document.title, "?chart=<%= params[:chart] %>");
+}

@@ -1,0 +1,219 @@
+&-sidebar {
+
+  %info-block {
+    background-color: #ffffaa;
+    border: 1px solid #bfb23f;
+    padding: 5px;
+    text-align: center;
+  }
+
+  display: block;
+  &__empty-title {
+    @extend %info-block;
+    display: block;
+    margin-top: 10px;
+    box-sizing: border-box;
+  }
+  &__resize {
+    position: fixed;
+    width: 10px;
+    text-align: center;
+    cursor: col-resize;
+    display: block;
+    z-index: 101;
+    background-color: silver;
+    box-sizing: border-box;
+    padding-top: 8px;
+    font-size: 20px;
+    border-radius: 5px;
+  }
+  &__root {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+  }
+  &__toggler {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    padding: 0;
+    z-index: 1;
+    &.active {
+      background: #d94838;
+      color: #fff;
+    }
+  }
+  &__container {
+    border-left: 1px solid #dfccaf;
+    background: mix($color-foreground, $color-background);
+    padding-left: 8px;
+    overflow-y: scroll;
+  }
+  &__long-text {
+    position: relative;
+    max-height: 100px;
+    overflow: hidden;
+    min-height:30px;
+    border: 1px solid #dfccaf;
+    &__curtain {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 1px;
+      border-bottom: 1px solid #dfccaf;
+      background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 65%, white 100%);
+      background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 65%, white 100%);
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 65%, white 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#03ffffff', endColorstr='#ffffff', GradientType=0);
+    }
+    &__content{
+      padding: 3px;
+      min-height: 25px;
+      width: 100%;
+      box-sizing: border-box;
+      max-height: 100px;
+    }
+  }
+  &__attribute {
+    display: block;
+    overflow: hidden;
+    margin-top: 3px;
+    position: relative;
+    & .invalid{
+      border: 1px solid red;
+      color: red;
+    }
+    &-form-field {
+      max-width: 200px !important;
+      padding: 1px 1px 1px 5px !important;
+      line-height: normal;
+      float: right;
+      overflow-x: hidden !important;
+    }
+    &-value {
+      max-width: 197px !important;
+      width: 100%;
+      padding: 1px 1px 1px 5px !important;
+      line-height: normal;
+      float: right;
+      margin-top: 6px;
+    }
+    &-label-disabled {
+      color: rgba(0, 0, 0, 0.38);
+    }
+    &-label {
+      display: inline-block;
+      width: 90px;
+      margin-top: 5px;
+    }
+    .spaceholder {
+      display: none;
+    }
+    .top-section {
+      margin-bottom: 0;
+    }
+    &-full-screen-icon {
+      display: block;
+      float: right;
+      cursor: pointer;
+      margin-top: 6px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    & .icon-edit{
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+    }
+  }
+  &__attributes {
+
+  }
+  &__add-comment-button {
+    a {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    margin: 3px 0 12px 0;
+  }
+  &__journal {
+    &-avatar-container {
+      margin-top: 6px
+    }
+    &-header {
+      margin-top: -6px
+    }
+    &-notes {
+      margin-top: 0;
+      background: #ffffff;
+      border: 1px solid #dfccaf;
+      margin-bottom: 0 !important;
+      box-sizing: border-box;
+      padding: 3px;
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    &-full-screen-icon {
+      display: block;
+      float: right;
+      cursor: pointer;
+      margin-top: 25px;
+      position: absolute;
+      top: 0;
+      right: 20px;
+    }
+    &-timestamp {
+      font-weight: bold;
+      font-size: smaller;
+    }
+  }
+  &__coworkers--no_id {
+    @extend %info-block
+  }
+  &__tab {
+    margin: 6px 6px;
+    header {
+      min-height: 36px !important;
+      padding: 0 12px 8px !important;
+    }
+    header.open {
+      min-height: 44px;
+    }
+    header:not(:hover) {
+      color: inherit !important;
+      background-color: unset !important;
+    }
+  }
+  &__input {
+    &__name {
+      color: black;
+      font-family: "Open Sans", sans-serif;
+      width: 100% !important;
+      .input {
+        max-width: none;
+        text-align: center;
+        font-weight: bold;
+        opacity: 1;
+        color: black !important;
+      }
+      .bottom-section {
+        display: none;
+      }
+    }
+  }
+  .gravatar {
+    max-height: 32px;
+    max-width: 32px;
+  }
+  .content-wrapper {
+    margin: 0 12px 8px !important;
+  }
+  .material-tab {
+    padding: 0 !important;
+  }
+}

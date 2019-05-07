@@ -1,0 +1,7 @@
+<% if @issue.project.module_enabled?('agile') && RedmineAgile.use_story_points? && RedmineAgile.use_story_points_for?(@issue.tracker) %>
+  <%= issue_fields_rows do |rows|
+    rows.left l(:label_agile_story_points), @issue.story_points
+  end if @issue.story_points %>
+<% end %>
+
+<%= javascript_tag "linkableAttributeFields();" %>

@@ -1,0 +1,12 @@
+.scheme{
+  @each $scheme, $map in $mindmup-schemes {
+    &-by-#{$scheme} &-#{$scheme}{
+      @for $i from 1 through length($map) {
+        $color: nth($map, $i);
+        &-#{$i} {
+          @include mindmup-scheme($color);
+        }
+      }
+    }
+  }
+}

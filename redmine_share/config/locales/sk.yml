@@ -1,0 +1,9 @@
+sk:
+  share_button: "Sprístupniť"
+  share_title: "Sprístupniť odkaz"
+  share_label_with: "Share with"
+  share_label_page: "Stránka"
+  share_label_subject: "%{sender} vám sprístupnil %{record}"
+  share_text_message: "%{sender} vám sprístupnil %{record}."
+  share_notice_email_sent: "Na adresubol odoslaný email"
+  share_notice_email_error: "Pri odosielaní emailu sa vyskytla chyba"

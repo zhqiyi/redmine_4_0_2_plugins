@@ -1,0 +1,9 @@
+nl:
+  share_button: "Delen"
+  share_title: "Deellink"
+  share_label_with: "Share with"
+  share_label_page: "Pagina"
+  share_label_subject: "%{sender} heeft %{record} met je gedeeld"
+  share_text_message: "%{sender} heeft %{record} met je gedeeld."
+  share_notice_email_sent: "Een e-mail werd verstuurd naar"
+  share_notice_email_error: "Er is een fout opgetreden bij het versturen van"

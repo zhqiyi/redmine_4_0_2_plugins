@@ -1,0 +1,86 @@
+<%
+# encoding: utf-8
+#
+# Redmine plugin for Document Management System "Features"
+#
+# Copyright © 2011    Vít Jonáš <vit.jonas@gmail.com>
+# Copyright © 2012    Daniel Munn  <dan.munn@munnster.co.uk>
+# Copyright © 2011-19 Karel Pičman <karel.picman@kontron.com>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.%>
+
+<%= textilizable(@body) %>
+
+<% if @links_only %>
+  <% folders = [] %>
+  <% files = [] %>
+  <% if @folders.present? %>
+    <% JSON.parse(@folders).each do |id| %>
+      <% folder = DmsfFolder.find_by(id: id) %>
+      <% if folder %>
+        <% folder.folder_tree.each do |name, i| %>
+          <% dir = DmsfFolder.find_by(id: i) %>
+          <% if dir && !folders.include?(dir) %>
+            <br/>
+            <%= link_to(h(dir.dmsf_path_str), dmsf_folder_path(:id => dir.project_id, :folder_id => dir.id, :only_path => false)) %>
+            <br/><br/>
+            <% dir.dmsf_files.each do |file| %>
+              <% unless files.include?(file) %>
+                <% if @public_urls %>
+                  <% dmsf_public_url = DmsfPublicUrl.new %>
+                  <% dmsf_public_url.dmsf_file = file %>
+                  <% dmsf_public_url.user = @author %>
+                  <% dmsf_public_url.expire_at = @expired_at %>
+                  <% dmsf_public_url.save %>
+                  <%= link_to(h(file.title), dmsf_public_urls_url(:token => dmsf_public_url.token)) %>
+                   (<%= link_to(h(file.name),  dmsf_public_urls_url(:token => dmsf_public_url.token)) %>)
+                <% else %>
+                  <%= link_to(h(file.title), dmsf_file_url(file)) %>
+                  &nbsp;(<%= link_to(h(file.name), dmsf_file_url(file)) %>)
+                <% end %>
+                <br/>
+                <% files << file %>
+              <% end %>
+            <% end %>
+            <% folders << dir %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if @files.present? %>
+    <br/>
+    <% JSON.parse(@files).each do |id| %>
+      <% file = DmsfFile.find_by_id id %>
+      <% if file && !files.include?(file) %>
+        <% if @public_urls %>
+          <% dmsf_public_url = DmsfPublicUrl.new %>
+          <% dmsf_public_url.dmsf_file = file %>
+          <% dmsf_public_url.user = @author %>
+          <% dmsf_public_url.expire_at = @expired_at %>
+          <% dmsf_public_url.save %>
+          <%= link_to(h(file.title), dmsf_public_urls_url(:token => dmsf_public_url.token)) %>
+          &nbsp;(<%= link_to(h(file.name),  dmsf_public_urls_url(:token => dmsf_public_url.token)) %>)
+        <% else %>
+          <%= link_to(h(file.title), dmsf_file_url(file)) %>
+          &nbsp;(<%= link_to(h(file.name), dmsf_file_url(file)) %>)
+        <% end %>
+        <br/>
+        <% files << file %>
+      <% end %>
+    <% end %>
+   <% end %>
+<% end %>
+        

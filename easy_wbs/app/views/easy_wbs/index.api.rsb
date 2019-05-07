@@ -1,0 +1,91 @@
+api.easy_wbs_data do
+
+  api.layout EasySetting.value(:easy_wbs_layout, @project)
+
+  api.array :projects do
+    @projects.each do |project|
+      api.project do
+        api.id project.id
+        api.name project.name
+        api.parent_id project.parent_id
+        api.default_url wbs_url_to_project(project)
+      end
+    end
+  end
+
+  api.array :issues do
+    api_render_issues(api, @issues)
+    api_render_issues(api, @missing_parent_issues, filtered_out: true) if @missing_parent_issues
+  end
+
+  api.array :relations do
+    @relations.each do |rel|
+      api.relation do
+        api.id rel.id
+        api.source_id rel.issue_from_id
+        api.target_id rel.issue_to_id
+        api.type rel.relation_type
+      end
+    end
+  end
+
+  api.array :trackers do
+    @trackers.each do |tracker|
+      api.tracker do
+        api.id tracker.id
+        api.name tracker.name
+        api.subtaskable tracker.core_fields.include?('parent_issue_id')
+      end
+    end
+  end
+
+  api.array :users do
+    @users.each do |user|
+      api.user do
+        api.id user.id
+        api.name user.name
+        api.avatar_url mindmup_avatar_url(user)
+      end
+    end
+  end
+  if defined?(EasyExtensions)
+    api.array :priorities do
+      IssuePriority.active.sorted.each do |priority|
+        api.priority do
+          api.id priority.id
+          api.name priority.name
+          api.scheme priority.easy_color_scheme
+        end
+      end
+    end
+  else
+    api.array :priorities do
+      IssuePriority.active.sorted.each do |priority|
+        api.priority do
+          api.id priority.id
+          api.name priority.name
+          api.is_default priority.is_default
+        end
+      end
+    end
+  end
+
+  api.array :statuses do
+    IssueStatus.sorted.each do |status|
+      api.status do
+        api.id status.id
+        api.name status.name
+      end
+    end
+  end
+
+  api.array :versions do
+    @versions.each do |version|
+      api.version do
+        api.id version.id
+        api.name version.name
+      end
+    end
+  end
+
+end

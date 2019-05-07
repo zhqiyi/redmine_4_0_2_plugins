@@ -1,0 +1,175 @@
+---
+it:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Altre azioni
+    button_add_child: Aggiungi attività figlio
+    button_add_parent: Aggiungi attività padre
+    button_add_sibling: Aggiungi attività parallela
+    button_all_icons: Icone
+    button_collapse: Contrai
+    button_collapse_all: Contrai tutto
+    button_cut: Taglia
+    button_display: Mostra impostazioni
+    button_edit_data: Modifica dati
+    button_expand: Espandi
+    button_expand_all: Espandi tutto
+    button_expand_collapse: Espandi/Contrai
+    button_legend: Legenda
+    button_one_side: Da una parte
+    button_paste: Incolla
+    button_project_menu: Easy WBS
+    button_redo: Ripristina
+    button_remove_node: Rimuovi nodo
+    button_show_links: Mostra collegamenti
+    button_undo: Annulla
+    edit_issue: Modifica task
+    error_create: creazione non riuscita
+    error_delete: cancellazione non riuscita
+    error_update: aggiornamento non riuscito
+    errors:
+      not_subtaskable: Il task "%{task_name}" non può avere sottotask a causa delle
+        impostazioni del suo tracker
+    free:
+      button_upgrade: Ottieni la Versione Completa
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: Colorazione dei nodi in base alla caratteristica
+      feature_context_menu: Cambiamento delle caratteristiche dei nodi
+      feature_filtering: Filtro dei nodi in base alla caratteristica
+      header_not_available: Disponibile solo nella Versione Completa
+      text_not_available: è disponibile nella Versione Completa di Easy WBS.
+    hotkeys:
+      info_mac_metakey: In caso di sistemi Mac, i tasti Ctrl e Cmd possono essere
+        utilizzati per le scorciatoie in cui si impiega Ctrl. Alcuni browser non permettono
+        alcune combinazioni di tasti. Quindi, se per esempio nel tuo browser Cmd+Spazio
+        non funziona, prova Ctrl+Spazio.
+      keyboard:
+      - title: Node manipulation
+        hotkeys:
+        - hotkey: Enter
+          info: Add Sibling
+        - hotkey: Shift+Enter
+          info: Add Sibling above or line break (when renaming node)
+        - hotkey: Tab or Insert
+          info: Add child
+        - hotkey: Shift+Tab
+          info: Insert parent
+        - hotkey: Space
+          info: Rename node
+        - hotkey: Shift+Space
+          info: Edit node data
+        - hotkey: Backspace or Delete
+          info: Remove node
+        - hotkey: Ctrl+Up/Down
+          info: Move node up/down
+      - title: Editing
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Save
+        - hotkey: Ctrl+X or C
+          info: Cut
+        - hotkey: Ctrl+C or Y
+          info: Copy
+        - hotkey: Ctrl+V or P
+          info: Paste
+        - hotkey: U or Ctrl+Z
+          info: Undo
+        - hotkey: R or Ctrl+Y or Ctrl+Shift+Z
+          info: Redo
+      - title: Selection
+        hotkeys:
+        - hotkey: Arrow Keys
+          info: Select the node up/down/left/right of the currently selected one
+        - hotkey: Shift + Arrow keys
+          info: Add node up/down/left/right to selection (useful to multi-select siblings)
+        - hotkey: "{"
+          info: Multi-select the current node and the entire subtree under it
+        - hotkey: "["
+          info: Multi-select only the subtree under the current node (not the node
+            itself)
+        - hotkey: "="
+          info: Multi-select all the siblings of the current node (that have the same
+            parent)
+        - hotkey: "."
+          info: Cancel multi-selection and select only the current node again
+        - hotkey: 1 - 9
+          info: Select all nodes of a particular level (eg 1 selects all first level
+            nodes)
+      - title: Navigation and screen
+        hotkeys:
+        - hotkey: "/ or F"
+          info: Expand or collapse node (fold or unfold children)
+        - hotkey: Ctrl + or Z
+          info: Zoom in
+        - hotkey: Ctrl - or Shift Z
+          info: Zoom out
+        - hotkey: Esc, 0, Ctrl+0
+          info: Reset map view - select root node and bring it to the center of the
+            screen
+      mouse:
+      - action: Muovi la mappa
+        gesture: clicca e trascina il nodo centrale, clicca e trascina lo sfondo o
+          scorri con la rotella/touchpad.
+      - action: Seleziona un nodo
+        gesture: tocca o cliccaci sopra
+      - action: Seleziona nodi multipli
+        gesture: Shift+click
+      - action: Riordina nodi
+        gesture: trascina un nodo tra i suoi fratelli, orizzontalmente vicino alla
+          posizione di riordino. Un puntatore nero a forma di freccia mostrerà dove
+          riordinare.
+      - action: Posizionare manualmente un nodo
+        gesture: semplicemente trascina un nodo finché la freccia che mostra dove
+          riordinare non appare. Per forzare il posizionamento manuale anche quando
+          viene mostrata la freccia nera, tieni premuto Shift mentre trascini. Considera
+          che i figli del nodo radice possono essere spostati in ogni direzione, ma
+          i nodi di livello inferiore possono essere posizionati solo in direzione
+          del proprio padre relativo alla radice.
+      - action: Rinonima un nodo
+        gesture: Fai doppio clic/tocco
+      - action: Mostra il menu contestuale con le operazioni
+        gesture: 'Clicca col destro su un nodo (col mouse) o fai un doppio tocco sullo
+          sfondo, oppure tieni premuto a lungo sul nodo: mostra (su dispositivi touch)'
+      - action: Cambia nodo padre
+        gesture: trascina e rilascia un nodo su un altro nodo (i rilasci circolari
+          non sono permessi, quindi non puoi rilasciare un nodo su uno dei suoi figli
+          o discendenti)
+      - action: Apri questione o progetto in una finestra separata
+        gesture: Alt+click
+      title_key_shortcuts: Operazioni tramite tastiera
+      title_mouse_shortcuts: Operazioni tramite tastiera e tocco
+      title_shortcuts: Scorciatoie
+    info_all_saved: Tutto è stato salvato con successo
+    info_any_failed: 'Alcune richieste non sono andate a buon fine:'
+    info_no_permission: Non hai i permessi necessari per compiere questa operazione
+    label_color_by: Colore per
+    label_go_to: Vai a
+    label_or: oppure
+    last_state_modal:
+      label_differencies: Differenze sul server
+      message_changed: ha degli attributi differenti (browser => server) ({{changes}})
+      message_missing: manca dal padre "{{from}}"
+      message_moved: è figlio di "{{to}}", non di "{{from}}"
+      message_present: è presente come figlio di "{{to}}"
+      text_reload_appeal: Desideri ricaricare lo stato dal server?
+      title: L'ultimo stato WBS del client è diverso da quello del server
+    reload_modal:
+      label_errors: Errori
+      text_reload_appeal: Vuoi ignorare le voci non salvate e ricaricare i dati dal
+        server?
+      title: WBS non salvato correttamente
+    stored_modal:
+      text_load_appeal: Desideri caricarla? Invece di ottenere lo stato più recente
+        dal server?
+      title: Qualcosa risulta priva di salvataggio
+    warning_delete_node: Desideri davvero cancellare il nodo {{name}} e tutti i suoi
+      discendenti?
+    warning_not_saved: non salvato correttamente
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Task
+  label_filter_group_easy_wbs:
+    easy_issue_query: Task
+  project_default_page:
+    easy_wbs: Easy WBS

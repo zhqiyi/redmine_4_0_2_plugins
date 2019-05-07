@@ -1,0 +1,9 @@
+gl:
+  share_button: "Compartir"
+  share_title: "Compartir ligazón"
+  share_label_with: "Share with"
+  share_label_page: "Páxina"
+  share_label_subject: "%{sender} compartiu %{record} con vostede"
+  share_text_message: "%{sender} compartiu %{record} con vostede."
+  share_notice_email_sent: "Enviouse un correo a"
+  share_notice_email_error: "Ocorreu un error enviando o correo"

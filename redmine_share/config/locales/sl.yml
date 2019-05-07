@@ -1,0 +1,9 @@
+sl:
+  share_button: "Souporaba"
+  share_title: "Povezava do mape souporabe"
+  share_label_with: "Share with"
+  share_label_page: "Predstavitvena stran"
+  share_label_subject: "%{sender} je omogočil souporabo %{record}"
+  share_text_message: "%{sender} je omogočil souporabo %{record}."
+  share_notice_email_sent: "E-poštno sporočilo je bilo poslano"
+  share_notice_email_error: "Ob pošiljanju e-sporočila je prišlo do napake"

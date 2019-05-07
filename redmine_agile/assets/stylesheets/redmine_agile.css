@@ -1,0 +1,537 @@
+/**********************************************************************/
+/* ICONS
+/**********************************************************************/
+#admin-menu a.agile { background-image: url(../images/agile.png);}
+.icon-fullscreen { background-image:  url(../images/fullscreen.png); }
+
+/**********************************************************************/
+/* FULLSCREEN
+/**********************************************************************/
+html.agile-board-fullscreen {
+  overflow: hidden;
+}
+
+html.agile-board-fullscreen div.agile-board {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 20;
+  background: white;
+  overflow-y:scroll;
+}
+
+html.agile-board-fullscreen table.list.issues-board {
+  min-height: 100%;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+html.agile-board-fullscreen table.list.issues-board.sticky { min-height: auto; }
+
+html.agile-board-fullscreen .icon-fullscreen {
+  position: fixed;
+  right: 5px;
+  top: 5px;
+  z-index: 21;
+  text-indent: -9999px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+div.agile-board.autoscroll {
+  overflow: visible;
+  position: relative;
+}
+
+/**********************************************************************/
+/* BOARD SETTINGS
+/**********************************************************************/
+table.options tr > td {
+  white-space: nowrap;
+}
+
+.card-fields .floating {
+  text-align: left;
+  width: 200px;
+  float: left;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.card-fields .floating label span {
+  width: 110px;
+  text-overflow: ellipsis;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.card-fields .floating .wp_input{
+  width: 50px;
+  padding: 1px 5px !important;
+}
+
+/**********************************************************************/
+/* ISSUES SIDEBAR
+/**********************************************************************/
+#sidebar ul {
+  margin: 0;
+  padding: 0;
+}
+
+#sidebar ul li {
+  list-style-type: none;
+  margin: 0px 2px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+/**********************************************************************/
+/* PLANNING BOARD
+/**********************************************************************/
+table.versions-planning-board {
+  border-spacing: 10px;
+  width: 100%;
+}
+
+table.versions-planning-board td.issue-version-col {
+  vertical-align: top;
+  height: 400px;
+}
+
+table.list.versions-planning-board input#search.autocomplete {width: 80%;}
+
+table.list.versions-planning-board tbody tr,
+table.list.versions-planning-board tbody tr:hover {background-color: white;}
+table.list.versions-planning-board .header-hours {
+  float: right;
+  vertical-align: baseline;
+  height: 26px;
+  line-height: 26px;
+}
+
+/**********************************************************************/
+/* AGILE BOARD
+/**********************************************************************/
+table.list.issues-board {table-layout: fixed;}
+table.list.issues-board th {overflow: hidden; text-overflow: ellipsis;}
+
+.agile-board table.list.issues-board tbody tr,
+.agile-board table.list.issues-board tbody tr:hover {background-color: white;}
+
+.assignable-user.draggable-active {
+  padding: 5px;
+  border: 1px solid #D5D5D5;
+  background-color: #ffffdd;
+}
+
+table.issues-board td.issue-status-col.closed {background-color: #FAFAFA;}
+
+table.issues-board tr.group.swimlane {height: 30px;}
+table.issues-board tr.group.swimlane td {border-top: 0px;border-bottom: 1px solid #ccc;}
+
+table.issues-board tbody td,
+table.issues-board tbody tr.issue:hover td {border: 0px; vertical-align: top;}
+
+table.issues-board.minimize-closed td.issue-status-col.closed .issue-card {
+  width: 10px;
+  float: left;
+}
+table.issues-board.minimize-closed td.issue-status-col.closed .issue-card span.fields {display: none;}
+
+/**********************************************************************/
+/* ISSUE CARD
+/**********************************************************************/
+.issue-card {
+  padding: 5px;
+  border: solid 1px #d5d5d5;
+  background-color: #ffffdd;
+  margin: 5px;
+  word-wrap: break-word;
+  text-align: left;
+  white-space: normal;
+  cursor: pointer;
+  position: relative;
+}
+
+.issues-board td.issue-status-col.closed .issue-card.closed-issue {float: left;}
+.issues-board td.issue-status-col.closed.collapse .issue-card.float-left {float: left; position: relative;}
+.issue-card.closed-issue {white-space: nowrap; display: inline-block;}
+.issue-card .tip{ position: fixed; white-space: normal; }
+
+.issue-card:not(.context-menu-selection) .attributes,
+.issue-card:not(.context-menu-selection) span.hours  {color: #888;}
+
+.issue-card .attributes,
+.issue-card span.hours {font-size: 90%;}
+
+.issue-card span.hours {float: right;}
+
+.issue-card .thumbnail {
+  height: 145px;
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 5px;
+}
+
+.issue-card .checkbox {display: none;}
+.issue-card .avatar {float: left; margin-right: 5px;}
+.issue-card p.name {font-weight: bold;}
+.issue-card p.project {
+  border: 1px solid #d5d5d5;
+  padding: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  background-color: white;
+}
+.issue-card .info {
+  border-top: 1px solid #d5d5d5;
+  padding-top: 5px;
+  margin-top: 5px;
+}
+.issue-card table.progress {
+  float: none;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.issue-card table.progress td {
+  height: 5px;
+  padding: 0px;
+}
+
+.issue-card li.task-closed {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.issue-card div.sub-issues {
+  border-top: 1px solid #d5d5d5;
+  padding-top: 5px;
+  margin-top: 5px;
+  font-size: 90%;
+}
+
+.issue-card div.sub-issues ul {
+  margin: 1px 0px 5px 0px;
+  padding-left: 30px;
+}
+
+.issue-card .issue-id.without-tracker {
+  float: right;
+}
+
+.issue-card.context-menu-selection p.project {
+  color: black;
+}
+
+.issue-card.context-menu-selection .attributes,
+.issue-card.context-menu-selection em.info {
+  color: white;
+}
+
+.issues-board td.issue-status-col.closed .issue-card {background-color: #EDEDED;}
+
+.issue-card.ui-sortable-helper {
+  -moz-transform: rotate(5deg); /* Для Firefox */
+  -ms-transform: rotate(5deg); /* Для IE */
+  -webkit-transform: rotate(5deg); /* Для Safari, Chrome, iOS */
+  -o-transform: rotate(5deg); /* Для Opera */
+  transform: rotate(5deg);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+
+.issue-card.br-red {border-left: 5px solid red;}
+.issue-card.br-green {border-left: 5px solid green;}
+.issue-card.br-blue {border-left: 5px solid blue;}
+.issue-card.br-turquoise {border-left: 5px solid turquoise;}
+.issue-card.br-lightgreen {border-left: 5px solid lightgreen;}
+.issue-card.br-yellow {border-left: 5px solid yellow;}
+.issue-card.br-orange {border-left: 5px solid orange;}
+.issue-card.br-purple {border-left: 5px solid purple;}
+.issue-card.br-gray {border-left: 5px solid gray;}
+
+table.list.issues tr.issue.br-red, .issue-card.br-red {border-left: 5px solid red;}
+table.list.issues tr.issue.br-green, .issue-card.br-green {border-left: 5px solid green;}
+table.list.issues tr.issue.br-blue, .issue-card.br-blue {border-left: 5px solid blue;}
+table.list.issues tr.issue.br-turquoise, .issue-card.br-turquoise {border-left: 5px solid turquoise;}
+table.list.issues tr.issue.br-lightgreen, .issue-card.br-lightgreen {border-left: 5px solid lightgreen;}
+table.list.issues tr.issue.br-yellow, .issue-card.br-yellow {border-left: 5px solid yellow;}
+table.list.issues tr.issue.br-orange, .issue-card.br-orange {border-left: 5px solid orange;}
+table.list.issues tr.issue.br-purple, .issue-card.br-purple {border-left: 5px solid purple;}
+table.list.issues tr.issue.br-gray, .issue-card.br-gray {border-left: 5px solid gray;}
+
+.issue-card.bk-red {background-color: #FFE2E3; border-color: rgb(255, 201, 201);}
+.issue-card.bk-green {background-color: #DFFFCC; border-color: rgb(190, 239, 190);}
+.issue-card.bk-blue {background-color: #DCE7FF; border-color: rgb(189, 189, 233);}
+.issue-card.bk-turquoise {background-color: #C4FDFF; border-color: rgb(151, 222, 214);}
+.issue-card.bk-lightgreen {background-color: #D2FFEF; border-color: rgb(184, 228, 226);}
+.issue-card.bk-yellow {background-color: #FFFD9C; border-color: rgb(234, 234, 94);}
+.issue-card.bk-orange {background-color: #FFDBBA; border-color: rgb(255, 202, 105);}
+.issue-card.bk-purple {background-color: #EFDFFC; border-color: rgb(233, 186, 233);}
+.issue-card.bk-gray {background-color: #e1e1e1; border-color: rgb(198, 198, 198);}
+
+div.issue.details.br-red div.subject div > h3::before, div.issue.details.bk-red div.subject div > h3::before, a.issue.bk-red::before, a.issue.br-red::before {content: "\25CF  "; color: red;}
+div.issue.details.br-green div.subject div > h3::before, div.issue.details.bk-green div.subject div > h3::before, a.issue.bk-green::before, a.issue.br-green::before {content: "\25CF  "; color: green;}
+div.issue.details.br-blue div.subject div > h3::before, div.issue.details.bk-blue div.subject div > h3::before, a.issue.bk-blue::before, a.issue.br-blue::before {content: "\25CF  "; color: blue;}
+div.issue.details.br-turquoise div.subject div > h3::before, div.issue.details.bk-turquoise div.subject div > h3::before, a.issue.bk-turquoise::before, a.issue.br-turquoise::before {content: "\25CF  "; color: turquoise;}
+div.issue.details.br-lightgreen div.subject div > h3::before, div.issue.details.bk-lightgreen div.subject div > h3::before, a.issue.bk-lightgreen::before, a.issue.br-lightgreen::before {content: "\25CF  "; color: lightgreen;}
+div.issue.details.br-yellow div.subject div > h3::before, div.issue.details.bk-yellow div.subject div > h3::before, a.issue.bk-yellow::before, a.issue.br-yellow::before {content: "\25CF  "; color: yellow;}
+div.issue.details.br-orange div.subject div > h3::before, div.issue.details.bk-orange div.subject div > h3::before, a.issue.bk-orange::before, a.issue.br-orange::before {content: "\25CF  "; color: orange;}
+div.issue.details.br-purple div.subject div > h3::before, div.issue.details.bk-purple div.subject div > h3::before, a.issue.bk-purple::before, a.issue.br-purple::before {content: "\25CF  "; color: purple;}
+div.issue.details.br-gray div.subject div > h3::before, div.issue.details.bk-gray div.subject div > h3::before, a.issue.bk-gray::before, a.issue.br-gray::before {content: "\25CF  "; color: gray;}
+
+table.list.issues tr.issue:not(.context-menu-selection).bk-red td.id a {background-color: #FFE2E3; padding: 2px; border: 1px solid #DDD;}
+table.list.issues tr.issue:not(.context-menu-selection).bk-green td.id a {background-color: #DFFFCC; padding: 2px; border: 1px solid #DDD;}
+table.list.issues tr.issue:not(.context-menu-selection).bk-blue td.id a {background-color: #DCE7FF; padding: 2px; border: 1px solid #DDD;}
+table.list.issues tr.issue:not(.context-menu-selection).bk-turquoise td.id a {background-color: #C4FDFF; padding: 2px; border: 1px solid #DDD;}
+table.list.issues tr.issue:not(.context-menu-selection).bk-lightgreen td.id a {background-color: #D2FFEF; padding: 2px; border: 1px solid #DDD;}
+table.list.issues tr.issue:not(.context-menu-selection).bk-yellow td.id a {background-color: #FFFD9C; padding: 2px; border: 1px solid #DDD;}
+table.list.issues tr.issue:not(.context-menu-selection).bk-orange td.id a {background-color: #FFDBBA; padding: 2px; border: 1px solid #DDD;}
+table.list.issues tr.issue:not(.context-menu-selection).bk-purple td.id a {background-color: #EFDFFC; padding: 2px; border: 1px solid #DDD;}
+table.list.issues tr.issue:not(.context-menu-selection).bk-gray td.id a {background-color: #e1e1e1; padding: 2px; border: 1px solid #DDD;}
+
+
+/**********************************************************************/
+/* ISSUE CARD CHECKLIST
+/**********************************************************************/
+
+.issue-card div.checklist {
+  border-top: 1px solid #d5d5d5;
+  padding-top: 5px;
+  margin-top: 5px;
+  font-size: 90%;
+}
+
+.issue-card div.checklist ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.issue-card div.checklist input[type=checkbox] {
+  margin: 0px;
+}
+
+/**********************************************************************/
+/* ISSUE CARD QUICKEDIT
+/**********************************************************************/
+
+.issue-card div.quick-edit-card {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  border: 1px solid #ddd;
+  background-color: white;
+  height: 17px;
+  padding: 1px 1px 0px 1px;
+  margin: 0px;
+  display: none;
+}
+
+.issue-card div.quick-edit-card a {
+  float: left;
+}
+
+.issue-card:hover div.quick-edit-card.hidden{
+  display: none;
+}
+.issue-card:hover div.quick-edit-card {
+  display: block;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.issue-card:hover div.quick-edit-card:hover { opacity: 1;}
+
+.issue-card .quick-comment {
+  display: none;
+  margin-top: 5px;
+  padding-right: 5px;
+}
+
+.issue-card .quick-comment textarea{
+  width: 100%;
+}
+
+.issue-card .last-comment{
+  font-style: italic;
+}
+
+.issues-board .add-issue{
+  background: transparent;
+  border: 1px dashed rgba(48, 59, 77, 0.3);
+  padding: 5px;
+  margin: 5px;
+}
+
+.issues-board .add-issue .new-card__input{
+  outline: none;
+  width: 100%;
+  border: 0px;
+  background: transparent;
+  position: relative;
+  text-align: center;
+}
+
+/**********************************************************************/
+/* ISSUES BOARD
+/**********************************************************************/
+
+.issues-board td.issue-status-col.droppable-hover, .issues-board td.issue-status-col .issue-card.droppable-hover {
+  border-style: dotted;
+  background-color: #E9F8FD;
+}
+
+table.list thead tr th span.hours {color: #888; float: right; font-size: 90%; font-weight: normal;}
+table.issues-board thead th {white-space: normal;}
+/*
+tr.issue.br-red td.id::before,
+tr.issue.br-green td.id::before,
+tr.issue.br-blue td.id::before,
+tr.issue.br-turquoise td.id::before,
+tr.issue.br-lightgreen td.id::before,
+tr.issue.br-yellow td.id::before,
+tr.issue.br-orange td.id::before,
+tr.issue.br-purple td.id::before,
+tr.issue.br-gray td.id::before,
+*/
+
+.wp_input {
+  margin-left: 2px;
+}
+
+table.issues-board thead th span.count span.under_wp_limit {color: #008000;}
+table.issues-board thead th span.count span.over_wp_limit {color: #A50000;}
+
+table.issues-board thead th.under_wp_limit {background-color: #D4F1D4;}
+table.issues-board thead th.over_wp_limit {background-color: #FFE9E9;}
+
+table.issues-board tbody td.under_wp_limit {background-color: #EFFFEF;}
+table.issues-board tbody td.over_wp_limit {background-color: #FFF6F6;}
+
+.add-issue{
+  background: transparent;
+  border: 1px dashed rgba(48, 59, 77, 0.3);
+  margin: 5px;
+}
+
+.add-issue .new-card__input{
+  outline: none;
+  width: 100%;
+  border: 0px;
+  background: transparent;
+  position: relative;
+  text-align: center;
+}
+table.issues-board tbody td.over_wp_limit {background-color: #FFF6F6;}
+
+.lock {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0.9;
+}
+
+.agile-board-fullscreen .lock{
+  position: fixed;
+}
+
+
+.agile-chart-container {
+  margin: auto;
+  min-height: 400px;
+  max-width: 1200px;
+}
+
+.issue-card.filtered {
+  opacity: 0.2;
+}
+
+
+table.list.issues-board.sticky {
+  display: table;
+  top: 0px;
+  position: fixed;
+}
+
+@media screen and (max-width: 899px) {
+  html.agile-board-fullscreen div.agile-board {
+    padding: 64px 0 0; /* padding-top equals header height */
+  }
+
+  html.agile-board-fullscreen .icon-fullscreen {
+    top: 64px; /* top equals header height */
+  }
+
+  html.agile-board-fullscreen table.list.issues-board.sticky { top: 64px; }
+  table.list.issues-board.sticky { top: 64px; }
+
+  html.agile-board-fullscreen #wrapper > div.flyout-menu.js-flyout-menu { z-index: 22; }
+}
+
+.planning-board {
+  display: flex;
+  overflow-x: auto;
+}
+
+.planning-board p {
+    margin: 0;
+}
+
+.planning-board .column-content {
+  width: 272px;
+  min-width: 272px;
+  margin: 0 4px 4px 4px;
+  background-color: #f6f7f8;
+  border: 1px solid #d7d7d7;
+}
+
+.planning-board .column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px;
+  background-color: #eeeeee;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.planning-board .column-header .version-name {
+  color: #555;
+  font-size: 90%;
+  font-weight: bold;
+}
+
+.planning-board .column-issues {
+  padding-bottom: 30px;
+}
+
+.planning-board .closed-issue {
+  color: #999;
+  display: block;
+  white-space: inherit;
+  background-color: #ededed;
+  border-color: #d7d7d7;
+}
+
+.planning-board .closed-issue p.name a, .planning-board .closed-issue p.issue-id {
+  color: #999;
+  text-decoration: line-through;
+}
+
+html {
+  overflow-y: inherit !important;
+}

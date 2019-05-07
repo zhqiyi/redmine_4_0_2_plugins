@@ -1,0 +1,274 @@
+<div class="contextual">
+<% if !@query.new_record? && @query.editable_by?(User.current) %>
+  <%= delete_link query_path(@query) %>
+<% end %>
+</div>
+
+<h2><%= @query.new_record? ? l(:header) : @query.name %></h2>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'pivot', :plugin => 'redmine_pivot_table' %>
+    <%= stylesheet_link_tag 'c3.min.css', :plugin => 'redmine_pivot_table' %>
+    <%= javascript_include_tag 'pivot.js', :plugin => 'redmine_pivot_table' %>
+    <%= javascript_include_tag 'd3.min.js', :plugin => 'redmine_pivot_table' %>
+    <%= javascript_include_tag 'c3.min.js', :plugin => 'redmine_pivot_table' %>
+    <%= javascript_include_tag 'c3_renderers.js', :plugin => 'redmine_pivot_table' %>
+    <%= javascript_include_tag @language_js, :plugin => 'redmine_pivot_table', :media => "all" if javascript_exists?(@language_js) %>
+<% end %>
+
+<style>
+
+ .pvtAxisContainer { overflow: auto; } /*for IE11 and jQuery draggable scroll offset workaround*/
+
+ .pvtHorizList li { float: left; }
+
+ table.pvtTable tr th, table.pvtTable tr th {
+  font-size: 9pt;
+ }
+
+ .c3 text {font-family:Verdana, sans-serif;}
+ .c3 text {font-size: 12px;}
+ .c3-line {stroke-width: 3px;}
+
+#url        { font-size: 11px;
+              color: #767676; 
+              border: 1px solid #ccc; 
+              margin: 0px 2px 0px 2px; 
+              display: none; }
+#show-url   { font-size: 9px; }
+#clear-all  { float: right; cursor: pointer; margin-top: -15px; }
+#output     { margin-top: -15px; }
+
+</style>
+
+
+<script type="text/javascript">
+
+
+var renderers;
+var c3_renderers;
+
+$(document).ready(function(){
+
+           var sortAs = $.pivotUtilities.sortAs;
+
+           <% if @table == "activity" %>
+             data = <%= raw parse_events(@events).to_json %>;
+           <% else %>
+             data = <%= raw parse_issues(@issues).to_json %>;
+           <% end %>
+
+           var dateFormat = $.pivotUtilities.derivers.dateFormat;
+
+           if ($.pivotUtilities.locales["<%= @language %>"]) {
+               renderers = $.pivotUtilities.locales["<%= @language %>"].renderers || $.pivotUtilities.renderers;
+               c3_renderers = $.pivotUtilities.locales["<%= @language %>"].c3_renderers || $.pivotUtilities.c3_renderers;
+           } else {
+               renderers = $.pivotUtilities.renderers;
+               c3_renderers = $.pivotUtilities.c3_renderers;
+           }
+
+           var ext_renderers = {};
+
+           // strip html tags for C3 renderers
+           for (var rd in c3_renderers) {
+               ext_renderers[rd] = function (d, o) {
+                   d.rowKeys = JSON.parse(JSON.stringify(d.rowKeys).replace(/(<([^>]+)>)/ig,""));
+                   d.colKeys = JSON.parse(JSON.stringify(d.colKeys).replace(/(<([^>]+)>)/ig,""));
+                   for (var k in d.rowTotals) {
+                       if (d.rowTotals.hasOwnProperty(k) && /(<([^>]+)>)/.test(k)) {
+                           d.rowTotals[k.replace(/(<([^>]+)>)/ig,"")] = d.rowTotals[k];
+                           delete d.rowTotals[k];
+                       }
+                   }
+                   for (var k in d.colTotals) {
+                       if (d.colTotals.hasOwnProperty(k) && /(<([^>]+)>)/.test(k)) {
+                           d.colTotals[k.replace(/(<([^>]+)>)/ig,"")] = d.colTotals[k];
+                           delete d.colTotals[k];
+                       }
+                   }
+                   for (var r in d.tree) {
+                       for (var c in d.tree[r]) {
+                           if ( d.tree[r].hasOwnProperty(c) && /(<([^>]+)>)/.test(c) ) {
+                               d.tree[r][c.replace(/(<([^>]+)>)/ig,"")] = d.tree[r][c];
+                               delete d.tree[r][c];
+                           }
+                       }
+                       if (d.tree.hasOwnProperty(r) && /(<([^>]+)>)/.test(r) ) {
+                           d.tree[r.replace(/(<([^>]+)>)/ig,"")] = d.tree[r];
+                           delete d.tree[r];
+                       }
+                   }
+                   return c3_renderers[$(".pvtRenderer")[0].value](d, o);
+               }
+           };
+
+           renderers = $.extend(renderers, ext_renderers);
+
+           // main
+           $("#output").pivotUI(data, {
+
+              renderers: renderers,
+
+              rendererOptions: {
+                c3: {
+                  size: { width: window.innerWidth / 1.4 * 0.8 }
+                },
+                table: {
+                  <% if (@table != "activity") && (Redmine::VERSION.to_s >= "3.3.0") %>
+                  clickCallback: drill_through
+                  <% end %>
+                }
+              },
+
+              sorters: function(attr) {
+                  if(attr === "<%= pv_caption(:status) -%>") {
+                      return sortAs(["<%= raw @statuses.join('", "') %>"]);
+                  }
+		  else if(attr === "<%= pv_caption(:tracker) -%>") {
+		      return sortAs(["<%= raw @trackers.join('", "') %>"]);
+		  }
+              },
+              onRefresh: update_url,
+
+              <%= raw %|rendererName: "#{@rendererName}",| if @rendererName %>
+              <%= raw %|aggregatorName: "#{@aggregatorName}",| if @aggregatorName %>
+              <%= raw %|vals: ["#{@vals.join('","')}"],| if @vals %>
+              <% if @table == "activity" %>
+                <%= raw @rows == nil ? %|rows: ["#{l(:field_author)}"],| : %|rows: ["#{@rows.join('","')}"],| %>
+                <%= raw @cols == nil ? %|cols: ["#{l(:field_created_on)+"(y)"}", "#{l(:field_created_on)+"(m)"}", "#{l(:field_created_on)+"(d)"}"],| : %|cols: ["#{@cols.join('","')}"],| %>
+              <% else %>
+                <%= raw @rows == nil ? %|rows: ["#{pv_caption(:fixed_version)}", "#{pv_caption(:assigned_to)}"],| : %|rows: ["#{@rows.join('","')}"],| %>
+                <%= raw @cols == nil ? %|cols: ["#{pv_caption(:status)}"],| : %|cols: ["#{@cols.join('","')}"],| %>
+              <% end %>
+              unusedAttrsVertical: false
+           }, false, "<%= @language %>");
+
+　　$("#output").click(function(e){
+        if (e.target.href ) {
+            window.open(e.target,'_blank');
+　　　　　　return false;
+　　　　};
+    });
+});
+
+function clear_attr(){
+  
+  $("#output").pivotUI(
+                         data,
+                         {
+                           renderers: renderers,
+                           rendererOptions: { c3: { size: { width: window.innerWidth / 1.4 * 0.8 } },
+                                              table: { clickCallback: drill_through } },
+                           sorters: $.pivotUtilities.sorters,
+                           onRefresh: update_url,
+                           rows: [],
+                           cols: [],
+                           unusedAttrsVertical: false
+                         },
+                         true,
+                         "<%= @language %>");
+}
+function drill_through(e, value, filters, pivotData){
+    var id_list = [];
+    pivotData.forEachMatchingRecord(filters,
+        function(record){ id_list.push(record.ID.replace(/(<([^>]+)>)/ig,"")); });
+    var issue_path = "<%= @project ? project_issues_path(@project) : issues_path -%>"
+    window.open(issue_path + "?status_id=*&set_filter=1&issue_id=" + id_list.join("%2C"));
+}
+function update_url(config){
+    var config_copy = JSON.parse(JSON.stringify(config));
+
+    //var link_url = "table=" + "<%= @table %>" + "&" +
+    //               "rows=" + encodeURI(config_copy["rows"]) + "&" +
+    //               "cols=" + encodeURI(config_copy["cols"]) + "&" +
+    //               "rendererName=" + encodeURI(config_copy["rendererName"]) + "&" +
+    //               "aggregatorName=" + encodeURI(config_copy["aggregatorName"]) + "&" +
+    //               "attrdropdown=" + encodeURI(config_copy["vals"]);
+
+    $("#table").val("<%= @table %>");
+    $("#rows").val(config_copy["rows"]);
+    $("#cols").val(config_copy["cols"]);
+    $("#rendererName").val(config_copy["rendererName"]);
+    $("#aggregatorName").val(config_copy["aggregatorName"]);
+    $("#attrdropdown").val(config_copy["vals"]);
+
+    // Make string an actual link
+    $('.pvtRowLabel').each(function(){
+      var str = $(this).html();
+      var replaced_text = unescapeHTML(str).replace(/\s+/g, " ");
+      $(this).html(replaced_text);
+    });
+
+    $('.pvtColLabel').each(function(){
+      var str = $(this).html();
+      var replaced_text = unescapeHTML(str).replace(/\s+/g, " ");
+      $(this).html(replaced_text);
+    });
+
+    // Strip HTML tag from filters and values
+    $('.pvtVal,.pvtTotal,.pvtGrandTotal,.pvtCheckContainer p label span').each(function(){
+      var str = $(this).text();
+      $(this).text(str.replace(/(<([^>]+)>)/ig,""));
+    });
+}
+
+function unescapeHTML(str) {
+  var div = document.createElement("div");
+  div.innerHTML = str.replace(/</g,"&lt;")
+                     .replace(/>/g,"&gt;")
+                     .replace(/ /g, "&nbsp;")
+                     .replace(/\r/g, "&#13;")
+                     .replace(/\n/g, "&#10;");
+  return div.textContent || div.innerText;
+}
+</script>
+
+<div class="tabs">
+  <ul>
+    <li><%= link_to l(:label_issue), "pivottables", :class => (@table != 'activity' ? 'selected' : nil) %></li>
+    <li><%= link_to l(:label_activity), "pivottables?table=activity", :class => (@table == 'activity' ? 'selected' : nil) %></li>
+  </ul>
+</div>
+
+<% if @table != "activity" %>
+  <%= form_tag({:controller => 'pivottables', :action => 'index', :project_id => @project } , :method => :get, :id => 'query_form' ) do %>
+
+    <%= hidden_field_tag 'set_filter', '1' %>
+    <%= hidden_field_tag 'pivot', '1' %>
+
+    <fieldset id="filters" class="collapsible <%= @query.new_record? ? "" : "collapsed" %>">
+      <legend onclick="toggleFieldset(this);"><%= l(:label_filter_plural) %></legend>
+      <div style="<%= @query.new_record? ? "" : "display: none;" %>">
+        <%= render :partial => 'queries/filters', :locals => {:query => @query} %>
+      </div>
+    </fieldset>
+
+    <p class="buttons">
+    <%= link_to_function l(:button_apply), '$("#query_form").submit()',
+                         :class => 'icon icon-checked' %>
+    <%= link_to l(:button_clear), { :project_id => @project, :set_filter => 1 },
+                :class => 'icon icon-reload' %>
+    <% if @query.new_record? && User.current.allowed_to?(:save_queries, @project, :global => true) %>
+      <%= link_to_function l(:button_save),
+                             "$('#query_form').attr('action', './pivottables/new').submit()",
+                             :class => 'icon icon-save' %>
+    <% end %>
+    </p>
+    <%= hidden_field_tag 'table' %>
+    <%= hidden_field_tag 'rows' %>
+    <%= hidden_field_tag 'cols' %>
+    <%= hidden_field_tag 'rendererName' %>
+    <%= hidden_field_tag 'aggregatorName' %>
+    <%= hidden_field_tag 'attrdropdown' %>
+  <% end %>
+<% end %>
+
+<%= image_tag( "close.png", :id => "clear-all", :alt => l(:clear_all), :title => l(:clear_all), :onClick => "clear_attr();" ) %>
+<br/>
+
+<div id="output"></div>
+
+<% content_for :sidebar do %>
+  <%= render :partial => 'issues/sidebar' %>
+<% end %>

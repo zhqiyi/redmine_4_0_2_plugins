@@ -1,0 +1,170 @@
+---
+cs:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Ostatní akce
+    button_add_child: Přidat dítě
+    button_add_parent: Přidat rodiče
+    button_add_sibling: Přidat sourozence
+    button_all_icons: Ikony
+    button_collapse: Sbalit
+    button_collapse_all: Sbalit vše
+    button_cut: Vyjmout
+    button_display: Zobrazit nastavení
+    button_edit_data: Upravit údaje
+    button_expand: Rozbalit
+    button_expand_all: Rozbalit vše
+    button_expand_collapse: Rozbalit/sbalit
+    button_legend: Legenda
+    button_one_side: Jedna strana
+    button_paste: Vložit
+    button_project_menu: Easy WBS
+    button_redo: Vpřed
+    button_remove_node: Odstranit uzel
+    button_show_links: Zobrazit vazby
+    button_undo: Zpět
+    edit_issue: Upravit úkol
+    error_create: Nelze vytvořit
+    error_delete: Nelze smazat
+    error_update: Nelze aktualizovat
+    errors:
+      not_subtaskable: Úkol "%{task_name}" nemůže být podúkolem kvůli nastavení jeho
+        trackeru
+    free:
+      button_upgrade: Získat plnou verzi
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: Obarvení uzlů podle vlastnosti
+      feature_context_menu: Změna vlastností uzlů
+      feature_filtering: Filtrování uzlů podle vlastnosti
+      header_not_available: K dispozici pouze v plné verzi
+      text_not_available: je k dispozici pouze v plné verzi Easy WBS.
+    hotkeys:
+      info_mac_metakey: Na Mac OS X klávesy Ctrl a Cmd mohou být použity pro zkratky
+        níže - některé prohlížeče mohou určitým klávesovým zkratkám bránit. Například
+        pokud Cmd + Space nefunguje v prohlížeči, zkuste Ctrl + Space.
+      keyboard:
+      - title: Manipulace s uzly
+        hotkeys:
+        - hotkey: Enter
+          info: Přidat sourozence
+        - hotkey: Shift+Enter
+          info: Přidat sourozence nad nebo konec řádku (při přejmenování uzlu)
+        - hotkey: Tab nebo Insert
+          info: Přidat dítě
+        - hotkey: Shift+Tab
+          info: Přidat rodiče
+        - hotkey: Mezerník
+          info: Přejmenovat uzel
+        - hotkey: Shift+mezerník
+          info: Upravit data uzlu
+        - hotkey: Backspace nebo Delete
+          info: Odstranit uzel
+        - hotkey: Ctrl+nahoru/dolů
+          info: Posunout uzel nahoru/dolů
+      - title: Úpravy
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Uložit
+        - hotkey: Ctrl+X nebo C
+          info: Vyjmout
+        - hotkey: Ctrl+C nebo Y
+          info: Kopírovat
+        - hotkey: Ctrl+V nebo P
+          info: Vložit
+        - hotkey: U nebo Ctrl+Z
+          info: Zpět
+        - hotkey: R nebo Ctrl+Y nebo Ctrl+Shift+Z
+          info: Vpřed
+      - title: Výběr
+        hotkeys:
+        - hotkey: Šipky
+          info: Vyberte uzel nahoře/dole/nalevo/napravo od aktuálně vybraného
+        - hotkey: Shift + šipky
+          info: Přidat uzel nahoru/dolů/nalevo/napravo od aktuálně vybraného (užitečné
+            pro vícenásobný výběr sourozenců)
+        - hotkey: "{"
+          info: Vícenásobný výběr aktuálního uzlu a celého jeho podstromu
+        - hotkey: "["
+          info: Vícenásobný výběr pouze podstromu aktuálního uzlu (nikoli uzlu samého)
+        - hotkey: "="
+          info: Vícenásobný výběr všech sourozenců aktuálního uzlu (které mají stejného
+            rodiče)
+        - hotkey: "."
+          info: Zrušit vícenásobný výběr a znovu vybrat pouze aktuální uzel
+        - hotkey: 1 - 9
+          info: Vybrat všechny uzly na určité úrovni (např. 1 vybere všechny uzly
+            první úrovně)
+      - title: Navigace a obrazovka
+        hotkeys:
+        - hotkey: "/ nebo F"
+          info: Rozbalit nebo sbalit uzel (zobrazit nebo skrýt děti)
+        - hotkey: Ctrl + nebo Z
+          info: Přiblížit
+        - hotkey: Ctrl - nebo Shift Z
+          info: Oddálit
+        - hotkey: Esc, 0, Ctrl+0
+          info: Resetovat zobrazení mapy - vybrat kořenový uzel a umístit ho do středu
+            obrazovky
+      mouse:
+      - action: Přesunutí mapy
+        gesture: klikněte a přetáhněte středový uzel, klikněte a přetáhněte pozadí
+          nebo skrolujte na trackpadu/touchpadu.
+      - action: Vybrat uzel
+        gesture: klikněte nebo klepněte na něj
+      - action: Vybrat více uzlů
+        gesture: Shift+klik
+      - action: Změna pořadí uzlů
+        gesture: přetáhněte uzel mezi svými sourozenci, horizontálně blízko k místu
+          změny pořadí. Při změně pořadí se zobrazí bod s černou šipkou.
+      - action: Ručně umístit uzel
+        gesture: stačí přetáhnout uzel, dokud šipka pro změnu pořadí nezmizí. Chcete-li
+          vynutit ruční postavení, i když se šipka pro změnu pořadí ukazuje, podržte
+          klávesu Shift při tažení. Upozorňujeme, že děti z kořenového uzlu je možné
+          přetáhnout v libovolném směru, ale uzly nižší úrovně mohou být umístěny
+          pouze ve směru svého rodiče ke kořeni.
+      - action: Přejmenování uzlu
+        gesture: Dvojitý klik nebo dvojité ťuknutí
+      - action: Zobrazit kontextové menu s operacemi
+        gesture: 'Klikněte pravým tlačítkem na uzel (myší) nebo poklepejte na pozadí,
+          nebo dlouze stiskněte uzel: zobrazit (na dotykových zařízeních)'
+      - action: Změna rodičovského uzlu
+        gesture: přetáhněte uzel na jiný uzel (kruhové upuštění není povoleno, takže
+          nelze upustit uzel na jednom ze svých dětí nebo potomků)
+      - action: Otevřít úkol nebo projekt v samostatném okně
+        gesture: Alt+klik
+      title_key_shortcuts: Klávesové operace
+      title_mouse_shortcuts: Operace s myší a dotykem
+      title_shortcuts: Zkratky
+    info_all_saved: Vše úspěšně uloženo
+    info_any_failed: 'Některé z neúspěšných požadavků:'
+    info_no_permission: Nemáte potřebná oprávnění k této akci
+    label_color_by: Barva dle
+    label_go_to: Jít do
+    label_or: nebo
+    last_state_modal:
+      label_differencies: Rozdíly na serveru
+      message_changed: mají rozdílné atributy (browser => server) ({{changes}})
+      message_missing: nemá nadřazený úkol "{{from}}"
+      message_moved: je podúkolem "{{to}}", ne "{{from}}"
+      message_present: je přítomen jako podúkol "{{to}}"
+      text_reload_appeal: Přejete si znovu načíst stav ze serveru?
+      title: Poslední klientský stav WBS je odlišný od stavu serveru
+    reload_modal:
+      label_errors: Chyby
+      text_reload_appeal: Chcete ignorovat neuložené položky a znovu načíst data ze
+        serveru?
+      title: WBS se nepodařilo správně uložit
+    stored_modal:
+      text_load_appeal: Chcete jej načíst místo aktuálního stavu ze serveru?
+      title: Byl zjištěn neuložený stav
+    text_issue_not_saved: Úkol není uložen. Nejdříve jej uložte.
+    warning_delete_node: Opravdu chcete odstranit uzel {{name}} a všechny jeho potomky?
+    warning_not_saved: není správně uloženo
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Úkoly
+  label_filter_group_easy_wbs:
+    easy_issue_query: Úkoly
+  project_default_page:
+    easy_wbs: Easy WBS

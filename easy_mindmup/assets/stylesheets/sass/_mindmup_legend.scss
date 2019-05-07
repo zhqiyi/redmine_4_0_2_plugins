@@ -1,0 +1,67 @@
+.mindmup{
+  &-legend {
+    @extend %background-clip-padding-box !optional;
+    overflow-y: auto;
+    padding: $gap $box-padding;
+    overflow-x: hidden;
+    &-color-box {
+      //@include mindmup-scheme($color-border-minor);
+      background-color: #E0E0E0;
+      border-color: #E0E0E0;
+      @extend %border-radius-infinite !optional;
+      //&:before{
+      //  content: 'B';
+      //  font-weight: bold;
+      //  display: block;
+      //  text-align: center;
+      //}
+      width: $box-padding;
+      height: $box-padding;
+      display: inline-block;
+      border-width: 1px;
+      border-style: solid;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    &-used-toggle{
+      float:right;
+      margin: 5px 0;
+    }
+    &-item{
+      &-cont{
+        cursor: pointer;
+        margin-top: 0.5*$gap;
+      }
+    }
+    .hotkey_link {
+      margin: $gap (-$gap) 0;
+      padding-top: $gap;
+      border-top: 1px solid $color-border-minor;
+      .easy & a{
+        color: rgba($color-text, .5);
+      }
+    }
+    &__filter{
+      &_cont{
+        position: absolute;
+        right: $gap;
+      }
+      &_icon{
+        color: rgba($color-text, .4);;
+        font-size: 2em;
+        padding: 5px;
+      }
+      &_cancel_icon{
+        position: absolute;
+        display: none;
+        color: lighten($color-negative,10);
+        //color: $color-negative;
+        font-size: 2em;
+        padding: 0 5px 5px;
+      }
+      &_cont:hover &_cancel_icon{
+        display: inline;
+      }
+    }
+  }
+}

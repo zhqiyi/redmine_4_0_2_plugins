@@ -1,0 +1,18 @@
+api.easy_gantt_data do
+  api.start_date @start_date
+  api.end_date @end_date
+
+  api_render_columns(api, @query)
+  api_render_projects(api, @projects, with_columns: true)
+
+  if EasySetting.value(:easy_gantt_show_holidays)
+    api_render_holidays(api, @start_date - 1.month, @end_date + 1.month)
+  end
+
+  # Load only on first request
+  if params[:subproject_loading].nil?
+    api.schemes do
+      api_render_scheme(api, :EasyProjectPriority)
+    end
+  end
+end

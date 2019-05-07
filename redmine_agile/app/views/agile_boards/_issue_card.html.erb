@@ -1,0 +1,145 @@
+<div class="issue-card hascontextmenu <%= agile_color_class(issue, :color_base => @query.respond_to?(:color_base) && @query.color_base) %> <%= class_for_closed_issue(issue, @version_board) %>" data-id="<%= issue.id %>" data-estimated-hours="<%= estimated_value(issue) %>" style="<%= agile_user_color(issue.assigned_to, :color_base => @query.respond_to?(:color_base) && @query.color_base) if issue.assigned_to %>">
+    <% if issue.closed? && RedmineAgile.hide_closed_issues_data? && !@version_board %>
+      <span class="fields">
+         <div class="tooltip">
+           <p class="issue-id <%= 'without-tracker' if @query.has_column_name?(:tracker).blank? %>">
+               <strong><%= link_to "#{'#' + issue.id.to_s}", issue_path(issue) %></strong>
+            </p>
+            <span class="tip">
+            </span>
+          </div>
+      </span>
+    <% else %>
+      <span class="fields">
+          <% if User.current.allowed_to?(:edit_issues, @project, :global => true) && RedmineAgile.allow_inline_comments?  %>
+            <div class="quick-edit-card">
+              <%# link_to image_tag("/images/edit.png"), edit_issue_path(issue), :class => "", :style => "margin-right: 3px;", :title => l(:button_edit) %>
+              <%= link_to image_tag("/images/comment.png", :alt => "Edit"), "#", :onclick => "showInlineComment(this, '#{j(agile_inline_comment_path(:id => issue))}'); return false;", :title => l(:label_comment_add), :class => 'add-comment' %>
+            </div>
+          <% end %>
+          <% if @query.has_column_name?(:project) %>
+            <p class="project">
+              <%= issue.project.name %>
+            </p>
+          <% end %>
+          <p class="issue-id <%= 'without-tracker' if @query.has_column_name?(:tracker).blank? %>">
+            <%= check_box_tag("ids[]", issue.id, false, :id => nil, :class => 'checkbox') %>
+            <% if @query.has_column_name?(:tracker) %>
+              <strong><%= issue_heading(issue) %></strong>
+            <% end %>
+            <%= render_issue_card_hours(@query, issue) %>
+          </p>
+          <p class="name" ><%= link_to "#{'#' + issue.id.to_s + ': ' if @query.has_column_name?(:id) && @query.has_column_name?(:tracker).blank?}#{issue.subject.truncate(100)}", issue_path(issue) %></p>
+          <p class="attributes">
+            <% @query.card_columns.select{|c| !c.value(issue).blank? }.each do |column| %>
+              <b><%= column.caption %></b>: <%= column_content(column, issue) %> <br>
+            <% end %>
+          </p>
+
+          <% if @query.has_column_name?(:day_in_state) %>
+            <p class="attributes">
+                <b><%= " #{I18n.t('label_agile_day_in_state')}: " %></b>
+                <% find_change_state = false %>
+                <% if @query.journals_for_state %>
+                  <% @query.journals_for_state.each do |journal| %>
+                    <% if journal.journalized_id == issue.id %>
+                      <%= time_in_state(journal.created_on) %>
+                      <% find_change_state = true %>
+                      <% break %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
+                <% if !find_change_state %>
+                  <%= time_in_state(issue.day_in_state) %>
+                <% end %>
+            </p>
+          <% end %>
+
+          <% if @query.has_column_name?(:description) && !issue.description.blank? %>
+            <em class="info description">
+              <%= issue.description.truncate(200) %>
+            </em>
+          <% end %>
+          <% if @query.has_column_name?(:sub_issues) && issue.sub_issues.any? %>
+            <div class='sub-issues'>
+              <%= issue_children(issue) %>
+            </div>
+          <% end %>
+          <% if @query.has_column_name?(:thumbnails)  %>
+            <% image = issue.attachments.select(&:thumbnailable?).last %>
+            <% if image %>
+            <div class="thumbnail" style="background-image: url('<%= thumbnail_path(image, :size => 250) %>')">
+            </div>
+            <% end %>
+          <% end %>
+          <!-- Check list -->
+          <% if @query.has_column_name?(:checklists) && show_checklist?(issue) %>
+            <div class="checklist" id="checklist_<%= issue.id %>">
+              <ul id="checklist_items">
+                <% issue.checklists.each do |checklist_item| %>
+                  <%= render :partial => 'checklists/checklist_item', :object => checklist_item %>
+                <% end %>
+              </ul>
+              <script type="text/javascript">
+                $("#checklist_<%= issue.id %>").checklist();
+              </script>
+            </div>
+          <% end %>
+          <% if @query.has_column_name?(:assigned_to) %>
+            <p class="info assigned-user" style="<%= 'display: none;' unless issue.assigned_to %>">
+              <span class="user"><%= avatar(issue.assigned_to, :size => "14").to_s.html_safe + " " + link_to_user(issue.assigned_to) if issue.assigned_to %></span>
+            </p>
+          <% end %>
+
+          <% if @query.has_column_name?(:done_ratio) %>
+            <%= progress_bar(issue.done_ratio, :width => '100%') %>
+          <% end %>
+
+          <% if (last_comment = @query.issue_last_comment(issue, :inline_adding => @inline_adding)) %>
+            <em class="info description last_comment" title='<%= last_comment.user.to_s + " " + format_date(last_comment.created_on) %>'>
+              <span class="icon icon-comment last-comment">
+                <%= last_comment.notes.truncate(100) %>
+              </span>
+            </em>
+          <% end %>
+          <% if User.current.allowed_to?(:edit_issues, @project, :global => true) && RedmineAgile.allow_inline_comments? %>
+            <div class="quick-comment">
+            </div>
+          <% end %>
+      </span>
+    <% end %>
+</div>
+<% if User.current.allowed_to?(:edit_issues, @project, :global => true) && @update %>
+  <script type="text/javascript">
+
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            $('html.agile-board-fullscreen').removeClass('agile-board-fullscreen');
+            $(".issue-card").addClass("hascontextmenu");
+            saveFullScreenState();
+        }
+    };
+
+    $("table.issues-board thead").html("<%=escape_javascript render_board_headers(@query.board_statuses) %>");
+  </script>
+
+  <% if @error_msg %>
+    <script type="text/javascript">
+      setErrorMessage("<%= @error_msg%>", 'warning');
+    </script>
+  <% end %>
+
+  <% if @update && !@version_board %>
+    <script type="text/javascript">
+      $("table.issues-board thead").html("<%=escape_javascript render_board_headers(@query.board_statuses) %>");
+    </script>
+    <% if Redmine::VERSION.to_s > '2.4' %>
+      <script type="text/javascript">
+        agileBoard.initDroppable();
+      </script>
+    <% end %>
+  <% end %>
+  <%= init_agile_tooltip_info %>
+<% end %>

@@ -1,0 +1,33 @@
+# encoding: utf-8
+ru:
+  label_checklist_plural: Чеклист
+  field_checklist: Чеклист
+  label_checklist_save_log: Сохранять изменения в истории
+  label_checklist_done_ratio: Рассчитывать готовность задачи
+  permission_view_checklists: Просматривать чеклисты
+  permission_done_checklists: Выполнять чеклисты
+  permission_edit_checklists: Редактировать чеклисты
+  label_checklist_template_category_plural: Категории шаблонов чеклистов
+  label_checklist_template_category_new: Новая категория шаблонов чеклистов
+  field_checklist_template_category: Категория
+  label_checklist_templates: Шаблоны чеклистов
+  label_checklist_new_checklist_template: Новый шаблон чеклистов
+  field_template_items: Элементы шаблона
+  label_checklist_template: Шаблон чеклистов
+  label_add_checklists_from_template: Добавить из шаблона
+  label_select_template: "-- Выберите шаблон --"
+  label_checklist_category_not_specified: "-- Без категории --"
+  label_checklists_description: 'Для ввода нескольких значений вводите по одному на строку'
+  label_checklist_item: Пункт чеклиста
+  label_checklist_deleted: удалён
+  label_checklist_changed_from: изменён с
+  label_checklist_changed_to: на
+  label_checklist_added: добавлен
+  label_checklist_done: выполнен
+  label_checklist_undone: не выполнен
+  label_checklist_updated: Пункт чеклиста изменен
+  label_checklist_status: Статус пункта чеклиста
+  label_checklist_status_done: Выполнен
+  label_checklist_status_undone: Не выполнен
+  label_checklist_is_default: По умолчанию
+  field_is_for_tracker: Трекер

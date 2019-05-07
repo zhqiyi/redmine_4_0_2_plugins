@@ -1,0 +1,3 @@
+<%= render 'index' %>
+<%= init_agile_tooltip_info %>
+<%= call_hook(:view_agile_board_bottom, { :issues => @issues, :project => @project, :query => @query }) %>

@@ -1,0 +1,141 @@
+<script type="text/javascript">
+  window.easyMindMupSetting = <%= {
+    easyRedmine: EasyMindmup.easy_extensions?,
+    rootID: @project.id,
+    apiKey: User.current.api_key,
+    noSave: params[:nosave].present?,
+    allIcons: false,
+    paths: {
+      root: home_path
+    },
+    labels: {
+      free: {
+        headerNotAvailable: l('easy_mindmup.free.header_not_available'),
+        buttonUpgrade: l('easy_mindmup.free.button_upgrade')
+      },
+      errors: {
+        warning_delete_node: l('easy_mindmup.warning_delete_node'),
+        warning_delete_nodes: l('easy_mindmup.warning_delete_nodes')
+      },
+      types: {},
+      gateway: {
+        multiSuccess: l('easy_mindmup.info_all_saved'),
+        multiFail: l('easy_mindmup.info_any_failed'),
+        PUTfail: l('easy_mindmup.error_update'),
+        POSTfail: l('easy_mindmup.error_create'),
+        DELETEfail: l('easy_mindmup.error_delete'),
+        response_403: l('easy_mindmup.info_no_permission'),
+        notProperlySaved: l('easy_mindmup.warning_not_saved')
+      },
+      legend: {},
+      buttons: {
+        close: l(:button_close),
+        button_yes: l(:general_text_Yes),
+        button_no: l(:general_text_No)
+      },
+      context: {
+        expand: l('easy_mindmup.button_expand'),
+        collapse: l('easy_mindmup.button_collapse'),
+        goto: l('easy_mindmup.label_go_to'),
+        rename: l(:button_rename),
+        editData: l('easy_mindmup.button_edit_data'),
+        add: l(:button_add),
+        addChild: l('easy_mindmup.button_add_child'),
+        addSibling: l('easy_mindmup.button_add_sibling'),
+        addParent: l('easy_mindmup.button_add_parent'),
+        remove: l(:button_delete),
+      },
+      links: {
+      },
+      save_info: {
+        initial: l('easy_mindmup.save_info.loaded'),
+        saved: l('easy_mindmup.save_info.saved'),
+        autosaved: l('easy_mindmup.save_info.autosaved'),
+        at: l('easy_mindmup.save_info.at')
+      },
+      titleNodeChanged: l('easy_mindmup.title_node_changed')
+    },
+    templates: {
+      legendTemplate: %{
+        {{#filter}}
+        <div class="mindmup-legend__filter_cont">
+          <a class="easy-mindmup__icon easy-mindmup__icon--cancel_filter mindmup-legend__filter_cancel_icon"></a>
+          <a class="easy-mindmup__icon easy-mindmup__icon--filter mindmup-legend__filter_icon"></a>
+        </div>
+        {{/filter}}
+        {{#items}}
+          {{{.}}}
+        {{/items}}
+        <a href="javascript:void(0)" class="mindmup-legend-used mindmup-legend-used-used--{{active}}">#{l('easy_mindmup.label_show_unused')}</a>
+        <a href="javascript:void(0)" class="mindmup-legend-used mindmup-legend-used-all--{{active}}">#{l('easy_mindmup.label_hide_unused')}</a>
+        <div class="hotkey_link"><a href="javascript:void(0)">#{l('easy_mindmup.button_hotkeys')}</a></div>
+      },
+      upgrade: %{
+        <h3 class="title">#{l('easy_mindmup.free.header_not_available')}</h3>
+        <p>
+          {{#filtering}}
+            #{l('easy_mindmup.free.feature_filtering')}
+          {{/filtering}}
+          {{#coloring}}
+            #{l('easy_mindmup.free.feature_coloring')}
+          {{/coloring}}
+          {{#context_menu}}
+            #{l('easy_mindmup.free.feature_context_menu')}
+          {{/context_menu}}
+          {{#dnd_property}}
+            #{l('easy_mindmup.free.feature_dnd_property')}
+          {{/dnd_property}}
+          {{text}}
+        </p>
+        <a id="upgrade_link" style="display:none" href="{{href}}">link</a>
+      },
+      reloadErrors: %{
+        {{#.}}
+          <li>
+            {{#isProject}}#{l(:label_project)}{{/isProject}}
+            {{^isProject}}#{l(:label_issue)}{{/isProject}}
+            {{#changed}}
+              "{{name}}" #{l('easy_mindmup.last_state_modal.message_changed')}
+            {{/changed}}
+            {{#moved}}
+              "{{name}}" #{l('easy_mindmup.last_state_modal.message_moved')}
+            {{/moved}}
+            {{#present}}
+              "{{name}}" #{l('easy_mindmup.last_state_modal.message_present')}
+            {{/present}}
+            {{#missing}}
+              "{{name}}" #{l('easy_mindmup.last_state_modal.message_missing')}
+            {{/missing}}
+          </li>
+        {{/.}}
+      },
+      lastStateModal: %{
+        <h3 class="title">#{l('easy_mindmup.last_state_modal.title')}</h3>
+        <h4>#{l('easy_mindmup.last_state_modal.label_differencies')}:</h4>
+        <ul class="mindmup-last-modal-diffs">
+          {{{differences}}}
+        </ul>
+        <p>#{l('easy_mindmup.last_state_modal.text_reload_appeal')}</p>
+      },
+      storedModal: %{
+        <h3 class="title">#{l('easy_mindmup.stored_modal.title')}</h3>
+        <p>#{l('easy_mindmup.stored_modal.text_load_appeal')}</p>
+        <button id="stored_state_modal_local">#{l('easy_mindmup.stored_modal.button_local')}</button>
+        <button id="stored_state_modal_server">#{l('easy_mindmup.stored_modal.button_server')}</button>
+      },
+      saveProgressModal: %{
+        <div class="mindmup-progress-modal">
+          <div class="mindmup-progress-title"><h3>#{l('easy_mindmup.label_save_progress')}</h3></div>
+          <div class="mindmup-progress-cont">
+            <div class="mindmup-progress-bar">
+            </div>
+          </div>
+        </div>
+      }
+    }
+  }.to_json.html_safe %>
+
+  $(document).ready(function(){
+    $("p.nodata").remove()
+  })
+</script>

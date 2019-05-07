@@ -1,0 +1,21 @@
+<%#*************************************************** プロジェクトセレクタ %>
+<%= @restrict_project ? Project.find(@restrict_project).name : ""%>
+
+<select onchange="if (this.value != '') {window.location = this.value;}">
+  <option selected="selectes"><%=l(:wt_select_project)%></option>
+  <option value="<%= url_for(@link_params.merge(:prj=>false));%>">---</option>
+<%
+prjs = Project.
+        joins("LEFT JOIN wt_project_orders ON wt_project_orders.dsp_prj=projects.id AND wt_project_orders.uid=#{User.current.id}").
+        select("projects.*, coalesce(wt_project_orders.dsp_pos,100000) as pos").
+        order("pos,name").
+        all
+
+Project.project_tree(prjs) do |prj, level|
+  next unless prj.active?
+  next if !prj.visible?
+  name_prefix = (level > 0 ? '&nbsp;' * 2 * level + '&#187; ': '').html_safe
+%>
+  <option value="<%= url_for(@link_params.merge(:prj=>prj.id));%>"> <%=name_prefix + prj.name%> </option>
+<%end%>
+</select>

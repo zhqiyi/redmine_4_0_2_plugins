@@ -1,0 +1,36 @@
+# encoding: utf-8
+# German strings go here for Rails i18n
+de:
+  label_checklist_plural: Checkliste
+  field_checklist: Checkliste
+  label_checklist_save_log: "Speichere Änderungen in der Ticket-Historie"
+  label_checklist_done_ratio: Aktualisiere den Ticket-Fortschritt
+  permission_view_checklists: Checkliste anzeigen
+  permission_done_checklists: Checkliste anwenden
+  permission_edit_checklists: Checkliste bearbeiten
+  label_checklist_template_category_plural: Kategorien
+  label_checklist_template_category_new: Neue Kategorie
+  field_checklist_template_category: Kategorie
+  label_checklist_templates: Checklisten-Vorlagen
+  label_checklist_new_checklist_template: Neue Checklisten-Vorlage
+  field_template_items: "Einträge"
+  label_checklist_template: Checklisten-Vorlage
+  label_add_checklists_from_template: "Aus Vorlage wählen"
+  label_select_template: "-- Vorlage auswählen --"
+  label_checklist_category_not_specified: "-- Nicht spezifiziert --"
+  label_checklists_description: 'Mehrere Einträge erlaubt (ein Eintrag pro Zeile)'
+  label_checklist_item: Checklisten-Eintrag
+  label_checklist_deleted: gelöscht
+  label_checklist_changed_from: geändert von
+  label_checklist_changed_to: zu
+  label_checklist_added: hinzugefügt
+  label_checklist_done: als Erledigt markiert
+  label_checklist_undone: als Nicht erledigt markiert
+  label_checklist_updated: Checklisten-Eintrag editiert
+  label_checklist_status: Checklisten-Status
+  label_checklist_status_done: Erledigt
+  label_checklist_status_undone: Nicht erledigt
+  label_checklist_is_default: Standard
+  field_is_for_tracker: Tracker
+  label_checklists_must_be_completed: "Alle Checklisten-Einträge eines Tickets müssen vor dem Schließen erledigt werden."
+  label_checklist_block_issue_closing: "Schließen des Tickets blockieren"

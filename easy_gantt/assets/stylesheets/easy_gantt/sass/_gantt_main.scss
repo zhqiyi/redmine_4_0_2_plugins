@@ -1,0 +1,281 @@
+div#easy_gantt.easy{
+  a{
+
+  }
+  #easy_gantt_menu{
+    //overflow: hidden;
+    padding-bottom: $gap - 3;
+    p{
+      margin-bottom: 0;
+    }
+  }
+  #gantt_footer_buttons{
+    float: left;
+    margin-top: $gap;
+    & + p{
+      float: right;
+      margin-top: $gap;
+    }
+  }
+  .button.active{
+    @extend %button-main !optional;
+  }
+}
+
+#button_jump_today{
+  padding-right: 0;
+}
+
+.easy-gantt{
+  &__menu{
+    @extend %box-sizing-border-box !optional;
+    //@extend %material__elevation--inline !optional;
+    @extend %flex !optional;
+    @extend %flex-wrap-wrap !optional;
+    @extend %justify-content-space-between !optional;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+    background-color: $gantt-background-menu;
+    padding: $box-padding;
+    margin: 0 (-$box-padding);
+    &:after{
+      display: none;
+    }
+    &-item{
+      display: inline-block;
+      text-align: left;
+      .active{
+        color: $color-negative !important;
+        &:before{
+          color: $color-negative;
+        }
+      }
+    }
+    &-group{
+      display: inline-block;
+      ul{
+        margin: 0;
+      }
+      .easy &--tooltiped{
+        @extend %menu-tooltip !optional;
+        & > ul{
+          display: none;
+          right: 0;
+        }
+        &:hover{
+          & > ul{
+            display: block;
+          }
+        }
+      }
+    }
+    .easy & .problem-finder{
+      @include small;
+      color: $color-text;
+      &.active{
+        background: none;
+        border: none;
+        color: $color-text;
+      }
+      &:hover{
+        text-decoration: none;
+      }
+    }
+    .gantt-menu-problems-list{
+      @extend %material__elevation--depth_2 !optional;
+      border-width: 1px !important;
+    }
+    .gantt-menu-problems-count.gantt-with-problems{
+      @extend %border-radius-infinite !optional;
+      font-weight: bold;
+      background: $color-negative;
+      border: 1px solid darken($color-negative, 5%);
+      text-align: center;
+      width: 1.5*$gap;
+      line-height: 1.5*$gap;
+      display: inline-block;
+      color: white;
+      padding: .25*$gap;
+      margin-right: $gap;
+
+    }
+  }
+}
+
+.gantt-menu-sub-panel{
+  width: 100%;
+  & > span{
+    display: none !important;
+  }
+}
+
+#button_problem_finder.active{
+  color: $color-negative !important;
+  background: none !important;
+  border: none !important;
+}
+
+.gantt-menu-problems-reason{
+  color: $color-negative !important;
+}
+
+.gantt-grid-milestone-bullet{
+  margin-top: 4px !important;
+  margin-left: 5px;
+  background: $color-text !important;
+  border: none !important;
+  .gantt-milestone-shared &{
+    background: $color-important !important;
+  }
+}
+
+.gantt_subtask_arrow:before{
+  content: '\21B3';
+  opacity: .75;
+}
+
+.gantt_cell + .gantt_cell, .gantt_side_content{
+  color: $color-text !important;
+}
+
+.gantt_grid .gantt_grid_head_cell, .gantt_grid_scale, #gantt_grid, .gantt_scale_cel, .gantt_task_scale{
+  border-color: $color-border-minor !important;
+}
+
+.gantt_grid{
+  //@extend %material__elevation--depth_2 !optional;
+  border-right-width: 1px !important;
+}
+
+.gantt{
+  &_grid_data &_row{
+    &, &.odd{
+      &:hover{
+        background: rgba($color-negative, .25);
+      }
+    }
+    &.closed{
+      background-color: rgba($color-service-text, .5);
+      border-color: rgba($color-service-text, 1);
+      .gantt_tree_content{
+        text-decoration: line-through;
+      }
+    }
+  }
+}
+
+.gantt_task_scale, .gantt_grid_scale{
+  @extend %material__elevation--depth_1 !optional;
+  z-index: 2 !important;
+  margin-top: -1px;
+}
+
+#gantt_cont{
+  width: auto !important;
+  margin: 0 (-$box-padding - 1);
+  background: $color-foreground;
+}
+
+.easy{
+  & .gantt_tree{
+    &_indent{
+      width: $box-padding;
+    }
+    &_icon{
+      width: $box-padding;
+      text-align: center;
+    }
+  }
+}
+
+div.gantt_task_progress{
+  position: relative;
+  z-index: 1 !important;
+}
+
+div.gantt_task_line{
+  &.gantt_parent_task-subtype{
+    .gantt_task_progress, .gantt_task_content{
+      height: 100%;
+    }
+  }
+  .gantt_task_content{
+    border-radius: 2px;
+    border: 1px solid;
+    box-sizing: border-box;
+  }
+  .gantt_task_content,
+  .gantt_task_ticks{
+    background-color: rgba($color-positive, .1);
+    border-color: rgba($color-positive, 1);
+  }
+  .gantt_task_progress{
+    background-color: rgba($color-positive, .5);
+  }
+  &.wrong{
+    .gantt_task_ticks,
+    .gantt_task_content{
+      background-color: rgba($color-negative, .1);
+      border-color: rgba($color-negative, 1);
+    }
+    .gantt_task_progress{
+      background-color: rgba($color-negative, .5);
+    }
+  }
+  &.closed{
+    .gantt_task_ticks,
+    .gantt_task_content{
+      background-color: rgba($color-service-text, .25);
+      border-color: rgba($color-service-text, 1);
+    }
+    .gantt_task_progress{
+      background-color: rgba($color-service-text, .5);
+    }
+  }
+  &.gantt_project-type{
+    .gantt_task_content{
+      background-color: rgba($color-main, .25);
+      border-color: rgba($color-main, 1);
+    }
+    div.gantt_task_progress{
+      background-color: rgba($color-main, .5);
+    }
+    &.wrong{
+      .gantt_task_content{
+        background-color: rgba(mix($color-negative, $color-main, 75%), .25);
+      }
+      div.gantt_task_progress{
+        background-color: rgba(mix($color-negative, $color-main, 75%), .5);
+      }
+    }
+  }
+  &.gantt_milestone-type{
+    .gantt_task_content{
+      @include transform(#{scale(.65) rotate(45deg)});
+      background-color: rgba($color-text, 1);
+      border-color: rgba($color-text, 1);
+    }
+    &.gantt-milestone-shared{
+      .gantt_task_content{
+        @include transform(#{scale(.65) rotate(45deg)});
+        background-color: rgba($color-important, 1);
+        border-color: rgba($color-important, 1);
+      }
+    }
+  }
+  &.critical{
+    .gantt_task_ticks,
+    .gantt_task_content{
+      background-color: rgba($gantt-color-critical, .5);
+      border-color: rgba($gantt-color-critical, 1);
+    }
+    .gantt_task_progress{
+      background-color: rgba($gantt-color-critical, 1);
+    }
+  }
+}
+
+.gantt_hor_scroll{
+  z-index: 1;
+}

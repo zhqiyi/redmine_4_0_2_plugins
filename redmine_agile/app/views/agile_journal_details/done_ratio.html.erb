@@ -1,0 +1,28 @@
+<%= title [issue_heading(@issue) , issue_path(@issue)],  l(:field_done_ratio) %>
+
+<% html_title(l(:field_done_ratio)) %>
+
+<% if @done_ratios.any? %>
+  <table class="list"><thead>
+  <tr>
+      <th>#</th>
+      <th><%= l(:field_created_on) %></th>
+      <th><%= l(:field_done_ratio) %></th>
+      <th><%= l(:label_agile_charts_number_of_hours) %></th>
+      <th><%= l(:field_duration) %></th>
+      <th><%= l(:field_author) %></th>
+  </tr></thead>
+  <% @done_ratios.each_with_index do |done_ratio, index| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+      <td class="index"><%= index + 1 %></td>
+      <td class="name"><%= format_time(done_ratio.journal.created_on) %></td>
+      <td><%= progress_bar(done_ratio.value.to_f, :width => '80px', :legend => "#{"%.2f" %done_ratio.value.to_f}%") %></td>
+      <td><%= "%.2f" % (@issue.estimated_hours.to_f * (100 - done_ratio.value.to_f) / 100.0) %></td>
+      <td><%= event_duration(done_ratio, @done_ratios[index + 1]) %></td>
+      <td><%= done_ratio.journal.user.name %></td>
+  </tr>
+  <% end %>
+  </table>
+<% else %>
+<p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>

@@ -1,0 +1,249 @@
+<%
+  # encoding: utf-8
+  #
+  # Redmine plugin for Document Management System "Features"
+  #
+  # Copyright © 2011    Vít Jonáš <vit.jonas@gmail.com>
+  # Copyright © 2012    Daniel Munn <dan.munn@munnster.co.uk>
+  # Copyright © 2011-19 Karel Pičman <karel.picman@kontron.com>
+  #
+  # This program is free software; you can redistribute it and/or
+  # modify it under the terms of the GNU General Public License
+  # as published by the Free Software Foundation; either version 2
+  # of the License, or (at your option) any later version.
+  #
+  # This program is distributed in the hope that it will be useful,
+  # but WITHOUT ANY WARRANTY; without even the implied warranty of
+  # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  # GNU General Public License for more details.
+  #
+  # You should have received a copy of the GNU General Public License
+  # along with this program; if not, write to the Free Software
+  # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+%>
+
+<% html_title l(:dmsf) %>
+<div class="contextual">
+  <% if @folder_manipulation_allowed && !@system_folder %>
+      <% if @folder.nil? %>
+          <%= link_to(l(:button_edit), edit_root_dmsf_path(:id => @project),
+                      :title => l(:link_edit, :title => l(:link_documents)),
+                      :class => 'icon icon-edit') %>
+      <% elsif !@locked_for_user %>
+          <%= link_to(l(:button_edit),
+                      edit_dmsf_path(:id => @project, :folder_id => @folder),
+                      :title => l(:link_edit, :title => h(@folder.title)),
+                      :class => 'icon icon-edit') %>
+      <% end %>
+      <% if @folder && (!@locked_for_user || User.current.allowed_to?(:force_file_unlock, @project)) %>
+          <% if @folder.locked? %>
+              <%= link_to_if(@folder.unlockable?, l(:button_unlock),
+                             unlock_dmsf_path(:id => @project, :folder_id => @folder, :current => request.url),
+                             :title => l(:title_unlock_folder), :class => 'icon icon-unlock')  %>
+          <% else %>
+              <%= link_to(l(:button_lock),
+                          lock_dmsf_path(:id => @project, :folder_id => @folder, :current => request.url),
+                          :title => l(:title_lock_folder), :class => 'icon icon-lock') %>
+          <% end %>
+      <% end %>
+      <% if !@locked_for_user && ((@folder && @folder.notification) || (!@folder && @project.dmsf_notification)) %>
+          <%= link_to(l(:label_notifications_off),
+                      notify_deactivate_dmsf_path(:id => @project, :folder_id => @folder),
+                      :title => l(:title_notifications_active_deactivate),
+                      :class => 'icon icon-email') %>
+      <% else %>
+          <%= link_to(l(:label_notifications_on),
+                      notify_activate_dmsf_path(:id => @project, :folder_id => @folder),
+                      :title => l(:title_notifications_not_active_activate),
+                      :class => 'icon icon-email-add') %>
+      <% end %>
+      <% if @file_manipulation_allowed && !@locked_for_user %>
+          <%= link_to(l(:label_link_from),
+                      new_dmsf_link_path(:project_id => @project.id, :dmsf_folder_id => @folder ? @folder.id : @folder,
+                        :type => 'link_from'), :title => l(:title_create_link),
+                        :class => 'icon icon-link') %>
+      <% end %>
+      <%= link_to(l(:link_create_folder),
+                  new_dmsf_path(:id => @project, :parent_id => @folder),
+                  :title => l(:link_create_folder),
+                  :class => 'icon icon-add') unless @locked_for_user %>
+  <% end %>
+  <% if @trash_enabled %>
+    <%= link_to l(:link_trash_bin), trash_dmsf_path(@project), title: l(:link_trash_bin), class: 'icon icon-del' %>
+  <% else %>
+    <span class="icon icon-del">
+      <%= l(:link_trash_bin) %>
+    </span>
+  <% end %>
+</div>
+
+<%= render(:partial => 'path',
+           :locals => {:folder => @folder, :filename => nil, :title => nil}) %>
+
+<div class="dmsf-header">
+  <div class="wiki">
+    <%= textilizable(@folder ? @folder.description : @project.dmsf_description) %>
+  </div>
+</div>
+
+<%= error_messages_for('dmsf_workflow') %>
+
+<%= form_tag(entries_operations_dmsf_path(:id => @project, :folder_id => @folder), :method => :post,
+              :class => 'dmsf_entries', :id => 'entries_form', :data => {:cm_url => dmsf_context_menu_path}) do %>
+  <%= hidden_field_tag('action') %>
+  <% unless @system_folder %>
+    <div id="dmsf_buttons" class="dmsf_controls" style="float: left">
+      <%= submit_tag(l(:button_download), :title => l(:title_download_checked), :name => 'download_entries',
+                     :class => 'toggle-selection') if @file_view_allowed %>
+      <%= submit_tag(l(:field_mail), :title => l(:title_send_checked_by_email), :name => 'email_entries',
+                     :class => 'toggle-selection') if (@file_view_allowed && User.current.allowed_to?(:email_documents, @project)) %>
+      <% if @file_delete_allowed %>
+        <%= submit_tag(l(:button_delete), :title => l(:title_delete_checked), :name => 'delete_entries',
+                       :class => 'toggle-selection', :data => { :confirm => l(:text_are_you_sure) }) if @file_delete_allowed %>
+      <% end %>
+    </div>
+  <% end %>
+  <% unless @system_folder %>
+    <% values = @folder ? @folder.custom_field_values : DmsfFolder.new.custom_field_values %>
+    <% unless values.empty? %>
+      <% values.sort! { |a, b| a.custom_field.position <=> b.custom_field.position } %>
+      <% custom_value = values.first %>
+      <% if custom_value.custom_field.format.is_a?(Redmine::FieldFormat::ListFormat) %>
+        <div id="dmsf_tag" class="dmsf_controls" style="float: right">
+          <% custom_value.custom_field.is_required = false %>
+          <% custom_value.value = params[:custom_value].present? ? params[:custom_value] : '' %>
+          <%= h(custom_value.custom_field.name) %>:
+          <%= custom_value.custom_field.format.edit_tag(self,
+                                                        custom_field_tag_id(:dmsf_folder, custom_value.custom_field),
+                                                        custom_field_tag_name(:dmsf_folder, custom_value.custom_field),
+                                                        custom_value,
+                                                        :class => "#{custom_value.custom_field.field_format}_cf",
+                                                        :style => 'width: auto') %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if @tree_view %>
+    <%= render(:partial => 'tree_view') %>
+  <% else %>
+    <%= render(:partial => 'list_view') %>
+  <% end %>
+<% end %>
+
+<%= context_menu %>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'jquery.dataTables/datatables.min.css', :plugin => :redmine_dmsf %>
+    <%= javascript_include_tag 'jquery.dataTables/datatables.min.js', :plugin => :redmine_dmsf, defer: true %>
+
+    <% title = DmsfFolder.get_column_position('title') %>
+    <% position = DmsfFolder.get_column_position('position') %>
+    <% commands = DmsfFolder.get_column_position('commands') %>
+    <% position = DmsfFolder.get_column_position('position') %>
+    <% version = DmsfFolder.get_column_position('version') %>
+    <% size_calculated = DmsfFolder.get_column_position('size_calculated') %>
+    <% modified_calculated = DmsfFolder.get_column_position('modified_calculated') %>
+    <% version_calculated = DmsfFolder.get_column_position('version_calculated') %>
+    <% size = DmsfFolder.get_column_position('size') %>
+    <% modified = DmsfFolder.get_column_position('modified') %>
+    <% clear_title = DmsfFolder.get_column_position('clear_title') %>
+
+    <%= late_javascript_tag do %>
+      $("#browser").dataTable({
+          orderClasses: false,
+          responsive: {
+              details: false
+          },
+          language: {
+              url: "<%= plugin_asset_path(:redmine_dmsf, 'javascripts', json_url) %>"
+          },
+          autoWidth: false,
+          paginate: false,
+          <% if title %>
+            order: [[<%= title %>, "asc"]],
+          <% end %>
+          sortingFixed: [[ <%= position %>, "asc"]],
+          columnDefs: [
+              { responsivePriority: 1, targets: <%= title %> },
+              { responsivePriority: 2, targets: <%= commands %> },
+              { searchable: false, targets: [0, <%= commands %>, <%= position %>, <%= size_calculated %>, <%= modified_calculated %>, <%= version_calculated %>, <%= clear_title %>] },
+              { sortable: false, targets: [0, <%= commands %>] }
+              <% if title %>
+                ,{ iDataSort: <%= clear_title %>, targets: [ <%= title %> ] }
+              <% end %>
+              <% if size %>
+                ,{ iDataSort: <%= size_calculated %>, targets: [ <%= size %> ] }
+              <% end %>
+              <% if modified %>
+                ,{ iDataSort: <%= modified_calculated %>, targets: [ <%= modified %> ] }
+              <% end %>
+              <% if version %>
+                ,{ iDataSort: <%= version_calculated %>, targets: [ <%= version %> ] }
+              <% end %>
+          ],
+          "fnInitComplete": function() {
+            var browserFilter = $("#browser_filter");
+            $("#dmsf_buttons").insertBefore(browserFilter);
+            $("#dmsf_tag").insertBefore(browserFilter);
+          },
+          "fnInfoCallback": function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+              <% if @tree_view %>
+                <% if @folder %>
+                  return "<%= "#{l(:label_number_of_folders)}: #{@folder.deep_folder_count} #{l(:label_number_of_documents)}: #{@folder.deep_file_count}" %>";
+                <% else %>
+                  return "<%= "#{l(:label_number_of_folders)}: #{DmsfFolder.visible.where(:project_id => @project.id).count + DmsfLink.visible.where(:project_id => @project.id, :target_type => 'DmsfFolder').count}, #{l(:label_number_of_documents)}: #{DmsfFile.visible.where(:project_id => @project.id).count + DmsfLink.visible.where(:project_id => @project.id, :target_type => %w(DmsfFile DmsfUrl)).count}" %>";
+                <% end %>
+              <% else %>
+                return "<%= "#{l(:label_number_of_folders)}: #{@subfolders.count + @dir_links.count}, #{l(:label_number_of_documents)}: #{@files.count + @file_links.count + @url_links.count}" %>";
+              <% end %>
+          }
+      });
+
+      $("[data-downloadurl]").each(function() {
+          var url = this.getAttribute("data-downloadurl");
+          if (this.addEventListener) {
+              this.addEventListener("dragstart", function(e) {
+                  if (e.dataTransfer) {
+                      e.dataTransfer.setData("DownloadURL", url);
+                  }
+              },false);
+          }
+      });
+
+      var entriesForm = $('#entries_form');
+
+      entriesForm.submit(function () {
+          $(this).removeAttr("data-submitted");
+      });
+
+      $('.list_cf').change(function() {
+        entriesForm.attr('action', "<%= tag_changed_path(:id => @project, :folder_id => @folder) %>");
+        entriesForm.submit();
+      });
+    <% end %>
+<% end %>
+
+<% if @file_manipulation_allowed && !@locked_for_user && !@system_folder %>
+    <%= render(:partial => 'dmsf_upload/multi_upload', :local => { :lbl => true }) %>
+<% end %>
+
+<% unless @system_folder %>
+    <% other_formats_links do |f| %>
+        <%= f.link_to 'CSV', :onclick => "showModal('csv-export-options', '350px'); return false;" %>
+    <% end %>
+<% end %>
+
+<div id="csv-export-options" style="display:none;">
+  <h3 class="title"><%= l(:label_export_options, :export_format => 'CSV') %></h3>
+  <%= form_tag(dmsf_folder_path(:id => @project, :format => 'csv'), :method => :get, :id => 'csv-export-form') do %>
+      <%= hidden_field_tag(:folder_id, @folder.id) if @folder %>
+      <div class="tabular">
+        <%= render(:partial => 'settings/dmsf_columns',
+                   :locals => { :selected_columns => Setting.plugin_redmine_dmsf['dmsf_columns'], :extra_columns => @extra_columns }) %>
+      </div>
+      <p class="buttons">
+        <%= submit_tag l(:button_export), :name => nil, :onclick => "hideModal(this);" %>
+        <%= submit_tag l(:button_cancel), :name => nil, :onclick => "hideModal(this);", :type => 'button' %>
+      </p>
+  <% end %>
+</div>

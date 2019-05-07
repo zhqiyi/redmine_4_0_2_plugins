@@ -1,0 +1,3 @@
+describe("Model relations",function(){
+  
+});

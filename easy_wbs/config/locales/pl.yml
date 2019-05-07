@@ -1,0 +1,174 @@
+---
+pl:
+  easy_query:
+    name:
+      easy_wbs_easy_issue_query: Easy WBS
+  easy_wbs:
+    button_actions: Inne działania
+    button_add_child: Dodaj dziecko
+    button_add_parent: Dodaj rodzica
+    button_add_sibling: Dodaj rodzeństwo
+    button_all_icons: Ikony
+    button_collapse: Zwiń
+    button_collapse_all: Zwiń wszystko
+    button_cut: Przytnij
+    button_display: Wyświetl ustawienia
+    button_edit_data: Edytuj dane
+    button_expand: Rozwiń
+    button_expand_all: Rozwiń wszystko
+    button_expand_collapse: Rozwiń/Zwiń
+    button_legend: Legenda
+    button_one_side: Jedna strona
+    button_paste: Wklej
+    button_project_menu: Easy WBS
+    button_redo: Popraw
+    button_remove_node: Usuń węzeł
+    button_show_links: Pokaż linki
+    button_undo: Cofnij
+    edit_issue: Edytuj zadanie
+    error_create: nie mógł zostać utworzony
+    error_delete: nie mógł zostać usunięty
+    error_update: nie mógł zostać zaktualizowany
+    errors:
+      not_subtaskable: Zadanie "%{task_name}" nie może być podzadaniem ustawienia
+        swojego narzędzia śledzenia
+    free:
+      button_upgrade: Zdobądź pełną wersję
+      button_upgrade_href: https://www.easyredmine.com/redmine-wbs-plugin
+      feature_coloring: Koloruj węzły wg właściwości
+      feature_context_menu: Zmienianie właściwości węzłów
+      feature_filtering: Filtruj węzły wg właściwości
+      header_not_available: Dostępny jedynie w pełnej wersji
+      text_not_available: jest dostępny jedynie w pełnej wersji Easy WBS.
+    hotkeys:
+      info_mac_metakey: Na Mac OSX, klucze Ctrl i Cmd mogą być użyte dla skrótów oznaczonych
+        poniżej Ctrl - niektóre przeglądarki zapobiegają łączeniu niektórych klawiszy.
+        Przykładowo, w ten sposób, jeśli Cmd+Space nie działa na twojej przeglądarce,
+        wypróbuj Ctrl+Space.
+      keyboard:
+      - title: Manipulacja węzłem
+        hotkeys:
+        - hotkey: Enter
+          info: Dodaj rodzeństwo
+        - hotkey: Shift+Enter
+          info: Dodaj rodzeństwo powyżej lub przy końcu linii (podczas zmiany nazwy
+            węzła)
+        - hotkey: Zakładka lub Wstaw
+          info: Dodaj rodzeństwo
+        - hotkey: Shift+Tab
+          info: Wstaw rodzica
+        - hotkey: Spacja
+          info: Zmień nazwę węzła
+        - hotkey: Shift+Space
+          info: Edytuj dane węzła
+        - hotkey: Backspace lub Delete
+          info: Usuń węzeł
+        - hotkey: Ctrl+Up/Down
+          info: Przesuń węzeł w górę/dół
+      - title: Edytowanie
+        hotkeys:
+        - hotkey: Ctrl+S
+          info: Zapisz
+        - hotkey: Ctrl+X lub C
+          info: Przytnij
+        - hotkey: Ctrl+C lub Y
+          info: Kopiuj
+        - hotkey: Ctrl+V lub P
+          info: Wklej
+        - hotkey: U lub Ctrl+Z
+          info: Cofnij
+        - hotkey: R lub Ctrl+Y lub Ctrl+Shift+Z
+          info: Napraw
+      - title: Wybór
+        hotkeys:
+        - hotkey: Klawisze strzałek
+          info: Wybierz węzeł w górę/dół/lewo/prawo obecnie wybranego
+        - hotkey: Shift + Klawisze strzałek
+          info: Dodaj węzeł w górę/dół/lewo/prawo do wyboru (użyteczne przy rodzeństwie
+            wielokrotnego wyboru)
+        - hotkey: "{"
+          info: Wielokrotny wybór obecnego węzła i całe pod drzewo pod nim
+        - hotkey: "["
+          info: Wielokrotny wybór jedynie drzewa pod obecnym węzłem (nie samym węzłem)
+        - hotkey: "="
+          info: Wielokrotny wybór całego rodzeństwa obecnego węzła (które posiada
+            tego samego rodzica)
+        - hotkey: "."
+          info: Anuluj wielokrotny wybór i wybierz ponownie jedynie obecny węzeł
+        - hotkey: 1 - 9
+          info: Wybierz wszystkie węzły konkretnego poziomu (np. 1 wybiera wszystkie
+            węzły pierwszego poziomu)
+      - title: Nawigacja i ekran
+        hotkeys:
+        - hotkey: "/ lub F"
+          info: Rozwiń lub zwiń węzeł (złóż lub rozłóż dzieci)
+        - hotkey: Ctrl + lub Z
+          info: Powiększ w
+        - hotkey: Ctrl - lub Shift Z
+          info: Pomniejsz
+        - hotkey: Esc, 0, Ctrl+0
+          info: Resetuj widok mapy – wybierz węzeł główny i przynieś go na środek
+            ekranu
+      mouse:
+      - action: Przesuń mapę
+        gesture: kliknij i przeciągnij środek węzła, kliknij i przeciągnij tło lub
+          przewiń trackpadem/touchpadem.
+      - action: Wybierz węzeł
+        gesture: stuknij lub kliknij go
+      - action: Wybierz wiele węzłów
+        gesture: Shift+click
+      - action: Zmień kolejność węzłów
+        gesture: przeciągnij węzeł pomiędzy jego rodzeństwem, zamknij poziomo do pozycji
+          ponownej zmiany kolejności. Podczas zmieniania kolejności pojawi się czarna
+          strzałka.
+      - action: Ręcznie ustaw pozycję węzła
+        gesture: przeciągnij węzeł dopóki nie pokazuje się punkt strzałki do zmiany
+          kolejności. Aby wymusić ręczną pozycję nawet gdy pokazuje się punkt zmiany
+          kolejności strzałki, przytrzymaj Shift podczas przeciągania. Zauważ, że
+          dzieci głównego węzła mogą zostać przeciągnięte w dowolnym kierunku, jednak
+          węzły niższego poziomu mogą zostać wypozycjonowane w kierunku swojego rodzica
+          do węzła.
+      - action: Zmień nazwę węzła
+        gesture: Dwa razy kliknij lub stuknij to
+      - action: Pokaż menu kontekstowe z operacjami
+        gesture: 'Kliknij prawym przyciskiem myszy na węzeł lub podwójnie stuknij
+          tło, bądź przyciśnij dłużej węzeł: pokaż (na urządzeniach dotykowych)'
+      - action: Zmień rodzica węzła
+        gesture: przeciągnij i opuść węzeł na inny węzeł (okrągłe krople nie są dozwolone,
+          więc nie możesz opuścić kropli na węzeł jednego z jego dzieci lub potomków)
+      - action: Otwórz problem lub projekt w oddzielnym oknie
+        gesture: Alt+click
+      title_key_shortcuts: Operacje klawiatury
+      title_mouse_shortcuts: Operacje myszki i touch pada
+      title_shortcuts: Skróty
+    info_all_saved: Wszystko pomyślnie zapisano
+    info_any_failed: 'Niektóre żądania nie powiodły się:'
+    info_no_permission: Nie masz wymaganych pozwoleń, aby to zrobić
+    label_color_by: Kolor wg
+    label_go_to: Idź do
+    label_or: lub
+    last_state_modal:
+      label_differencies: Różnice na serwerze
+      message_changed: posiada różne atrybuty (przeglądarka => serwer) ({{changes}})
+      message_missing: brakuje rodzica "{{from}}"
+      message_moved: jest dzieckiem "{{to}}", nie "{{from}}"
+      message_present: jest obecnie jako dziecko "{{to}}"
+      text_reload_appeal: Czy chcesz ponownie załadować stan z serwera?
+      title: Ostatni stan klienta WBS jest różny od stanu serwera
+    reload_modal:
+      label_errors: Błędy
+      text_reload_appeal: Czy chcesz zignorować niezapisane pozycje i ponownie załadować
+        dane z serwera?
+      title: Poprawne zapisanie WBS nie powiodło się
+    stored_modal:
+      text_load_appeal: Czy chcesz załadować to zamiast odświeżać stanu z serwera?
+      title: Znaleziono niezapisany stan
+    warning_delete_node: Czy na pewno chcesz usunąć węzeł {{name}} i wszystkich jego
+      potomków?
+    warning_not_saved: nie jest poprawnie zapisany
+  heading_easy_wbs_issues: Easy WBS
+  label_filter_group_easy_wbs_easy_issue_query: Zadania
+  label_filter_group_easy_wbs:
+    easy_issue_query: Zadania
+  project_default_page:
+    easy_wbs: ''

@@ -1,0 +1,9 @@
+fa:
+  share_button: "اشتراک‌گذاری"
+  share_title: "اشتراک گذاشتن لینک"
+  share_label_with: "Share with"
+  share_label_page: "صفحه"
+  share_label_subject: "%{sender} به اشتراک گذاشته شده است %{record} توسط شما"
+  share_text_message: "%{sender} به اشتراک گذاشته شده است %{record} توسط شما."
+  share_notice_email_sent: "یک رایانامه بهفرستاده شد."
+  share_notice_email_error: "یک ایراد در ارسال رایانامه پیش آمد."

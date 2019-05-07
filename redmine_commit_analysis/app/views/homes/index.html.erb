@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag "w2ui.min", :plugin => "redmine_commit_analysis" %>
+<%= stylesheet_link_tag "commit_analysis", :plugin => "redmine_commit_analysis" %>
+<%= javascript_include_tag "Chart.bundle.min", :plugin => "redmine_commit_analysis" %>
+<%= javascript_include_tag "w2ui.min", :plugin => "redmine_commit_analysis" %>
+<%= javascript_include_tag "commit_analysis", :plugin => "redmine_commit_analysis" %>
+
+<%= form_tag({:controller => 'scms', :action => 'commit_files'}, :method => :get, :id => "scm_search", :remote => true) do %>
+  <fieldset id="filters" class="collapsible <%= @query.new_record? ? "" : "collapsed" %>">
+    <legend onclick="toggleFieldset(this);"><%= t("commit_analysis.search_option") %></legend>
+    <div style="<%= @query.new_record? ? "" : "display: none;" %>">
+      <%= render :partial => 'queries/filters', :locals => {:query => @query} %>
+    </div>
+  </fieldset>
+  <fieldset id="displayoption" class="collapsible <%= @query.new_record? ? "" : "collapsed" %>">
+    <legend onclick="toggleFieldset(this);"><%= t("commit_analysis.display_option") %></legend>
+    <div style="<%= @query.new_record? ? "" : "display: none;" %>">
+      <div style="margin-top:5px">
+        <label>
+          <%= t("commit_analysis.display_limit") %> :
+          <input type="number" name="display_limit" value="10" min="1" style="width:70px; margin-left:5px" >
+        </label>
+      </div>
+      <div style="margin-top:5px">
+        <label><%= t("commit_analysis.display_order") %> :
+          <input type="radio" name="display_order" value="desc" checked="checked"><%= t("commit_analysis.display_order_desc") %>
+          <input type="radio" name="display_order" value="asc"><%= t("commit_analysis.display_order_asc") %>
+        </label>
+      </div>
+      <div style="margin-top:5px">
+        <label><%= t("commit_analysis.display_only_file") %> :
+          <input type="checkbox" name="display_only_file">
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  <input type="hidden" name="set_filter" id="set_filter" value="1" />
+  <input type="hidden" name="project_id" id="project_id" value="<%= @project.id.to_s %>" />
+  <%= submit_tag t("commit_analysis.view"), :id => 'commit_files_search' %>
+<% end %>
+
+<div id="commit_analysis_search_result" style="margin-top:20px"/>
+
