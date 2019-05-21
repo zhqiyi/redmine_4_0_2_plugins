@@ -1,0 +1,62 @@
+= Redmine Timelog Timer plugin
+
+A leightweight javascript timer for Hours field in timelog form of Redmine.
+Originally forked from the 'redmine timelog timer plugin' which is no longer maintained.
+
+== Change Log
+
+=== v2.0.1 (2014/12/22)
+
+ * Redmine v.2.5.x compatible
+
+=== v2.0.0
+
+ * Save timer using localStorage
+ * Added timer to modify task form
+ * Display timer (if runned) on top bar in all pages
+
+== Screenshots
+
+http://img40.imageshack.us/img40/5797/redminetimelogplugin.png
+
+== Compatibility
+
+Tested on Redmine 2.1.3, 2.1.4, 2.2.0, 2.5.3
+
+== Getting the plugin
+
+A zip archive can be gotten from {GitHub}[https://github.com/emovere/redmine_timelog_timer]
+
+== Installation and Setup
+
+1. Follow the installation steps at: http://www.redmine.org/projects/redmine/wiki/Plugins#Installing-a-plugin
+   Final path to init.rb should look like: /YOUR_REDMINE_DIRECOTY/plugins/redmine_timelog_timer/init.rb
+2. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
+3. Login and open any project, click the 'Log time' Link in the right menu, click Start to start the timer
+
+== Upgrade
+
+=== Zip or tar files
+
+1. Download the latest file as described in Getting the plugin
+2. Extract the file to your Redmine into plugins
+3. Restart your Redmine
+
+=== Git
+
+1. Open a shell to your Redmine's plugins/redmine_timelog_timer folder
+2. Update your Git copy with `git pull`
+3. Restart your Redmine
+
+== License
+
+This plugin is licensed under the GNU GPL v3. 
+See COPYRIGHT.txt and GPL.txt for details.
+
+== Project help
+
+If you need help you can create an issue in the {GitHub Issues}[https://github.com/behigh/redmine_timelog_timer/issues].
+
+=== Bug tracker
+
+If you would like to report a bug or request a new feature the bug tracker is located at: https://github.com/emovere/redmine_timelog_timer/issues
