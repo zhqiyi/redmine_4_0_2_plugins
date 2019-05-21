@@ -3,7 +3,7 @@ All of them works fine，back them up
 
 # Redmine version
 Based on sameersbn/redmine: 4.0.2
-[LINK]!(https://github.com/sameersbn/docker-redmine/releases/tag/4.0.2)
+https://github.com/sameersbn/docker-redmine/releases/tag/4.0.2
 
 # Install
 1. Download all plugins to the plugins directory
